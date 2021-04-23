@@ -58,7 +58,7 @@ namespace U.Reactor
             var textGO = InstanciateUIObject("Text", gameObject);
 
             imageCmp = propsImage().Set(gameObject);
-            buttonCmp = propsButton().Set(gameObject);
+            buttonCmp = gameObject.AddComponent<Button>(); // Add here, becouse need the selector and is not set yet
             textCmp = propsText().Set(textGO);
 
             // Text rectT
@@ -75,7 +75,11 @@ namespace U.Reactor
 
         protected override ElementSelector AddSelector()
         {
-            return new Selector(gameObject, elementIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, buttonCmp, imageCmp);
+            var sel = new Selector(gameObject, elementIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, buttonCmp, imageCmp);
+
+            propsButton().Set(buttonCmp, sel);
+
+            return sel;
         }
 
         protected override void AddHooks()
