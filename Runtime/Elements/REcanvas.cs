@@ -122,7 +122,8 @@ namespace U.Reactor
         public void Erase()
         {
             if (gameObject != null)
-                UnityEngine.Object.DestroyImmediate(gameObject);
+                UnityEngine.Object.Destroy(gameObject); // Esta la puse en vez de la de abajo comentada, para evaluar posibles errores
+                //UnityEngine.Object.DestroyImmediate(gameObject);
         }
 
         public void Hide()

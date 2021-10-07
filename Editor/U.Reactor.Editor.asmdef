@@ -1,0 +1,18 @@
+{
+    "name": "U.Reactor.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c9afd6b88576c184f94899a873da381b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
