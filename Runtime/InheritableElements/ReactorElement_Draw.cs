@@ -168,7 +168,7 @@ namespace U.Reactor
 
             // Set the name
             if (String.IsNullOrEmpty(propsGo.name))
-                propsGo.name = elementType.ToString() + "-Unamed";
+                propsGo.name = elementType.ToString();
             gameObject.name = propsGo.name;
 
             // Set the parent if exist

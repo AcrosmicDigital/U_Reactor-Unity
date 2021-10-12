@@ -27,7 +27,7 @@ namespace U.Reactor
         }
 
         // Create a child GO with recttransform
-        protected static GameObject InstanciateSimpleObject(string name, GameObject parent)
+        protected static GameObject InstanciateObject(string name, GameObject parent)
         {
             GameObject go = new GameObject(name);
             go.transform.SetParent(parent.transform);
@@ -49,7 +49,7 @@ namespace U.Reactor
         {
 
             gObScrollbar = InstanciateUIObject("ScrollBar-" + name, parent);
-            var gObSliding = InstanciateSimpleObject("SlidingArea-" + name, gObScrollbar);
+            var gObSliding = InstanciateObject("SlidingArea-" + name, gObScrollbar);
             var gObHandle = InstanciateUIObject("Handle-" + name, gObSliding);
 
             imageBg = gObScrollbar.AddComponent<Image>();
