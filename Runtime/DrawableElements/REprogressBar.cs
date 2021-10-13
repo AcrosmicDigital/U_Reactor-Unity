@@ -30,6 +30,7 @@ namespace U.Reactor
             width = 500,
             height = 40,
         };
+
         public Func<SliderSetter> propsSlider = () => new SliderSetter();
         public Func<ImageSetter> propsBackImage = () => new ImageSetter { color = Color.gray };
         public Func<ImageSetter> propsFillImage = () => new ImageSetter();
@@ -60,6 +61,8 @@ namespace U.Reactor
             var backgroundGO = InstanciateUIObject("Background", gameObject);
             var fillAreaGO = InstanciateObject("FillArea", gameObject);
             var fillGO = InstanciateUIObject("Fill", fillAreaGO);
+
+            // Get RectTs
             var fillGOrectT = fillGO.GetComponent<RectTransform>();
 
             sliderCmp = propsSlider().Set(gameObject);
@@ -99,8 +102,6 @@ namespace U.Reactor
         protected override ElementSelector AddSelector()
         {
             var sel = new Selector(gameObject, elementIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp);
-
-            //propsButton().Set(buttonCmp, sel);
 
             return sel;
         }

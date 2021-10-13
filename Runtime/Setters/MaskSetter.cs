@@ -10,9 +10,11 @@ namespace U.Reactor
 {
     public class MaskSetter
     {
+        public bool showMaskGraphic = true;
+
         public Mask Set(Mask c)
         {
-
+            c.showMaskGraphic = showMaskGraphic;
 
             return c;
         }

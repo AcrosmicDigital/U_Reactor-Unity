@@ -37,42 +37,43 @@ namespace U.Reactor
         }
 
         // Create a scrollbar
-        protected static void InstanciateScrollbar(string name, GameObject parent,
+        protected static GameObject InstanciateScrollbar(
 
-            out GameObject gObScrollbar,
-            out RectTransform recttScrollbar,
-            out Image imageBg,
-            out Scrollbar scrollbar,
-            out Image imageHandle
+            string name,
+            GameObject parent,
+
+            out Scrollbar scrollbarCmp,
+            out Image backImageCmp,
+            out Image handleImageCmp
 
         )
         {
 
-            gObScrollbar = InstanciateUIObject("ScrollBar-" + name, parent);
-            var gObSliding = InstanciateObject("SlidingArea-" + name, gObScrollbar);
-            var gObHandle = InstanciateUIObject("Handle-" + name, gObSliding);
+            var scrollbarGO = InstanciateUIObject(name, parent);
+            var slidingAreaGO = InstanciateObject("Sliding Area", scrollbarGO);
+            var handleGO = InstanciateUIObject("Handle", slidingAreaGO);
 
-            imageBg = gObScrollbar.AddComponent<Image>();
-            imageBg.type = Image.Type.Sliced;
-            imageBg.color = Color.red;
+            backImageCmp = scrollbarGO.AddComponent<Image>();
+            backImageCmp.type = Image.Type.Sliced;
+            backImageCmp.color = Color.red;
 
-            imageHandle = gObHandle.AddComponent<Image>();
-            imageHandle.type = Image.Type.Sliced;
-            imageHandle.color = Color.green;
+            handleImageCmp = handleGO.AddComponent<Image>();
+            handleImageCmp.type = Image.Type.Sliced;
+            handleImageCmp.color = Color.green;
 
-            var recttSliderArea = gObSliding.GetComponent<RectTransform>();
+            var recttSliderArea = slidingAreaGO.GetComponent<RectTransform>();
             recttSliderArea.sizeDelta = new Vector2(-20, -20);
             recttSliderArea.anchorMin = Vector2.zero;
             recttSliderArea.anchorMax = Vector2.one;
 
-            var recttHandle = gObHandle.GetComponent<RectTransform>();
+            var recttHandle = handleGO.GetComponent<RectTransform>();
             recttHandle.sizeDelta = new Vector2(20, 20);
 
-            scrollbar = gObScrollbar.AddComponent<Scrollbar>();
-            scrollbar.handleRect = recttHandle;
-            scrollbar.targetGraphic = imageHandle;
+            scrollbarCmp = scrollbarGO.AddComponent<Scrollbar>();
+            scrollbarCmp.handleRect = recttHandle;
+            scrollbarCmp.targetGraphic = handleImageCmp;
 
-            recttScrollbar = gObScrollbar.GetComponent<RectTransform>();
+            return scrollbarGO;
 
         }
 

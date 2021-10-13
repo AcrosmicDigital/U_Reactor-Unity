@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using U.Reactor;
 using UnityEngine;
 
-public class InptField : MonoBehaviour
+public class eexp_InputField : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

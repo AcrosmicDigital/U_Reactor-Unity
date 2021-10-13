@@ -25,13 +25,14 @@ namespace U.Reactor
         public virtual int flexibleHeight { get; set; } = 1;
 
 
-        public RectTransform Set(RectTransform c)
+        public RectTransform SetByWidthAndHeight(RectTransform c)
         {
             c.pivot = pivot;
             c.localPosition = localPosition;
             c.anchorMin = anchorMin;
             c.anchorMax = anchorMax;
             c.sizeDelta = new Vector2(width, height);
+
             c.localScale = new Vector3(scale.x, scale.y, 1f);
             c.rotation = rotation;
 
@@ -42,16 +43,32 @@ namespace U.Reactor
         {
             c.anchorMin = anchorMin;
             c.anchorMax = anchorMax;
-            c.sizeDelta = sizeDelta;
+            c.sizeDelta = sizeDelta; // Quitar este y ver si no se rompe nada
             c.offsetMin = offsetMin;
             c.offsetMax = offsetMax;
+
+            // Agregar aqu el localsae y rotation
+
+            return c;
+        }
+
+        public RectTransform SetBySizeDelta(RectTransform c)
+        {
+            c.pivot = pivot;
+            c.localPosition = localPosition;
+            c.sizeDelta = sizeDelta;
+            c.anchorMin = anchorMin;
+            c.anchorMax = anchorMax;
+
+            c.localScale = new Vector3(scale.x, scale.y, 1f);
+            c.rotation = rotation;
 
             return c;
         }
 
         public RectTransform Set(GameObject gameObject)
         {
-            return Set(gameObject.AddComponent<RectTransform>());
+            return SetByWidthAndHeight(gameObject.AddComponent<RectTransform>());
         }
 
         public RectTransform SetByAnchors(GameObject gameObject)
