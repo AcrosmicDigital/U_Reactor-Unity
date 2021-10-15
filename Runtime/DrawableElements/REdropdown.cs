@@ -85,9 +85,19 @@ namespace U.Reactor
             verticalOverflow = VerticalWrapMode.Truncate,
             fontColor = new Color(.2f, .2f, .2f, 1f),
         };
-        public Func<ImageSetter> propsScrollbarImage = () => new ImageSetter { };
-        public Func<ScrollbarSetter> propsScrollbar = () => new ScrollbarSetter { };
-        public Func<ImageSetter> propsScrollbarHandleImageCmp = () => new ImageSetter { };
+        public Func<ImageSetter> propsScrollbarImage = () => new ImageSetter 
+        { 
+            color = Color.gray,
+        };
+        public Func<ScrollbarSetter> propsScrollbar = () => new ScrollbarSetter
+        {
+            direction = Scrollbar.Direction.BottomToTop,
+
+        };
+        public Func<ImageSetter> propsScrollbarHandleImageCmp = () => new ImageSetter 
+        { 
+            color = new Color(0.3f, 0.3f, 0.3f, 1f),
+        };
 
         #endregion </Setters>
 
@@ -143,9 +153,9 @@ namespace U.Reactor
             itemCheckImageCmp = propsItemCheckImage().Set(itemCheckmarkGO);
             itemLabelTextCmp = propsItemLabelText().Set(itemLabelGO);
 
-            propsScrollbarImage().Set(scrollbarImageCmp);
+            propsScrollbarImage().SetAllExceptType(scrollbarImageCmp);
             propsScrollbar().Set(scrollbarCmp);
-            propsScrollbarHandleImageCmp().Set(scrollbarHandleImageCmp);
+            propsScrollbarHandleImageCmp().SetAllExceptType(scrollbarHandleImageCmp);
 
 
             new RectTransformSetter()

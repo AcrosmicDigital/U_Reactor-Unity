@@ -18,10 +18,20 @@ namespace U.Reactor
         public virtual bool maskable { get; set; } = true;
         public virtual bool useSpriteMesh { get; set; } = false;
         public virtual bool preserveAspect { get; set; } = false;
-        //public Image.FillMethod fillMethod;
+
+        public Image.Type type = Image.Type.Simple;
 
 
         public Image Set(Image c)
+        {
+            SetAllExceptType(c);
+
+            c.type = type;
+
+            return c;
+        }
+
+        public Image SetAllExceptType(Image c)
         {
             c.sprite = sprite;
             c.color = color;
@@ -30,15 +40,15 @@ namespace U.Reactor
             c.raycastPadding = raycastPadding;
             c.maskable = maskable;
 
-            if(sprite != null)
+            if (sprite != null)
             {
-                //c.fillMethod = fillMethod;
                 c.useSpriteMesh = useSpriteMesh;
                 c.preserveAspect = preserveAspect;
             }
 
             return c;
         }
+
 
         public Image Set(GameObject gameObject)
         {

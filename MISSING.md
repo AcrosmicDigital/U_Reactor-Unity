@@ -9,6 +9,8 @@ Palntillas falta hacer las plantillas para ..
 
  - poner a cada elemento del layut group el tam;o personalizad y eso, co el componente necesario
 
+ - cada RElemento tiene propiedadesespecificas pensar como hacerle para que el momet de crearlos y se cree un nueo Setter para el cmonente, se usen las ropiedades especficas que son de eleento y no las que son por defecto del setter
+
 
 	- El reactor router, que la clase es partial ,, 
 	- Los componentes, que la clase es tambien partial, para tenerlos todos ..

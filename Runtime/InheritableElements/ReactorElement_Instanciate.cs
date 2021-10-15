@@ -55,11 +55,9 @@ namespace U.Reactor
 
             backImageCmp = scrollbarGO.AddComponent<Image>();
             backImageCmp.type = Image.Type.Sliced;
-            backImageCmp.color = Color.red;
 
             handleImageCmp = handleGO.AddComponent<Image>();
             handleImageCmp.type = Image.Type.Sliced;
-            handleImageCmp.color = Color.green;
 
             var recttSliderArea = slidingAreaGO.GetComponent<RectTransform>();
             recttSliderArea.sizeDelta = new Vector2(-20, -20);

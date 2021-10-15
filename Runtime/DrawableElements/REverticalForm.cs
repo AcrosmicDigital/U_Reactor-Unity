@@ -59,13 +59,31 @@ namespace U.Reactor
             verticalFit = ContentSizeFitter.FitMode.MinSize,
         };
 
-        public Func<ImageSetter> propsVScrollbarImage = () => new ImageSetter { };
-        public Func<ScrollbarSetter> propsVScrollbar = () => new ScrollbarSetter { };
-        public Func<ImageSetter> propsVScrollbarHandleImageCmp = () => new ImageSetter { };
+        public Func<ImageSetter> propsVScrollbarImage = () => new ImageSetter
+        {
+            color = Color.gray,
+        };
+        public Func<ScrollbarSetter> propsVScrollbar = () => new ScrollbarSetter
+        {
+            direction = Scrollbar.Direction.BottomToTop,
+        };
+        public Func<ImageSetter> propsVScrollbarHandleImageCmp = () => new ImageSetter
+        {
+            color = new Color(0.3f, 0.3f, 0.3f, 1f),
+        };
 
-        public Func<ImageSetter> propsHScrollbarImage = () => new ImageSetter { };
-        public Func<ScrollbarSetter> propsHScrollbar = () => new ScrollbarSetter { };
-        public Func<ImageSetter> propsHScrollbarHandleImageCmp = () => new ImageSetter { };
+        public Func<ImageSetter> propsHScrollbarImage = () => new ImageSetter
+        {
+            color = Color.gray,
+        };
+        public Func<ScrollbarSetter> propsHScrollbar = () => new ScrollbarSetter
+        {
+
+        };
+        public Func<ImageSetter> propsHScrollbarHandleImageCmp = () => new ImageSetter
+        {
+            color = new Color(0.3f, 0.3f, 0.3f, 1f),
+        };
 
         #endregion </Setters>
 
@@ -92,8 +110,8 @@ namespace U.Reactor
         {
 
             // Add the gameObjects
-            var viewportGO = InstanciateUIObject("Viewport", gameObject);
-            var containerGO = InstanciateUIObject("Container", viewportGO);
+            var viewportGO = InstanciateObject("Viewport", gameObject);
+            var containerGO = InstanciateObject("Container", viewportGO);
             var vScrollbarGO = InstanciateScrollbar("Vertical Scrollbar", gameObject, out vScrollbarCmp, out vScrollbarImageCmp, out vScrollbarHandleImageCmp);
             var hScrollbarGO = InstanciateScrollbar("Horizontal Scrollbar", gameObject, out hScrollbarCmp, out hScrollbarImageCmp, out hScrollbarHandleImageCmp);
 
@@ -107,6 +125,14 @@ namespace U.Reactor
             verticalLayoutCmp = propsVerticalLayoutGroup().Set(containerGO);
             contentSizeCmp = propsContentSizeFilter().Set(containerGO);
 
+            propsVScrollbarImage().SetAllExceptType(vScrollbarImageCmp);
+            propsVScrollbar().Set(vScrollbarCmp);
+            propsVScrollbarHandleImageCmp().SetAllExceptType(vScrollbarHandleImageCmp);
+
+            propsHScrollbarImage().SetAllExceptType(hScrollbarImageCmp);
+            propsHScrollbar().Set(hScrollbarCmp);
+            propsHScrollbarHandleImageCmp().SetAllExceptType(hScrollbarHandleImageCmp);
+
             // Relations
             scrollRectCmp.content = containerGO.GetComponent<RectTransform>();
             scrollRectCmp.viewport = viewportGO.GetComponent<RectTransform>();
@@ -116,11 +142,12 @@ namespace U.Reactor
 
             new RectTransformSetter()
             {
-                anchorMin = new Vector2(0, 0f),
+                pivot = new Vector2(0f, 1f),
+                localPosition = new Vector2(0f, 0f),
+                anchorMin = new Vector2(0f, 0f),
                 anchorMax = new Vector2(1, 1f),
-                offsetMin = new Vector2(0, 0f),
-                offsetMax = new Vector2(0, 0f),
-            }.SetByAnchors(viewportGO.GetComponent<RectTransform>());
+                sizeDelta = new Vector2(0, 0),
+            }.SetBySizeDelta(viewportGO);
 
             new RectTransformSetter()
             {
@@ -130,6 +157,24 @@ namespace U.Reactor
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
             }.SetBySizeDelta(containerGO);
+
+            new RectTransformSetter()
+            {
+                pivot = new Vector2(1f, 1f),
+                localPosition = new Vector2(0f, 0),
+                anchorMin = new Vector2(1, 0f),
+                anchorMax = new Vector2(1, 1f),
+                sizeDelta = new Vector2(20, 0),
+            }.SetBySizeDelta(vScrollbarGO);
+
+            new RectTransformSetter()
+            {
+                pivot = new Vector2(0f, 0f),
+                localPosition = new Vector2(0f, 0),
+                anchorMin = new Vector2(0f, 0f),
+                anchorMax = new Vector2(1f, 0f),
+                sizeDelta = new Vector2(-20, 20),
+            }.SetBySizeDelta(hScrollbarGO);
 
         }
 
