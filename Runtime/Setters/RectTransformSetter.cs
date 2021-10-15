@@ -66,14 +66,55 @@ namespace U.Reactor
             return c;
         }
 
+
+        // Try to get the component or add it 
+
         public RectTransform Set(GameObject gameObject)
         {
-            return SetByWidthAndHeight(gameObject.AddComponent<RectTransform>());
+            var rectT = gameObject.GetComponent<RectTransform>();
+
+            if (rectT == null)
+                return SetNew(gameObject);
+
+            return SetByWidthAndHeight(rectT);
         }
 
         public RectTransform SetByAnchors(GameObject gameObject)
         {
+            var rectT = gameObject.GetComponent<RectTransform>();
+
+            if (rectT == null)
+                return SetNewByAnchors(gameObject);
+
+            return SetByAnchors(rectT);
+        }
+
+        public RectTransform SetBySizeDelta(GameObject gameObject)
+        {
+            var rectT = gameObject.GetComponent<RectTransform>();
+
+            if (rectT == null)
+                return SetNewBySizeDelta(gameObject);
+
+            return SetBySizeDelta(rectT);
+        }
+
+
+        // Add a new component allways
+
+        public RectTransform SetNew(GameObject gameObject)
+        {
+            return SetByWidthAndHeight(gameObject.AddComponent<RectTransform>());
+        }
+
+        public RectTransform SetNewByAnchors(GameObject gameObject)
+        {
             return SetByAnchors(gameObject.AddComponent<RectTransform>());
+        }
+
+        public RectTransform SetNewBySizeDelta(GameObject gameObject)
+        {
+            return SetBySizeDelta(gameObject.AddComponent<RectTransform>());
         }
 
     }

@@ -15,6 +15,8 @@ namespace U.Reactor
         protected abstract string elementType { get; } // The name of the element, each element must everride
         protected abstract Func<RectTransformSetter> PropsRectTransform { get; }
 
+        // If childs mustbe created in a subobject set this value
+        protected virtual GameObject virtualParent { get; set; }
 
         #region <Components>
 
@@ -80,7 +82,11 @@ namespace U.Reactor
                     if (child == null)
                         continue;
                     
-                    childsList.Add(child.Create(gameObject, selector));
+                    if(virtualParent != null)
+                        childsList.Add(child.Create(virtualParent, selector));
+                    else
+                        childsList.Add(child.Create(gameObject, selector));
+
                     AfterCreateChild(child.gameObject);
                     
                 }
