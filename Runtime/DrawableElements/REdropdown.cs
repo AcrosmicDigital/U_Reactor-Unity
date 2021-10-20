@@ -277,7 +277,7 @@ namespace U.Reactor
 
         protected override ElementSelector AddSelector()
         {
-            var sel = new Selector(gameObject, elementIdCmp, rectTransformCmp, canvasRendererCmp, dropdownCmp, dropdownImageCmp, labelTextCmp, arrowImageCmp, templateImageCmp,
+            var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, dropdownCmp, dropdownImageCmp, labelTextCmp, arrowImageCmp, templateImageCmp,
                 scrollRectCmp, viewportImageCmp, maskCmp, toggleCmp, itemBackImageCmp, itemCheckImageCmp, itemLabelTextCmp, scrollbarImageCmp, scrollbarCmp, scrollbarHandleImageCmp);
 
             return sel;

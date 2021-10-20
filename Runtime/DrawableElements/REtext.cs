@@ -67,7 +67,7 @@ namespace U.Reactor
 
         protected override ElementSelector AddSelector()
         {
-            return new Selector(gameObject, elementIdCmp, rectTransformCmp, canvasRendererCmp, textCmp);
+            return new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp);
         }
 
         protected override void AddHooks()

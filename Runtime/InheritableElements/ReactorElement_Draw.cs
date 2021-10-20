@@ -23,16 +23,16 @@ namespace U.Reactor
         #region <Components>
 
         protected RectTransform rectTransformCmp;
-        protected ReactorId elementIdCmp; // Id to find the element
+        protected ReactorId reactorIdCmp; // Id to find the element
 
         #endregion </Components>
 
 
         #region <Properties>
 
-        protected GameObject virtualParent { get; set; }  // If childs mustbe created in a subobject set this value
-        protected GameObject gameObject;
-        protected GameObject parent; // The parent GameObject
+        protected GameObject virtualChildContainer { get; set; }  // If childs mustbe created in a subobject set this value
+        protected GameObject gameObject { get; private set; }
+        protected GameObject parent { get; private set; } // The parent GameObject
         protected List<REbase> childsList = new List<REbase>();
         protected bool isDisabled = false;
         public Func<IEnumerable<REbase>> childs = () => new REbase[0];
@@ -77,8 +77,8 @@ namespace U.Reactor
                     if (child == null)
                         continue;
                     
-                    if(virtualParent != null)
-                        childsList.Add(child.Create(virtualParent, selector));
+                    if(virtualChildContainer != null)
+                        childsList.Add(child.Create(virtualChildContainer, selector));
                     else
                         childsList.Add(child.Create(gameObject, selector));
 
@@ -135,7 +135,7 @@ namespace U.Reactor
             }
 
             // Add Id
-            elementIdCmp.Set(selector);
+            reactorIdCmp.Set(selector);
 
             return this;
         }
@@ -188,7 +188,7 @@ namespace U.Reactor
 
             // Add rectTransform
             rectTransformCmp = PropsRectTransform().Set(gameObject);
-            elementIdCmp = PropsReactorId().Set(elementType, gameObject);
+            reactorIdCmp = PropsReactorId().Set(elementType, gameObject);
         }
 
         protected abstract void AddComponents();
@@ -227,8 +227,8 @@ namespace U.Reactor
                 }
             }
             
-            if(elementIdCmp != null)
-                UnityEngine.Object.DestroyImmediate(elementIdCmp);
+            if(reactorIdCmp != null)
+                UnityEngine.Object.DestroyImmediate(reactorIdCmp);
 
             if (selector != null)
                 selector.Destroy();

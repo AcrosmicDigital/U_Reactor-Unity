@@ -85,7 +85,7 @@ namespace U.Reactor
 
         protected override ElementSelector AddSelector()
         {
-            var sel = new Selector(gameObject, elementIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, buttonCmp, imageCmp);
+            var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, buttonCmp, imageCmp);
 
             propsButton().Set(buttonCmp, sel);
 
