@@ -9,8 +9,7 @@ using U.Reactor;
 public class MultiToggle : MonoBehaviour
 {
 
-    public int maxEnabled = 1;  // Max enaled, 0 or less is all ca be enabled
-    public bool setNameAsText = true; // I the name will e set to the toggle
+    public int maxEnabled = 0;  // Max enaled, 0 or less is all ca be enabled
     public ToggleDef[] toggleDefs;
     public UnityEvent<ToggleSet[]> OnValueChanged = new UnityEvent<ToggleSet[]>();
 
@@ -36,13 +35,13 @@ public class MultiToggle : MonoBehaviour
     {
         if(toggleDefs == null)
         {
-            Debug.LogError("MultiToggle: On gameobject " + gameObject.name + ", toggle Defs are not defined ");
+            //Debug.LogError("MultiToggle: On gameobject " + gameObject.name + ", toggle Defs are not defined ");
             return;
         }
 
         if (toggleDefs.Length < 1)
         {
-            Debug.LogError("MultiToggle: On gameobject " + gameObject.name + ", toggle Defs are not defined ");
+            //Debug.LogError("MultiToggle: On gameobject " + gameObject.name + ", toggle Defs are not defined ");
             return;
         }
 
@@ -54,12 +53,6 @@ public class MultiToggle : MonoBehaviour
             {
                 Debug.LogError("MultiToggle: On gameobject " + gameObject.name + ", toggle component cant be null ");
                 return;
-            }
-
-            // Set the names as text 
-            if (setNameAsText && toggleDefs[i].label != null && toggleDefs[i].name != null)
-            {
-                toggleDefs[i].label.text = toggleDefs[i].name;
             }
 
             // Count and disable if necesary
@@ -82,15 +75,15 @@ public class MultiToggle : MonoBehaviour
         lastState = toggleDefs.Where(t => t.toggle.isOn).Select(t => new ToggleSet { name = t.name, number = t.number, value = t.value }).ToArray();
 
 
-        // Subscibe to interna event to prove
-        OnValueChanged.AddListener(t => 
-        {
-            Debug.Log("L " + t.Length);
-            foreach (var toggle in t)
-            {
-                Debug.Log("N " + toggle.name + " I: " + toggle.number + " V: " + toggle.value);
-            }
-        });
+        //// Subscibe to interna event to prove
+        //OnValueChanged.AddListener(t => 
+        //{
+        //    Debug.Log("L " + t.Length);
+        //    foreach (var toggle in t)
+        //    {
+        //        Debug.Log("N " + toggle.name + " I: " + toggle.number + " V: " + toggle.value);
+        //    }
+        //});
     }
 
 
@@ -145,7 +138,7 @@ public class MultiToggle : MonoBehaviour
         {
             try
             {
-                OnValueChanged.Invoke(newState);
+                OnValueChanged?.Invoke(newState);
             }
             catch (System.Exception e)
             {

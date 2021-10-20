@@ -82,11 +82,13 @@ namespace U.Reactor
                     else
                         childsList.Add(child.Create(gameObject, selector));
 
-                    AfterCreateChild(child.gameObject);
+                    AfterCreateChild(child.selector);
                     
                 }
             }
             selector.SetChilds(childsList);
+
+            AfterCreateComponent();
 
             //// Wait for ui to update values
             if (Application.isPlaying)
@@ -105,7 +107,7 @@ namespace U.Reactor
                     if (gameObject != null)
                         gameObject.SetActive(shouldEnable);
 
-                    AfterCreateComponent(); // Run after create function
+                    AfterRenderComponent(); // Run after create function
 
                     UnityEngine.Object.Destroy(host);
                 }
@@ -115,7 +117,7 @@ namespace U.Reactor
                 WaitForDraw(); async void WaitForDraw()
                 {
                     await Task.Delay(1000); // Wait for rect values to be calculated
-                    AfterCreateComponent(); // Run after create function
+                    AfterRenderComponent(); // Run after create function
                     gameObject.SetActive(PropsGameObject().active); // Enable or disable
                 }
             }
@@ -197,9 +199,11 @@ namespace U.Reactor
 
         protected abstract void AddHooks();
 
-        protected virtual void AfterCreateChild(GameObject child) { }
+        protected virtual void AfterCreateChild(ElementSelector child) { }
 
         protected virtual void AfterCreateComponent() { }
+
+        protected virtual void AfterRenderComponent() { }
 
         protected void Destroy()
         {

@@ -10,11 +10,11 @@ namespace U.Reactor
 {
     public class MultiToggleBSetter
     {
+        public virtual int maxEnabled { get; set; } = 0;
 
         public MultiToggle Set(MultiToggle c)
         {
-            c.maxEnabled = 0;
-            c.setNameAsText = true;
+            c.maxEnabled = maxEnabled;
 
             return c;
         }

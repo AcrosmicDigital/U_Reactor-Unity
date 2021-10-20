@@ -1612,8 +1612,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca9d561b3108f5448bb5d0225082eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testCase: 0
-  destroyOnStart: 0
+  testCase: 1
+  destroyOnStart: 1
   toDestroy:
   - {fileID: 1261926434}
 --- !u!224 &1811750221
@@ -1688,7 +1688,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnabled: 1
-  setNameAsText: 1
   toggleDefs:
   - toggle: {fileID: 1465785732}
     label: {fileID: 805411607}

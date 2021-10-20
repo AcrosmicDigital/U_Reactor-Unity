@@ -104,7 +104,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override void AfterCreateComponent()
+        protected override void AfterRenderComponent()
         {
             bool shouldEnable = propsCanvas().enabled;
 

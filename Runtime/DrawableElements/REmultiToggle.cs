@@ -81,6 +81,36 @@ namespace U.Reactor
             return sel;
         }
 
+        protected override void AfterCreateComponent()
+        {
+            List<REtoggle.Selector> toggleList = new List<REtoggle.Selector>();
+
+            // Search al toggles in childs
+            SearchToggles(selector);
+            void SearchToggles(ElementSelector selector)
+            {
+                //Debug.Log("Childs: " + selector.childs.Length);
+                for (int i = 0; i < selector.childs.Length; i++)
+                {
+                    //Debug.Log("Type: " + selector.childs[i].elementId.elementType);
+                    // Add all togges to List
+                    try
+                    {
+                        toggleList.Add((REtoggle.Selector)selector.childs[i]);
+                    }
+                    catch (Exception)
+                    {
+                    }
+
+                    SearchToggles(selector.childs[i]);
+                }
+            }
+
+            var toggleDefs = toggleList.Select(t => new MultiToggle.ToggleDef { toggle = t.toggle, label = t.text, name = t.multiToggleMember.toggleName, number = t.multiToggleMember.toggleNumber, value = t.multiToggleMember.toggleValue, }).ToArray();
+
+            multiToggleCmp.toggleDefs = toggleDefs;
+        }
+
         #endregion Drawers
 
 

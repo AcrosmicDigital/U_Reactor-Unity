@@ -11,7 +11,8 @@ public class eexp_MultiToggle : MonoBehaviour
     public enum TestCase
     {
         A00Basic,
-
+        A01WithChilds,
+        A02WithChildsInDiv,
     }
 
     // Destroy some elements OnStart
@@ -53,6 +54,163 @@ public class eexp_MultiToggle : MonoBehaviour
                 #endregion
                 break;
 
+            case TestCase.A01WithChilds:
+                #region TestCase.A01WithChilds
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REmultiToggle
+                        {
+                            propsMultiToggle = () => new REmultiToggle.MultiToggleSetter
+                            {
+                                maxEnabled = 2,
+                            },
+                            childs = () => new REbase[]
+                            {
+                                new REtoggle
+                                {
+                                    propsRectTransform = () => new REtoggle.RectTransformSetter
+                                    {
+                                        localPosition = new Vector3(0, 200)
+                                    },
+                                    propsMultiToggleMember = () => new REtoggle.MultiToggleMemberSetter
+                                    {
+                                        toggleName = "One",
+                                        toggleNumber = 1,
+                                        toggleValue = 1.1f
+                                    },
+                                },
+                                new REtoggle
+                                {
+                                    propsRectTransform = () => new REtoggle.RectTransformSetter
+                                    {
+                                        localPosition = new Vector3(0, 100)
+                                    },
+                                    propsMultiToggleMember = () => new REtoggle.MultiToggleMemberSetter
+                                    {
+                                        toggleName = "Two",
+                                        toggleNumber = 2,
+                                        toggleValue = 2.2f
+                                    },
+                                },
+                                new REtoggle
+                                {
+                                    propsRectTransform = () => new REtoggle.RectTransformSetter
+                                    {
+                                        localPosition = new Vector3(0, 0)
+                                    },
+                                    propsMultiToggleMember = () => new REtoggle.MultiToggleMemberSetter
+                                    {
+                                        toggleName = "Three",
+                                        toggleNumber = 3,
+                                        toggleValue = 3.3f
+                                    },
+                                },
+                                new REtoggle
+                                {
+                                    propsRectTransform = () => new REtoggle.RectTransformSetter
+                                    {
+                                        localPosition = new Vector3(0, -100)
+                                    },
+                                    propsMultiToggleMember = () => new REtoggle.MultiToggleMemberSetter
+                                    {
+                                        toggleName = "Four",
+                                        toggleNumber = 4,
+                                        toggleValue = 4.4f
+                                    },
+                                },
+                            },
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.A02WithChildsInDiv:
+                #region TestCase.A02WithChildsInDiv
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REmultiToggle
+                        {
+                            propsMultiToggle = () => new REmultiToggle.MultiToggleSetter
+                            {
+                                maxEnabled = 2,
+                            },
+                            childs = () => new REbase[]
+                            {
+                                new REverticalDiv
+                                {
+                                    childs = () => new REbase[]
+                                    {
+                                        new REtoggle
+                                        {
+                                            propsRectTransform = () => new REtoggle.RectTransformSetter
+                                            {
+                                                localPosition = new Vector3(0, 200)
+                                            },
+                                            propsMultiToggleMember = () => new REtoggle.MultiToggleMemberSetter
+                                            {
+                                                toggleName = "One",
+                                                toggleNumber = 1,
+                                                toggleValue = 1.1f
+                                            },
+                                        },
+                                        new REtoggle
+                                        {
+                                            propsRectTransform = () => new REtoggle.RectTransformSetter
+                                            {
+                                                localPosition = new Vector3(0, 100)
+                                            },
+                                            propsMultiToggleMember = () => new REtoggle.MultiToggleMemberSetter
+                                            {
+                                                toggleName = "Two",
+                                                toggleNumber = 2,
+                                                toggleValue = 2.2f
+                                            },
+                                        },
+                                        new REtoggle
+                                        {
+                                            propsRectTransform = () => new REtoggle.RectTransformSetter
+                                            {
+                                                localPosition = new Vector3(0, 0)
+                                            },
+                                            propsMultiToggleMember = () => new REtoggle.MultiToggleMemberSetter
+                                            {
+                                                toggleName = "Three",
+                                                toggleNumber = 3,
+                                                toggleValue = 3.3f
+                                            },
+                                        },
+                                        new REtoggle
+                                        {
+                                            propsRectTransform = () => new REtoggle.RectTransformSetter
+                                            {
+                                                localPosition = new Vector3(0, -100)
+                                            },
+                                            propsMultiToggleMember = () => new REtoggle.MultiToggleMemberSetter
+                                            {
+                                                toggleName = "Four",
+                                                toggleNumber = 4,
+                                                toggleValue = 4.4f
+                                            },
+                                        },
+                                    },
+                                }
+                            },
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
         }
     }
 }

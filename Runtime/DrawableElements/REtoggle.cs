@@ -22,6 +22,7 @@ namespace U.Reactor
         protected Image backImageCmp;
         protected Image checkImageCmp;
         protected Text textCmp;
+        protected MultiToggleMember multiToggleMemberCmp;
 
         #endregion Components
 
@@ -47,11 +48,12 @@ namespace U.Reactor
         public Func<BackImageSetter> propsBackImage = () => new BackImageSetter();
         public Func<CheckImageSetter> propsCheckImage = () => new CheckImageSetter();
         public Func<TextSeter> propsText = () => new TextSeter();
+        public Func<MultiToggleMemberSetter> propsMultiToggleMember = () => new MultiToggleMemberSetter();
 
         #endregion Setters
 
 
-        #region <Hooks>
+        #region Hooks
 
         public UseEffect.Hook[] useEffect;
 
@@ -66,7 +68,7 @@ namespace U.Reactor
         public UseSubmitEvents.Hook useSubmitEvents;
         public UseUpdate.Hook useUpdate;
 
-        #endregion </Hooks>
+        #endregion Hooks
 
 
         #region Drawers
@@ -83,6 +85,7 @@ namespace U.Reactor
             backImageCmp = propsBackImage().Set(backgroundGO);
             checkImageCmp = propsCheckImage().Set(checkmarkGO);
             textCmp = propsText().Set(labelGO);
+            multiToggleMemberCmp = propsMultiToggleMember().Set(gameObject);
 
             toggleCmp.targetGraphic = backImageCmp;
             toggleCmp.graphic = checkImageCmp;
@@ -136,7 +139,7 @@ namespace U.Reactor
 
         protected override ElementSelector AddSelector()
         {
-            var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, toggleCmp, backImageCmp, checkImageCmp, textCmp);
+            var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, toggleCmp, backImageCmp, checkImageCmp, textCmp, multiToggleMemberCmp);
 
             return sel;
         }
@@ -153,6 +156,7 @@ namespace U.Reactor
             public Image backImage { get; private set; }
             public Image checkImage { get; private set; }
             public Text text { get; private set; }
+            public MultiToggleMember multiToggleMember { get; private set; }
 
 
             internal Selector(
@@ -162,13 +166,15 @@ namespace U.Reactor
                 Toggle toggle,
                 Image backImage,
                 Image checkImage,
-                Text text
+                Text text,
+                MultiToggleMember multiToggleMember
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.toggle = toggle;
                 this.backImage = backImage;
                 this.checkImage = checkImage;
                 this.text = text;
+                this.multiToggleMember = multiToggleMember;
             }
 
             internal override void Destroy()
@@ -179,6 +185,7 @@ namespace U.Reactor
                 backImage = null;
                 checkImage = null;
                 text = null;
+                multiToggleMember = null;
             }
         }
 
@@ -198,6 +205,11 @@ namespace U.Reactor
 
 
         #region Subsetters
+
+        public class MultiToggleMemberSetter : MultiToggleMemberBSetter
+        {
+
+        }
 
         public class ReactorIdSetter : ReactorIdBSetter
         {
