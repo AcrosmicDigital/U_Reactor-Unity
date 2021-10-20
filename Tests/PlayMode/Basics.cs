@@ -48,7 +48,7 @@ public class Basics
                 {
                     new REtext
                     {
-                        propsRectTransform = () => new RectTransformSetter
+                        propsRectTransform = () => new RectTransformBaseSetter
                         {
                             localPosition = new Vector3(0, 200, 0),
                         },
@@ -67,7 +67,7 @@ public class Basics
                     },
                     new REbutton
                     {
-                        propsRectTransform = () => new RectTransformSetter
+                        propsRectTransform = () => new REbutton.RectTransformSetter
                         {
                             width = 300,
                             height = 120,

@@ -12,7 +12,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Button";
-        protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
 
         
         #region Components
@@ -27,7 +27,7 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterButton();
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
         public Func<TextSetter> propsText = () => new TextSetterButton();
         public Func<ImageSetter> propsImage = () => new ImageSetter();
         public Func<ButtonSetter> propsButton = () => new ButtonSetter();
@@ -64,7 +64,7 @@ namespace U.Reactor
             textCmp = propsText().Set(textGO);
 
             // Text rectT
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 anchorMin = Vector2.zero,
                 anchorMax = Vector2.one,
@@ -150,6 +150,17 @@ namespace U.Reactor
         public class UseUpdate : UseUpdate<Selector, UseUpdate> { }
 
         #endregion Subclasses
+
+
+        #region Subsetters
+
+        public class RectTransformSetter : RectTransformBaseSetter
+        {
+            public override float width { get; set; } = 300;
+            public override float height { get; set; } = 120;
+        }
+
+        #endregion
 
 
         #region Static Funcs

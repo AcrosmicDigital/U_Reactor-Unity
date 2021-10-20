@@ -2,9 +2,6 @@ Palntillas falta hacer las plantillas para ..
 
  - Revsarsi hacer un setter de rectransform paracaa tipo de objeto o mejor solo uno y usarlo normal como siemre 
 
- - Que haya setters opconales como porejemplo peruna imagen de fondo a los textos, osea van a estar en null y si el suario los sobreescribe se van a oner, s no no ??
- pero podria dar componenes nulos en los selectores
-
  - poner a cada elemento del layut group el tam;o personalizad y eso, co el componente necesario
 
  - Que dentro de los selectores este el typo de elemento, y a los elementos de Reactor nombrarlos como REcanvas en vez de solo canvas, para verlos

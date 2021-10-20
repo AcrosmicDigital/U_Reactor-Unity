@@ -12,19 +12,19 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Image";
-        protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
 
-        protected Image imageCmp = null;
+        protected Image imageCmp;
 
         #endregion Components
 
 
         #region Setters
 
-        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterImage();
+        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformSetterImage();
 
         public Func<ImageSetter> propsImage = () => new ImageSetter();
 

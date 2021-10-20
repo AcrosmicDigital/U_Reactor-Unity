@@ -12,7 +12,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Dropdown";
-        protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
@@ -38,7 +38,7 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterButton
+        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformSetterButton
         {
             width = 400,
             height = 70,
@@ -159,7 +159,7 @@ namespace U.Reactor
             propsScrollbarHandleImageCmp().SetAllExceptType(scrollbarHandleImageCmp);
 
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
@@ -168,7 +168,7 @@ namespace U.Reactor
                 offsetMax = new Vector2(-70f, -15F),
             }.SetByAnchors(labelGO.GetComponent<RectTransform>());
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 // pivot = new Vector2(0.5f, 1),
                 localPosition = new Vector2(-40f, 0),
@@ -177,7 +177,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(60, 60f),
             }.SetBySizeDelta(arrowGO.GetComponent<RectTransform>());
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 pivot = new Vector2(0.5f, 1),
                 localPosition = new Vector2(0f, -10f),
@@ -186,7 +186,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(0, 300f),
             }.SetBySizeDelta(templateGO.GetComponent<RectTransform>());
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 pivot = new Vector2(0f, 1),
                 localPosition = new Vector2(0f, -150f),
@@ -195,7 +195,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(-20, 0),
             }.SetBySizeDelta(viewportGO.GetComponent<RectTransform>());
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 pivot = new Vector2(1f, 1f),
                 localPosition = new Vector2(0f, -150f),
@@ -204,7 +204,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(20, 0),
             }.SetBySizeDelta(scrollbarGO.GetComponent<RectTransform>());
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 pivot = new Vector2(.5f, 1f),
                 localPosition = new Vector2(190f, -150f),
@@ -213,7 +213,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(0f, 80f),
             }.SetBySizeDelta(contentGO.GetComponent<RectTransform>());
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 pivot = new Vector2(.5f, .5f),
                 localPosition = new Vector2(0f, -40f),
@@ -222,7 +222,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(0f, 50f),
             }.SetBySizeDelta(itemGO.GetComponent<RectTransform>());
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
@@ -230,7 +230,7 @@ namespace U.Reactor
                 offsetMax = new Vector2(0f, 0F),
             }.SetByAnchors(itemBackgroundGO.GetComponent<RectTransform>());
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 localPosition = new Vector2(25f, 0f),
                 anchorMin = new Vector2(0, .5f),
@@ -238,7 +238,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(50f, 50f),
             }.SetBySizeDelta(itemCheckmarkGO.GetComponent<RectTransform>());
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 localPosition = new Vector2(25f, 0f),
                 anchorMin = new Vector2(0, 0f),

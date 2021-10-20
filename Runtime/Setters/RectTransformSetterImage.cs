@@ -8,7 +8,7 @@ using UnityEngine;
 namespace U.Reactor
 {
 
-    public class RectTransformSetterImage : RectTransformSetter
+    public class RectTransformSetterImage : RectTransformBaseSetter
     {
         public override float width { get; set; } = 300;
         public override float height { get; set; } = 300f;

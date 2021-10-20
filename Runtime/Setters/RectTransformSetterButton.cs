@@ -8,7 +8,7 @@ using UnityEngine;
 namespace U.Reactor
 {
 
-    public class RectTransformSetterButton : RectTransformSetter
+    public class RectTransformSetterButton : RectTransformBaseSetter
     {
         public override float width { get; set; } = 300;
         public override float height { get; set; } = 120;

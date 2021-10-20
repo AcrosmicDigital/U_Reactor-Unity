@@ -12,7 +12,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Input Field";
-        protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
@@ -27,7 +27,7 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterButton
+        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformSetterButton
         {
             width = 400,
             height = 70,
@@ -90,7 +90,7 @@ namespace U.Reactor
             inputFieldCmp.placeholder = placeholderTextCmp;
 
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
@@ -99,7 +99,7 @@ namespace U.Reactor
                 offsetMax = new Vector2(-15F, -10F),
             }.SetByAnchors(placeholderGO.GetComponent<RectTransform>());
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),

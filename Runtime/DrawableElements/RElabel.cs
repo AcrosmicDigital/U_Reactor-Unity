@@ -12,7 +12,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Label";
-        protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
@@ -26,7 +26,7 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterButton();
+        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformSetterButton();
         public Func<ImageSetter> propsImage = () => new ImageSetter();
         public Func<TextSetter> propsText = () => new TextSetterButton();
 
@@ -62,7 +62,7 @@ namespace U.Reactor
             textCmp = propsText().Set(textGO);
 
             // Text rectT
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 anchorMin = Vector2.zero,
                 anchorMax = Vector2.one,

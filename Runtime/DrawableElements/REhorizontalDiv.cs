@@ -12,7 +12,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Horizontal Div";
-        protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
@@ -36,7 +36,7 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterPanel();
+        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformSetterPanel();
 
         public Func<ImageSetter> propsBackImage = () => new ImageSetter 
         {
@@ -141,7 +141,7 @@ namespace U.Reactor
             scrollRectCmp.verticalScrollbar = vScrollbarCmp;
 
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 pivot = new Vector2(0f, 1f),
                 localPosition = new Vector2(0f, 0f),
@@ -150,7 +150,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(0, 0),
             }.SetBySizeDelta(viewportGO);
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 pivot = new Vector2(0f, 1f),
                 localPosition = new Vector2(0, -213.5f),
@@ -159,7 +159,7 @@ namespace U.Reactor
                 anchorMax = new Vector2(1, 1f),
             }.SetBySizeDelta(containerGO);
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 pivot = new Vector2(1f, 1f),
                 localPosition = new Vector2(0f, 0),
@@ -168,7 +168,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(20, -20),
             }.SetBySizeDelta(vScrollbarGO);
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 pivot = new Vector2(0f, 0f),
                 localPosition = new Vector2(0f, 0),

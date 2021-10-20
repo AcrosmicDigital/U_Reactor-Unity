@@ -12,22 +12,22 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Slider";
-        protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
 
-        protected Slider sliderCmp = null;
-        protected Image backImageCmp = null;
-        protected Image fillImageCmp = null;
-        protected Image handleImageCmp = null;
+        protected Slider sliderCmp;
+        protected Image backImageCmp;
+        protected Image fillImageCmp;
+        protected Image handleImageCmp;
 
         #endregion Components
 
 
         #region Setters
 
-        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterButton
+        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformSetterButton
         {
             width = 500,
             height = 40,
@@ -78,7 +78,7 @@ namespace U.Reactor
 
 
             // backgroundGO rect
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 anchorMin = new Vector2(0, 0.25f),
                 anchorMax = new Vector2(1, 0.75f),
@@ -87,7 +87,7 @@ namespace U.Reactor
                 offsetMax = Vector2.zero,
             }.SetByAnchors(backgroundGO);
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 anchorMin = new Vector2(0, 0.25f),
                 anchorMax = new Vector2(1, 0.75f),
@@ -96,14 +96,14 @@ namespace U.Reactor
                 offsetMax = new Vector2(-30F, 0F),
             }.SetByAnchors(fillAreaGO);
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 sizeDelta = Vector2.zero,
                 offsetMin = new Vector2(-14, 0f),
                 offsetMax = new Vector2(14F, 0F),
             }.SetByAnchors(fillGO);
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
@@ -112,7 +112,7 @@ namespace U.Reactor
                 offsetMax = new Vector2(-14F, 0F),
             }.SetByAnchors(handleAreaGO);
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 sizeDelta = Vector2.zero,
                 offsetMin = new Vector2(-14, 0f),

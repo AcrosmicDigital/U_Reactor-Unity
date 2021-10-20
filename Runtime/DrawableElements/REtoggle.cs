@@ -12,7 +12,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Toggle";
-        protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
@@ -37,7 +37,7 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter
+        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformBaseSetter
         {
             width = 600,
             height = 80,
@@ -92,7 +92,7 @@ namespace U.Reactor
 
 
             // backgroundGO rect
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 //pivot = new Vector2(0f, 1f),
                 localPosition = new Vector2(40, -40f),
@@ -101,7 +101,7 @@ namespace U.Reactor
                 anchorMax = new Vector2(0f, 1f),
             }.SetBySizeDelta(backgroundGO);
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 //pivot = new Vector2(0f, 1f),
                 //localPosition = new Vector2(0, 0f),
@@ -110,7 +110,7 @@ namespace U.Reactor
                 //anchorMax = new Vector2(0f, 1f),
             }.SetBySizeDelta(checkmarkGO);
 
-            new RectTransformSetter()
+            new RectTransformBaseSetter()
             {
                 anchorMin = new Vector2(0f, 0f),
                 anchorMax = new Vector2(1f, 1f),

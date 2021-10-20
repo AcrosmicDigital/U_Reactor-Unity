@@ -60,7 +60,7 @@ public class ReactorElements_REbutton
                 {
                     new REbutton
                     {
-                        propsRectTransform = () => new RectTransformSetterImage
+                        propsRectTransform = () => new REbutton.RectTransformSetter
                         {
                             localPosition = new Vector3(100,200),
                         }

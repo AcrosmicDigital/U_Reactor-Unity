@@ -14,7 +14,7 @@ namespace U.Reactor
     {
         protected abstract Type elementType { get; }  // The type of the element, each element must everride
         protected abstract string elementName { get; }  // The name of the element, each element must everride
-        protected abstract Func<RectTransformSetter> PropsRectTransform { get; }
+        protected abstract Func<RectTransformBaseSetter> PropsRectTransform { get; }
 
         // If childs mustbe created in a subobject set this value
         protected virtual GameObject virtualParent { get; set; }
