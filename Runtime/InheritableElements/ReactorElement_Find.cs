@@ -24,20 +24,20 @@ namespace U.Reactor
             if (String.IsNullOrEmpty(pattern))
             {
 
-                return Resources.FindObjectsOfTypeAll<ElementId>().Select(s => s.selector).ToArray();
+                return Resources.FindObjectsOfTypeAll<ReactorId>().Select(s => s.selector).ToArray();
             }
 
             // By id
             else if (pattern.StartsWith("#") && pattern.TrimStart('#').Length > 0)
             {
-                return Resources.FindObjectsOfTypeAll<ElementId>().Where(e => e.id == pattern.TrimStart('#')).Select(s => s.selector).ToArray();
+                return Resources.FindObjectsOfTypeAll<ReactorId>().Where(e => e.id == pattern.TrimStart('#')).Select(s => s.selector).ToArray();
             }
 
             // Search by OR || className
             else if (pattern.StartsWith(".") && pattern.Where(c => c == '|').Count() > 0 && pattern.Where(c => c == '&').Count() == 0)
             {
 
-                return Resources.FindObjectsOfTypeAll<ElementId>().Where(elementIdCmp =>
+                return Resources.FindObjectsOfTypeAll<ReactorId>().Where(elementIdCmp =>
                 {
                     try
                     {
@@ -70,7 +70,7 @@ namespace U.Reactor
             // Search by AND && className
             else if (pattern.StartsWith(".") && pattern.Where(c => c == '&').Count() > 0 && pattern.Where(c => c == '|').Count() == 0)
             {
-                return Resources.FindObjectsOfTypeAll<ElementId>().Where(elementIdCmp =>
+                return Resources.FindObjectsOfTypeAll<ReactorId>().Where(elementIdCmp =>
                 {
                     try
                     {
@@ -113,7 +113,7 @@ namespace U.Reactor
             // By one className
             else if (pattern.StartsWith(".") && pattern.TrimStart('.').Length > 0)
             {
-                return Resources.FindObjectsOfTypeAll<ElementId>().Where(elementIdCmp =>
+                return Resources.FindObjectsOfTypeAll<ReactorId>().Where(elementIdCmp =>
                 {
                     try
                     {

@@ -57,7 +57,7 @@ public class Reactor_55Hooks_UseObjectEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -118,7 +118,7 @@ public class Reactor_55Hooks_UseObjectEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -179,7 +179,7 @@ public class Reactor_55Hooks_UseObjectEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -247,7 +247,7 @@ public class Reactor_55Hooks_UseObjectEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {

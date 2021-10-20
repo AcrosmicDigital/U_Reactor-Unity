@@ -78,7 +78,7 @@ public class Reactor_2Find
 
         return new REcanvas
         {
-            propsElementId = () => new ElementIdSetter
+            propsReactorId = () => new ReactorIdSetter
             {
                 id = "CanvasSuperior",
                 className = new string[]
@@ -90,7 +90,7 @@ public class Reactor_2Find
             {
                 new REtext
                 {
-                    propsElementId = () => new ElementIdSetter
+                    propsReactorId = () => new ReactorIdSetter
                     {
                         id = "Title-One",
                         className = new string[]
@@ -103,14 +103,14 @@ public class Reactor_2Find
                 },
                 new REimage
                 {
-                    propsElementId = () => new ElementIdSetter
+                    propsReactorId = () => new ReactorIdSetter
                     {
                         id = "ImagenSuperior",
                     },
                 },
                 new REbutton
                 {
-                    propsElementId = () => new ElementIdSetter
+                    propsReactorId = () => new ReactorIdSetter
                     {
                         id = "ButtonSuperior",
                         className = new string[]
@@ -122,7 +122,7 @@ public class Reactor_2Find
                 },
                 new REpanel
                 {
-                    propsElementId = () => new ElementIdSetter
+                    propsReactorId = () => new ReactorIdSetter
                     {
                         id = "PanelBack",
                         className = new string[]
@@ -134,7 +134,7 @@ public class Reactor_2Find
                     {
                         new REtext
                         {
-                            propsElementId = () => new ElementIdSetter
+                            propsReactorId = () => new ReactorIdSetter
                             {
                                 id = "Title-One",
                                 className = new string[]
@@ -146,7 +146,7 @@ public class Reactor_2Find
                         },
                         new REtext
                         {
-                            propsElementId = () => new ElementIdSetter
+                            propsReactorId = () => new ReactorIdSetter
                             {
                                 className = new string[]
                                 {
@@ -156,7 +156,7 @@ public class Reactor_2Find
                         },
                         new REtext
                         {
-                            propsElementId = () => new ElementIdSetter
+                            propsReactorId = () => new ReactorIdSetter
                             {
                                 className = new string[]
                                 {
@@ -166,7 +166,7 @@ public class Reactor_2Find
                         },
                         new REbutton
                         {
-                            propsElementId = () => new ElementIdSetter
+                            propsReactorId = () => new ReactorIdSetter
                             {
                                 id = "ButtonSuperior",
                                 className = new string[]

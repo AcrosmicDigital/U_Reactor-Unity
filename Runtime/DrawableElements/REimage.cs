@@ -10,7 +10,8 @@ namespace U.Reactor
 {
     public class REimage : REchild
     {
-        protected override string elementType => "Image";
+        protected override Type elementType => this.GetType();
+        protected override string elementName => "Image";
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
@@ -85,7 +86,7 @@ namespace U.Reactor
 
             internal Selector(
                 GameObject gameObject,
-                ElementId pieceId,
+                ReactorId pieceId,
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
                 Image image

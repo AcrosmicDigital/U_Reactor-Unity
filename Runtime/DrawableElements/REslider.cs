@@ -10,7 +10,8 @@ namespace U.Reactor
 {
     public class REslider : REbase
     {
-        protected override string elementType => "Slider";
+        protected override Type elementType => this.GetType();
+        protected override string elementName => "Slider";
 
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
@@ -156,7 +157,7 @@ namespace U.Reactor
 
             internal Selector(
                 GameObject gameObject,
-                ElementId pieceId,
+                ReactorId pieceId,
                 RectTransform rectTransform,
                 Slider slider,
                 Image backImage,

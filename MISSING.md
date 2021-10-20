@@ -14,6 +14,8 @@ Palntillas falta hacer las plantillas para ..
  - cada RElemento tiene propiedadesespecificas pensar como hacerle para que el momet de crearlos y se cree un nueo Setter para el cmonente, se usen las ropiedades especficas que son de eleento y no las que son por defecto del setter
 
  - falta terminar el multitoggle
+
+ - Revisar si se va a requerir dibujar el eventsystem y cuando, para que se dibuje solito, que sea una funcion que el usuario puede dar, para que el decida que event sstem usar, o algo asi.
  
 
 

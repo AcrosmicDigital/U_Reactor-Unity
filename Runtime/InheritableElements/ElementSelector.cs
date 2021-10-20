@@ -11,7 +11,7 @@ namespace U.Reactor
     {
         // Track whether Dispose has been called.
         public bool isDisposed { get; private set; } = false;
-        public ElementId elementId { get; private set; }
+        public ReactorId elementId { get; private set; }
         public RectTransform rectTransform { get; private set; }
 
         public GameObject gameObject { get; private set; }
@@ -89,7 +89,7 @@ namespace U.Reactor
             }
         } 
 
-        internal ElementSelector(GameObject gameObject, ElementId pieceId, RectTransform rectTransform)
+        internal ElementSelector(GameObject gameObject, ReactorId pieceId, RectTransform rectTransform)
         {
             this.gameObject = gameObject;
             this.elementId = pieceId;

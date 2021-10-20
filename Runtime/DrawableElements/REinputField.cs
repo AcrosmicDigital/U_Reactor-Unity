@@ -10,7 +10,8 @@ namespace U.Reactor
 {
     public class REinputField : REchild
     {
-        protected override string elementType => "InputField";
+        protected override Type elementType => this.GetType();
+        protected override string elementName => "InputField";
 
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
@@ -145,7 +146,7 @@ namespace U.Reactor
 
             internal Selector(
                 GameObject gameObject,
-                ElementId pieceId,
+                ReactorId pieceId,
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
                 // Extra

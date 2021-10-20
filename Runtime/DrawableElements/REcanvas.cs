@@ -7,7 +7,8 @@ namespace U.Reactor
     // Add URelementId, RectTransform, Canvas, CanvasScaler, GraphicRaycaster, CanvasGroup
     public class REcanvas : REbase
     {
-        protected override string elementType => "Canvas";
+        protected override Type elementType => this.GetType();
+        protected override string elementName => "Canvas";
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
@@ -175,7 +176,7 @@ namespace U.Reactor
 
             internal Selector(
                 GameObject gameObject,
-                ElementId pieceId,
+                ReactorId pieceId,
                 RectTransform rectTransform,
                 Canvas canvas,
                 CanvasScaler canvasScaler,

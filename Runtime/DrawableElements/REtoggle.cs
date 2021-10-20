@@ -10,7 +10,8 @@ namespace U.Reactor
 {
     public class REtoggle : REbase
     {
-        protected override string elementType => "Toggle";
+        protected override Type elementType => this.GetType();
+        protected override string elementName => "Toggle";
 
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
@@ -153,7 +154,7 @@ namespace U.Reactor
 
             internal Selector(
                 GameObject gameObject,
-                ElementId pieceId,
+                ReactorId pieceId,
                 RectTransform rectTransform,
                 Toggle toggle,
                 Image backImage,

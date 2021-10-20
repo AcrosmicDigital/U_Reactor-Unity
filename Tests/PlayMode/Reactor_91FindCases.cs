@@ -55,7 +55,7 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -136,7 +136,7 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -229,7 +229,7 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -323,7 +323,7 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -425,7 +425,7 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -518,7 +518,7 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -617,7 +617,7 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {

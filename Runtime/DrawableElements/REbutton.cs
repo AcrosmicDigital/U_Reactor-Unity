@@ -10,10 +10,11 @@ namespace U.Reactor
 {
     public class REbutton : REchild
     {
-        protected override string elementType => "Button";
+        protected override Type elementType => this.GetType();
+        protected override string elementName => "Button";
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
-
+        
         #region <Components>
 
         protected RectTransform rectTransform;
@@ -107,7 +108,7 @@ namespace U.Reactor
 
             internal Selector(
                 GameObject gameObject,
-                ElementId pieceId,
+                ReactorId pieceId,
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
                 Text textCmp, Button button,

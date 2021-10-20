@@ -45,7 +45,7 @@ public class Reactor_40Router
     {
         return new REcanvas
         {
-            propsElementId = () => new ElementIdSetter { id = "Menu" },
+            propsReactorId = () => new ReactorIdSetter { id = "Menu" },
             propsGameObject = () => new GameObjectSetter { name = "Canvas-Menu", },
             childs = () => new REbase[] {
                     new REtext {
@@ -61,7 +61,7 @@ public class Reactor_40Router
     {
         return new REcanvas
         {
-            propsElementId = () => new ElementIdSetter { id = "Home" },
+            propsReactorId = () => new ReactorIdSetter { id = "Home" },
             propsGameObject = () => new GameObjectSetter { name = "Canvas-Home", },
             childs = () => new REbase[] {
                     new REtext {
@@ -79,7 +79,7 @@ public class Reactor_40Router
     {
         return new REcanvas
         {
-            propsElementId = () => new ElementIdSetter { id = "Settings" },
+            propsReactorId = () => new ReactorIdSetter { id = "Settings" },
             propsGameObject = () => new GameObjectSetter { name = "Canvas-Settings", },
             childs = () => new REbase[] {
                     new REtext {
@@ -97,7 +97,7 @@ public class Reactor_40Router
     {
         return new REcanvas
         {
-            propsElementId = () => new ElementIdSetter { id = "Default" },
+            propsReactorId = () => new ReactorIdSetter { id = "Default" },
             propsGameObject = () => new GameObjectSetter { name = "Canvas-Default", },
             childs = () => new REbase[] {
                     new REtext {

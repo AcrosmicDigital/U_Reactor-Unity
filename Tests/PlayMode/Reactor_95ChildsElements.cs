@@ -59,7 +59,7 @@ public class Reactor_95ChildsElements
                 childs = () => words.Select(c => 
                     new REtext 
                     {
-                        propsElementId = () => new ElementIdSetter
+                        propsReactorId = () => new ReactorIdSetter
                         {
                             id = c + "Num",
                         },
@@ -120,7 +120,7 @@ public class Reactor_95ChildsElements
                 childs = () => words.Select(c =>
                     new REtext
                     {
-                        propsElementId = () => new ElementIdSetter
+                        propsReactorId = () => new ReactorIdSetter
                         {
                             id = c + "Num",
                         },
@@ -263,7 +263,7 @@ public class Reactor_95ChildsElements
                 childs = () => words.Select(c =>
                     new REtext
                     {
-                        propsElementId = () => new ElementIdSetter
+                        propsReactorId = () => new ReactorIdSetter
                         {
                             id = c + "Num",
                         },
@@ -401,7 +401,7 @@ public class Reactor_95ChildsElements
                 childs = () => levels.Select(c =>
                     new REpanel
                     {
-                        propsElementId = () => new ElementIdSetter
+                        propsReactorId = () => new ReactorIdSetter
                         {
                             id = c.number + "",
                         },
@@ -468,7 +468,7 @@ public class Reactor_95ChildsElements
 
             return new REcanvas
             {
-                propsElementId = () => new ElementIdSetter
+                propsReactorId = () => new ReactorIdSetter
                 {
                     id = "MainCanvas",
                 },
@@ -479,7 +479,7 @@ public class Reactor_95ChildsElements
                 childs = () => listState.value.Select(c =>
                     new REtext
                     {
-                        propsElementId = () => new ElementIdSetter
+                        propsReactorId = () => new ReactorIdSetter
                         {
                             id = c + "Num",
                         },
@@ -560,7 +560,7 @@ public class Reactor_95ChildsElements
 
             return new REcanvas
             {
-                propsElementId = () => new ElementIdSetter
+                propsReactorId = () => new ReactorIdSetter
                 {
                     id = "MainCanvas",
                 },
@@ -571,7 +571,7 @@ public class Reactor_95ChildsElements
                 childs = () => listState.value.Select(c =>
                     new REtext
                     {
-                        propsElementId = () => new ElementIdSetter
+                        propsReactorId = () => new ReactorIdSetter
                         {
                             id = c + "Num",
                         },
@@ -613,7 +613,7 @@ public class Reactor_95ChildsElements
 
             return new REcanvas
             {
-                propsElementId = () => new ElementIdSetter
+                propsReactorId = () => new ReactorIdSetter
                 {
                     id = "MainCanvas",
                 },
@@ -655,7 +655,7 @@ public class Reactor_95ChildsElements
 
             return new REcanvas
             {
-                propsElementId = () => new ElementIdSetter
+                propsReactorId = () => new ReactorIdSetter
                 {
                     id = "MainCanvas",
                 },
@@ -666,7 +666,7 @@ public class Reactor_95ChildsElements
                 childs = () => listState.value.Select(c =>
                     new REtext
                     {
-                        propsElementId = () => new ElementIdSetter
+                        propsReactorId = () => new ReactorIdSetter
                         {
                             id = c + "Num",
                         },

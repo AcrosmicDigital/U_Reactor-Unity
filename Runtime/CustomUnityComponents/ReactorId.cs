@@ -1,18 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace U.Reactor
 {
     // Class to have a reference to the object, added to base of all components
-    public class ElementId : MonoBehaviour
+    public class ReactorId : MonoBehaviour
     {
+        public Type elementType { get; private set; }
         public string id { get; private set; } = "";
         public string[] className { get; private set; } = new string[0];
         public ElementSelector selector { get; private set; } = null;
 
 
-        internal ElementId Set(string id, string[] className)
+        internal ReactorId Set(Type elementType, string id, string[] className)
         {
-
+            this.elementType = elementType;
             this.id = id;
             this.className = className;
             this.selector = selector;

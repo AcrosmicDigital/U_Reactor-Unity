@@ -7,21 +7,21 @@ using UnityEngine;
 
 namespace U.Reactor
 {
-    public class ElementIdSetter
+    public class ReactorIdSetter
     {
 
         public virtual string id { get; set; } = "";
         public virtual string[] className { get; set; } = new string[0];
 
 
-        internal ElementId Set(ElementId c)
+        internal ReactorId Set(Type elementType, ReactorId c)
         {
-            return c.Set(id, className);
+            return c.Set(elementType, id, className);
         }
 
-        internal ElementId Set(GameObject gameObject)
+        internal ReactorId Set(Type elementType, GameObject gameObject)
         {
-            return Set(gameObject.AddComponent<ElementId>());
+            return Set(elementType, gameObject.AddComponent<ReactorId>());
         }
 
     }

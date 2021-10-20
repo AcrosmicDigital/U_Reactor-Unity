@@ -10,7 +10,8 @@ namespace U.Reactor
 {
     public class REhorizontalDiv : REchild
     {
-        protected override string elementType => "Horizontal Form";
+        protected override Type elementType => this.GetType();
+        protected override string elementName => "Horizontal Div";
 
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
@@ -221,7 +222,7 @@ namespace U.Reactor
 
             internal Selector(
                 GameObject gameObject,
-                ElementId pieceId,
+                ReactorId pieceId,
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using U.Reactor;
 using UnityEngine;
 
-public class eexp_Slider : MonoBehaviour
+public class eexp_Button : MonoBehaviour
 {
     // Select wich component will be drawed
     [Space(10)]
@@ -23,7 +23,7 @@ public class eexp_Slider : MonoBehaviour
     private void Start()
     {
 
-        if (toDestroy != null && destroyOnStart)
+        if(toDestroy != null && destroyOnStart)
         {
             for (int i = 0; i < toDestroy.Length; i++)
             {
@@ -43,7 +43,7 @@ public class eexp_Slider : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REslider
+                        new REbutton
                         {
                         },
                     }

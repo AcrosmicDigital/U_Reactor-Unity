@@ -10,7 +10,8 @@ namespace U.Reactor
 {
     public class REtext : REchild
     {
-        protected override string elementType => "Text";
+        protected override Type elementType => this.GetType();
+        protected override string elementName => "Text";
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
@@ -88,7 +89,7 @@ namespace U.Reactor
 
             public Selector(
                 GameObject gameObject,
-                ElementId pieceId,
+                ReactorId pieceId,
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
                 Text textCmp

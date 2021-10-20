@@ -54,7 +54,7 @@ public class Reactor_51Hooks_UseState
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -130,7 +130,7 @@ public class Reactor_51Hooks_UseState
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -195,7 +195,7 @@ public class Reactor_51Hooks_UseState
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -290,7 +290,7 @@ public class Reactor_51Hooks_UseState
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -382,7 +382,7 @@ public class Reactor_51Hooks_UseState
 
             return new REcanvas
             {
-                propsElementId = () => new ElementIdSetter
+                propsReactorId = () => new ReactorIdSetter
                 {
                     id = "ProveCanvas"
                 },
@@ -450,7 +450,7 @@ public class Reactor_51Hooks_UseState
 
             return new REcanvas
             {
-                propsElementId = () => new ElementIdSetter
+                propsReactorId = () => new ReactorIdSetter
                 {
                     id = "ProveCanvas"
                 },
@@ -535,7 +535,7 @@ public class Reactor_51Hooks_UseState
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -599,7 +599,7 @@ public class Reactor_51Hooks_UseState
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter{
+                            propsReactorId = () => new ReactorIdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new TextSetter {
@@ -669,7 +669,7 @@ public class Reactor_51Hooks_UseState
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsElementId = () => new ElementIdSetter
+                            propsReactorId = () => new ReactorIdSetter
                             {
                                 id = "Textmain",
                             },
@@ -721,7 +721,7 @@ public class Reactor_51Hooks_UseState
 
             return new REcanvas
             {
-                propsElementId = () => new ElementIdSetter
+                propsReactorId = () => new ReactorIdSetter
                 {
                     id = "MainCanvas",
                 },
@@ -732,7 +732,7 @@ public class Reactor_51Hooks_UseState
                 childs = () => listState.value.Select(c =>
                     new REtext
                     {
-                        propsElementId = () => new ElementIdSetter
+                        propsReactorId = () => new ReactorIdSetter
                         {
                             id = c + "Num",
                         },
@@ -804,7 +804,7 @@ public class Reactor_51Hooks_UseState
 
             return new REcanvas
             {
-                propsElementId = () => new ElementIdSetter
+                propsReactorId = () => new ReactorIdSetter
                 {
                     id = "MainCanvas",
                 },
@@ -815,7 +815,7 @@ public class Reactor_51Hooks_UseState
                 childs = () => listState.value.Select(c =>
                     new REtext
                     {
-                        propsElementId = () => new ElementIdSetter
+                        propsReactorId = () => new ReactorIdSetter
                         {
                             id = c + "Num",
                         },

@@ -12,7 +12,8 @@ namespace U.Reactor
     // Add URelementId, RectTransform
     public abstract partial class REbase
     {
-        protected abstract string elementType { get; } // The name of the element, each element must everride
+        protected abstract Type elementType { get; }  // The type of the element, each element must everride
+        protected abstract string elementName { get; }  // The name of the element, each element must everride
         protected abstract Func<RectTransformSetter> PropsRectTransform { get; }
 
         // If childs mustbe created in a subobject set this value
@@ -21,7 +22,7 @@ namespace U.Reactor
         #region <Components>
 
         protected RectTransform rectTransformCmp;
-        protected ElementId elementIdCmp; // Id to find the element
+        protected ReactorId elementIdCmp; // Id to find the element
 
         #endregion </Components>
 
@@ -40,7 +41,7 @@ namespace U.Reactor
 
         public Func<IEnumerable<REbase>> childs = () => new REbase[0];
         public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
-        public Func<ElementIdSetter> propsElementId = () => new ElementIdSetter();
+        public Func<ReactorIdSetter> propsReactorId = () => new ReactorIdSetter();
 
         #endregion </Setters>
 
@@ -174,7 +175,7 @@ namespace U.Reactor
 
             // Set the name
             if (String.IsNullOrEmpty(propsGo.name))
-                propsGo.name = elementType.ToString();
+                propsGo.name = elementName.ToString();
             gameObject.name = propsGo.name;
 
             // Set the parent if exist
@@ -195,7 +196,7 @@ namespace U.Reactor
 
             // Add rectTransform
             rectTransformCmp = PropsRectTransform().Set(gameObject);
-            elementIdCmp = propsElementId().Set(gameObject);
+            elementIdCmp = propsReactorId().Set(elementType, gameObject);
         }
 
         protected abstract void AddComponents();

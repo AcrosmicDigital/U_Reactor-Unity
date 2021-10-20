@@ -5,67 +5,54 @@ using UnityEngine;
 
 public class eexp_Dropdown : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // Select wich component will be drawed
+    [Space(10)]
+    public TestCase testCase = TestCase.A00Basic;
+    public enum TestCase
     {
-        // A Component
-        REcanvas MainReactorComponent()
-        {
-
-            return new REcanvas
-            {
-
-                propsGameObject = () => new GameObjectSetter
-                {
-                    name = "Canvas-Principal",
-                },
-
-                childs = () => new REbase[]
-                {
-                    //new REtext
-                    //{
-                    //    propsRectTransform = () => new RectTransformSetter
-                    //    {
-                    //        localPosition = new Vector3(0, 200, 0),
-                    //    },
-                    //    propsText = () => new TextSetter
-                    //    {
-                    //        text = "Menu Principal",
-                    //        alignment = TextAnchor.UpperCenter,
-                    //    },
-                    //},
-                    //new REimage
-                    //{
-                    //    propsRectTransform = () => new RectTransformSetterImage
-                    //    {
-                    //        localPosition = new Vector3(200, 0,0),
-                    //    },
-                    //},
-                    //new REbutton
-                    //{
-                    //    propsRectTransform = () => new RectTransformSetter
-                    //    {
-                    //        width = 300,
-                    //        height = 120,
-                    //        localPosition = new Vector3(-200, 0,0),
-                    //    },
-                    //},
-                    new REdropdown
-                    {
-                    },
-
-                }
-
-            };
-
-        }
-
-        var canvas = MainReactorComponent();
-
-        canvas.Draw();
-
-        Debug.Log("Hola");
+        A00Basic,
 
     }
 
+    // Destroy some elements OnStart
+    [Space(10)]
+    public bool destroyOnStart = false;
+    public GameObject[] toDestroy;
+
+
+    private void Start()
+    {
+
+        if (toDestroy != null && destroyOnStart)
+        {
+            for (int i = 0; i < toDestroy.Length; i++)
+            {
+                if (toDestroy[i] == null) continue;
+
+                UnityEngine.GameObject.Destroy(toDestroy[i]);
+            }
+        }
+
+        switch (testCase)
+        {
+
+            case TestCase.A00Basic:
+                #region TestCase.A00Basic
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REdropdown
+                        {
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+        }
+    }
 }

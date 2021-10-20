@@ -10,7 +10,8 @@ namespace U.Reactor
 {
     public class REmultiToggle : REbase
     {
-        protected override string elementType => "MultiToggle";
+        protected override Type elementType => this.GetType();
+        protected override string elementName => "MultiToggle";
 
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
@@ -84,7 +85,7 @@ namespace U.Reactor
 
             internal Selector(
                 GameObject gameObject,
-                ElementId pieceId,
+                ReactorId pieceId,
                 RectTransform rectTransform,
                 MultiToggle multiToggle
                 ) : base(gameObject, pieceId, rectTransform)

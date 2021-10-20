@@ -12,7 +12,7 @@ namespace U.Reactor
 
         public CanvasRenderer canvasRenderer { get; private set; }
 
-        internal ChildElementSelector(GameObject gameObject, ElementId pieceId, RectTransform rectTransform, CanvasRenderer canvasRenderer) : base(gameObject, pieceId, rectTransform)
+        internal ChildElementSelector(GameObject gameObject, ReactorId pieceId, RectTransform rectTransform, CanvasRenderer canvasRenderer) : base(gameObject, pieceId, rectTransform)
         {
             this.canvasRenderer = canvasRenderer;
         }
