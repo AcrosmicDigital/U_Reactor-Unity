@@ -12,7 +12,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Text";
-        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
@@ -24,12 +24,12 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformBaseSetter
+        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter
         {
             width = 300,
             height = 120,
         };
-        public Func<TextSetter> propsText = () => new TextSetter();
+        public Func<TextBSetter> propsText = () => new TextBSetter();
 
         #endregion Setters
 
@@ -128,6 +128,17 @@ namespace U.Reactor
 
 
         #endregion Subclasses
+
+
+        #region Subsetters
+
+        public class RectTransformSetter : RectTransformBSetter
+        {
+            public override float width { get; set; } = 350;
+            public override float height { get; set; } = 140;
+        }
+
+        #endregion
 
 
         #region Static Funcs

@@ -9,7 +9,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Canvas";
-        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
@@ -31,11 +31,7 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformBaseSetter
-        {
-            width = 300,
-            height = 120,
-        };
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
         public Func<CanvasSetter> propsCanvas = () => new CanvasSetter();
         public Func<CanvasScalerSetter> propsCanvasScaler = () => new CanvasScalerSetter();
         public Func<GraphicRaycasterSetter> propsGraphicRaycaster = () => new GraphicRaycasterSetter();
@@ -224,6 +220,37 @@ namespace U.Reactor
 
 
         #endregion Subclasses
+
+
+        #region Subsetters
+
+        public class RectTransformSetter : RectTransformBSetter
+        {
+            public override float width { get; set; } = 300;
+            public override float height { get; set; } = 120;
+        }
+
+        public class CanvasSetter : CanvasBSetter
+        {
+
+        }
+
+        public class CanvasScalerSetter : CanvasScalerBSetter
+        {
+
+        }
+
+        public class GraphicRaycasterSetter : GraphicRaycasterBSetter
+        {
+
+        }
+
+        public class CanvasGroupSetter : CanvasGroupBSetter
+        {
+
+        }
+
+        #endregion
 
 
         #region Static Funcs

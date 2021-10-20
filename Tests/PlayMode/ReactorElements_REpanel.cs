@@ -50,7 +50,7 @@ public class ReactorElements_REpanel
             return new REcanvas
             {
 
-                propsGameObject = () => new GameObjectSetter
+                propsGameObject = () => new GameObjectBSetter
                 {
                     name = "Canvas-Principal",
                 },

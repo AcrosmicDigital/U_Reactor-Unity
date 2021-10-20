@@ -59,11 +59,11 @@ public class Reactor_95ChildsElements
                 childs = () => words.Select(c => 
                     new REtext 
                     {
-                        propsReactorId = () => new ReactorIdSetter
+                        propsReactorId = () => new ReactorIdBSetter
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextSetter
+                        propsText = () => new TextBSetter
                         {
                             text = c,
                         }
@@ -120,11 +120,11 @@ public class Reactor_95ChildsElements
                 childs = () => words.Select(c =>
                     new REtext
                     {
-                        propsReactorId = () => new ReactorIdSetter
+                        propsReactorId = () => new ReactorIdBSetter
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextSetter
+                        propsText = () => new TextBSetter
                         {
                             text = c,
                         }
@@ -263,11 +263,11 @@ public class Reactor_95ChildsElements
                 childs = () => words.Select(c =>
                     new REtext
                     {
-                        propsReactorId = () => new ReactorIdSetter
+                        propsReactorId = () => new ReactorIdBSetter
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextSetter
+                        propsText = () => new TextBSetter
                         {
                             text = c,
                         }
@@ -401,7 +401,7 @@ public class Reactor_95ChildsElements
                 childs = () => levels.Select(c =>
                     new REpanel
                     {
-                        propsReactorId = () => new ReactorIdSetter
+                        propsReactorId = () => new ReactorIdBSetter
                         {
                             id = c.number + "",
                         },
@@ -409,7 +409,7 @@ public class Reactor_95ChildsElements
                         {
                             new REtext
                             {
-                                propsText = () => new TextSetter
+                                propsText = () => new TextBSetter
                                 {
                                     text = c.name,
                                 }
@@ -417,7 +417,7 @@ public class Reactor_95ChildsElements
                             new REimage(),
                             new REtext
                             {
-                                propsText = () => new TextSetter
+                                propsText = () => new TextBSetter
                                 {
                                     text = "Time: " + c.time,
                                 }
@@ -468,7 +468,7 @@ public class Reactor_95ChildsElements
 
             return new REcanvas
             {
-                propsReactorId = () => new ReactorIdSetter
+                propsReactorId = () => new ReactorIdBSetter
                 {
                     id = "MainCanvas",
                 },
@@ -479,11 +479,11 @@ public class Reactor_95ChildsElements
                 childs = () => listState.value.Select(c =>
                     new REtext
                     {
-                        propsReactorId = () => new ReactorIdSetter
+                        propsReactorId = () => new ReactorIdBSetter
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextSetter
+                        propsText = () => new TextBSetter
                         {
                             text = c,
                         }
@@ -560,7 +560,7 @@ public class Reactor_95ChildsElements
 
             return new REcanvas
             {
-                propsReactorId = () => new ReactorIdSetter
+                propsReactorId = () => new ReactorIdBSetter
                 {
                     id = "MainCanvas",
                 },
@@ -571,11 +571,11 @@ public class Reactor_95ChildsElements
                 childs = () => listState.value.Select(c =>
                     new REtext
                     {
-                        propsReactorId = () => new ReactorIdSetter
+                        propsReactorId = () => new ReactorIdBSetter
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextSetter
+                        propsText = () => new TextBSetter
                         {
                             text = c,
                         }
@@ -613,7 +613,7 @@ public class Reactor_95ChildsElements
 
             return new REcanvas
             {
-                propsReactorId = () => new ReactorIdSetter
+                propsReactorId = () => new ReactorIdBSetter
                 {
                     id = "MainCanvas",
                 },
@@ -655,7 +655,7 @@ public class Reactor_95ChildsElements
 
             return new REcanvas
             {
-                propsReactorId = () => new ReactorIdSetter
+                propsReactorId = () => new ReactorIdBSetter
                 {
                     id = "MainCanvas",
                 },
@@ -666,11 +666,11 @@ public class Reactor_95ChildsElements
                 childs = () => listState.value.Select(c =>
                     new REtext
                     {
-                        propsReactorId = () => new ReactorIdSetter
+                        propsReactorId = () => new ReactorIdBSetter
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextSetter
+                        propsText = () => new TextBSetter
                         {
                             text = c,
                         }

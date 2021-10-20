@@ -14,7 +14,7 @@ namespace U.Reactor
     {
         protected abstract Type elementType { get; }  // The type of the element, each element must everride
         protected abstract string elementName { get; }  // The name of the element, each element must everride
-        protected abstract Func<RectTransformBaseSetter> PropsRectTransform { get; }
+        protected abstract Func<RectTransformBSetter> PropsRectTransform { get; }
 
         // If childs mustbe created in a subobject set this value
         protected virtual GameObject virtualParent { get; set; }
@@ -40,8 +40,8 @@ namespace U.Reactor
         #region <Setters>
 
         public Func<IEnumerable<REbase>> childs = () => new REbase[0];
-        public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
-        public Func<ReactorIdSetter> propsReactorId = () => new ReactorIdSetter();
+        public Func<GameObjectBSetter> propsGameObject = () => new GameObjectBSetter();
+        public Func<ReactorIdBSetter> propsReactorId = () => new ReactorIdBSetter();
 
         #endregion </Setters>
 

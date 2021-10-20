@@ -12,6 +12,8 @@ Palntillas falta hacer las plantillas para ..
 
  - falta terminar el multitoggle
 
+ - hacer el setter pesonalizado del gamebject
+
  - Revisar si se va a requerir dibujar el eventsystem y cuando, para que se dibuje solito, que sea una funcion que el usuario puede dar, para que el decida que event sstem usar, o algo asi.
  
 

@@ -51,7 +51,7 @@ public class ReactorElements_REtext
             return new REcanvas
             {
 
-                propsGameObject = () => new GameObjectSetter
+                propsGameObject = () => new GameObjectBSetter
                 {
                     name = "Canvas-Principal",
                 },
@@ -60,7 +60,7 @@ public class ReactorElements_REtext
                 {
                     new REtext
                     {
-                        propsRectTransform = () => new RectTransformSetterImage
+                        propsRectTransform = () => new RectTransformBSetter
                         {
                             localPosition = new Vector3(100,200),
                         }

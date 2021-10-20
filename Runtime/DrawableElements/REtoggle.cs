@@ -12,7 +12,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Toggle";
-        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
@@ -37,18 +37,18 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformBaseSetter
+        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter
         {
             width = 600,
             height = 80,
         };
-        public Func<ToggleSetter> propsToggle = () => new ToggleSetter();
-        public Func<ImageSetter> propsBackImage = () => new ImageSetter();
-        public Func<ImageSetter> propsCheckImage = () => new ImageSetter 
+        public Func<ToggleBSetter> propsToggle = () => new ToggleBSetter();
+        public Func<ImageBSetter> propsBackImage = () => new ImageBSetter();
+        public Func<ImageBSetter> propsCheckImage = () => new ImageBSetter 
         { 
             color = Color.gray,
         };
-        public Func<TextSetter> propsText = () => new TextSetter();
+        public Func<TextBSetter> propsText = () => new TextBSetter();
 
         #endregion Setters
 
@@ -92,7 +92,7 @@ namespace U.Reactor
 
 
             // backgroundGO rect
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 //pivot = new Vector2(0f, 1f),
                 localPosition = new Vector2(40, -40f),
@@ -101,7 +101,7 @@ namespace U.Reactor
                 anchorMax = new Vector2(0f, 1f),
             }.SetBySizeDelta(backgroundGO);
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 //pivot = new Vector2(0f, 1f),
                 //localPosition = new Vector2(0, 0f),
@@ -110,7 +110,7 @@ namespace U.Reactor
                 //anchorMax = new Vector2(0f, 1f),
             }.SetBySizeDelta(checkmarkGO);
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 anchorMin = new Vector2(0f, 0f),
                 anchorMax = new Vector2(1f, 1f),
@@ -197,6 +197,17 @@ namespace U.Reactor
         public class UseUpdate : UseUpdate<Selector, UseUpdate> { }
 
         #endregion Subclasses
+
+
+        #region Subsetters
+
+        public class RectTransformSetter : RectTransformBSetter
+        {
+            public override float width { get; set; } = 300;
+            public override float height { get; set; } = 120;
+        }
+
+        #endregion
 
 
         #region Static Funcs

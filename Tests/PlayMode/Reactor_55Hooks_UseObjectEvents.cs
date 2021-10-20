@@ -57,10 +57,10 @@ public class Reactor_55Hooks_UseObjectEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useObjectEvents = new REtext.UseObjectEvents.Hook
@@ -118,10 +118,10 @@ public class Reactor_55Hooks_UseObjectEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useObjectEvents = new REtext.UseObjectEvents.Hook
@@ -179,10 +179,10 @@ public class Reactor_55Hooks_UseObjectEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useObjectEvents = new REtext.UseObjectEvents.Hook
@@ -247,10 +247,10 @@ public class Reactor_55Hooks_UseObjectEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useObjectEvents = new REtext.UseObjectEvents.Hook

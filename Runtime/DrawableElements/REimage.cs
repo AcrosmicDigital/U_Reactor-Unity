@@ -12,7 +12,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Image";
-        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
@@ -24,9 +24,9 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformSetterImage();
+        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter();
 
-        public Func<ImageSetter> propsImage = () => new ImageSetter();
+        public Func<ImageBSetter> propsImage = () => new ImageBSetter();
 
         #endregion Setters
 
@@ -126,6 +126,17 @@ namespace U.Reactor
 
 
         #endregion Subclasses
+
+
+        #region Subsetters
+
+        public class RectTransformSetter : RectTransformBSetter
+        {
+            public override float width { get; set; } = 300;
+            public override float height { get; set; } = 300f;
+        }
+
+        #endregion
 
 
         #region Static Funcs

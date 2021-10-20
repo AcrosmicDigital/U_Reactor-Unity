@@ -12,7 +12,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Dropdown";
-        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
@@ -38,66 +38,22 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformSetterButton
-        {
-            width = 400,
-            height = 70,
-        };
-
-        public Func<DropdownSetter> propsDropdown = () => new DropdownSetter { };
-        public Func<ImageSetter> propsDropdownImage = () => new ImageSetter { };
-        public Func<TextSetter> propsLabelText = () => new TextSetter
-        {
-            text = "Option A",
-            fontSize = 35,
-            horizontalOverflow = HorizontalWrapMode.Wrap,
-            verticalOverflow = VerticalWrapMode.Truncate,
-            fontColor = new Color(.2f, .2f, .2f, 1f),
-        };
-        public Func<ImageSetter> propsArrowImage = () => new ImageSetter
-        {
-            color = Color.gray,
-        };
-        public Func<ImageSetter> propsTemplateImage = () => new ImageSetter { };
-        public Func<ScrollRectSetter> propsScrollRect = () => new ScrollRectSetter
-        {
-            horizontal = false,
-            movementType = ScrollRect.MovementType.Clamped,
-            verticalScrollbarVisibility = ScrollRect.ScrollbarVisibility.AutoHideAndExpandViewport,
-            verticalScrollbarSpacing = -3,
-        };
-        public Func<ImageSetter> propsViewportImage = () => new ImageSetter { };
-        public Func<MaskSetter> propsMask = () => new MaskSetter
-        {
-            showMaskGraphic = false,
-        };
-        public Func<ToggleSetter> propsToggle = () => new ToggleSetter { };
-        public Func<ImageSetter> propsItemBackImage = () => new ImageSetter { };
-        public Func<ImageSetter> propsItemCheckImage = () => new ImageSetter 
-        {
-            color = Color.gray,
-        };
-        public Func<TextSetter> propsItemLabelText = () => new TextSetter
-        {
-            text = "Option A",
-            fontSize = 35,
-            horizontalOverflow = HorizontalWrapMode.Wrap,
-            verticalOverflow = VerticalWrapMode.Truncate,
-            fontColor = new Color(.2f, .2f, .2f, 1f),
-        };
-        public Func<ImageSetter> propsScrollbarImage = () => new ImageSetter 
-        { 
-            color = Color.gray,
-        };
-        public Func<ScrollbarSetter> propsScrollbar = () => new ScrollbarSetter
-        {
-            direction = Scrollbar.Direction.BottomToTop,
-
-        };
-        public Func<ImageSetter> propsScrollbarHandleImageCmp = () => new ImageSetter 
-        { 
-            color = new Color(0.3f, 0.3f, 0.3f, 1f),
-        };
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<DropdownSetter> propsDropdown = () => new DropdownSetter();
+        public Func<BackImageSetter> propsDropdownImage = () => new BackImageSetter();
+        public Func<LabelTextSetter> propsLabelText = () => new LabelTextSetter();
+        public Func<ArrowImageSetter> propsArrowImage = () => new ArrowImageSetter();
+        public Func<DownBackImageSetter> propsTemplateImage = () => new DownBackImageSetter();
+        public Func<ScrollRectSetter> propsScrollRect = () => new ScrollRectSetter();
+        public Func<ViewportImageSetter> propsViewportImage = () => new ViewportImageSetter();
+        public Func<MaskSetter> propsMask = () => new MaskSetter();
+        public Func<ToggleSetter> propsToggle = () => new ToggleSetter();
+        public Func<ItemBackImageSetter> propsItemBackImage = () => new ItemBackImageSetter();
+        public Func<ItemCheckImageSetter> propsItemCheckImage = () => new ItemCheckImageSetter();
+        public Func<ItemTextSetter> propsItemLabelText = () => new ItemTextSetter();
+        public Func<ScrollbarBackImageSetter> propsScrollbarImage = () => new ScrollbarBackImageSetter();
+        public Func<ScrollbarSetter> propsScrollbar = () => new ScrollbarSetter();
+        public Func<ScrollbarHandleImageSetter> propsScrollbarHandleImageCmp = () => new ScrollbarHandleImageSetter();
 
         #endregion Setters
 
@@ -159,7 +115,7 @@ namespace U.Reactor
             propsScrollbarHandleImageCmp().SetAllExceptType(scrollbarHandleImageCmp);
 
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
@@ -168,7 +124,7 @@ namespace U.Reactor
                 offsetMax = new Vector2(-70f, -15F),
             }.SetByAnchors(labelGO.GetComponent<RectTransform>());
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 // pivot = new Vector2(0.5f, 1),
                 localPosition = new Vector2(-40f, 0),
@@ -177,7 +133,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(60, 60f),
             }.SetBySizeDelta(arrowGO.GetComponent<RectTransform>());
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 pivot = new Vector2(0.5f, 1),
                 localPosition = new Vector2(0f, -10f),
@@ -186,7 +142,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(0, 300f),
             }.SetBySizeDelta(templateGO.GetComponent<RectTransform>());
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 pivot = new Vector2(0f, 1),
                 localPosition = new Vector2(0f, -150f),
@@ -195,7 +151,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(-20, 0),
             }.SetBySizeDelta(viewportGO.GetComponent<RectTransform>());
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 pivot = new Vector2(1f, 1f),
                 localPosition = new Vector2(0f, -150f),
@@ -204,7 +160,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(20, 0),
             }.SetBySizeDelta(scrollbarGO.GetComponent<RectTransform>());
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 pivot = new Vector2(.5f, 1f),
                 localPosition = new Vector2(190f, -150f),
@@ -213,7 +169,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(0f, 80f),
             }.SetBySizeDelta(contentGO.GetComponent<RectTransform>());
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 pivot = new Vector2(.5f, .5f),
                 localPosition = new Vector2(0f, -40f),
@@ -222,7 +178,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(0f, 50f),
             }.SetBySizeDelta(itemGO.GetComponent<RectTransform>());
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
@@ -230,7 +186,7 @@ namespace U.Reactor
                 offsetMax = new Vector2(0f, 0F),
             }.SetByAnchors(itemBackgroundGO.GetComponent<RectTransform>());
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 localPosition = new Vector2(25f, 0f),
                 anchorMin = new Vector2(0, .5f),
@@ -238,7 +194,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(50f, 50f),
             }.SetBySizeDelta(itemCheckmarkGO.GetComponent<RectTransform>());
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 localPosition = new Vector2(25f, 0f),
                 anchorMin = new Vector2(0, 0f),
@@ -420,6 +376,103 @@ namespace U.Reactor
         public class UseUpdate : UseUpdate<Selector, UseUpdate> { }
 
         #endregion Subclasses
+
+
+        #region Subsetters
+
+        public class RectTransformSetter : RectTransformBSetter
+        {
+            public override float width { get; set; } = 400;
+            public override float height { get; set; } = 70;
+        }
+
+        public class DropdownSetter : DropdownBSetter
+        {
+
+        }
+
+        public class BackImageSetter : ImageBSetter
+        {
+
+        }
+
+        public class LabelTextSetter : TextBSetter
+        {
+            public override string text { get; set; } = "Option A";
+            public override int fontSize { get; set; } = 35;
+            public override HorizontalWrapMode horizontalOverflow { get; set; } = HorizontalWrapMode.Wrap;
+            public override VerticalWrapMode verticalOverflow { get; set; } = VerticalWrapMode.Truncate;
+            public override Color fontColor { get; set; } = new Color(.2f, .2f, .2f, 1f);
+        }
+
+        public class ArrowImageSetter : ImageBSetter
+        {
+            public override Color color { get; set; } = Color.gray;
+        }
+
+        public class DownBackImageSetter : ImageBSetter
+        {
+
+        }
+
+        public class ScrollRectSetter : ScrollRectBSetter
+        {
+            public override bool horizontal { get; set; } = false;
+            public override ScrollRect.MovementType movementType { get; set; } = ScrollRect.MovementType.Clamped;
+            public override ScrollRect.ScrollbarVisibility verticalScrollbarVisibility { get; set; } = ScrollRect.ScrollbarVisibility.AutoHideAndExpandViewport;
+            public override float verticalScrollbarSpacing { get; set; } = -3;
+        }
+
+        public class ViewportImageSetter : ImageBSetter
+        {
+
+        }
+
+        public class MaskSetter : MaskBSetter
+        {
+            public override bool showMaskGraphic { get; set; } = false;
+        }
+
+        public class ToggleSetter : ToggleBSetter
+        {
+
+        }
+
+        public class ItemBackImageSetter : ImageBSetter
+        {
+
+        }
+
+        public class ItemCheckImageSetter : ImageBSetter
+        {
+            public override Color color { get; set; } = Color.gray;
+        }
+
+        public class ItemTextSetter : TextBSetter
+        {
+            public override string text { get; set; } = "Option A";
+            public override int fontSize { get; set; } = 35;
+            public override HorizontalWrapMode horizontalOverflow { get; set; } = HorizontalWrapMode.Wrap;
+            public override VerticalWrapMode verticalOverflow { get; set; } = VerticalWrapMode.Truncate;
+            public override Color fontColor { get; set; } = new Color(.2f, .2f, .2f, 1f);
+        }
+
+        public class ScrollbarBackImageSetter : ImageBSetter
+        {
+            public override Color color { get; set; } = Color.gray;
+        }
+
+        public class ScrollbarSetter : ScrollbarBSetter
+        {
+            public override Scrollbar.Direction direction { get; set; } = Scrollbar.Direction.BottomToTop;
+        }
+
+        public class ScrollbarHandleImageSetter : ImageBSetter
+        {
+            public override Color color { get; set; } = new Color(0.3f, 0.3f, 0.3f, 1f);
+        }
+
+        #endregion
 
 
         #region Static Funcs

@@ -22,7 +22,7 @@ namespace U.Reactor
         #region <Setters>
 
         // Gameobject
-        public Func<CanvasRendererSetter> propsCanvasRenderer = () => new CanvasRendererSetter();
+        public Func<CanvasRendererBSetter> propsCanvasRenderer = () => new CanvasRendererBSetter();
 
         #endregion </Setters>
 

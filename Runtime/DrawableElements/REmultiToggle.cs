@@ -12,7 +12,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Multi Toggle";
-        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
@@ -24,8 +24,8 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformBaseSetter { };
-        public Func<MultiToggleSetter> propsMultiToggle = () => new MultiToggleSetter();
+        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter { };
+        public Func<MultiToggleBSetter> propsMultiToggle = () => new MultiToggleBSetter();
 
         #endregion Setters
 
@@ -119,6 +119,17 @@ namespace U.Reactor
 
 
         #endregion Subclasses
+
+
+        #region Subsetters
+
+        public class RectTransformSetter : RectTransformBSetter
+        {
+            public override float width { get; set; } = 300;
+            public override float height { get; set; } = 120;
+        }
+
+        #endregion
 
 
         #region Static Funcs

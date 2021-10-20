@@ -55,10 +55,10 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello world",
                             },
                             childs = () => new REbase[]
@@ -136,10 +136,10 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello world",
                             },
                             childs = () => new REbase[]
@@ -229,10 +229,10 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = letter,
                             },
                             childs = () => new REbase[]
@@ -323,10 +323,10 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = letterState.value,
                             },
                             useState = new IuseState[]
@@ -425,10 +425,10 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello world",
                             },
                             childs = () => new REbase[]
@@ -518,10 +518,10 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello world",
                             },
                             childs = () => new REbase[]
@@ -617,10 +617,10 @@ public class Reactor_91FindCases
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello world",
                             },
                             childs = () => new REbase[]

@@ -12,7 +12,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Vertical Div";
-        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
@@ -36,49 +36,49 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformSetterPanel();
+        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter();
 
-        public Func<ImageSetter> propsBackImage = () => new ImageSetter 
+        public Func<ImageBSetter> propsBackImage = () => new ImageBSetter 
         {
             color = new Color(255, 255, 255, .4f),
         };
-        public Func<ScrollRectSetter> propsScrollRect = () => new ScrollRectSetter 
+        public Func<ScrollRectBSetter> propsScrollRect = () => new ScrollRectBSetter 
         { 
             horizontal = false,
         };
-        public Func<RectMask2DSetter> propsRectMask2D = () => new RectMask2DSetter { };
-        public Func<VerticalLayoutGroupSetter> propsVerticalLayoutGroup = () => new VerticalLayoutGroupSetter 
+        public Func<RectMask2DBSetter> propsRectMask2D = () => new RectMask2DBSetter { };
+        public Func<VerticalLayoutGroupBSetter> propsVerticalLayoutGroup = () => new VerticalLayoutGroupBSetter 
         {
             spacing = 10f,
         };
-        public Func<ContentSizeFilterSetter> propsContentSizeFilter = () => new ContentSizeFilterSetter
+        public Func<ContentSizeFilterBSetter> propsContentSizeFilter = () => new ContentSizeFilterBSetter
         {
             horizontalFit = ContentSizeFitter.FitMode.MinSize,
             verticalFit = ContentSizeFitter.FitMode.MinSize,
         };
 
-        public Func<ImageSetter> propsVScrollbarImage = () => new ImageSetter
+        public Func<ImageBSetter> propsVScrollbarImage = () => new ImageBSetter
         {
             color = Color.gray,
         };
-        public Func<ScrollbarSetter> propsVScrollbar = () => new ScrollbarSetter
+        public Func<ScrollbarBSetter> propsVScrollbar = () => new ScrollbarBSetter
         {
             direction = Scrollbar.Direction.BottomToTop,
         };
-        public Func<ImageSetter> propsVScrollbarHandleImageCmp = () => new ImageSetter
+        public Func<ImageBSetter> propsVScrollbarHandleImageCmp = () => new ImageBSetter
         {
             color = new Color(0.3f, 0.3f, 0.3f, 1f),
         };
 
-        public Func<ImageSetter> propsHScrollbarImage = () => new ImageSetter
+        public Func<ImageBSetter> propsHScrollbarImage = () => new ImageBSetter
         {
             color = Color.gray,
         };
-        public Func<ScrollbarSetter> propsHScrollbar = () => new ScrollbarSetter
+        public Func<ScrollbarBSetter> propsHScrollbar = () => new ScrollbarBSetter
         {
 
         };
-        public Func<ImageSetter> propsHScrollbarHandleImageCmp = () => new ImageSetter
+        public Func<ImageBSetter> propsHScrollbarHandleImageCmp = () => new ImageBSetter
         {
             color = new Color(0.3f, 0.3f, 0.3f, 1f),
         };
@@ -140,7 +140,7 @@ namespace U.Reactor
             scrollRectCmp.verticalScrollbar = vScrollbarCmp;
 
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 pivot = new Vector2(0f, 1f),
                 localPosition = new Vector2(0f, 0f),
@@ -149,7 +149,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(0, 0),
             }.SetBySizeDelta(viewportGO);
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 pivot = new Vector2(0f, 1f),
                 localPosition = new Vector2(0, 0f),
@@ -158,7 +158,7 @@ namespace U.Reactor
                 anchorMax = new Vector2(1, 1f),
             }.SetBySizeDelta(containerGO);
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 pivot = new Vector2(1f, 1f),
                 localPosition = new Vector2(0f, 0),
@@ -167,7 +167,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(20, 0),
             }.SetBySizeDelta(vScrollbarGO);
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 pivot = new Vector2(0f, 0f),
                 localPosition = new Vector2(0f, 0),
@@ -295,6 +295,17 @@ namespace U.Reactor
 
 
         #endregion Subclasses
+
+
+        #region Subsetters
+
+        public class RectTransformSetter : RectTransformBSetter
+        {
+            public override float width { get; set; } = 300;
+            public override float height { get; set; } = 120;
+        }
+
+        #endregion
 
 
         #region Static Funcs

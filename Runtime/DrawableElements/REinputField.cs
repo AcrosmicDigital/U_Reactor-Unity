@@ -12,7 +12,7 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Input Field";
-        protected override Func<RectTransformBaseSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region Components
@@ -27,14 +27,14 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBaseSetter> propsRectTransform = () => new RectTransformSetterButton
+        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter
         {
             width = 400,
             height = 70,
         };
-        public Func<InputFieldSetter> propsInputField = () => new InputFieldSetter { };
-        public Func<ImageSetter> propsBackImage = () => new ImageSetter { };
-        public Func<TextSetter> propsPlaceholderText = () => new TextSetter
+        public Func<InputFieldBSetter> propsInputField = () => new InputFieldBSetter { };
+        public Func<ImageBSetter> propsBackImage = () => new ImageBSetter { };
+        public Func<TextBSetter> propsPlaceholderText = () => new TextBSetter
         {
             text = "Enter text...",
             fontStyle = FontStyle.Italic,
@@ -43,7 +43,7 @@ namespace U.Reactor
             verticalOverflow = VerticalWrapMode.Truncate,
             fontColor = new Color(0,0,0,.5f),
         };
-        public Func<TextSetter> propsText = () => new TextSetter 
+        public Func<TextBSetter> propsText = () => new TextBSetter 
         { 
             text = "",
             fontSize = 40,
@@ -90,7 +90,7 @@ namespace U.Reactor
             inputFieldCmp.placeholder = placeholderTextCmp;
 
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
@@ -99,7 +99,7 @@ namespace U.Reactor
                 offsetMax = new Vector2(-15F, -10F),
             }.SetByAnchors(placeholderGO.GetComponent<RectTransform>());
 
-            new RectTransformBaseSetter()
+            new RectTransformBSetter()
             {
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
@@ -190,6 +190,17 @@ namespace U.Reactor
 
 
         #endregion Subclasses
+
+
+        #region Subsetters
+
+        public class RectTransformSetter : RectTransformBSetter
+        {
+            public override float width { get; set; } = 300;
+            public override float height { get; set; } = 120;
+        }
+
+        #endregion
 
 
         #region Static Funcs

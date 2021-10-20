@@ -61,10 +61,10 @@ public class Reactor_52Hooks_UseEffect
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useEffect = new REtext.UseEffect.Hook[]{
@@ -155,10 +155,10 @@ public class Reactor_52Hooks_UseEffect
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useEffect = new REtext.UseEffect.Hook[]{
@@ -248,10 +248,10 @@ public class Reactor_52Hooks_UseEffect
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useEffect = new REtext.UseEffect.Hook[]{
@@ -320,10 +320,10 @@ public class Reactor_52Hooks_UseEffect
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useEffect = new REtext.UseEffect.Hook[]{
@@ -420,10 +420,10 @@ public class Reactor_52Hooks_UseEffect
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useEffect = new REtext.UseEffect.Hook[]{
@@ -534,10 +534,10 @@ public class Reactor_52Hooks_UseEffect
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useEffect = new REtext.UseEffect.Hook[]{
@@ -617,10 +617,10 @@ public class Reactor_52Hooks_UseEffect
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useEffect = new REtext.UseEffect.Hook[]{
@@ -685,10 +685,10 @@ public class Reactor_52Hooks_UseEffect
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useEffect = new REtext.UseEffect.Hook[]{
@@ -766,10 +766,10 @@ public class Reactor_52Hooks_UseEffect
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useEffect = new REtext.UseEffect.Hook[]{
@@ -849,10 +849,10 @@ public class Reactor_52Hooks_UseEffect
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useEffect = new REtext.UseEffect.Hook[]{
@@ -933,10 +933,10 @@ public class Reactor_52Hooks_UseEffect
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello World!",
                             },
                             useEffect = new REtext.UseEffect.Hook[]{
@@ -1006,11 +1006,11 @@ public class Reactor_52Hooks_UseEffect
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter
+                            propsReactorId = () => new ReactorIdBSetter
                             {
                                 id = "Textmain",
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = wordState.value,
                             },
                             useState = new IuseState[] {

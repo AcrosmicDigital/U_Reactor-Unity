@@ -29,7 +29,7 @@ namespace U.Reactor
 
             childs = () => new REbase[] {
                     new REtext {
-                        propsText = () => new TextSetter {
+                        propsText = () => new TextBSetter {
                             text = "Bad route",
                         },
                     },

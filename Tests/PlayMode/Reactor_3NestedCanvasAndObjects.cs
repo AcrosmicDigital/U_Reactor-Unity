@@ -51,10 +51,10 @@ public class Reactor_3NestedCanvasAndObjects
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello world",
                             },
                             childs = () => new REbase[]
@@ -121,10 +121,10 @@ public class Reactor_3NestedCanvasAndObjects
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello world",
                             },
                             childs = () => new REbase[]
@@ -204,10 +204,10 @@ public class Reactor_3NestedCanvasAndObjects
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new ReactorIdSetter{
+                            propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextSetter {
+                            propsText = () => new TextBSetter {
                                 text = "Hello world",
                             },
                             childs = () => new REbase[]
@@ -274,7 +274,7 @@ public class Reactor_3NestedCanvasAndObjects
 
             return new REcanvas
             {
-                propsGameObject = () => new GameObjectSetter
+                propsGameObject = () => new GameObjectBSetter
                 {
                     name = "RootCanvas",
                 },
@@ -283,10 +283,10 @@ public class Reactor_3NestedCanvasAndObjects
                         {
                             childs = () => new REbase[] {
                                 new REtext {
-                                    propsReactorId = () => new ReactorIdSetter{
+                                    propsReactorId = () => new ReactorIdBSetter{
                                         id = "ProveText"
                                     },
-                                    propsText = () => new TextSetter {
+                                    propsText = () => new TextBSetter {
                                         text = "Hello world",
                                     },
                                     childs = () => new REbase[]
@@ -363,7 +363,7 @@ public class Reactor_3NestedCanvasAndObjects
 
             return new REcanvas
             {
-                propsGameObject = () => new GameObjectSetter
+                propsGameObject = () => new GameObjectBSetter
                 {
                     name = "RootCanvas",
                 },
@@ -375,10 +375,10 @@ public class Reactor_3NestedCanvasAndObjects
                                 {
                                     childs = () => new REbase[] {
                                         new REtext {
-                                            propsReactorId = () => new ReactorIdSetter{
+                                            propsReactorId = () => new ReactorIdBSetter{
                                                 id = "ProveText"
                                             },
-                                            propsText = () => new TextSetter {
+                                            propsText = () => new TextBSetter {
                                                 text = "Hello world",
                                             },
                                             childs = () => new REbase[]

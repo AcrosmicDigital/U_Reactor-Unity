@@ -33,7 +33,7 @@ public class ReactorRenderer : MonoBehaviour
             {
                 new REtext
                 {
-                    propsReactorId = () => new ReactorIdSetter
+                    propsReactorId = () => new ReactorIdBSetter
                     {
                         id = "Title-One",
                         className = new string[]
@@ -46,7 +46,7 @@ public class ReactorRenderer : MonoBehaviour
                 },
                 new REtext
                 {
-                    propsReactorId = () => new ReactorIdSetter
+                    propsReactorId = () => new ReactorIdBSetter
                     {
                         id = "Title-One",
                         className = new string[]

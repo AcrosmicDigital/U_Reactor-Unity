@@ -39,7 +39,7 @@ public class Basics
             return new REcanvas
             {
 
-                propsGameObject = () => new GameObjectSetter
+                propsGameObject = () => new GameObjectBSetter
                 {
                     name = "Canvas-Principal",
                 },
@@ -48,11 +48,11 @@ public class Basics
                 {
                     new REtext
                     {
-                        propsRectTransform = () => new RectTransformBaseSetter
+                        propsRectTransform = () => new RectTransformBSetter
                         {
                             localPosition = new Vector3(0, 200, 0),
                         },
-                        propsText = () => new TextSetter
+                        propsText = () => new TextBSetter
                         {
                             text = "Menu Principal",
                             alignment = TextAnchor.UpperCenter,
@@ -60,7 +60,7 @@ public class Basics
                     },
                     new REimage
                     {
-                        propsRectTransform = () => new RectTransformSetterImage
+                        propsRectTransform = () => new RectTransformBSetter
                         {
                             localPosition = new Vector3(200, 0,0),
                         },
