@@ -26,15 +26,10 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter
-        {
-            width = 500,
-            height = 40,
-        };
-
-        public Func<SliderBSetter> propsSlider = () => new SliderBSetter();
-        public Func<ImageBSetter> propsBackImage = () => new ImageBSetter { color = Color.gray };
-        public Func<ImageBSetter> propsFillImage = () => new ImageBSetter();
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<SliderSetter> propsSlider = () => new SliderSetter();
+        public Func<BackImageSetter> propsBackImage = () => new BackImageSetter();
+        public Func<FillImageSetter> propsFillImage = () => new FillImageSetter();
 
         #endregion Setters
 
@@ -185,8 +180,23 @@ namespace U.Reactor
 
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 300;
-            public override float height { get; set; } = 120;
+            public override float width { get; set; } = 500;
+            public override float height { get; set; } = 40;
+        }
+
+        public class SliderSetter : SliderBSetter
+        {
+
+        }
+
+        public class BackImageSetter : ImageBSetter
+        {
+            public override Color color { get; set; } = Color.gray;
+        }
+
+        public class FillImageSetter : ImageBSetter
+        {
+
         }
 
         #endregion

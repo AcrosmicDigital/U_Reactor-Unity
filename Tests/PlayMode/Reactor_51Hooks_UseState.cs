@@ -57,7 +57,7 @@ public class Reactor_51Hooks_UseState
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = wordState.value,
                             },
                             useState = new IuseState[] {
@@ -133,7 +133,7 @@ public class Reactor_51Hooks_UseState
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = wordState.value,
                             },
                             useState = new IuseState[] {
@@ -198,7 +198,7 @@ public class Reactor_51Hooks_UseState
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = wordState.value,
                             },
                             useState = new IuseState[] {
@@ -293,7 +293,7 @@ public class Reactor_51Hooks_UseState
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = wordState.value,
                             },
                             useState = new IuseState[] {
@@ -538,7 +538,7 @@ public class Reactor_51Hooks_UseState
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = wordState.value,
                             },
                             useState = new IuseState[] {
@@ -602,7 +602,7 @@ public class Reactor_51Hooks_UseState
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = wordState.value,
                                 fontSize = fontSizeState.value,
                             },
@@ -673,7 +673,7 @@ public class Reactor_51Hooks_UseState
                             {
                                 id = "Textmain",
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = wordState.value,
                             },
                             useState = new IuseState[] {
@@ -736,7 +736,7 @@ public class Reactor_51Hooks_UseState
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextBSetter
+                        propsText = () => new REtext.TextSetter
                         {
                             text = c,
                         }
@@ -819,7 +819,7 @@ public class Reactor_51Hooks_UseState
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextBSetter
+                        propsText = () => new REtext.TextSetter
                         {
                             text = c,
                         }

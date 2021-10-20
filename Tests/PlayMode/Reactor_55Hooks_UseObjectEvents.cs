@@ -60,7 +60,7 @@ public class Reactor_55Hooks_UseObjectEvents
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useObjectEvents = new REtext.UseObjectEvents.Hook
@@ -121,7 +121,7 @@ public class Reactor_55Hooks_UseObjectEvents
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useObjectEvents = new REtext.UseObjectEvents.Hook
@@ -182,7 +182,7 @@ public class Reactor_55Hooks_UseObjectEvents
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useObjectEvents = new REtext.UseObjectEvents.Hook
@@ -250,7 +250,7 @@ public class Reactor_55Hooks_UseObjectEvents
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useObjectEvents = new REtext.UseObjectEvents.Hook

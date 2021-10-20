@@ -27,29 +27,11 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter
-        {
-            width = 400,
-            height = 70,
-        };
-        public Func<InputFieldBSetter> propsInputField = () => new InputFieldBSetter { };
-        public Func<ImageBSetter> propsBackImage = () => new ImageBSetter { };
-        public Func<TextBSetter> propsPlaceholderText = () => new TextBSetter
-        {
-            text = "Enter text...",
-            fontStyle = FontStyle.Italic,
-            fontSize = 40,
-            horizontalOverflow = HorizontalWrapMode.Wrap,
-            verticalOverflow = VerticalWrapMode.Truncate,
-            fontColor = new Color(0,0,0,.5f),
-        };
-        public Func<TextBSetter> propsText = () => new TextBSetter 
-        { 
-            text = "",
-            fontSize = 40,
-            richText = false,
-            verticalOverflow = VerticalWrapMode.Truncate,
-        };
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<InputFieldSetter> propsInputField = () => new InputFieldSetter { };
+        public Func<BackImageSetter> propsBackImage = () => new BackImageSetter { };
+        public Func<PlaceholderTextSetter> propsPlaceholderText = () => new PlaceholderTextSetter();
+        public Func<TextSetter> propsText = () => new TextSetter();
 
         #endregion Setters
 
@@ -196,8 +178,36 @@ namespace U.Reactor
 
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 300;
-            public override float height { get; set; } = 120;
+            public override float width { get; set; } = 400;
+            public override float height { get; set; } = 70;
+        }
+
+        public class InputFieldSetter : InputFieldBSetter
+        {
+
+        }
+
+        public class BackImageSetter : ImageBSetter
+        {
+
+        }
+
+        public class PlaceholderTextSetter : TextBSetter
+        {
+            public override string text { get; set; } = "Enter text...";
+            public override FontStyle fontStyle { get; set; } = FontStyle.Italic;
+            public override int fontSize { get; set; } = 40;
+            public override HorizontalWrapMode horizontalOverflow { get; set; } = HorizontalWrapMode.Wrap;
+            public override VerticalWrapMode verticalOverflow { get; set; } = VerticalWrapMode.Truncate;
+            public override Color fontColor { get; set; } = new Color(0, 0, 0, .5f);
+        }
+
+        public class TextSetter : TextBSetter
+        {
+            public override string text { get; set; } = "";
+            public override int fontSize { get; set; } = 40;
+            public override bool richText { get; set; } = false;
+            public override VerticalWrapMode verticalOverflow { get; set; } = VerticalWrapMode.Truncate;
         }
 
         #endregion

@@ -36,52 +36,18 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter();
-
-        public Func<ImageBSetter> propsBackImage = () => new ImageBSetter 
-        {
-            color = new Color(255, 255, 255, .4f),
-        };
-        public Func<ScrollRectBSetter> propsScrollRect = () => new ScrollRectBSetter
-        {
-            vertical = false,
-        };
-        public Func<RectMask2DBSetter> propsRectMask2D = () => new RectMask2DBSetter { };
-        public Func<HorizontalLayoutGroupBSetter> propsHorizontalLayoutGroup = () => new HorizontalLayoutGroupBSetter 
-        { 
-            spacing = 10f,
-        };
-        public Func<ContentSizeFilterBSetter> propsContentSizeFilter = () => new ContentSizeFilterBSetter 
-        { 
-           horizontalFit = ContentSizeFitter.FitMode.MinSize,
-           verticalFit = ContentSizeFitter.FitMode.MinSize,
-        };
-
-        public Func<ImageBSetter> propsVScrollbarImage = () => new ImageBSetter 
-        {
-            color = Color.gray,
-        };
-        public Func<ScrollbarBSetter> propsVScrollbar = () => new ScrollbarBSetter 
-        {
-            direction = Scrollbar.Direction.BottomToTop,
-        };
-        public Func<ImageBSetter> propsVScrollbarHandleImageCmp = () => new ImageBSetter 
-        {
-            color = new Color(0.3f, 0.3f, 0.3f, 1f),
-        };
-
-        public Func<ImageBSetter> propsHScrollbarImage = () => new ImageBSetter 
-        {
-            color = Color.gray,
-        };
-        public Func<ScrollbarBSetter> propsHScrollbar = () => new ScrollbarBSetter 
-        { 
-
-        };
-        public Func<ImageBSetter> propsHScrollbarHandleImageCmp = () => new ImageBSetter 
-        {
-            color = new Color(0.3f, 0.3f, 0.3f, 1f),
-        };
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<BackImageSetter> propsBackImage = () => new BackImageSetter();
+        public Func<ScrollRectSetter> propsScrollRect = () => new ScrollRectSetter();
+        public Func<RectMask2DSetter> propsRectMask2D = () => new RectMask2DSetter { };
+        public Func<HorizontalLayoutGroupSetter> propsHorizontalLayoutGroup = () => new HorizontalLayoutGroupSetter();
+        public Func<ContenSizeFilterSetter> propsContentSizeFilter = () => new ContenSizeFilterSetter();
+        public Func<VScrollbarBackImageSetter> propsVScrollbarImage = () => new VScrollbarBackImageSetter();
+        public Func<VScrollbarSetter> propsVScrollbar = () => new VScrollbarSetter();
+        public Func<VScrollbarHandleImageSetter> propsVScrollbarHandleImageCmp = () => new VScrollbarHandleImageSetter();
+        public Func<HScrollbarBackImageSetter> propsHScrollbarImage = () => new HScrollbarBackImageSetter();
+        public Func<HScrollbarSetter> propsHScrollbar = () => new HScrollbarSetter();
+        public Func<HScrollbarHandleImageSetter> propsHScrollbarHandleImageCmp = () => new HScrollbarHandleImageSetter();
 
         #endregion Setters
 
@@ -303,6 +269,62 @@ namespace U.Reactor
         {
             public override float width { get; set; } = 300;
             public override float height { get; set; } = 120;
+        }
+
+        public class BackImageSetter : ImageBSetter
+        {
+            public override Color color { get; set; } = new Color(255, 255, 255, .4f);
+        }
+
+        public class ScrollRectSetter : ScrollRectBSetter
+        {
+            public override bool vertical { get; set; } = false;
+        }
+
+        public class RectMask2DSetter : RectMask2DBSetter
+        {
+
+        }
+
+        public class HorizontalLayoutGroupSetter : HorizontalLayoutGroupBSetter
+        {
+            public override float spacing { get; set; } = 10f;
+        }
+
+        public class ContenSizeFilterSetter : ContentSizeFilterBSetter
+        {
+            public override ContentSizeFitter.FitMode horizontalFit { get; set; } = ContentSizeFitter.FitMode.MinSize;
+            public override ContentSizeFitter.FitMode verticalFit { get; set; } = ContentSizeFitter.FitMode.MinSize;
+        }
+
+        public class VScrollbarSetter : ScrollbarBSetter
+        {
+            public override Scrollbar.Direction direction { get; set; } = Scrollbar.Direction.BottomToTop;
+        }
+
+        public class VScrollbarBackImageSetter : ImageBSetter
+        {
+            public override Color color { get; set; } = Color.gray;
+        }
+
+        public class VScrollbarHandleImageSetter : ImageBSetter
+        {
+            public override Color color { get; set; } = new Color(0.3f, 0.3f, 0.3f, 1f);
+        }
+
+        public class HScrollbarSetter : ScrollbarBSetter
+        {
+
+        }
+
+        public class HScrollbarBackImageSetter : ImageBSetter
+        {
+            public override Color color { get; set; } = Color.gray;
+        }
+
+        public class HScrollbarHandleImageSetter : ImageBSetter
+        {
+            public override Color color { get; set; } = new Color(0.3f, 0.3f, 0.3f, 1f);
         }
 
         #endregion

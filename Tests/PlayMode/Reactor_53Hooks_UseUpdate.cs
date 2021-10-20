@@ -65,7 +65,7 @@ public class Reactor_53Hooks_UseUpdate
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useUpdate = new REtext.UseUpdate.Hook
@@ -123,7 +123,7 @@ public class Reactor_53Hooks_UseUpdate
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useUpdate = new REtext.UseUpdate.Hook
@@ -193,7 +193,7 @@ public class Reactor_53Hooks_UseUpdate
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useUpdate = new REtext.UseUpdate.Hook
@@ -265,7 +265,7 @@ public class Reactor_53Hooks_UseUpdate
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useUpdate = new REtext.UseUpdate.Hook
@@ -333,7 +333,7 @@ public class Reactor_53Hooks_UseUpdate
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useUpdate = new REtext.UseUpdate.Hook
@@ -400,7 +400,7 @@ public class Reactor_53Hooks_UseUpdate
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useUpdate = new REtext.UseUpdate.Hook

@@ -60,7 +60,7 @@ public class ReactorElements_REtext
                 {
                     new REtext
                     {
-                        propsRectTransform = () => new RectTransformBSetter
+                        propsRectTransform = () => new REtext.RectTransformSetter
                         {
                             localPosition = new Vector3(100,200),
                         }

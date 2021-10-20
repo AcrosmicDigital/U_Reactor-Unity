@@ -65,7 +65,7 @@ public class Reactor_54Hooks_UseLateUpdate
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useLateUpdate = new REtext.UseLateUpdate.Hook
@@ -123,7 +123,7 @@ public class Reactor_54Hooks_UseLateUpdate
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useLateUpdate = new REtext.UseLateUpdate.Hook
@@ -193,7 +193,7 @@ public class Reactor_54Hooks_UseLateUpdate
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useLateUpdate = new REtext.UseLateUpdate.Hook
@@ -265,7 +265,7 @@ public class Reactor_54Hooks_UseLateUpdate
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useLateUpdate = new REtext.UseLateUpdate.Hook
@@ -333,7 +333,7 @@ public class Reactor_54Hooks_UseLateUpdate
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useLateUpdate = new REtext.UseLateUpdate.Hook
@@ -400,7 +400,7 @@ public class Reactor_54Hooks_UseLateUpdate
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello World!",
                             },
                             useLateUpdate = new REtext.UseLateUpdate.Hook

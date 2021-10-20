@@ -37,18 +37,11 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter
-        {
-            width = 600,
-            height = 80,
-        };
-        public Func<ToggleBSetter> propsToggle = () => new ToggleBSetter();
-        public Func<ImageBSetter> propsBackImage = () => new ImageBSetter();
-        public Func<ImageBSetter> propsCheckImage = () => new ImageBSetter 
-        { 
-            color = Color.gray,
-        };
-        public Func<TextBSetter> propsText = () => new TextBSetter();
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<ToggleSetter> propsToggle = () => new ToggleSetter();
+        public Func<BackImageSetter> propsBackImage = () => new BackImageSetter();
+        public Func<CheckImageSetter> propsCheckImage = () => new CheckImageSetter();
+        public Func<TextSeter> propsText = () => new TextSeter();
 
         #endregion Setters
 
@@ -203,8 +196,28 @@ namespace U.Reactor
 
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 300;
-            public override float height { get; set; } = 120;
+            public override float width { get; set; } = 600;
+            public override float height { get; set; } = 80;
+        }
+
+        public class ToggleSetter : ToggleBSetter
+        {
+
+        }
+
+        public class BackImageSetter: ImageBSetter
+        {
+
+        }
+
+        public class CheckImageSetter : ImageBSetter
+        {
+            public override Color color { get; set; } = Color.gray;
+        }
+
+        public class TextSeter : TextBSetter
+        {
+
         }
 
         #endregion

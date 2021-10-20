@@ -24,12 +24,8 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter
-        {
-            width = 300,
-            height = 120,
-        };
-        public Func<TextBSetter> propsText = () => new TextBSetter();
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<TextSetter> propsText = () => new TextSetter();
 
         #endregion Setters
 
@@ -136,6 +132,11 @@ namespace U.Reactor
         {
             public override float width { get; set; } = 350;
             public override float height { get; set; } = 140;
+        }
+
+        public class TextSetter : TextBSetter
+        {
+
         }
 
         #endregion

@@ -49,7 +49,7 @@ public class Reactor_40Router
             propsGameObject = () => new GameObjectBSetter { name = "Canvas-Menu", },
             childs = () => new REbase[] {
                     new REtext {
-                        propsText = () => new TextBSetter {
+                        propsText = () => new REtext.TextSetter {
                             text = "Menu",
                         },
                     },
@@ -65,7 +65,7 @@ public class Reactor_40Router
             propsGameObject = () => new GameObjectBSetter { name = "Canvas-Home", },
             childs = () => new REbase[] {
                     new REtext {
-                        propsText = () => new TextBSetter {
+                        propsText = () => new REtext.TextSetter {
                             text = "Home",
                         },
                     },
@@ -83,7 +83,7 @@ public class Reactor_40Router
             propsGameObject = () => new GameObjectBSetter { name = "Canvas-Settings", },
             childs = () => new REbase[] {
                     new REtext {
-                        propsText = () => new TextBSetter {
+                        propsText = () => new REtext.TextSetter {
                             text = "Settings",
                         },
                     },
@@ -101,7 +101,7 @@ public class Reactor_40Router
             propsGameObject = () => new GameObjectBSetter { name = "Canvas-Default", },
             childs = () => new REbase[] {
                     new REtext {
-                        propsText = () => new TextBSetter {
+                        propsText = () => new REtext.TextSetter {
                             text = "Default",
                         },
                     },

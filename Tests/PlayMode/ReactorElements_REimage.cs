@@ -60,7 +60,7 @@ public class ReactorElements_REimage
                 {
                     new REimage
                     {
-                        propsRectTransform = () => new RectTransformBSetter
+                        propsRectTransform = () => new REimage.RectTransformSetter
                         {
                             localPosition = new Vector3(100,200),
                         }

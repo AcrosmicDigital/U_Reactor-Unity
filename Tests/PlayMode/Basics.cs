@@ -48,11 +48,11 @@ public class Basics
                 {
                     new REtext
                     {
-                        propsRectTransform = () => new RectTransformBSetter
+                        propsRectTransform = () => new REtext.RectTransformSetter
                         {
                             localPosition = new Vector3(0, 200, 0),
                         },
-                        propsText = () => new TextBSetter
+                        propsText = () => new REtext.TextSetter
                         {
                             text = "Menu Principal",
                             alignment = TextAnchor.UpperCenter,
@@ -60,7 +60,7 @@ public class Basics
                     },
                     new REimage
                     {
-                        propsRectTransform = () => new RectTransformBSetter
+                        propsRectTransform = () => new REimage.RectTransformSetter
                         {
                             localPosition = new Vector3(200, 0,0),
                         },

@@ -24,11 +24,8 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter();
-        public Func<ImageBSetter> propsImage = () => new ImageBSetter
-        {
-            color = new Color(255, 255, 255, .4f),
-        };
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<ImageSetter> propsImage = () => new ImageSetter();
 
         #endregion Setters
 
@@ -136,6 +133,11 @@ namespace U.Reactor
             public override float height { get; set; } = 0;
             public override Vector2 anchorMin { get; set; } = Vector2.zero;
             public override Vector2 anchorMax { get; set; } = Vector2.one;
+        }
+
+        public class ImageSetter : ImageBSetter
+        {
+            public override Color color { get; set; } = new Color(255, 255, 255, .4f);
         }
 
         #endregion

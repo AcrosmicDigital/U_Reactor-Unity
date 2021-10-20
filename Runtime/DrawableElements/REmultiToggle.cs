@@ -24,8 +24,8 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter { };
-        public Func<MultiToggleBSetter> propsMultiToggle = () => new MultiToggleBSetter();
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter { };
+        public Func<MultiToggleSetter> propsMultiToggle = () => new MultiToggleSetter();
 
         #endregion Setters
 
@@ -127,6 +127,11 @@ namespace U.Reactor
         {
             public override float width { get; set; } = 300;
             public override float height { get; set; } = 120;
+        }
+
+        public class MultiToggleSetter : MultiToggleBSetter
+        {
+
         }
 
         #endregion

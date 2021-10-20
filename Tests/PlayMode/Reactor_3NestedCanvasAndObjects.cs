@@ -54,7 +54,7 @@ public class Reactor_3NestedCanvasAndObjects
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello world",
                             },
                             childs = () => new REbase[]
@@ -124,7 +124,7 @@ public class Reactor_3NestedCanvasAndObjects
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello world",
                             },
                             childs = () => new REbase[]
@@ -207,7 +207,7 @@ public class Reactor_3NestedCanvasAndObjects
                             propsReactorId = () => new ReactorIdBSetter{
                                 id = "ProveText"
                             },
-                            propsText = () => new TextBSetter {
+                            propsText = () => new REtext.TextSetter {
                                 text = "Hello world",
                             },
                             childs = () => new REbase[]
@@ -286,7 +286,7 @@ public class Reactor_3NestedCanvasAndObjects
                                     propsReactorId = () => new ReactorIdBSetter{
                                         id = "ProveText"
                                     },
-                                    propsText = () => new TextBSetter {
+                                    propsText = () => new REtext.TextSetter {
                                         text = "Hello world",
                                     },
                                     childs = () => new REbase[]
@@ -378,7 +378,7 @@ public class Reactor_3NestedCanvasAndObjects
                                             propsReactorId = () => new ReactorIdBSetter{
                                                 id = "ProveText"
                                             },
-                                            propsText = () => new TextBSetter {
+                                            propsText = () => new REtext.TextSetter {
                                                 text = "Hello world",
                                             },
                                             childs = () => new REbase[]

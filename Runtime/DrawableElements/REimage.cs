@@ -24,9 +24,8 @@ namespace U.Reactor
 
         #region Setters
 
-        public Func<RectTransformBSetter> propsRectTransform = () => new RectTransformBSetter();
-
-        public Func<ImageBSetter> propsImage = () => new ImageBSetter();
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<ImageSetter> propsImage = () => new ImageSetter();
 
         #endregion Setters
 
@@ -134,6 +133,11 @@ namespace U.Reactor
         {
             public override float width { get; set; } = 300;
             public override float height { get; set; } = 300f;
+        }
+
+        public class ImageSetter : ImageBSetter
+        {
+
         }
 
         #endregion

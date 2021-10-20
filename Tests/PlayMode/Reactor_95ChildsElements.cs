@@ -63,7 +63,7 @@ public class Reactor_95ChildsElements
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextBSetter
+                        propsText = () => new REtext.TextSetter
                         {
                             text = c,
                         }
@@ -124,7 +124,7 @@ public class Reactor_95ChildsElements
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextBSetter
+                        propsText = () => new REtext.TextSetter
                         {
                             text = c,
                         }
@@ -267,7 +267,7 @@ public class Reactor_95ChildsElements
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextBSetter
+                        propsText = () => new REtext.TextSetter
                         {
                             text = c,
                         }
@@ -409,7 +409,7 @@ public class Reactor_95ChildsElements
                         {
                             new REtext
                             {
-                                propsText = () => new TextBSetter
+                                propsText = () => new REtext.TextSetter
                                 {
                                     text = c.name,
                                 }
@@ -417,7 +417,7 @@ public class Reactor_95ChildsElements
                             new REimage(),
                             new REtext
                             {
-                                propsText = () => new TextBSetter
+                                propsText = () => new REtext.TextSetter
                                 {
                                     text = "Time: " + c.time,
                                 }
@@ -483,7 +483,7 @@ public class Reactor_95ChildsElements
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextBSetter
+                        propsText = () => new REtext.TextSetter
                         {
                             text = c,
                         }
@@ -575,7 +575,7 @@ public class Reactor_95ChildsElements
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextBSetter
+                        propsText = () => new REtext.TextSetter
                         {
                             text = c,
                         }
@@ -670,7 +670,7 @@ public class Reactor_95ChildsElements
                         {
                             id = c + "Num",
                         },
-                        propsText = () => new TextBSetter
+                        propsText = () => new REtext.TextSetter
                         {
                             text = c,
                         }
