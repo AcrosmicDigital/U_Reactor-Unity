@@ -11,8 +11,8 @@ namespace U.Reactor
     public class RElabel : REchild
     {
         protected override Type elementType => this.GetType();
-        protected override string elementName => "Label";
         protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<GameObjectBSetter> PropsGameObject { get => propsGameObject; }
 
 
         #region Components
@@ -27,6 +27,8 @@ namespace U.Reactor
         #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
+
         public Func<BackImageSetter> propsImage = () => new BackImageSetter();
         public Func<TextSetter> propsText = () => new TextSetter();
 
@@ -145,6 +147,11 @@ namespace U.Reactor
 
 
         #region Subsetters
+
+        public class GameObjectSetter : GameObjectBSetter
+        {
+            public override string name { get; set; } = "Label";
+        }
 
         public class RectTransformSetter : RectTransformBSetter
         {

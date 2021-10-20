@@ -13,11 +13,12 @@ namespace U.Reactor
     public abstract partial class REbase
     {
         protected abstract Type elementType { get; }  // The type of the element, each element must everride
-        protected abstract string elementName { get; }  // The name of the element, each element must everride
         protected abstract Func<RectTransformBSetter> PropsRectTransform { get; }
+        protected abstract Func<GameObjectBSetter> PropsGameObject { get; }
 
-        // If childs mustbe created in a subobject set this value
-        protected virtual GameObject virtualParent { get; set; }
+
+        protected GameObject virtualParent { get; set; }  // If childs mustbe created in a subobject set this value
+
 
         #region <Components>
 
@@ -40,7 +41,6 @@ namespace U.Reactor
         #region <Setters>
 
         public Func<IEnumerable<REbase>> childs = () => new REbase[0];
-        public Func<GameObjectBSetter> propsGameObject = () => new GameObjectBSetter();
         public Func<ReactorIdBSetter> propsReactorId = () => new ReactorIdBSetter();
 
         #endregion </Setters>
@@ -103,7 +103,7 @@ namespace U.Reactor
                 {
                     yield return new WaitForEndOfFrame();  // Wait for rect values to be calculated
                     
-                    bool shouldEnable = propsGameObject().active;
+                    bool shouldEnable = PropsGameObject().active;
 
                     if (isDisabled)
                         shouldEnable = false;
@@ -122,7 +122,7 @@ namespace U.Reactor
                 {
                     await Task.Delay(1000); // Wait for rect values to be calculated
                     AfterCreateComponent(); // Run after create function
-                    gameObject.SetActive(propsGameObject().active); // Enable or disable
+                    gameObject.SetActive(PropsGameObject().active); // Enable or disable
                 }
             }
 
@@ -171,11 +171,9 @@ namespace U.Reactor
                 gameObject = new GameObject();
 
             // Create ainstance of gameObject properties
-            var propsGo = propsGameObject();
+            var propsGo = PropsGameObject();
 
             // Set the name
-            if (String.IsNullOrEmpty(propsGo.name))
-                propsGo.name = elementName.ToString();
             gameObject.name = propsGo.name;
 
             // Set the parent if exist

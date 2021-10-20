@@ -11,8 +11,8 @@ namespace U.Reactor
     public class REprogressBar : REbase
     {
         protected override Type elementType => this.GetType();
-        protected override string elementName => "Progress Bar";
         protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<GameObjectBSetter> PropsGameObject { get => propsGameObject; }
 
 
         #region Components
@@ -27,6 +27,8 @@ namespace U.Reactor
         #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
+
         public Func<SliderSetter> propsSlider = () => new SliderSetter();
         public Func<BackImageSetter> propsBackImage = () => new BackImageSetter();
         public Func<FillImageSetter> propsFillImage = () => new FillImageSetter();
@@ -177,6 +179,11 @@ namespace U.Reactor
 
 
         #region Subsetters
+
+        public class GameObjectSetter : GameObjectBSetter
+        {
+            public override string name { get; set; } = "Progress Bar";
+        }
 
         public class RectTransformSetter : RectTransformBSetter
         {

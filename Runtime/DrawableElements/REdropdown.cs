@@ -11,8 +11,8 @@ namespace U.Reactor
     public class REdropdown : REchild
     {
         protected override Type elementType => this.GetType();
-        protected override string elementName => "Dropdown";
         protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<GameObjectBSetter> PropsGameObject { get => propsGameObject; }
 
 
         #region Components
@@ -39,6 +39,8 @@ namespace U.Reactor
         #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
+
         public Func<DropdownSetter> propsDropdown = () => new DropdownSetter();
         public Func<BackImageSetter> propsDropdownImage = () => new BackImageSetter();
         public Func<LabelTextSetter> propsLabelText = () => new LabelTextSetter();
@@ -380,6 +382,10 @@ namespace U.Reactor
 
         #region Subsetters
 
+        public class GameObjectSetter : GameObjectBSetter
+        {
+            public override string name { get; set; } = "Dropdown";
+        }
         public class RectTransformSetter : RectTransformBSetter
         {
             public override float width { get; set; } = 400;

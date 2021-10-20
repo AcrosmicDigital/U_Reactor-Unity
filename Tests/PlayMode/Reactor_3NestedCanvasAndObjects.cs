@@ -274,7 +274,7 @@ public class Reactor_3NestedCanvasAndObjects
 
             return new REcanvas
             {
-                propsGameObject = () => new GameObjectBSetter
+                propsGameObject = () => new REcanvas.GameObjectSetter
                 {
                     name = "RootCanvas",
                 },
@@ -363,7 +363,7 @@ public class Reactor_3NestedCanvasAndObjects
 
             return new REcanvas
             {
-                propsGameObject = () => new GameObjectBSetter
+                propsGameObject = () => new REcanvas.GameObjectSetter
                 {
                     name = "RootCanvas",
                 },

@@ -11,8 +11,8 @@ namespace U.Reactor
     public class RErawImage : REchild
     {
         protected override Type elementType => this.GetType();
-        protected override string elementName => "Raw Image";
         protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<GameObjectBSetter> PropsGameObject { get => propsGameObject; }
 
 
         #region Components
@@ -25,6 +25,8 @@ namespace U.Reactor
         #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
+
         public Func<RawImageSetter> propsRawImage = () => new RawImageSetter();
 
         #endregion Setters
@@ -128,6 +130,11 @@ namespace U.Reactor
 
 
         #region Subsetters
+
+        public class GameObjectSetter : GameObjectBSetter
+        {
+            public override string name { get; set; } = "Raw Image";
+        }
 
         public class RectTransformSetter : RectTransformBSetter
         {

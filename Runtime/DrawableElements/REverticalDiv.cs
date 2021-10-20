@@ -11,8 +11,8 @@ namespace U.Reactor
     public class REverticalDiv : REchild
     {
         protected override Type elementType => this.GetType();
-        protected override string elementName => "Vertical Div";
         protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<GameObjectBSetter> PropsGameObject { get => propsGameObject; }
 
 
         #region Components
@@ -37,6 +37,8 @@ namespace U.Reactor
         #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
+
         public Func<BackImageSetter> propsBackImage = () => new BackImageSetter();
         public Func<ScrollRectSetter> propsScrollRect = () => new ScrollRectSetter();
         public Func<RectMask2DSetter> propsRectMask2D = () => new RectMask2DSetter { };
@@ -264,6 +266,11 @@ namespace U.Reactor
 
 
         #region Subsetters
+
+        public class GameObjectSetter : GameObjectBSetter
+        {
+            public override string name { get; set; } = "Vertical Div";
+        }
 
         public class RectTransformSetter : RectTransformBSetter
         {

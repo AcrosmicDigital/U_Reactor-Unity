@@ -69,24 +69,24 @@ public class Reactor_1ElementSelector
 
             return new REcanvas
             {
-                propsGameObject = () => new GameObjectBSetter { name = "CanvasMain" },
+                propsGameObject = () => new REcanvas.GameObjectSetter { name = "CanvasMain" },
                 childs = () => new REbase[] {
                         new REpanel {
-                            propsGameObject = () => new GameObjectBSetter { name = "PanelMain1" },
+                            propsGameObject = () => new REpanel.GameObjectSetter { name = "PanelMain1" },
                             childs = () => new REbase[]
                             {
                                 new REpanel {
-                                    propsGameObject = () => new GameObjectBSetter{ name = "PanelMain1-PanelChild1"},
+                                    propsGameObject = () => new REpanel.GameObjectSetter { name = "PanelMain1-PanelChild1"},
                                     childs = () => new REbase[]
                                     {
-                                        new REtext{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain1-PanelChild1-Text"} },
-                                        new REimage{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain1-PanelChild1-Image"} },
+                                        new REtext{ propsGameObject = () => new REtext.GameObjectSetter{ name = "PanelMain1-PanelChild1-Text"} },
+                                        new REimage{ propsGameObject = () => new REimage.GameObjectSetter{ name = "PanelMain1-PanelChild1-Image"} },
                                         new REpanel{
-                                            propsGameObject = () => new GameObjectBSetter{ name = "PanelMain1-PanelChild2-Panel"},
+                                            propsGameObject = () => new REpanel.GameObjectSetter{ name = "PanelMain1-PanelChild2-Panel"},
                                             childs = () => new REbase[]
                                             {
-                                                new REtext{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain1-PanelChild2-Panel-Text"} },
-                                                new REimage{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain1-PanelChild2-Panel-Image"} },
+                                                new REtext{ propsGameObject = () => new REtext.GameObjectSetter{ name = "PanelMain1-PanelChild2-Panel-Text"} },
+                                                new REimage{ propsGameObject = () => new REimage.GameObjectSetter{ name = "PanelMain1-PanelChild2-Panel-Image"} },
                                             },
                                         },
                                     },
@@ -143,36 +143,36 @@ public class Reactor_1ElementSelector
                                     },
                                 },
                                 new REpanel{
-                                    propsGameObject = () => new GameObjectBSetter{ name = "PanelMain1-PanelChild2"},
+                                    propsGameObject = () => new REpanel.GameObjectSetter{ name = "PanelMain1-PanelChild2"},
                                     childs = () => new REbase[]
                                     {
-                                        new REtext{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain1-PanelChild2-Text"} },
-                                        new REimage{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain1-PanelChild2-Image"} },
+                                        new REtext{ propsGameObject = () => new REtext.GameObjectSetter{ name = "PanelMain1-PanelChild2-Text"} },
+                                        new REimage{ propsGameObject = () => new REimage.GameObjectSetter{ name = "PanelMain1-PanelChild2-Image"} },
                                     },
                                 },
-                                new REpanel{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain1-PanelChild3"} },
-                                new REpanel{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain1-PanelChild4"} },
+                                new REpanel{ propsGameObject = () => new REpanel.GameObjectSetter{ name = "PanelMain1-PanelChild3"} },
+                                new REpanel{ propsGameObject = () => new REpanel.GameObjectSetter{ name = "PanelMain1-PanelChild4"} },
                             },
                         },
                         new REpanel {
-                            propsGameObject = () => new GameObjectBSetter { name = "PanelMain2" },
+                            propsGameObject = () => new REpanel.GameObjectSetter { name = "PanelMain2" },
                             childs = () => new REbase[]
                             {
-                                new REpanel{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain2-PanelChild1"} },
-                                new REpanel{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain2-PanelChild2"} },
-                                new REpanel{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain2-PanelChild3"} },
+                                new REpanel{ propsGameObject = () => new REpanel.GameObjectSetter{ name = "PanelMain2-PanelChild1"} },
+                                new REpanel{ propsGameObject = () => new REpanel.GameObjectSetter{ name = "PanelMain2-PanelChild2"} },
+                                new REpanel{ propsGameObject = () => new REpanel.GameObjectSetter{ name = "PanelMain2-PanelChild3"} },
                                 new REpanel {
-                                    propsGameObject = () => new GameObjectBSetter{ name = "PanelMain2-PanelChild4"},
+                                    propsGameObject = () => new REpanel.GameObjectSetter{ name = "PanelMain2-PanelChild4"},
                                     childs = () => new REbase[]
                                     {
-                                        new REtext{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain2-PanelChild4-Text"} },
-                                        new REimage{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain2-PanelChild4-Image"} },
+                                        new REtext{ propsGameObject = () => new REtext.GameObjectSetter{ name = "PanelMain2-PanelChild4-Text"} },
+                                        new REimage{ propsGameObject = () => new REimage.GameObjectSetter{ name = "PanelMain2-PanelChild4-Image"} },
                                     },
                                 },
                             },
                         },
-                        new REpanel{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain3"} },
-                        new REpanel{ propsGameObject = () => new GameObjectBSetter{ name = "PanelMain4"} },
+                        new REpanel{ propsGameObject = () => new REpanel.GameObjectSetter{ name = "PanelMain3"} },
+                        new REpanel{ propsGameObject = () => new REpanel.GameObjectSetter{ name = "PanelMain4"} },
                     },
 
 

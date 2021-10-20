@@ -39,7 +39,7 @@ public class Basics
             return new REcanvas
             {
 
-                propsGameObject = () => new GameObjectBSetter
+                propsGameObject = () => new REcanvas.GameObjectSetter
                 {
                     name = "Canvas-Principal",
                 },

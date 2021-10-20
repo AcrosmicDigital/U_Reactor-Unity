@@ -11,10 +11,10 @@ namespace U.Reactor
     public class REbutton : REchild
     {
         protected override Type elementType => this.GetType();
-        protected override string elementName => "Button";
         protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
+        protected override Func<GameObjectBSetter> PropsGameObject { get => propsGameObject; }
 
-        
+
         #region Components
 
         protected RectTransform rectTransform;
@@ -28,6 +28,8 @@ namespace U.Reactor
         #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
+        public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
+
         public Func<TextSetter> propsText = () => new TextSetter();
         public Func<ImageSetter> propsImage = () => new ImageSetter();
         public Func<ButtonSetter> propsButton = () => new ButtonSetter();
@@ -154,6 +156,10 @@ namespace U.Reactor
 
         #region Subsetters
 
+        public class GameObjectSetter : GameObjectBSetter
+        {
+            public override string name { get; set; } = "Button";
+        }
         public class RectTransformSetter : RectTransformBSetter
         {
             public override float width { get; set; } = 300;

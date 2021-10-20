@@ -51,7 +51,7 @@ public class ReactorElements_REbutton
             return new REcanvas
             {
 
-                propsGameObject = () => new GameObjectBSetter
+                propsGameObject = () => new REcanvas.GameObjectSetter
                 {
                     name = "Canvas-Principal",
                 },
