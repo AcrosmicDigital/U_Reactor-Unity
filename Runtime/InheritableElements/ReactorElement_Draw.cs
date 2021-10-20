@@ -15,9 +15,9 @@ namespace U.Reactor
         protected abstract Type elementType { get; }  // The type of the element, each element must everride
         protected abstract Func<RectTransformBSetter> PropsRectTransform { get; }
         protected abstract Func<GameObjectBSetter> PropsGameObject { get; }
+        protected abstract Func<ReactorIdBSetter> PropsReactorId { get; }
 
 
-        protected GameObject virtualParent { get; set; }  // If childs mustbe created in a subobject set this value
 
 
         #region <Components>
@@ -30,20 +30,14 @@ namespace U.Reactor
 
         #region <Properties>
 
+        protected GameObject virtualParent { get; set; }  // If childs mustbe created in a subobject set this value
         protected GameObject gameObject;
         protected GameObject parent; // The parent GameObject
         protected List<REbase> childsList = new List<REbase>();
         protected bool isDisabled = false;
+        public Func<IEnumerable<REbase>> childs = () => new REbase[0];
 
         #endregion </Properties>
-
-
-        #region <Setters>
-
-        public Func<IEnumerable<REbase>> childs = () => new REbase[0];
-        public Func<ReactorIdBSetter> propsReactorId = () => new ReactorIdBSetter();
-
-        #endregion </Setters>
 
 
         #region <Hooks>
@@ -194,7 +188,7 @@ namespace U.Reactor
 
             // Add rectTransform
             rectTransformCmp = PropsRectTransform().Set(gameObject);
-            elementIdCmp = propsReactorId().Set(elementType, gameObject);
+            elementIdCmp = PropsReactorId().Set(elementType, gameObject);
         }
 
         protected abstract void AddComponents();

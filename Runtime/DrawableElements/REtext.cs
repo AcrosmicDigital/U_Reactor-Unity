@@ -11,8 +11,10 @@ namespace U.Reactor
     public class REtext : REchild
     {
         protected override Type elementType => this.GetType();
-        protected override Func<RectTransformBSetter> PropsRectTransform { get => propsRectTransform; }
-        protected override Func<GameObjectBSetter> PropsGameObject { get => propsGameObject; }
+        protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
+        protected override Func<GameObjectBSetter> PropsGameObject => propsGameObject;
+        protected override Func<ReactorIdBSetter> PropsReactorId => propsReactorId;
+        protected override Func<CanvasRendererBSetter> PropsCanvasRenderer => propsCanvasRenderer;
 
 
         #region Components
@@ -24,8 +26,12 @@ namespace U.Reactor
 
         #region Setters
 
+        // Base
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
         public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
+        public Func<ReactorIdSetter> propsReactorId = () => new ReactorIdSetter();
+        // Child
+        public Func<CanvasRendererSetter> propsCanvasRenderer = () => new CanvasRendererSetter();
 
         public Func<TextSetter> propsText = () => new TextSetter();
 
@@ -129,6 +135,16 @@ namespace U.Reactor
 
 
         #region Subsetters
+
+        public class CanvasRendererSetter : CanvasRendererBSetter
+        {
+
+        }
+
+        public class ReactorIdSetter : ReactorIdBSetter
+        {
+
+        }
 
         public class GameObjectSetter : GameObjectBSetter
         {

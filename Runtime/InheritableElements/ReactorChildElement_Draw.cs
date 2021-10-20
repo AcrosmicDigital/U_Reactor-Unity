@@ -9,8 +9,9 @@ namespace U.Reactor
 {
     // Add URelementId, RectTransform, CanvasRenderer
     public abstract class REchild : REbase
-    { 
+    {
 
+        protected abstract Func<CanvasRendererBSetter> PropsCanvasRenderer { get; }
 
         #region <Components>
 
@@ -19,19 +20,11 @@ namespace U.Reactor
         #endregion </Components>
 
 
-        #region <Setters>
-
-        // Gameobject
-        public Func<CanvasRendererBSetter> propsCanvasRenderer = () => new CanvasRendererBSetter();
-
-        #endregion </Setters>
-
-
         protected override void CreateRoot(GameObject parent)
         {
             base.CreateRoot(parent);
 
-            canvasRendererCmp = propsCanvasRenderer().Set(gameObject);
+            canvasRendererCmp = PropsCanvasRenderer().Set(gameObject);
 
         }
 
