@@ -8,7 +8,7 @@ using UnityEngine;
 namespace U.Reactor
 {
     // Add URelementId, RectTransform, CanvasRenderer
-    public abstract class ReactorChildElement : ReactorElement
+    public abstract class REchild : REbase
     { 
 
 

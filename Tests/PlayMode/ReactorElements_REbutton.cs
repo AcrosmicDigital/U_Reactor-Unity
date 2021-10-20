@@ -56,7 +56,7 @@ public class ReactorElements_REbutton
                     name = "Canvas-Principal",
                 },
 
-                childs = () => new ReactorElement[]
+                childs = () => new REbase[]
                 {
                     new REbutton
                     {

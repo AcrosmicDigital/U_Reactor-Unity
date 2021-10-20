@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REhorizontalForm : ReactorChildElement
+    public class REhorizontalDiv : REchild
     {
         protected override string elementType => "Horizontal Form";
 

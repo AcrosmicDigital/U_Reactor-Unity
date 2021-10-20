@@ -56,7 +56,7 @@ public class ReactorElements_REimage
                     name = "Canvas-Principal",
                 },
 
-                childs = () => new ReactorElement[]
+                childs = () => new REbase[]
                 {
                     new REimage
                     {

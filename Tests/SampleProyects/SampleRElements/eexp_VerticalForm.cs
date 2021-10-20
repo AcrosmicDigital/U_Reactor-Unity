@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using U.Reactor;
 using UnityEngine;
 
-public class eexp_HorizontalForm : MonoBehaviour
+public class eexp_VerticalForm : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class eexp_HorizontalForm : MonoBehaviour
                     name = "Canvas-Principal",
                 },
 
-                childs = () => new ReactorElement[]
+                childs = () => new REbase[]
                 {
                     //new REtext
                     //{
@@ -50,9 +50,9 @@ public class eexp_HorizontalForm : MonoBehaviour
                     //        localPosition = new Vector3(-200, 0,0),
                     //    },
                     //},
-                    new REhorizontalForm
+                    new REverticalDiv
                     {
-                        childs = () => new ReactorElement[]
+                        childs = () => new REbase[]
                         {
                             new REtext
                             {

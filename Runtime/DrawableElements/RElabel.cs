@@ -8,24 +8,27 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class RErawImage : REchild
+    public class RElabel : REchild
     {
-        protected override string elementType => "Image";
+        protected override string elementType => "Label";
+
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region <Components>
 
-        protected RawImage rawImageCmp = null;
+        protected RectTransform rectTransform;
+        protected Image imageCmp;
+        protected Text textCmp;
 
         #endregion </Components>
 
 
         #region <Setters>
 
-        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterImage();
-
-        public Func<RawImageSetter> propsRawImage = () => new RawImageSetter();
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterButton();
+        public Func<ImageSetter> propsImage = () => new ImageSetter();
+        public Func<TextSetter> propsText = () => new TextSetterButton();
 
         #endregion </Setters>
 
@@ -48,16 +51,24 @@ namespace U.Reactor
         #endregion </Hooks>
 
 
+
         protected override void AddComponents()
         {
+            // Agrega los componentes del Button
+            var textGO = InstanciateUIObject("Text", gameObject);
 
-            rawImageCmp = propsRawImage().Set(gameObject);
+            imageCmp = propsImage().Set(gameObject);
+            textCmp = propsText().Set(textGO);
 
-        }
-
-        protected override ElementSelector AddSelector()
-        {
-            return new Selector(gameObject, elementIdCmp, rectTransformCmp, canvasRendererCmp, rawImageCmp);
+            // Text rectT
+            new RectTransformSetter()
+            {
+                anchorMin = Vector2.zero,
+                anchorMax = Vector2.one,
+                sizeDelta = Vector2.zero,
+                offsetMin = Vector2.zero,
+                offsetMax = Vector2.zero,
+            }.SetByAnchors(textGO.GetComponent<RectTransform>());
         }
 
         protected override void AddHooks()
@@ -75,33 +86,42 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
+        protected override ElementSelector AddSelector()
+        {
+            var sel = new Selector(gameObject, elementIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, imageCmp);
 
+            return sel;
+        }
 
 
         public class Selector : ChildElementSelector
         {
 
-            public RawImage rawImage { get; private set; }
+            public Image image { get; private set; }
+            public Text textCmp { get; private set; }
+
 
             internal Selector(
                 GameObject gameObject,
                 ElementId pieceId,
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
-                RawImage rawImage
+                Text textCmp,
+                Image image
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
-                this.rawImage = rawImage;
+                this.image = image;
+                this.textCmp = textCmp;
             }
-
 
             internal override void Destroy()
             {
                 base.Destroy();
-                rawImage = null;
+
+                image = null;
+                textCmp = null;
             }
         }
-
 
         public class UseEffect : UseEffect<Selector, UseEffect> { }
         public class UseApplicationEvents : UseApplicationEvents<Selector, UseApplicationEvents> { }
@@ -114,10 +134,6 @@ namespace U.Reactor
         public class UseSelectEvents : UseSelectEvents<Selector, UseSelectEvents> { }
         public class UseSubmitEvents : UseSubtitEvents<Selector, UseSubmitEvents> { }
         public class UseUpdate : UseUpdate<Selector, UseUpdate> { }
-
-
-
-
 
 
 

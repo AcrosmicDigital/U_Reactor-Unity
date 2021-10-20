@@ -405,7 +405,7 @@ public class Reactor_95ChildsElements
                         {
                             id = c.number + "",
                         },
-                        childs = () => new ReactorElement[]
+                        childs = () => new REbase[]
                         {
                             new REtext
                             {
@@ -437,15 +437,15 @@ public class Reactor_95ChildsElements
         Debug.Log("Drawing");
         routerProve.Draw();
 
-        Assert.IsTrue(ReactorElement.FindOne("#" + levels[0].number + "").brothers.Length == 4);
+        Assert.IsTrue(REbase.FindOne("#" + levels[0].number + "").brothers.Length == 4);
 
         Debug.Log("Childs");
         foreach (var level in levels)
         {
             //Debug.Log("Child: " + "#" + word + "Num" + " == " + word);
             //Debug.Log("Child: " + ReactorElement.Find<REtext.Selector>("#" + word + "Num")[0].textCmp.text + " == " + word);
-            Assert.IsTrue(((REtext.Selector)ReactorElement.FindOne("#" + level.number + "").childs[0]).textCmp.text == level.name);
-            Assert.IsTrue(((REtext.Selector)ReactorElement.FindOne("#" + level.number + "").childs[2]).textCmp.text == "Time: " + level.time);
+            Assert.IsTrue(((REtext.Selector)REbase.FindOne("#" + level.number + "").childs[0]).textCmp.text == level.name);
+            Assert.IsTrue(((REtext.Selector)REbase.FindOne("#" + level.number + "").childs[2]).textCmp.text == "Time: " + level.time);
         }
 
         routerProve.Erase();
@@ -503,8 +503,8 @@ public class Reactor_95ChildsElements
         routerProve.Draw();
 
         // First check
-        Debug.Log("Childs: " + ReactorElement.FindOne("#MainCanvas").childs.Length);
-        Assert.IsTrue(ReactorElement.FindOne("#MainCanvas").childs.Length == 0);
+        Debug.Log("Childs: " + REbase.FindOne("#MainCanvas").childs.Length);
+        Assert.IsTrue(REbase.FindOne("#MainCanvas").childs.Length == 0);
 
 
 
@@ -526,8 +526,8 @@ public class Reactor_95ChildsElements
         listState.SetState(fetchData);
 
         // Check
-        Debug.Log("Childs: " + ReactorElement.FindOne("#MainCanvas").childs.Length);
-        Assert.IsTrue(ReactorElement.FindOne("#MainCanvas").childs.Length == 4);
+        Debug.Log("Childs: " + REbase.FindOne("#MainCanvas").childs.Length);
+        Assert.IsTrue(REbase.FindOne("#MainCanvas").childs.Length == 4);
 
         Debug.Log("Childs");
         foreach (var word in listState.value)
@@ -690,8 +690,8 @@ public class Reactor_95ChildsElements
         routerProve.Draw();
 
         // First check
-        Debug.Log("Childs: " + ReactorElement.FindOne("#MainCanvas").childs.Length);
-        Assert.IsTrue(ReactorElement.FindOne("#MainCanvas").childs.Length == 0);
+        Debug.Log("Childs: " + REbase.FindOne("#MainCanvas").childs.Length);
+        Assert.IsTrue(REbase.FindOne("#MainCanvas").childs.Length == 0);
 
 
 
@@ -705,16 +705,16 @@ public class Reactor_95ChildsElements
         listState.value.Add("Cat");
 
         // Check, childs are 0, because the useState will not trigger if .SetState is not used
-        Debug.Log("Childs: " + ReactorElement.FindOne("#MainCanvas").childs.Length);
-        Assert.IsTrue(ReactorElement.FindOne("#MainCanvas").childs.Length == 0);
+        Debug.Log("Childs: " + REbase.FindOne("#MainCanvas").childs.Length);
+        Assert.IsTrue(REbase.FindOne("#MainCanvas").childs.Length == 0);
 
 
 
         // But can be triggered manually
         listState.SetState();
         // Check, childs are 2, because the useState will not trigger if .SetState is not used
-        Debug.Log("Childs: " + ReactorElement.FindOne("#MainCanvas").childs.Length);
-        Assert.IsTrue(ReactorElement.FindOne("#MainCanvas").childs.Length == 2);
+        Debug.Log("Childs: " + REbase.FindOne("#MainCanvas").childs.Length);
+        Assert.IsTrue(REbase.FindOne("#MainCanvas").childs.Length == 2);
 
 
 

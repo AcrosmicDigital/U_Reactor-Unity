@@ -44,7 +44,7 @@ public class Basics
                     name = "Canvas-Principal",
                 },
 
-                childs = () => new ReactorElement[]
+                childs = () => new REbase[]
                 {
                     new REtext
                     {
@@ -86,7 +86,7 @@ public class Basics
 
         Debug.Log("Hola");
 
-        yield return new WaitForSecondsRealtime(50);
+        yield return new WaitForSecondsRealtime(5);
 
         canvas.Erase();
     }

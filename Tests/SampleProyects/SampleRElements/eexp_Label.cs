@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using U.Reactor;
 using UnityEngine;
 
-public class eexp_Dropdown : MonoBehaviour
+public class eexp_Label : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class eexp_Dropdown : MonoBehaviour
                     name = "Canvas-Principal",
                 },
 
-                childs = () => new ReactorElement[]
+                childs = () => new REbase[]
                 {
                     //new REtext
                     //{
@@ -50,8 +50,9 @@ public class eexp_Dropdown : MonoBehaviour
                     //        localPosition = new Vector3(-200, 0,0),
                     //    },
                     //},
-                    new REdropdown
+                    new RElabel
                     {
+
                     },
 
                 }

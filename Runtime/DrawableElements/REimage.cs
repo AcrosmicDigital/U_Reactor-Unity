@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REimage : ReactorChildElement
+    public class REimage : REchild
     {
         protected override string elementType => "Image";
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }

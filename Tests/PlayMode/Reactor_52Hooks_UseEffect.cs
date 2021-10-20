@@ -59,7 +59,7 @@ public class Reactor_52Hooks_UseEffect
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -153,7 +153,7 @@ public class Reactor_52Hooks_UseEffect
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -246,7 +246,7 @@ public class Reactor_52Hooks_UseEffect
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -318,7 +318,7 @@ public class Reactor_52Hooks_UseEffect
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -418,7 +418,7 @@ public class Reactor_52Hooks_UseEffect
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -532,7 +532,7 @@ public class Reactor_52Hooks_UseEffect
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -615,7 +615,7 @@ public class Reactor_52Hooks_UseEffect
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -683,7 +683,7 @@ public class Reactor_52Hooks_UseEffect
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -764,7 +764,7 @@ public class Reactor_52Hooks_UseEffect
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -808,7 +808,7 @@ public class Reactor_52Hooks_UseEffect
 
         // Hide the element
         routerProve.Hide();
-        Assert.IsFalse(((REcanvas.Selector)ReactorElement.Find("#ProveText")[0].root).canvas.enabled);
+        Assert.IsFalse(((REcanvas.Selector)REbase.Find("#ProveText")[0].root).canvas.enabled);
 
         // Second check and hook must be runner 2
         yield return new WaitForSecondsRealtime(1f);
@@ -819,7 +819,7 @@ public class Reactor_52Hooks_UseEffect
 
         // Enable and check
         routerProve.Show();
-        Assert.IsTrue(((REcanvas.Selector)ReactorElement.Find("#ProveText")[0].root).canvas.enabled);
+        Assert.IsTrue(((REcanvas.Selector)REbase.Find("#ProveText")[0].root).canvas.enabled);
 
         // Thirh check and hook must be runner 3
         yield return new WaitForSecondsRealtime(1f);
@@ -847,7 +847,7 @@ public class Reactor_52Hooks_UseEffect
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -891,7 +891,7 @@ public class Reactor_52Hooks_UseEffect
 
         // Hide the element
         routerProve.Disable();
-        Assert.IsFalse(ReactorElement.Find("#ProveText")[0].gameObject.activeInHierarchy);
+        Assert.IsFalse(REbase.Find("#ProveText")[0].gameObject.activeInHierarchy);
 
 
         // Second check and hook must be runner 2
@@ -903,7 +903,7 @@ public class Reactor_52Hooks_UseEffect
 
         // Enable and check
         routerProve.Enable();
-        Assert.IsTrue(ReactorElement.Find("#ProveText")[0].gameObject.activeInHierarchy);
+        Assert.IsTrue(REbase.Find("#ProveText")[0].gameObject.activeInHierarchy);
 
         // Thirh check and hook must be runner 3
         yield return new WaitForSecondsRealtime(1f);
@@ -931,7 +931,7 @@ public class Reactor_52Hooks_UseEffect
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -1004,7 +1004,7 @@ public class Reactor_52Hooks_UseEffect
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter
                             {

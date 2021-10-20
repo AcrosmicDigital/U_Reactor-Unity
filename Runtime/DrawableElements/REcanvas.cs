@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace U.Reactor
 {
     // Add URelementId, RectTransform, Canvas, CanvasScaler, GraphicRaycaster, CanvasGroup
-    public class REcanvas : ReactorElement
+    public class REcanvas : REbase
     {
         protected override string elementType => "Canvas";
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }

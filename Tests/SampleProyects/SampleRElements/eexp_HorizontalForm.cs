@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using U.Reactor;
 using UnityEngine;
 
-public class eexp_InputField : MonoBehaviour
+public class eexp_HorizontalForm : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class eexp_InputField : MonoBehaviour
                     name = "Canvas-Principal",
                 },
 
-                childs = () => new ReactorElement[]
+                childs = () => new REbase[]
                 {
                     //new REtext
                     //{
@@ -50,8 +50,29 @@ public class eexp_InputField : MonoBehaviour
                     //        localPosition = new Vector3(-200, 0,0),
                     //    },
                     //},
-                    new REinputField
+                    new REhorizontalDiv
                     {
+                        childs = () => new REbase[]
+                        {
+                            new REtext
+                            {
+                                propsText = () => new TextSetter
+                                {
+                                    text = "Header",
+                                },
+                            },
+                            new REtext{},
+                            new REtext{},
+                            new REtext{},
+                            new REtext{},
+                            new REtext
+                            {
+                                propsText = () => new TextSetter
+                                {
+                                    text = "Footer",
+                                },
+                            },
+                        },
                     },
 
                 }

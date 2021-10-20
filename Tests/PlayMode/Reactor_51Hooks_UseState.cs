@@ -52,7 +52,7 @@ public class Reactor_51Hooks_UseState
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -128,7 +128,7 @@ public class Reactor_51Hooks_UseState
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -193,7 +193,7 @@ public class Reactor_51Hooks_UseState
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -223,50 +223,50 @@ public class Reactor_51Hooks_UseState
 
         // Hide the element
         routerProve.Hide();
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
 
         // Change the states
         wordState.SetState("NewWord");
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "NewWord");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
         wordState.SetState("OtherWord");
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "OtherWord");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
         wordState.PrevState();
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "NewWord");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
         wordState.SetState("OtherWord");
         wordState.SetState("Word");
         wordState.SetState("LastWord");
         wordState.SetState("FinalWord");
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "FinalWord");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
         wordState.PrevState(1);
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "LastWord");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
         wordState.PrevState(2);
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "OtherWord");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
         wordState.PrevState(10);
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "Hola a todos !!");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
         wordState.PrevState();
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "Hola a todos !!");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
         Debug.Log("Check");
 
         // Enable and check
         routerProve.Show();
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "Hola a todos !!");
-        Assert.IsTrue(ReactorElement.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsTrue(REbase.FindOne("#ProveText").root.canvas.enabled);
         Debug.Log("Check");
 
 
@@ -288,7 +288,7 @@ public class Reactor_51Hooks_UseState
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -318,49 +318,49 @@ public class Reactor_51Hooks_UseState
 
         // Hide the element
         routerProve.Disable();
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").gameObject.activeInHierarchy);
+        Assert.IsFalse(REbase.FindOne("#ProveText").gameObject.activeInHierarchy);
 
         // Change the states
         wordState.SetState("NewWord");
         Debug.Log("Check");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").gameObject.activeInHierarchy);
+        Assert.IsFalse(REbase.FindOne("#ProveText").gameObject.activeInHierarchy);
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "NewWord");
         wordState.SetState("OtherWord");
         Debug.Log("Check");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").gameObject.activeInHierarchy);
+        Assert.IsFalse(REbase.FindOne("#ProveText").gameObject.activeInHierarchy);
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "OtherWord");
         wordState.PrevState();
         Debug.Log("Check");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").gameObject.activeInHierarchy);
+        Assert.IsFalse(REbase.FindOne("#ProveText").gameObject.activeInHierarchy);
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "NewWord");
         wordState.SetState("OtherWord");
         wordState.SetState("Word");
         wordState.SetState("LastWord");
         wordState.SetState("FinalWord");
         Debug.Log("Check");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").gameObject.activeInHierarchy);
+        Assert.IsFalse(REbase.FindOne("#ProveText").gameObject.activeInHierarchy);
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "FinalWord");
         wordState.PrevState(1);
         Debug.Log("Check");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").gameObject.activeInHierarchy);
+        Assert.IsFalse(REbase.FindOne("#ProveText").gameObject.activeInHierarchy);
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "LastWord");
         wordState.PrevState(2);
         Debug.Log("Check");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").gameObject.activeInHierarchy);
+        Assert.IsFalse(REbase.FindOne("#ProveText").gameObject.activeInHierarchy);
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "OtherWord");
         wordState.PrevState(10);
         Debug.Log("Check");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").gameObject.activeInHierarchy);
+        Assert.IsFalse(REbase.FindOne("#ProveText").gameObject.activeInHierarchy);
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "Hola a todos !!");
         wordState.PrevState();
         Debug.Log("Check");
-        Assert.IsFalse(ReactorElement.FindOne("#ProveText").gameObject.activeInHierarchy);
+        Assert.IsFalse(REbase.FindOne("#ProveText").gameObject.activeInHierarchy);
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "Hola a todos !!");
         Debug.Log("Check");
 
         // Enable and check
         routerProve.Enable();
-        Assert.IsTrue(ReactorElement.FindOne("#ProveText").gameObject.activeInHierarchy);
+        Assert.IsTrue(REbase.FindOne("#ProveText").gameObject.activeInHierarchy);
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "Hola a todos !!");
         Debug.Log("Check");
 
@@ -394,7 +394,7 @@ public class Reactor_51Hooks_UseState
                 {
                     alphaState,
                 },
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext (),
                     },
 
@@ -414,7 +414,7 @@ public class Reactor_51Hooks_UseState
 
         // Hide the element
         routerProve.Hide();
-        Assert.IsFalse(ReactorElement.FindOne("#ProveCanvas").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveCanvas").root.canvas.enabled);
 
         // Change the states
         alphaState.SetState(.33f);
@@ -462,7 +462,7 @@ public class Reactor_51Hooks_UseState
                 {
                     alphaState,
                 },
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext (),
                     },
 
@@ -482,7 +482,7 @@ public class Reactor_51Hooks_UseState
 
         // Hide the element
         routerProve.Disable();
-        Assert.IsFalse(ReactorElement.FindOne("#ProveCanvas").gameObject.activeSelf);
+        Assert.IsFalse(REbase.FindOne("#ProveCanvas").gameObject.activeSelf);
 
         // Change the states
         alphaState.SetState(.33f);
@@ -490,20 +490,20 @@ public class Reactor_51Hooks_UseState
 
         // Will disable after one frame, because need to be active to calculate all the rect transform parameters
         yield return new WaitForSecondsRealtime(.3f);
-        Assert.IsFalse(ReactorElement.FindOne("#ProveCanvas").gameObject.activeSelf);
+        Assert.IsFalse(REbase.FindOne("#ProveCanvas").gameObject.activeSelf);
 
         alphaState.SetState(.66f);
         // Will disable after one frame, because need to be active to calculate all the rect transform parameters
         yield return new WaitForSecondsRealtime(.3f);
         Assert.IsTrue(REcanvas.FindOne("#ProveCanvas").canvasGroup.alpha == .66f);
-        Assert.IsFalse(ReactorElement.FindOne("#ProveCanvas").gameObject.activeSelf);
+        Assert.IsFalse(REbase.FindOne("#ProveCanvas").gameObject.activeSelf);
 
         alphaState.PrevState();
 
         // Will disable after one frame, because need to be active to calculate all the rect transform parameters
         yield return new WaitForSecondsRealtime(.3f);
         Assert.IsTrue(REcanvas.FindOne("#ProveCanvas").canvasGroup.alpha == .33f);
-        Assert.IsFalse(ReactorElement.FindOne("#ProveCanvas").gameObject.activeSelf);
+        Assert.IsFalse(REbase.FindOne("#ProveCanvas").gameObject.activeSelf);
 
 
         // Enable and check
@@ -511,7 +511,7 @@ public class Reactor_51Hooks_UseState
         // Will disable after one frame, because need to be active to calculate all the rect transform parameters
         yield return new WaitForSecondsRealtime(.3f);
         Assert.IsTrue(REcanvas.FindOne("#ProveCanvas").canvasGroup.alpha == .33f);
-        Assert.IsTrue(ReactorElement.FindOne("#ProveCanvas").gameObject.activeSelf);
+        Assert.IsTrue(REbase.FindOne("#ProveCanvas").gameObject.activeSelf);
 
 
         yield return new WaitForSecondsRealtime(2);
@@ -533,7 +533,7 @@ public class Reactor_51Hooks_UseState
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -597,7 +597,7 @@ public class Reactor_51Hooks_UseState
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -667,7 +667,7 @@ public class Reactor_51Hooks_UseState
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter
                             {
@@ -756,8 +756,8 @@ public class Reactor_51Hooks_UseState
         routerProve.Draw();
 
         // First check
-        Debug.Log("Childs: " + ReactorElement.FindOne("#MainCanvas").childs.Length);
-        Assert.IsTrue(ReactorElement.FindOne("#MainCanvas").childs.Length == 0);
+        Debug.Log("Childs: " + REbase.FindOne("#MainCanvas").childs.Length);
+        Assert.IsTrue(REbase.FindOne("#MainCanvas").childs.Length == 0);
 
 
 
@@ -771,16 +771,16 @@ public class Reactor_51Hooks_UseState
         listState.value.Add("Cat");
 
         // Check, childs are 0, because the useState will not trigger if .SetState is not used
-        Debug.Log("Childs: " + ReactorElement.FindOne("#MainCanvas").childs.Length);
-        Assert.IsTrue(ReactorElement.FindOne("#MainCanvas").childs.Length == 0);
+        Debug.Log("Childs: " + REbase.FindOne("#MainCanvas").childs.Length);
+        Assert.IsTrue(REbase.FindOne("#MainCanvas").childs.Length == 0);
 
 
 
         // But can be triggered manually
         listState.SetState();
         // Check, childs are 2, because the useState will not trigger if .SetState is not used
-        Debug.Log("Childs: " + ReactorElement.FindOne("#MainCanvas").childs.Length);
-        Assert.IsTrue(ReactorElement.FindOne("#MainCanvas").childs.Length == 2);
+        Debug.Log("Childs: " + REbase.FindOne("#MainCanvas").childs.Length);
+        Assert.IsTrue(REbase.FindOne("#MainCanvas").childs.Length == 2);
 
 
 
@@ -839,8 +839,8 @@ public class Reactor_51Hooks_UseState
         routerProve.Draw();
 
         // First check
-        Debug.Log("Childs: " + ReactorElement.FindOne("#MainCanvas").childs.Length);
-        Assert.IsTrue(ReactorElement.FindOne("#MainCanvas").childs.Length == 0);
+        Debug.Log("Childs: " + REbase.FindOne("#MainCanvas").childs.Length);
+        Assert.IsTrue(REbase.FindOne("#MainCanvas").childs.Length == 0);
 
 
 
@@ -862,8 +862,8 @@ public class Reactor_51Hooks_UseState
         listState.SetState(fetchData);
 
         // Check
-        Debug.Log("Childs: " + ReactorElement.FindOne("#MainCanvas").childs.Length);
-        Assert.IsTrue(ReactorElement.FindOne("#MainCanvas").childs.Length == 4);
+        Debug.Log("Childs: " + REbase.FindOne("#MainCanvas").childs.Length);
+        Assert.IsTrue(REbase.FindOne("#MainCanvas").childs.Length == 4);
 
         Debug.Log("Childs");
         foreach (var word in listState.value)

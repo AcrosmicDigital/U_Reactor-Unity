@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using U.Reactor;
 using UnityEngine;
 
-public class eexp_Panel : MonoBehaviour
+public class eexp_MultiToggle : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class eexp_Panel : MonoBehaviour
                     name = "Canvas-Principal",
                 },
 
-                childs = () => new ReactorElement[]
+                childs = () => new REbase[]
                 {
                     //new REtext
                     //{
@@ -50,27 +50,33 @@ public class eexp_Panel : MonoBehaviour
                     //        localPosition = new Vector3(-200, 0,0),
                     //    },
                     //},
-                    new REpanel
+                    new REmultiToggle
                     {
-                        childs = () => new ReactorElement[]
+                        childs = () => new REbase[]
                         {
-                            new REtext
+                            new REtoggle
                             {
-                                propsText = () => new TextSetter
-                                {
-                                    text = "Header",
-                                },
+                                name = "Reed",
+                                number = 1,
+                                value = 1.1f,
                             },
-                            new REtext{},
-                            new REtext{},
-                            new REtext{},
-                            new REtext{},
-                            new REtext
+                            new REtoggle
                             {
-                                propsText = () => new TextSetter
-                                {
-                                    text = "Footer",
-                                },
+                                name = "Blaack",
+                                number = 2,
+                                value = 2.2f,
+                            },
+                            new REtoggle
+                            {
+                                name = "Green",
+                                number = 3,
+                                value = 3.3f,
+                            },
+                            new REtoggle
+                            {
+                                name = "Bluue",
+                                number = 4,
+                                value = 4.4f,
                             },
                         },
                     },

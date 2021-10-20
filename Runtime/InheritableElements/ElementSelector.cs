@@ -102,7 +102,7 @@ namespace U.Reactor
             this.parent = parent;
         }
 
-        internal void SetChilds(List<ReactorElement> childs)
+        internal void SetChilds(List<REbase> childs)
         {
             this.childs = childs.Select(c => c.selector).ToArray();
         }

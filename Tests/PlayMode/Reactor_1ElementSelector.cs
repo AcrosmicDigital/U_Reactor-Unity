@@ -70,20 +70,20 @@ public class Reactor_1ElementSelector
             return new REcanvas
             {
                 propsGameObject = () => new GameObjectSetter { name = "CanvasMain" },
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REpanel {
                             propsGameObject = () => new GameObjectSetter { name = "PanelMain1" },
-                            childs = () => new ReactorElement[]
+                            childs = () => new REbase[]
                             {
                                 new REpanel {
                                     propsGameObject = () => new GameObjectSetter{ name = "PanelMain1-PanelChild1"},
-                                    childs = () => new ReactorElement[]
+                                    childs = () => new REbase[]
                                     {
                                         new REtext{ propsGameObject = () => new GameObjectSetter{ name = "PanelMain1-PanelChild1-Text"} },
                                         new REimage{ propsGameObject = () => new GameObjectSetter{ name = "PanelMain1-PanelChild1-Image"} },
                                         new REpanel{
                                             propsGameObject = () => new GameObjectSetter{ name = "PanelMain1-PanelChild2-Panel"},
-                                            childs = () => new ReactorElement[]
+                                            childs = () => new REbase[]
                                             {
                                                 new REtext{ propsGameObject = () => new GameObjectSetter{ name = "PanelMain1-PanelChild2-Panel-Text"} },
                                                 new REimage{ propsGameObject = () => new GameObjectSetter{ name = "PanelMain1-PanelChild2-Panel-Image"} },
@@ -144,7 +144,7 @@ public class Reactor_1ElementSelector
                                 },
                                 new REpanel{
                                     propsGameObject = () => new GameObjectSetter{ name = "PanelMain1-PanelChild2"},
-                                    childs = () => new ReactorElement[]
+                                    childs = () => new REbase[]
                                     {
                                         new REtext{ propsGameObject = () => new GameObjectSetter{ name = "PanelMain1-PanelChild2-Text"} },
                                         new REimage{ propsGameObject = () => new GameObjectSetter{ name = "PanelMain1-PanelChild2-Image"} },
@@ -156,14 +156,14 @@ public class Reactor_1ElementSelector
                         },
                         new REpanel {
                             propsGameObject = () => new GameObjectSetter { name = "PanelMain2" },
-                            childs = () => new ReactorElement[]
+                            childs = () => new REbase[]
                             {
                                 new REpanel{ propsGameObject = () => new GameObjectSetter{ name = "PanelMain2-PanelChild1"} },
                                 new REpanel{ propsGameObject = () => new GameObjectSetter{ name = "PanelMain2-PanelChild2"} },
                                 new REpanel{ propsGameObject = () => new GameObjectSetter{ name = "PanelMain2-PanelChild3"} },
                                 new REpanel {
                                     propsGameObject = () => new GameObjectSetter{ name = "PanelMain2-PanelChild4"},
-                                    childs = () => new ReactorElement[]
+                                    childs = () => new REbase[]
                                     {
                                         new REtext{ propsGameObject = () => new GameObjectSetter{ name = "PanelMain2-PanelChild4-Text"} },
                                         new REimage{ propsGameObject = () => new GameObjectSetter{ name = "PanelMain2-PanelChild4-Image"} },

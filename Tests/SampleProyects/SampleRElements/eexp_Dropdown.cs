@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using U.Reactor;
 using UnityEngine;
 
-public class eexp_VerticalForm : MonoBehaviour
+public class eexp_Dropdown : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class eexp_VerticalForm : MonoBehaviour
                     name = "Canvas-Principal",
                 },
 
-                childs = () => new ReactorElement[]
+                childs = () => new REbase[]
                 {
                     //new REtext
                     //{
@@ -50,29 +50,8 @@ public class eexp_VerticalForm : MonoBehaviour
                     //        localPosition = new Vector3(-200, 0,0),
                     //    },
                     //},
-                    new REverticalForm
+                    new REdropdown
                     {
-                        childs = () => new ReactorElement[]
-                        {
-                            new REtext
-                            {
-                                propsText = () => new TextSetter
-                                {
-                                    text = "Header",
-                                },
-                            },
-                            new REtext{},
-                            new REtext{},
-                            new REtext{},
-                            new REtext{},
-                            new REtext
-                            {
-                                propsText = () => new TextSetter
-                                {
-                                    text = "Footer",
-                                },
-                            },
-                        },
                     },
 
                 }

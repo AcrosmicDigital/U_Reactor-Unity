@@ -60,7 +60,7 @@ public class Reactor_53Hooks_UseUpdate
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -118,7 +118,7 @@ public class Reactor_53Hooks_UseUpdate
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -188,7 +188,7 @@ public class Reactor_53Hooks_UseUpdate
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -260,7 +260,7 @@ public class Reactor_53Hooks_UseUpdate
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -298,7 +298,7 @@ public class Reactor_53Hooks_UseUpdate
 
         // Hide the element
         routerProve.Hide();
-        Assert.IsFalse(((REcanvas.Selector)ReactorElement.Find("#ProveText")[0].root).canvas.enabled);
+        Assert.IsFalse(((REcanvas.Selector)REbase.Find("#ProveText")[0].root).canvas.enabled);
 
 
         // First check and hook must be runned
@@ -328,7 +328,7 @@ public class Reactor_53Hooks_UseUpdate
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -366,7 +366,7 @@ public class Reactor_53Hooks_UseUpdate
 
         // Hide the element
         routerProve.Disable();
-        Assert.IsFalse(((REcanvas.Selector)ReactorElement.Find("#ProveText")[0].root).canvas.enabled);
+        Assert.IsFalse(((REcanvas.Selector)REbase.Find("#ProveText")[0].root).canvas.enabled);
 
 
         // First check and hook must be runned
@@ -395,7 +395,7 @@ public class Reactor_53Hooks_UseUpdate
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"

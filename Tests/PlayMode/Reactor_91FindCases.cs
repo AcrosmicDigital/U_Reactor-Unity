@@ -53,7 +53,7 @@ public class Reactor_91FindCases
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -61,7 +61,7 @@ public class Reactor_91FindCases
                             propsText = () => new TextSetter {
                                 text = "Hello world",
                             },
-                            childs = () => new ReactorElement[]
+                            childs = () => new REbase[]
                             {
                                 new REimage(),
                                 new REimage(),
@@ -134,7 +134,7 @@ public class Reactor_91FindCases
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -142,7 +142,7 @@ public class Reactor_91FindCases
                             propsText = () => new TextSetter {
                                 text = "Hello world",
                             },
-                            childs = () => new ReactorElement[]
+                            childs = () => new REbase[]
                             {
                                 new REimage(),
                                 new REimage(),
@@ -227,7 +227,7 @@ public class Reactor_91FindCases
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -235,7 +235,7 @@ public class Reactor_91FindCases
                             propsText = () => new TextSetter {
                                 text = letter,
                             },
-                            childs = () => new ReactorElement[]
+                            childs = () => new REbase[]
                             {
                                 new REimage(),
                                 new REimage(),
@@ -321,7 +321,7 @@ public class Reactor_91FindCases
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -333,7 +333,7 @@ public class Reactor_91FindCases
                             {
                                 letterState,
                             },
-                            childs = () => new ReactorElement[]
+                            childs = () => new REbase[]
                             {
                                 new REimage(),
                                 new REimage(),
@@ -423,7 +423,7 @@ public class Reactor_91FindCases
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -431,7 +431,7 @@ public class Reactor_91FindCases
                             propsText = () => new TextSetter {
                                 text = "Hello world",
                             },
-                            childs = () => new ReactorElement[]
+                            childs = () => new REbase[]
                             {
                                 new REimage(),
                                 new REimage(),
@@ -516,7 +516,7 @@ public class Reactor_91FindCases
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -524,7 +524,7 @@ public class Reactor_91FindCases
                             propsText = () => new TextSetter {
                                 text = "Hello world",
                             },
-                            childs = () => new ReactorElement[]
+                            childs = () => new REbase[]
                             {
                                 new REimage(),
                                 new REimage(),
@@ -615,7 +615,7 @@ public class Reactor_91FindCases
             return new REcanvas
             {
 
-                childs = () => new ReactorElement[] {
+                childs = () => new REbase[] {
                         new REtext {
                             propsElementId = () => new ElementIdSetter{
                                 id = "ProveText"
@@ -623,7 +623,7 @@ public class Reactor_91FindCases
                             propsText = () => new TextSetter {
                                 text = "Hello world",
                             },
-                            childs = () => new ReactorElement[]
+                            childs = () => new REbase[]
                             {
                                 new REimage(),
                                 new REimage(),

@@ -27,7 +27,7 @@ namespace U.Reactor
         private REcanvas defaultRouteCanvas = new REcanvas
         {
 
-            childs = () => new ReactorElement[] {
+            childs = () => new REbase[] {
                     new REtext {
                         propsText = () => new TextSetter {
                             text = "Bad route",

@@ -8,24 +8,24 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class RErawImage : REchild
+    public class REmultiToggle : REbase
     {
-        protected override string elementType => "Image";
+        protected override string elementType => "MultiToggle";
+
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region <Components>
 
-        protected RawImage rawImageCmp = null;
+        protected MultiToggle multiToggleCmp;
 
         #endregion </Components>
 
 
         #region <Setters>
 
-        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterImage();
-
-        public Func<RawImageSetter> propsRawImage = () => new RawImageSetter();
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter { };
+        public Func<MultiToggleSetter> propsMultiToggle = () => new MultiToggleSetter();
 
         #endregion </Setters>
 
@@ -50,14 +50,7 @@ namespace U.Reactor
 
         protected override void AddComponents()
         {
-
-            rawImageCmp = propsRawImage().Set(gameObject);
-
-        }
-
-        protected override ElementSelector AddSelector()
-        {
-            return new Selector(gameObject, elementIdCmp, rectTransformCmp, canvasRendererCmp, rawImageCmp);
+            multiToggleCmp = propsMultiToggle().Set(gameObject);
         }
 
         protected override void AddHooks()
@@ -75,33 +68,37 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
+        protected override ElementSelector AddSelector()
+        {
+            var sel = new Selector(gameObject, elementIdCmp, rectTransformCmp, multiToggleCmp);
+
+            return sel;
+        }
 
 
-
-        public class Selector : ChildElementSelector
+        public class Selector : ElementSelector
         {
 
-            public RawImage rawImage { get; private set; }
+            public MultiToggle multiToggle { get; private set; }
+
 
             internal Selector(
                 GameObject gameObject,
                 ElementId pieceId,
                 RectTransform rectTransform,
-                CanvasRenderer canvasRenderer,
-                RawImage rawImage
-                ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
+                MultiToggle multiToggle
+                ) : base(gameObject, pieceId, rectTransform)
             {
-                this.rawImage = rawImage;
+                this.multiToggle = multiToggle;
             }
-
 
             internal override void Destroy()
             {
                 base.Destroy();
-                rawImage = null;
+
+                multiToggle = null;
             }
         }
-
 
         public class UseEffect : UseEffect<Selector, UseEffect> { }
         public class UseApplicationEvents : UseApplicationEvents<Selector, UseApplicationEvents> { }
@@ -114,10 +111,6 @@ namespace U.Reactor
         public class UseSelectEvents : UseSelectEvents<Selector, UseSelectEvents> { }
         public class UseSubmitEvents : UseSubtitEvents<Selector, UseSubmitEvents> { }
         public class UseUpdate : UseUpdate<Selector, UseUpdate> { }
-
-
-
-
 
 
 

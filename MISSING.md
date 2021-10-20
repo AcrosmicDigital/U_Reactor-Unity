@@ -1,7 +1,5 @@
 Palntillas falta hacer las plantillas para ..
 
- - Revisar las scrollbars, porque cuando se cnstruyen estan bien, pero despues con los setters se an de nuevo la propiedadesy hace que se descompongan
-
  - Revsarsi hacer un setter de rectransform paracaa tipo de objeto o mejor solo uno y usarlo normal como siemre 
 
  - Que haya setters opconales como porejemplo peruna imagen de fondo a los textos, osea van a estar en null y si el suario los sobreescribe se van a oner, s no no ??
@@ -9,7 +7,14 @@ Palntillas falta hacer las plantillas para ..
 
  - poner a cada elemento del layut group el tam;o personalizad y eso, co el componente necesario
 
+ - Que dentro de los selectores este el typo de elemento, y a los elementos de Reactor nombrarlos como REcanvas en vez de solo canvas, para verlos
+
+ - Arreglar la creacion de event systems y todo eso.
+
  - cada RElemento tiene propiedadesespecificas pensar como hacerle para que el momet de crearlos y se cree un nueo Setter para el cmonente, se usen las ropiedades especficas que son de eleento y no las que son por defecto del setter
+
+ - falta terminar el multitoggle
+ 
 
 
 	- El reactor router, que la clase es partial ,, 

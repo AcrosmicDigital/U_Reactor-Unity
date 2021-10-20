@@ -86,7 +86,7 @@ public class Reactor_2Find
                     "Back",
                 },
             },
-            childs = () => new ReactorElement[]
+            childs = () => new REbase[]
             {
                 new REtext
                 {
@@ -130,7 +130,7 @@ public class Reactor_2Find
                             "Back",
                         },
                     },
-                    childs = () => new ReactorElement[]
+                    childs = () => new REbase[]
                     {
                         new REtext
                         {
@@ -198,14 +198,14 @@ public class Reactor_2Find
 
 
         // Select All
-        var finded = ReactorElement.Find();
+        var finded = REbase.Find();
         Assert.IsTrue(finded.Length == 12);
 
 
 
 
         // Select All
-        finded = ReactorElement.Find("");
+        finded = REbase.Find("");
         Assert.IsTrue(finded.Length == 12);
 
 
@@ -226,32 +226,32 @@ public class Reactor_2Find
 
 
         // By id
-        var finded = ReactorElement.Find("#CanvasSuperior");
+        var finded = REbase.Find("#CanvasSuperior");
         Assert.IsTrue(finded.Length == 1);
 
 
 
         // By id
-        finded = ReactorElement.Find("#Title-One");
+        finded = REbase.Find("#Title-One");
         Assert.IsTrue(finded.Length == 2);
 
 
 
         // By id
-        finded = ReactorElement.Find("#ImagenSuperior");
+        finded = REbase.Find("#ImagenSuperior");
         Assert.IsTrue(finded.Length == 1);
 
 
 
 
         // By id
-        finded = ReactorElement.Find("#PanelBack");
+        finded = REbase.Find("#PanelBack");
         Assert.IsTrue(finded.Length == 1);
 
 
 
         // By id
-        finded = ReactorElement.Find("#MainButton");
+        finded = REbase.Find("#MainButton");
         Assert.IsTrue(finded.Length == 0);
 
 
@@ -273,21 +273,21 @@ public class Reactor_2Find
 
 
         // By id
-        Assert.IsTrue(ReactorElement.Find("#CanvasSuperior").Length == 1);
-        Assert.IsTrue(ReactorElement.FindOne("#CanvasSuperior") != null);
+        Assert.IsTrue(REbase.Find("#CanvasSuperior").Length == 1);
+        Assert.IsTrue(REbase.FindOne("#CanvasSuperior") != null);
 
 
 
         // By id
-        Assert.IsTrue(ReactorElement.Find("#ImagenSuperior").Length == 1);
-        Assert.IsTrue(ReactorElement.FindOne("#ImagenSuperior") != null);
+        Assert.IsTrue(REbase.Find("#ImagenSuperior").Length == 1);
+        Assert.IsTrue(REbase.FindOne("#ImagenSuperior") != null);
 
 
 
 
         // By id
-        Assert.IsTrue(ReactorElement.Find("#PanelBack").Length == 1);
-        Assert.IsTrue(ReactorElement.FindOne("#PanelBack") != null);
+        Assert.IsTrue(REbase.Find("#PanelBack").Length == 1);
+        Assert.IsTrue(REbase.FindOne("#PanelBack") != null);
 
 
 
@@ -305,61 +305,61 @@ public class Reactor_2Find
 
 
         // One classname
-        var finded = ReactorElement.Find(".Back");
+        var finded = REbase.Find(".Back");
         Debug.Log(finded.Length);
         Assert.IsTrue(finded.Length == 2);
 
-        finded = ReactorElement.Find(".H1");
+        finded = REbase.Find(".H1");
         Debug.Log(finded.Length);
         Assert.IsTrue(finded.Length == 2);
 
-        finded = ReactorElement.Find(".Text");
+        finded = REbase.Find(".Text");
         Debug.Log(finded.Length);
         Assert.IsTrue(finded.Length == 4);
 
-        finded = ReactorElement.Find(".Title");
+        finded = REbase.Find(".Title");
         Debug.Log(finded.Length);
         Assert.IsTrue(finded.Length == 2);
 
-        finded = ReactorElement.Find(".Button");
+        finded = REbase.Find(".Button");
         Debug.Log(finded.Length);
         Assert.IsTrue(finded.Length == 2);
 
-        finded = ReactorElement.Find(".White");
+        finded = REbase.Find(".White");
         Debug.Log(finded.Length);
         Assert.IsTrue(finded.Length == 0);
 
 
 
         // With AND
-        finded = ReactorElement.Find(".H1&&.Text&&.Title");
+        finded = REbase.Find(".H1&&.Text&&.Title");
         Debug.Log(finded.Length);
         Assert.IsTrue(finded.Length == 1);
 
-        finded = ReactorElement.Find(".Button&&Title");
+        finded = REbase.Find(".Button&&Title");
         Debug.Log(finded.Length);
         Assert.IsTrue(finded.Length == 1);
 
-        finded = ReactorElement.Find(".H1&&.Text");
+        finded = REbase.Find(".H1&&.Text");
         Debug.Log(finded.Length);
         Assert.IsTrue(finded.Length == 2);
 
-        finded = ReactorElement.Find(".H1&&Pink");
+        finded = REbase.Find(".H1&&Pink");
         Debug.Log(finded.Length);
         Assert.IsTrue(finded.Length == 0);
 
 
 
         // With or
-        finded = ReactorElement.Find(".Button||Text");
+        finded = REbase.Find(".Button||Text");
         Debug.Log(finded.Length);
         Assert.IsTrue(finded.Length == 6);
 
-        finded = ReactorElement.Find(".Back||H1||Text");
+        finded = REbase.Find(".Back||H1||Text");
         Debug.Log(finded.Length);
         Assert.IsTrue(finded.Length == 6);
 
-        finded = ReactorElement.Find(".Back||H1||Grey");
+        finded = REbase.Find(".Back||H1||Grey");
         Debug.Log(finded.Length);
         Assert.IsTrue(finded.Length == 4);
 

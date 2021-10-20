@@ -55,11 +55,11 @@ public class ReactorElements_REpanel
                     name = "Canvas-Principal",
                 },
 
-                childs = () => new ReactorElement[]
+                childs = () => new REbase[]
                 {
                     new REpanel
                     {
-                        childs = () => new ReactorElement[]
+                        childs = () => new REbase[]
                         {
                             new REtext(),
                         }

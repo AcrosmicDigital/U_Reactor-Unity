@@ -10,7 +10,7 @@ using UnityEngine.UI;
 namespace U.Reactor
 {
     // Here are the find elements functions
-    public abstract partial class ReactorElement
+    public abstract partial class REbase
     {
 
         // null or ""

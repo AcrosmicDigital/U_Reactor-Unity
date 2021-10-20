@@ -8,9 +8,10 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REprogressBar : REbase
+    public class REslider : REbase
     {
-        protected override string elementType => "ProgressBar";
+        protected override string elementType => "Slider";
+
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
@@ -19,13 +20,14 @@ namespace U.Reactor
         protected Slider sliderCmp = null;
         protected Image backImageCmp = null;
         protected Image fillImageCmp = null;
+        protected Image handleImageCmp = null;
 
         #endregion </Components>
 
 
         #region <Setters>
 
-        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterButton 
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterButton
         {
             width = 500,
             height = 40,
@@ -34,6 +36,7 @@ namespace U.Reactor
         public Func<SliderSetter> propsSlider = () => new SliderSetter();
         public Func<ImageSetter> propsBackImage = () => new ImageSetter { color = Color.gray };
         public Func<ImageSetter> propsFillImage = () => new ImageSetter();
+        public Func<ImageSetter> propsHandleImage = () => new ImageSetter();
 
         #endregion </Setters>
 
@@ -55,19 +58,22 @@ namespace U.Reactor
 
         #endregion </Hooks>
 
+
         protected override void AddComponents()
         {
             // Agrega los ubObjetos del Button
             var backgroundGO = InstanciateUIObject("Background", gameObject);
-            var fillAreaGO = InstanciateObject("FillArea", gameObject);
+            var fillAreaGO = InstanciateObject("Fill Area", gameObject);
             var fillGO = InstanciateUIObject("Fill", fillAreaGO);
+            var handleAreaGO = InstanciateObject("Handle Slide Area", gameObject);
+            var handleGO = InstanciateUIObject("Handle", handleAreaGO);
 
-            // Get RectTs
-            var fillGOrectT = fillGO.GetComponent<RectTransform>();
 
             sliderCmp = propsSlider().Set(gameObject);
             backImageCmp = propsBackImage().Set(backgroundGO);
             fillImageCmp = propsFillImage().Set(fillGO);
+            handleImageCmp = propsHandleImage().Set(handleGO);
+
 
             // backgroundGO rect
             new RectTransformSetter()
@@ -77,7 +83,7 @@ namespace U.Reactor
                 sizeDelta = Vector2.zero,
                 offsetMin = Vector2.zero,
                 offsetMax = Vector2.zero,
-            }.SetByAnchors(backgroundGO.GetComponent<RectTransform>());
+            }.SetByAnchors(backgroundGO);
 
             new RectTransformSetter()
             {
@@ -85,27 +91,37 @@ namespace U.Reactor
                 anchorMax = new Vector2(1, 0.75f),
                 sizeDelta = Vector2.zero,
                 offsetMin = new Vector2(15, 0f),
-                offsetMax = new Vector2(-15F, 0F),
-            }.SetByAnchors(fillAreaGO.GetComponent<RectTransform>());
+                offsetMax = new Vector2(-30F, 0F),
+            }.SetByAnchors(fillAreaGO);
 
             new RectTransformSetter()
             {
                 sizeDelta = Vector2.zero,
                 offsetMin = new Vector2(-14, 0f),
                 offsetMax = new Vector2(14F, 0F),
-            }.SetByAnchors(fillGOrectT);
+            }.SetByAnchors(fillGO);
 
-            sliderCmp.fillRect = fillGOrectT;
+            new RectTransformSetter()
+            {
+                anchorMin = new Vector2(0, 0f),
+                anchorMax = new Vector2(1, 1f),
+                sizeDelta = Vector2.zero,
+                offsetMin = new Vector2(14, 0f),
+                offsetMax = new Vector2(-14F, 0F),
+            }.SetByAnchors(handleAreaGO);
+
+            new RectTransformSetter()
+            {
+                sizeDelta = Vector2.zero,
+                offsetMin = new Vector2(-14, 0f),
+                offsetMax = new Vector2(17F, 0F),
+            }.SetByAnchors(handleGO);
+
+            sliderCmp.fillRect = fillGO.GetComponent<RectTransform>();
+            sliderCmp.targetGraphic = handleImageCmp;
+            sliderCmp.handleRect = handleGO.GetComponent<RectTransform>();
 
         }
-
-        protected override ElementSelector AddSelector()
-        {
-            var sel = new Selector(gameObject, elementIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp);
-
-            return sel;
-        }
-
 
         protected override void AddHooks()
         {
@@ -122,6 +138,12 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
+        protected override ElementSelector AddSelector()
+        {
+            var sel = new Selector(gameObject, elementIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp, handleImageCmp);
+
+            return sel;
+        }
 
         public class Selector : ElementSelector
         {
@@ -129,6 +151,7 @@ namespace U.Reactor
             public Slider slider { get; private set; }
             public Image backImage { get; private set; }
             public Image fillImage { get; private set; }
+            public Image handleImage { get; private set; }
 
 
             internal Selector(
@@ -137,12 +160,14 @@ namespace U.Reactor
                 RectTransform rectTransform,
                 Slider slider,
                 Image backImage,
-                Image fillImage
+                Image fillImage,
+                Image handleImage
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.slider = slider;
                 this.backImage = backImage;
                 this.fillImage = fillImage;
+                this.handleImage = handleImage;
             }
 
             internal override void Destroy()
@@ -152,6 +177,7 @@ namespace U.Reactor
                 slider = null;
                 backImage = null;
                 fillImage = null;
+                handleImage = null;
             }
         }
 

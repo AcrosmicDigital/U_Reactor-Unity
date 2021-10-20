@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REinputField : ReactorChildElement
+    public class REinputField : REchild
     {
         protected override string elementType => "InputField";
 

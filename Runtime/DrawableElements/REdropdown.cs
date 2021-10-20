@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REdropdown : ReactorChildElement
+    public class REdropdown : REchild
     {
         protected override string elementType => "Dropdown";
 

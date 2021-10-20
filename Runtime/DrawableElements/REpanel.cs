@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REpanel : ReactorChildElement
+    public class REpanel : REchild
     {
         protected override string elementType => "Panel";
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }

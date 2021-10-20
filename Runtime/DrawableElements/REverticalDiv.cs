@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REverticalForm : ReactorChildElement
+    public class REverticalDiv : REchild
     {
         protected override string elementType => "Vertical Form";
 

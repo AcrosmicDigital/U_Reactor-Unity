@@ -8,32 +8,47 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REprogressBar : REbase
+    public class REtoggle : REbase
     {
-        protected override string elementType => "ProgressBar";
+        protected override string elementType => "Toggle";
+
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
         #region <Components>
 
-        protected Slider sliderCmp = null;
-        protected Image backImageCmp = null;
-        protected Image fillImageCmp = null;
+        protected Toggle toggleCmp;
+        protected Image backImageCmp;
+        protected Image checkImageCmp;
+        protected Text textCmp;
 
         #endregion </Components>
 
 
+        #region <Properties>
+
+        // Used when multiToggle is a parent
+        public string name;
+        public int number;
+        public float value;
+
+        #endregion </Properties>
+
+
         #region <Setters>
 
-        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterButton 
+        public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter
         {
-            width = 500,
-            height = 40,
+            width = 600,
+            height = 80,
         };
-
-        public Func<SliderSetter> propsSlider = () => new SliderSetter();
-        public Func<ImageSetter> propsBackImage = () => new ImageSetter { color = Color.gray };
-        public Func<ImageSetter> propsFillImage = () => new ImageSetter();
+        public Func<ToggleSetter> propsToggle = () => new ToggleSetter();
+        public Func<ImageSetter> propsBackImage = () => new ImageSetter();
+        public Func<ImageSetter> propsCheckImage = () => new ImageSetter 
+        { 
+            color = Color.gray,
+        };
+        public Func<TextSetter> propsText = () => new TextSetter();
 
         #endregion </Setters>
 
@@ -55,57 +70,54 @@ namespace U.Reactor
 
         #endregion </Hooks>
 
+
         protected override void AddComponents()
         {
             // Agrega los ubObjetos del Button
             var backgroundGO = InstanciateUIObject("Background", gameObject);
-            var fillAreaGO = InstanciateObject("FillArea", gameObject);
-            var fillGO = InstanciateUIObject("Fill", fillAreaGO);
+            var checkmarkGO = InstanciateUIObject("Checkmark", backgroundGO);
+            var labelGO = InstanciateUIObject("Label", gameObject);
 
-            // Get RectTs
-            var fillGOrectT = fillGO.GetComponent<RectTransform>();
 
-            sliderCmp = propsSlider().Set(gameObject);
+            toggleCmp = propsToggle().Set(gameObject);
             backImageCmp = propsBackImage().Set(backgroundGO);
-            fillImageCmp = propsFillImage().Set(fillGO);
+            checkImageCmp = propsCheckImage().Set(checkmarkGO);
+            textCmp = propsText().Set(labelGO);
+
+            toggleCmp.targetGraphic = backImageCmp;
+            toggleCmp.graphic = checkImageCmp;
+
+
 
             // backgroundGO rect
             new RectTransformSetter()
             {
-                anchorMin = new Vector2(0, 0.25f),
-                anchorMax = new Vector2(1, 0.75f),
-                sizeDelta = Vector2.zero,
-                offsetMin = Vector2.zero,
-                offsetMax = Vector2.zero,
-            }.SetByAnchors(backgroundGO.GetComponent<RectTransform>());
+                //pivot = new Vector2(0f, 1f),
+                localPosition = new Vector2(40, -40f),
+                sizeDelta = new Vector2(80, 80f),
+                anchorMin = new Vector2(0f, 1f),
+                anchorMax = new Vector2(0f, 1f),
+            }.SetBySizeDelta(backgroundGO);
 
             new RectTransformSetter()
             {
-                anchorMin = new Vector2(0, 0.25f),
-                anchorMax = new Vector2(1, 0.75f),
-                sizeDelta = Vector2.zero,
-                offsetMin = new Vector2(15, 0f),
-                offsetMax = new Vector2(-15F, 0F),
-            }.SetByAnchors(fillAreaGO.GetComponent<RectTransform>());
+                //pivot = new Vector2(0f, 1f),
+                //localPosition = new Vector2(0, 0f),
+                sizeDelta = new Vector2(80, 80f),
+                //anchorMin = new Vector2(0f, 1f),
+                //anchorMax = new Vector2(0f, 1f),
+            }.SetBySizeDelta(checkmarkGO);
 
             new RectTransformSetter()
             {
-                sizeDelta = Vector2.zero,
-                offsetMin = new Vector2(-14, 0f),
-                offsetMax = new Vector2(14F, 0F),
-            }.SetByAnchors(fillGOrectT);
+                anchorMin = new Vector2(0f, 0f),
+                anchorMax = new Vector2(1f, 1f),
+                offsetMin = new Vector2(90f, 10f),
+                offsetMax = new Vector2(0f, -10f),
+            }.SetByAnchors(labelGO);
 
-            sliderCmp.fillRect = fillGOrectT;
 
         }
-
-        protected override ElementSelector AddSelector()
-        {
-            var sel = new Selector(gameObject, elementIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp);
-
-            return sel;
-        }
-
 
         protected override void AddHooks()
         {
@@ -122,36 +134,47 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
+        protected override ElementSelector AddSelector()
+        {
+            var sel = new Selector(gameObject, elementIdCmp, rectTransformCmp, toggleCmp, backImageCmp, checkImageCmp, textCmp);
+
+            return sel;
+        }
+
 
         public class Selector : ElementSelector
         {
 
-            public Slider slider { get; private set; }
+            public Toggle toggle { get; private set; }
             public Image backImage { get; private set; }
-            public Image fillImage { get; private set; }
+            public Image checkImage { get; private set; }
+            public Text text { get; private set; }
 
 
             internal Selector(
                 GameObject gameObject,
                 ElementId pieceId,
                 RectTransform rectTransform,
-                Slider slider,
+                Toggle toggle,
                 Image backImage,
-                Image fillImage
+                Image checkImage,
+                Text text
                 ) : base(gameObject, pieceId, rectTransform)
             {
-                this.slider = slider;
+                this.toggle = toggle;
                 this.backImage = backImage;
-                this.fillImage = fillImage;
+                this.checkImage = checkImage;
+                this.text = text;
             }
 
             internal override void Destroy()
             {
                 base.Destroy();
 
-                slider = null;
+                toggle = null;
                 backImage = null;
-                fillImage = null;
+                checkImage = null;
+                text = null;
             }
         }
 
@@ -175,7 +198,6 @@ namespace U.Reactor
         public new static Selector[] Find() => Find<Selector>();
 
         public new static Selector FindOne(string pattern) => FindOne<Selector>(pattern);
-
 
 
     }

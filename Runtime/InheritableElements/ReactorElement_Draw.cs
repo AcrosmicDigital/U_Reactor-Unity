@@ -10,7 +10,7 @@ using UnityEngine.UI;
 namespace U.Reactor
 {
     // Add URelementId, RectTransform
-    public abstract partial class ReactorElement
+    public abstract partial class REbase
     {
         protected abstract string elementType { get; } // The name of the element, each element must everride
         protected abstract Func<RectTransformSetter> PropsRectTransform { get; }
@@ -30,7 +30,7 @@ namespace U.Reactor
 
         protected GameObject gameObject;
         protected GameObject parent; // The parent GameObject
-        protected List<ReactorElement> childsList = new List<ReactorElement>();
+        protected List<REbase> childsList = new List<REbase>();
         protected bool isDisabled = false;
 
         #endregion </Properties>
@@ -38,7 +38,7 @@ namespace U.Reactor
 
         #region <Setters>
 
-        public Func<IEnumerable<ReactorElement>> childs = () => new ReactorElement[0];
+        public Func<IEnumerable<REbase>> childs = () => new REbase[0];
         public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
         public Func<ElementIdSetter> propsElementId = () => new ElementIdSetter();
 
@@ -55,7 +55,7 @@ namespace U.Reactor
 
 
         // Create all the component , call other functions in order
-        protected ReactorElement Create(GameObject parent, ElementSelector parentSelector)
+        protected REbase Create(GameObject parent, ElementSelector parentSelector)
         {
             
             // Functions to create parts of the component
@@ -70,7 +70,7 @@ namespace U.Reactor
             // Create childs
             childsList.Clear();
 
-            IEnumerable<ReactorElement> newChilds = null;
+            IEnumerable<REbase> newChilds = null;
             try { newChilds = childs(); }
             catch (ArgumentNullException) { newChilds = null; }
             catch (NullReferenceException) { newChilds = null; }
