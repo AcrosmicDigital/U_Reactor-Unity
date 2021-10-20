@@ -15,27 +15,27 @@ namespace U.Reactor
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
         
-        #region <Components>
+        #region Components
 
         protected RectTransform rectTransform;
         protected Button buttonCmp;
         protected Image imageCmp;
         protected Text textCmp;
 
-        #endregion </Components>
+        #endregion Components
 
 
-        #region <Setters>
+        #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterButton();
         public Func<TextSetter> propsText = () => new TextSetterButton();
         public Func<ImageSetter> propsImage = () => new ImageSetter();
         public Func<ButtonSetter> propsButton = () => new ButtonSetter();
 
-        #endregion </Setters>
+        #endregion Setters
 
 
-        #region <Hooks>
+        #region Hooks
 
         public UseEffect.Hook[] useEffect;
 
@@ -50,9 +50,10 @@ namespace U.Reactor
         public UseSubmitEvents.Hook useSubmitEvents;
         public UseUpdate.Hook useUpdate;
 
-        #endregion </Hooks>
+        #endregion Hooks
 
 
+        #region Drawers
         protected override void AddComponents()
         {
             // Agrega los componentes del Button
@@ -98,6 +99,12 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
+        #endregion Drawers
+
+
+        #region Subclasses
+
+
         public class Selector : ChildElementSelector
         {
 
@@ -142,6 +149,10 @@ namespace U.Reactor
         public class UseSubmitEvents : UseSubtitEvents<Selector, UseSubmitEvents> { }
         public class UseUpdate : UseUpdate<Selector, UseUpdate> { }
 
+        #endregion Subclasses
+
+
+        #region Static Funcs
 
 
 
@@ -151,6 +162,7 @@ namespace U.Reactor
 
         public new static Selector FindOne(string pattern) => FindOne<Selector>(pattern);
 
+        #endregion Static Funcs
 
 
     }

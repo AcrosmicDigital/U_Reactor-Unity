@@ -15,23 +15,23 @@ namespace U.Reactor
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
-        #region <Components>
+        #region Components
 
         protected Image imageCmp = null;
 
-        #endregion </Components>
+        #endregion Components
 
 
-        #region <Setters>
+        #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterImage();
 
         public Func<ImageSetter> propsImage = () => new ImageSetter();
 
-        #endregion </Setters>
+        #endregion Setters
 
 
-        #region <Hooks>
+        #region Hooks
 
         public UseEffect.Hook[] useEffect;
 
@@ -46,8 +46,10 @@ namespace U.Reactor
         public UseSubmitEvents.Hook useSubmitEvents;
         public UseUpdate.Hook useUpdate;
 
-        #endregion </Hooks>
+        #endregion Hooks
 
+
+        #region Drawers
 
         protected override void AddComponents()
         {
@@ -76,6 +78,10 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
+        #endregion Drawers
+
+
+        #region Subclasses
 
 
 
@@ -119,6 +125,10 @@ namespace U.Reactor
 
 
 
+        #endregion Subclasses
+
+
+        #region Static Funcs
 
 
 
@@ -128,6 +138,8 @@ namespace U.Reactor
         public new static Selector[] Find() => Find<Selector>();
 
         public new static Selector FindOne(string pattern) => FindOne<Selector>(pattern);
+
+        #endregion Static Funcs
 
 
     }

@@ -12,31 +12,30 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Toggle";
-
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
-        #region <Components>
+        #region Components
 
         protected Toggle toggleCmp;
         protected Image backImageCmp;
         protected Image checkImageCmp;
         protected Text textCmp;
 
-        #endregion </Components>
+        #endregion Components
 
 
-        #region <Properties>
+        #region Properties
 
         // Used when multiToggle is a parent
         public string name;
         public int number;
         public float value;
 
-        #endregion </Properties>
+        #endregion Properties
 
 
-        #region <Setters>
+        #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter
         {
@@ -51,7 +50,7 @@ namespace U.Reactor
         };
         public Func<TextSetter> propsText = () => new TextSetter();
 
-        #endregion </Setters>
+        #endregion Setters
 
 
         #region <Hooks>
@@ -71,6 +70,8 @@ namespace U.Reactor
 
         #endregion </Hooks>
 
+
+        #region Drawers
 
         protected override void AddComponents()
         {
@@ -142,6 +143,10 @@ namespace U.Reactor
             return sel;
         }
 
+        #endregion Drawers
+
+
+        #region Subclasses
 
         public class Selector : ElementSelector
         {
@@ -191,6 +196,10 @@ namespace U.Reactor
         public class UseSubmitEvents : UseSubtitEvents<Selector, UseSubmitEvents> { }
         public class UseUpdate : UseUpdate<Selector, UseUpdate> { }
 
+        #endregion Subclasses
+
+
+        #region Static Funcs
 
 
 
@@ -199,6 +208,8 @@ namespace U.Reactor
         public new static Selector[] Find() => Find<Selector>();
 
         public new static Selector FindOne(string pattern) => FindOne<Selector>(pattern);
+
+        #endregion Static Funcs
 
 
     }

@@ -12,29 +12,28 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Label";
-
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
-        #region <Components>
+        #region Components
 
         protected RectTransform rectTransform;
         protected Image imageCmp;
         protected Text textCmp;
 
-        #endregion </Components>
+        #endregion Components
 
 
-        #region <Setters>
+        #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterButton();
         public Func<ImageSetter> propsImage = () => new ImageSetter();
         public Func<TextSetter> propsText = () => new TextSetterButton();
 
-        #endregion </Setters>
+        #endregion Setters
 
 
-        #region <Hooks>
+        #region Hooks
 
         public UseEffect.Hook[] useEffect;
 
@@ -49,9 +48,10 @@ namespace U.Reactor
         public UseSubmitEvents.Hook useSubmitEvents;
         public UseUpdate.Hook useUpdate;
 
-        #endregion </Hooks>
+        #endregion Hooks
 
 
+        #region Drawers
 
         protected override void AddComponents()
         {
@@ -94,6 +94,10 @@ namespace U.Reactor
             return sel;
         }
 
+        #endregion Drawers
+
+
+        #region Subclasses
 
         public class Selector : ChildElementSelector
         {
@@ -137,6 +141,10 @@ namespace U.Reactor
         public class UseUpdate : UseUpdate<Selector, UseUpdate> { }
 
 
+        #endregion Subclasses
+
+
+        #region Static Funcs
 
 
         public new static Selector[] Find(string pattern) => Find<Selector>(pattern);
@@ -144,6 +152,8 @@ namespace U.Reactor
         public new static Selector[] Find() => Find<Selector>();
 
         public new static Selector FindOne(string pattern) => FindOne<Selector>(pattern);
+
+        #endregion Static Funcs
 
 
     }

@@ -12,21 +12,20 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Slider";
-
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
-        #region <Components>
+        #region Components
 
         protected Slider sliderCmp = null;
         protected Image backImageCmp = null;
         protected Image fillImageCmp = null;
         protected Image handleImageCmp = null;
 
-        #endregion </Components>
+        #endregion Components
 
 
-        #region <Setters>
+        #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterButton
         {
@@ -39,10 +38,10 @@ namespace U.Reactor
         public Func<ImageSetter> propsFillImage = () => new ImageSetter();
         public Func<ImageSetter> propsHandleImage = () => new ImageSetter();
 
-        #endregion </Setters>
+        #endregion Setters
 
 
-        #region <Hooks>
+        #region Hooks
 
         public UseEffect.Hook[] useEffect;
 
@@ -57,8 +56,10 @@ namespace U.Reactor
         public UseSubmitEvents.Hook useSubmitEvents;
         public UseUpdate.Hook useUpdate;
 
-        #endregion </Hooks>
+        #endregion Hooks
 
+
+        #region Drawers
 
         protected override void AddComponents()
         {
@@ -146,6 +147,10 @@ namespace U.Reactor
             return sel;
         }
 
+        #endregion Drawers
+
+
+        #region Subclasses
         public class Selector : ElementSelector
         {
 
@@ -196,6 +201,10 @@ namespace U.Reactor
 
 
 
+        #endregion Subclasses
+
+
+        #region Static Funcs
 
         public new static Selector[] Find(string pattern) => Find<Selector>(pattern);
 
@@ -203,6 +212,7 @@ namespace U.Reactor
 
         public new static Selector FindOne(string pattern) => FindOne<Selector>(pattern);
 
+        #endregion Static Funcs
 
 
     }

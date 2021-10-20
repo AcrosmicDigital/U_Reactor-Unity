@@ -11,27 +11,26 @@ namespace U.Reactor
     public class REmultiToggle : REbase
     {
         protected override Type elementType => this.GetType();
-        protected override string elementName => "MultiToggle";
-
+        protected override string elementName => "Multi Toggle";
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
-        #region <Components>
+        #region Components
 
         protected MultiToggle multiToggleCmp;
 
-        #endregion </Components>
+        #endregion Components
 
 
-        #region <Setters>
+        #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter { };
         public Func<MultiToggleSetter> propsMultiToggle = () => new MultiToggleSetter();
 
-        #endregion </Setters>
+        #endregion Setters
 
 
-        #region <Hooks>
+        #region Hooks
 
         public UseEffect.Hook[] useEffect;
 
@@ -46,9 +45,10 @@ namespace U.Reactor
         public UseSubmitEvents.Hook useSubmitEvents;
         public UseUpdate.Hook useUpdate;
 
-        #endregion </Hooks>
+        #endregion Hooks
 
 
+        #region Drawers
         protected override void AddComponents()
         {
             multiToggleCmp = propsMultiToggle().Set(gameObject);
@@ -76,6 +76,10 @@ namespace U.Reactor
             return sel;
         }
 
+        #endregion Drawers
+
+
+        #region Subclasses
 
         public class Selector : ElementSelector
         {
@@ -114,6 +118,10 @@ namespace U.Reactor
         public class UseUpdate : UseUpdate<Selector, UseUpdate> { }
 
 
+        #endregion Subclasses
+
+
+        #region Static Funcs
 
 
         public new static Selector[] Find(string pattern) => Find<Selector>(pattern);
@@ -121,6 +129,9 @@ namespace U.Reactor
         public new static Selector[] Find() => Find<Selector>();
 
         public new static Selector FindOne(string pattern) => FindOne<Selector>(pattern);
+
+
+        #endregion Static Funcs
 
 
     }

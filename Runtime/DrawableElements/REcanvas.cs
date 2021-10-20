@@ -12,24 +12,24 @@ namespace U.Reactor
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
-        #region <Components>
+        #region Components
 
         protected Canvas canvasCmp;
         protected CanvasScaler canvasScalerCmp;
         protected GraphicRaycaster graphicRaycasterCmp;
         protected CanvasGroup canvasGroupCmp;
 
-        #endregion </Components>
+        #endregion Components
 
 
-        #region <Properties>
+        #region Properties
 
         protected bool isHided = false;
 
-        #endregion </Properties>
+        #endregion Properties
 
 
-        #region <Setters>
+        #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter
         {
@@ -41,10 +41,10 @@ namespace U.Reactor
         public Func<GraphicRaycasterSetter> propsGraphicRaycaster = () => new GraphicRaycasterSetter();
         public Func<CanvasGroupSetter> propsCanvasGroup = () => new CanvasGroupSetter();
 
-        #endregion </Setters>
+        #endregion Setters
 
 
-        #region <Hooks>
+        #region Hooks
 
         public UseEffect.Hook[] useEffect;
 
@@ -59,7 +59,10 @@ namespace U.Reactor
         public UseSubmitEvents.Hook useSubmitEvents;
         public UseUpdate.Hook useUpdate;
 
-        #endregion </Hooks>
+        #endregion Hooks
+
+
+        #region Drawers
 
 
         protected override void AddComponents()
@@ -111,8 +114,10 @@ namespace U.Reactor
                 canvasCmp.enabled = shouldEnable;
         }
 
+        #endregion Drawers
 
-        #region <AditionalMethods>
+
+        #region Aditional Methods
 
         public REcanvas Draw(GameObject parent = null)
         {
@@ -161,9 +166,10 @@ namespace U.Reactor
                 Create(parent, parentSelector);
         }
 
-        #endregion </AditionalMethods>
+        #endregion Aditional Methods
 
 
+        #region Subclasses
 
 
         public class Selector : ElementSelector
@@ -217,6 +223,10 @@ namespace U.Reactor
 
 
 
+        #endregion Subclasses
+
+
+        #region Static Funcs
 
 
 
@@ -225,6 +235,9 @@ namespace U.Reactor
         public new static Selector[] Find() => Find<Selector>();
 
         public new static Selector FindOne(string pattern) => FindOne<Selector>(pattern);
+
+
+        #endregion Static Funcs
 
 
     }

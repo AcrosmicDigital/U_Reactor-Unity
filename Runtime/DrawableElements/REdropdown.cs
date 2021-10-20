@@ -12,11 +12,10 @@ namespace U.Reactor
     {
         protected override Type elementType => this.GetType();
         protected override string elementName => "Dropdown";
-
         protected override Func<RectTransformSetter> PropsRectTransform { get => propsRectTransform; }
 
 
-        #region <Components>
+        #region Components
 
         protected Dropdown dropdownCmp;
         protected Image dropdownImageCmp;
@@ -34,10 +33,10 @@ namespace U.Reactor
         protected Scrollbar scrollbarCmp;
         protected Image scrollbarHandleImageCmp;
 
-        #endregion </Components>
+        #endregion Components
 
 
-        #region <Setters>
+        #region Setters
 
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetterButton
         {
@@ -100,10 +99,10 @@ namespace U.Reactor
             color = new Color(0.3f, 0.3f, 0.3f, 1f),
         };
 
-        #endregion </Setters>
+        #endregion Setters
 
 
-        #region <Hooks>
+        #region Hooks
 
         public UseEffect.Hook[] useEffect;
 
@@ -118,9 +117,10 @@ namespace U.Reactor
         public UseSubmitEvents.Hook useSubmitEvents;
         public UseUpdate.Hook useUpdate;
 
-        #endregion </Hooks>
+        #endregion Hooks
 
 
+        #region Drawers
 
 
         protected override void AddComponents()
@@ -319,6 +319,10 @@ namespace U.Reactor
             return sel;
         }
 
+        #endregion Drawers
+
+
+        #region Subclasses
 
 
         public class Selector : ChildElementSelector
@@ -415,6 +419,10 @@ namespace U.Reactor
         public class UseSubmitEvents : UseSubtitEvents<Selector, UseSubmitEvents> { }
         public class UseUpdate : UseUpdate<Selector, UseUpdate> { }
 
+        #endregion Subclasses
+
+
+        #region Static Funcs
 
 
 
@@ -423,6 +431,8 @@ namespace U.Reactor
         public new static Selector[] Find() => Find<Selector>();
 
         public new static Selector FindOne(string pattern) => FindOne<Selector>(pattern);
+
+        #endregion Static Funcs
 
 
     }
