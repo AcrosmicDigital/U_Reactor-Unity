@@ -682,7 +682,7 @@ public class Reactor_51Hooks_UseState
                             useEffect = new REtext.UseEffect.Hook[]{
                                 new REtext.UseEffect.Hook {
                                     duration = 3,
-                                    deltaFunction = (s) => wordState.SetState("A new word"),
+                                    deltaFunction = (d,s) => wordState.SetState("A new word"),
                                 }
                             }
                         },

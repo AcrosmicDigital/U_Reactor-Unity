@@ -72,7 +72,7 @@ public class Reactor_52Hooks_UseEffect
                                 new REtext.UseEffect.Hook {
                                     
                                     // Is executd each 1second per default in unscaled time mode
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d, s) => {
                                         count++;
                                         s.textCmp.text = "C: " + count;
                                     },
@@ -169,7 +169,7 @@ public class Reactor_52Hooks_UseEffect
                                     timeMode = ReactorHooks.TimeMode.DeltaTime,
 
                                     // Is executd each 1second per default affected by time
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d, s) => {
                                         count++;
                                         s.textCmp.text = "C: " + count;
                                     },
@@ -260,7 +260,7 @@ public class Reactor_52Hooks_UseEffect
 
                                     duration = 5,
                                     // Is executd each 1second per default in unscaled time mode
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d, s) => {
                                         count++;
                                         s.textCmp.text = "C: " + count;
                                     },
@@ -334,7 +334,7 @@ public class Reactor_52Hooks_UseEffect
                                     iterationsCount = 2,
 
                                     // Is executd each 1second per default
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d,s) => {
                                         count++;
                                         s.textCmp.text = "C: " + count;
                                     },
@@ -432,7 +432,7 @@ public class Reactor_52Hooks_UseEffect
                                     
                                     // Is executd each 1second per default time speed affect it
                                     timeMode = ReactorHooks.TimeMode.DeltaTime,
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d,s) => {
                                         otherCount++;
                                         s.textCmp.fontSize = otherCount;
                                     },
@@ -442,7 +442,7 @@ public class Reactor_52Hooks_UseEffect
                                 new REtext.UseEffect.Hook {
                                     
                                     // Is executd each 1second per default
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d,s) => {
                                         count++;
                                         s.textCmp.text = "C: " + count;
                                     },
@@ -545,7 +545,7 @@ public class Reactor_52Hooks_UseEffect
                                 new REtext.UseEffect.Hook {
                                     
                                     // Is executd each 1second per default
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d, s) => {
                                         count++;
                                         s.textCmp.text = "C: " + count;
                                     },
@@ -555,7 +555,7 @@ public class Reactor_52Hooks_UseEffect
                                 new REtext.UseEffect.Hook {
                                     
                                     // Is executd each 1second per default
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d, s) => {
                                         count2++;
                                         s.textCmp.fontSize = count2;
                                     },
@@ -628,7 +628,7 @@ public class Reactor_52Hooks_UseEffect
                                 new REtext.UseEffect.Hook {
                                     
                                     // Is executd each 1second per default in unscaled time mode
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d, s) => {
                                         count++;
                                         s.textCmp.text = "C: " + count;
                                         throw new Exception("Expected error");
@@ -697,7 +697,7 @@ public class Reactor_52Hooks_UseEffect
                                     
                                     // Is executd each 1second per default in unscaled time mode
                                     duration = 0,
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d,s) => {
                                         count++;
                                         s.textCmp.text = "C: " + count;
                                     },
@@ -708,7 +708,7 @@ public class Reactor_52Hooks_UseEffect
                                     
                                     // Is executd each 1second per default in unscaled time mode
                                     duration = -12.2f,
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d,s) => {
                                         count++;
                                         s.textCmp.text = "C: " + count;
                                     },
@@ -777,7 +777,7 @@ public class Reactor_52Hooks_UseEffect
                                 new REtext.UseEffect.Hook {
                                     
                                     // Is executd each 1second per default in unscaled time mode
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d,s) => {
                                         count++;
                                         s.textCmp.text = "C: " + count;
                                     },
@@ -860,7 +860,7 @@ public class Reactor_52Hooks_UseEffect
                                 new REtext.UseEffect.Hook {
                                     
                                     // Is executd each 1second per default in unscaled time mode
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d,s) => {
                                         count++;
                                         s.textCmp.text = "C: " + count;
                                     },
@@ -944,7 +944,7 @@ public class Reactor_52Hooks_UseEffect
                                 new REtext.UseEffect.Hook {
                                     
                                     // Is executd each 1second per default in unscaled time mode
-                                    deltaFunction = (s) => {
+                                    deltaFunction = (d,s) => {
                                         count++;
                                         s.textCmp.text = "C: " + count;
                                     },
@@ -1019,7 +1019,7 @@ public class Reactor_52Hooks_UseEffect
                             useEffect = new REtext.UseEffect.Hook[]{
                                 new REtext.UseEffect.Hook {
                                     duration = 3,
-                                    deltaFunction = (s) => wordState.SetState("A new word"),
+                                    deltaFunction = (d,s) => wordState.SetState("A new word"),
                                 }
                             }
                         },

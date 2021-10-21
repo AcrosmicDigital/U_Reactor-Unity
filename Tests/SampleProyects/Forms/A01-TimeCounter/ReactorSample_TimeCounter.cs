@@ -6,62 +6,115 @@ using UnityEngine;
 public class ReactorSample_TimeCounter : MonoBehaviour
 {
 
-    private REcanvas reactorList1;
+    private float time = 0;
+    public bool isPaused = false;
 
 
     void Start()
     {
 
-        // Multiple components
-        reactorList1 = ListREcomponent().Draw();
-
-        var find = REtext.Find("#Title-One");
-        Debug.Log("Elements Finded: " + find.Length);
-
-        foreach (var element in find)
-        {
-            Debug.Log("Type: " + element.textCmp.text);
-        }
+        // Render component
+        ListREcomponent().Draw();
 
     }
 
+    private void Update()
+    {
+
+        if (isPaused) return;
+
+        time += Time.deltaTime;
+
+    }
+
+
+
     private REcanvas ListREcomponent()
     {
+
         return new REcanvas
         {
             childs = () => new REbase[]
             {
-                new REtext
+                new REverticalLayout
                 {
-                    propsReactorId = () => new REtext.ReactorIdSetter
+                    propsVerticalLayoutGroup = () => new REverticalLayout.VerticalLayoutGroupSetter
                     {
-                        id = "Title-One",
-                        className = new string[]
+                        childAlignment = TextAnchor.MiddleCenter,
+                    },
+                    childs = () => new REbase[]
+                    {
+                        new REbox{},
+                        new REtext
                         {
-                            "H1",
-                            "Text",
-                            "Title",
+                            propsRectTransform = () => new REtext.RectTransformSetter
+                            {
+                               localPosition = new Vector3(0,200),
+                            },
+                            propsText = () => new REtext.TextSetter
+                            {
+                                text = "Time: ",
+                            }
+                        },
+                        new REtext
+                        {
+                            propsText = () => new REtext.TextSetter
+                            {
+                                text = "",
+                            },
+                            useEffect = new REtext.UseEffect.Hook[]
+                            {
+                                new REtext.UseEffect.Hook
+                                {
+                                    deltaFunction = (d,s) =>
+                                    {
+                                        s.textCmp.text = "" + time.ToString("0.00");
+                                    },
+                                    duration = .2f,
+                                }
+                            }
+                        },
+                        new REbutton
+                        {
+                            propsText = () =>
+                            {
+                                if(isPaused)
+                                    return new REbutton.TextSetter
+                                    {
+                                        text = "Play",
+                                    };
+                                else
+                                    return new REbutton.TextSetter
+                                    {
+                                        text = "Pause",
+                                    };
+                            },
+                            propsButton = ()=> new REbutton.ButtonSetter
+                            {
+                                OnClickListener = (s) =>
+                                {
+                                    isPaused = !isPaused;
+
+                                    if(isPaused) s.textCmp.text = "Play";
+                                    else s.textCmp.text = "Pause";
+                                },
+                            }
+                        },
+                        new REbutton
+                        {
+                            propsText = () => new REbutton.TextSetter
+                            {
+                                text = "Reset",
+                            },
+                            propsButton = ()=> new REbutton.ButtonSetter
+                            {
+                                OnClickListener = (s) =>
+                                {
+                                    time = 0;
+                                },
+                            }
                         },
                     },
-                },
-                new REtext
-                {
-                    propsReactorId = () => new REtext.ReactorIdSetter
-                    {
-                        id = "Title-One",
-                        className = new string[]
-                        {
-                            "H1",
-                            "Text",
-                            "Title",
-                        },
-                    },
-                },
-                new REtext
-                {
-                },
-                new REimage
-                {
                 },
             }
         };

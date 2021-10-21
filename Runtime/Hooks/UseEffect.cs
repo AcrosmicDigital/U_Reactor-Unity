@@ -18,7 +18,7 @@ namespace U.Reactor
         protected ReactorHooks.TimeMode timeMode; // Time between functions calls
         protected float duration; // Time between functions calls
         protected int iterationsCount; // If will be destroyed after first execution, 0 or less for loop
-        protected Action<TSelector> deltaFunction;
+        protected Action<float, TSelector> deltaFunction;
 
 
         // Private
@@ -57,7 +57,7 @@ namespace U.Reactor
                 // Execute the delegates
                 try
                 {
-                    deltaFunction?.Invoke(selector);
+                    deltaFunction?.Invoke(duration, selector);
                 }
                 catch (Exception e)
                 {
@@ -85,7 +85,7 @@ namespace U.Reactor
         {
             public float duration = 1f;
             public ReactorHooks.TimeMode timeMode = ReactorHooks.TimeMode.DeltaUnscaledTime;
-            public Action<TSelector> deltaFunction;
+            public Action<float, TSelector> deltaFunction;
             public int iterationsCount = -1;
         }
 

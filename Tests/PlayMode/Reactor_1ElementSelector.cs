@@ -94,7 +94,7 @@ public class Reactor_1ElementSelector
                                     useEffect = new REpanel.UseEffect.Hook[]{
                                         new REpanel.UseEffect.Hook {
                                             duration = 2,
-                                            deltaFunction = (s) =>
+                                            deltaFunction = (d,s) =>
                                             {
                                                 // PanelMain1-PanelChild1*-Panel-Image
                                                 Debug.Log("PanelMain1-PanelChild1-Panel-Image: *" + s.childs[2].childs[1].gameObject.name + "*");
