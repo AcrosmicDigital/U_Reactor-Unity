@@ -16,14 +16,14 @@ namespace U.Reactor
         public virtual string[] className { get; set; } = new string[0];
 
 
-        internal ReactorId Set(Type elementType, ReactorId c)
+        internal HC.ReactorId Set(Type elementType, HC.ReactorId c)
         {
             return c.Set(elementType, id, className);
         }
 
-        internal ReactorId Set(Type elementType, GameObject gameObject)
+        internal HC.ReactorId Set(Type elementType, GameObject gameObject)
         {
-            return Set(elementType, gameObject.AddComponent<ReactorId>());
+            return Set(elementType, gameObject.AddComponent<HC.ReactorId>());
         }
 
     }

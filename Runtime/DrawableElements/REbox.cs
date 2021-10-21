@@ -87,7 +87,7 @@ namespace U.Reactor
 
             internal Selector(
                 GameObject gameObject,
-                ReactorId pieceId,
+                HC.ReactorId pieceId,
                 RectTransform rectTransform
                 ) : base(gameObject, pieceId, rectTransform)
             {

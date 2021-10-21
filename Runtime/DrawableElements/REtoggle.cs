@@ -24,7 +24,7 @@ namespace U.Reactor
         protected Image backImageCmp;
         protected Image checkImageCmp;
         protected Text textCmp;
-        protected MultiToggleMember multiToggleMemberCmp;
+        protected HC.MultiToggleMember multiToggleMemberCmp;
 
         #endregion Components
 
@@ -163,18 +163,18 @@ namespace U.Reactor
             public Image backImage { get; private set; }
             public Image checkImage { get; private set; }
             public Text text { get; private set; }
-            public MultiToggleMember multiToggleMember { get; private set; }
+            public HC.MultiToggleMember multiToggleMember { get; private set; }
 
 
             internal Selector(
                 GameObject gameObject,
-                ReactorId pieceId,
+                HC.ReactorId pieceId,
                 RectTransform rectTransform,
                 Toggle toggle,
                 Image backImage,
                 Image checkImage,
                 Text text,
-                MultiToggleMember multiToggleMember
+                HC.MultiToggleMember multiToggleMember
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.toggle = toggle;

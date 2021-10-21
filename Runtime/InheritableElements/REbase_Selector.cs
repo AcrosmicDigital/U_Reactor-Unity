@@ -13,7 +13,7 @@ namespace U.Reactor
         internal bool isLayoutElement { get; set; } = false; // Inline selector.isLayoutElement = xxx
         public bool isDisposed { get; private set; } = false; // Interal
 
-        public ReactorId elementId { get; private set; } // By constructor new Selector(xxx)
+        public HC.ReactorId elementId { get; private set; } // By constructor new Selector(xxx)
         public RectTransform rectTransform { get; private set; } // By constructor new Selector(xxx)
         public GameObject gameObject { get; private set; } // By constructor new Selector(xxx)
         public REbaseSelector parent { get; private set; } // By Func selector.SetParent()
@@ -91,7 +91,7 @@ namespace U.Reactor
             }
         } 
 
-        internal REbaseSelector(GameObject gameObject, ReactorId pieceId, RectTransform rectTransform)
+        internal REbaseSelector(GameObject gameObject, HC.ReactorId pieceId, RectTransform rectTransform)
         {
             this.gameObject = gameObject;
             this.elementId = pieceId;

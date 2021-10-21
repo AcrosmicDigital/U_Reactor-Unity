@@ -23,7 +23,7 @@ namespace U.Reactor
         #region Components
 
         protected RectTransform rectTransformCmp;
-        protected ReactorId reactorIdCmp;
+        protected HC.ReactorId reactorIdCmp;
 
         #endregion Components
 

@@ -12,11 +12,11 @@ namespace U.Reactor
     public class MultiToggleBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<MultiToggle.ToggleSet[], TSelector> OnValueChangedListener { get; set; } = (l, s) => { };
+        public virtual UnityAction<HC.MultiToggle.ToggleSet[], TSelector> OnValueChangedListener { get; set; } = (l, s) => { };
         // Properties
         public virtual int maxEnabled { get; set; } = 0;
 
-        public MultiToggle Set(MultiToggle c)
+        public HC.MultiToggle Set(HC.MultiToggle c)
         {
             c.maxEnabled = maxEnabled;
             
@@ -24,12 +24,12 @@ namespace U.Reactor
         }
 
 
-        public MultiToggle Set(GameObject gameObject)
+        public HC.MultiToggle Set(GameObject gameObject)
         {
-            return Set(gameObject.AddComponent<MultiToggle>());
+            return Set(gameObject.AddComponent<HC.MultiToggle>());
         }
 
-        public void SetListeners(MultiToggle c, TSelector selector)
+        public void SetListeners(HC.MultiToggle c, TSelector selector)
         {
             c.OnValueChanged.AddListener((l) =>
             {

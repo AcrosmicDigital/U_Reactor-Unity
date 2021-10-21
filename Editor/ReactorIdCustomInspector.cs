@@ -5,14 +5,14 @@ using UnityEditor;
 
 namespace U.Reactor
 {
-    [CustomEditor(typeof(ReactorId))]
+    [CustomEditor(typeof(HC.ReactorId))]
     [CanEditMultipleObjects()]
     public class ReactorIdCustomInspector : Editor
     {
         public override void OnInspectorGUI()
         {
 
-            ReactorId c = (ReactorId)target;
+            HC.ReactorId c = (HC.ReactorId)target;
 
             GUILayout.Space(8);
             if (c.elementType != null)

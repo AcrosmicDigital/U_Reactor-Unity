@@ -105,7 +105,7 @@ namespace U.Reactor
 
             public Selector(
                 GameObject gameObject,
-                ReactorId pieceId,
+                HC.ReactorId pieceId,
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
                 Text textCmp

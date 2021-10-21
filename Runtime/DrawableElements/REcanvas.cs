@@ -182,7 +182,7 @@ namespace U.Reactor
 
             internal Selector(
                 GameObject gameObject,
-                ReactorId pieceId,
+                HC.ReactorId pieceId,
                 RectTransform rectTransform,
                 Canvas canvas,
                 CanvasScaler canvasScaler,

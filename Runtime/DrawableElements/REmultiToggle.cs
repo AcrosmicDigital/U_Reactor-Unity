@@ -20,7 +20,7 @@ namespace U.Reactor
 
         #region Components
 
-        protected MultiToggle multiToggleCmp;
+        protected HC.MultiToggle multiToggleCmp;
 
         #endregion Components
 
@@ -105,7 +105,7 @@ namespace U.Reactor
                 }
             }
 
-            var toggleDefs = toggleList.Select(t => new MultiToggle.ToggleDef { toggle = t.toggle, label = t.text, name = t.multiToggleMember.toggleName, number = t.multiToggleMember.toggleNumber, value = t.multiToggleMember.toggleValue, }).ToArray();
+            var toggleDefs = toggleList.Select(t => new HC.MultiToggle.ToggleDef { toggle = t.toggle, label = t.text, name = t.multiToggleMember.toggleName, number = t.multiToggleMember.toggleNumber, value = t.multiToggleMember.toggleValue, }).ToArray();
 
             multiToggleCmp.toggleDefs = toggleDefs;
 
@@ -121,14 +121,14 @@ namespace U.Reactor
         public class Selector : REbaseSelector
         {
 
-            public MultiToggle multiToggle { get; private set; }
+            public HC.MultiToggle multiToggle { get; private set; }
 
 
             internal Selector(
                 GameObject gameObject,
-                ReactorId pieceId,
+                HC.ReactorId pieceId,
                 RectTransform rectTransform,
-                MultiToggle multiToggle
+                HC.MultiToggle multiToggle
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.multiToggle = multiToggle;
