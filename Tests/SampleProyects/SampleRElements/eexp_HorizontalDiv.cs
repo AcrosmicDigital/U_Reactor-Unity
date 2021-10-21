@@ -11,6 +11,7 @@ public class eexp_HorizontalDiv : MonoBehaviour
     public enum TestCase
     {
         A00Basic,
+        A01WithChilds,
 
     }
 
@@ -45,6 +46,46 @@ public class eexp_HorizontalDiv : MonoBehaviour
                     {
                         new REhorizontalDiv
                         {
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.A01WithChilds:
+                #region TestCase.A01WithChilds
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REhorizontalDiv
+                        {
+                            childs = () => new REbase[]
+                            {
+                                new REimage
+                                {
+
+                                },
+                                new REtext
+                                {
+
+                                },
+                                new REimage
+                                {
+
+                                },
+                                new REdropdown
+                                {
+
+                                },
+                                new REimage
+                                {
+
+                                }
+                            },
                         },
                     }
 

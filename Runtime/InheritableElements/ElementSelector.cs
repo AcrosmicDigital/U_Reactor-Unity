@@ -10,6 +10,7 @@ namespace U.Reactor
     public abstract class ElementSelector
     {
         // Track whether Dispose has been called.
+        internal Func<LayoutElementBSetter> layoutElementSetter { get; set; }
         public bool isDisposed { get; private set; } = false;
         public ReactorId elementId { get; private set; }
         public RectTransform rectTransform { get; private set; }

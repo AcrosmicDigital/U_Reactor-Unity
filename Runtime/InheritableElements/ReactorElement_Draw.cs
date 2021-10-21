@@ -40,6 +40,14 @@ namespace U.Reactor
         #endregion </Properties>
 
 
+        #region Setters
+
+        // Only if is not null will be used, null by default
+        public Func<LayoutElementSetter> propsLayoutElement;
+
+        #endregion Setters
+
+
         #region <Hooks>
 
         internal ElementSelector selector;
@@ -60,6 +68,7 @@ namespace U.Reactor
             this.parentSelector = parentSelector;
             this.selector = AddSelector();
             selector.SetParent(parentSelector);
+            selector.layoutElementSetter = propsLayoutElement;
             AddHooks();
 
             // Create childs
@@ -238,6 +247,15 @@ namespace U.Reactor
                 selector.Destroy();
 
         }
+
+        #region Subsetters
+
+        public class LayoutElementSetter : LayoutElementBSetter
+        {
+
+        }
+
+        #endregion
 
     }
 

@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace U.Reactor
 {
-    // Add URelementId, RectTransform, CanvasRenderer
     public abstract class REchild : REbase
     {
 

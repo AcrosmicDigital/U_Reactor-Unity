@@ -289,8 +289,10 @@ namespace U.Reactor
         }
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 300;
-            public override float height { get; set; } = 120;
+            public override float width { get; set; } = 0;
+            public override float height { get; set; } = 0;
+            public override Vector2 anchorMin { get; set; } = Vector2.zero;
+            public override Vector2 anchorMax { get; set; } = Vector2.one;
         }
 
         public class BackImageSetter : ImageBSetter
@@ -301,6 +303,8 @@ namespace U.Reactor
         public class ScrollRectSetter : ScrollRectBSetter
         {
             public override bool vertical { get; set; } = false;
+            public override ScrollRect.ScrollbarVisibility verticalScrollbarVisibility { get; set; } = ScrollRect.ScrollbarVisibility.AutoHideAndExpandViewport;
+            public override ScrollRect.ScrollbarVisibility horizontalScrollbarVisibility { get; set; } = ScrollRect.ScrollbarVisibility.AutoHideAndExpandViewport;
         }
 
         public class RectMask2DSetter : RectMask2DBSetter
@@ -311,12 +315,13 @@ namespace U.Reactor
         public class HorizontalLayoutGroupSetter : HorizontalLayoutGroupBSetter
         {
             public override float spacing { get; set; } = 10f;
+            public override RectOffset padding { get; set; } = new RectOffset(10, 10, 0, 0);
         }
 
         public class ContenSizeFilterSetter : ContentSizeFilterBSetter
         {
-            public override ContentSizeFitter.FitMode horizontalFit { get; set; } = ContentSizeFitter.FitMode.MinSize;
-            public override ContentSizeFitter.FitMode verticalFit { get; set; } = ContentSizeFitter.FitMode.MinSize;
+            public override ContentSizeFitter.FitMode horizontalFit { get; set; } = ContentSizeFitter.FitMode.PreferredSize;
+            public override ContentSizeFitter.FitMode verticalFit { get; set; } = ContentSizeFitter.FitMode.Unconstrained;
         }
 
         public class VScrollbarSetter : ScrollbarBSetter

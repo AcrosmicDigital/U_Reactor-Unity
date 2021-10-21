@@ -11,6 +11,8 @@ public class eexp_VerticalDiv : MonoBehaviour
     public enum TestCase
     {
         A00Basic,
+        A01WithChilds,
+        A02ControlChildsWidth,
 
     }
 
@@ -45,6 +47,118 @@ public class eexp_VerticalDiv : MonoBehaviour
                     {
                         new REverticalDiv
                         {
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.A01WithChilds:
+                #region TestCase.A01WithChilds
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REverticalDiv
+                        {
+                            childs = () => new REbase[]
+                            {
+                                new REimage
+                                {
+
+                                },
+                                new REtext
+                                {
+
+                                },
+                                new REimage
+                                {
+
+                                },
+                                new REdropdown
+                                {
+
+                                },
+                                new REimage
+                                {
+
+                                },
+                                new REbutton
+                                {
+
+                                },
+                                new REcanvas
+                                {
+
+                                },
+                                new REhorizontalDiv
+                                {
+
+                                },
+                                new REpanel
+                                {
+
+                                },
+                            },
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.A02ControlChildsWidth:
+                #region TestCase.A02ControlChildsWidth
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REverticalDiv
+                        {
+                            childs = () => new REbase[]
+                            {
+                                new REimage
+                                {
+                                    propsLayoutElement = () => new REbase.LayoutElementSetter
+                                    {
+                                        preferredHeight = 25,
+                                    },
+                                },
+                                new REimage
+                                {
+                                    propsLayoutElement = () => new REbase.LayoutElementSetter
+                                    {
+                                        preferredHeight = 50,
+                                    },
+                                },
+                                new REbox
+                                {
+                                    propsLayoutElement = () => new REbase.LayoutElementSetter
+                                    {
+                                        preferredHeight = 50,
+                                    },
+                                },
+                                new REimage
+                                {
+                                    propsLayoutElement = () => new REbase.LayoutElementSetter
+                                    {
+                                        preferredHeight = 50,
+                                    },
+                                },
+                                new REbox
+                                {
+
+                                },
+                                new REimage
+                                {
+
+                                },
+                            },
                         },
                     }
 
