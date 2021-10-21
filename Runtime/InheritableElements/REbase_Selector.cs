@@ -11,6 +11,7 @@ namespace U.Reactor
     {
         // Track whether Dispose has been called.
         internal Func<LayoutElementBSetter> layoutElementSetter { get; set; }
+        internal bool isLayoutElement { get; set; } = false;
         public bool isDisposed { get; private set; } = false;
         public ReactorId elementId { get; private set; }
         public RectTransform rectTransform { get; private set; }

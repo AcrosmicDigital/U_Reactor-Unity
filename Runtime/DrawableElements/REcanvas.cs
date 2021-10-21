@@ -7,10 +7,12 @@ namespace U.Reactor
     // Add URelementId, RectTransform, Canvas, CanvasScaler, GraphicRaycaster, CanvasGroup
     public class REcanvas : REbase
     {
-        protected override Type elementType => this.GetType();
+        public override Type elementType => this.GetType();
         protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
         protected override Func<GameObjectBSetter> PropsGameObject => propsGameObject;
         protected override Func<ReactorIdBSetter> PropsReactorId => propsReactorId;
+        protected override Func<LayoutElementBSetter> PropsLayoutElement => null;
+        public override bool isLayoutElement => false;
 
 
         #region Components

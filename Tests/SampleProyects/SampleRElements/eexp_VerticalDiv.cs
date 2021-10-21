@@ -13,6 +13,8 @@ public class eexp_VerticalDiv : MonoBehaviour
         A00Basic,
         A01WithChilds,
         A02ControlChildsWidth,
+        A03BadWayRenderNoLayoutElements,
+        A04RightWayToRenderNoLayoutElements,
 
     }
 
@@ -45,7 +47,7 @@ public class eexp_VerticalDiv : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REverticalDiv
+                        new REverticalLayout
                         {
                         },
                     }
@@ -62,7 +64,7 @@ public class eexp_VerticalDiv : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REverticalDiv
+                        new REverticalLayout
                         {
                             childs = () => new REbase[]
                             {
@@ -94,7 +96,7 @@ public class eexp_VerticalDiv : MonoBehaviour
                                 {
 
                                 },
-                                new REhorizontalDiv
+                                new REhorizontalLayout
                                 {
 
                                 },
@@ -118,34 +120,34 @@ public class eexp_VerticalDiv : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REverticalDiv
+                        new REverticalLayout
                         {
                             childs = () => new REbase[]
                             {
                                 new REimage
                                 {
-                                    propsLayoutElement = () => new REbase.LayoutElementSetter
+                                    propsLayoutElement = () => new REimage.LayoutElementSetter
                                     {
                                         preferredHeight = 25,
                                     },
                                 },
                                 new REimage
                                 {
-                                    propsLayoutElement = () => new REbase.LayoutElementSetter
+                                    propsLayoutElement = () => new REimage.LayoutElementSetter
                                     {
                                         preferredHeight = 50,
                                     },
                                 },
                                 new REbox
                                 {
-                                    propsLayoutElement = () => new REbase.LayoutElementSetter
+                                    propsLayoutElement = () => new REbox.LayoutElementSetter
                                     {
                                         preferredHeight = 50,
                                     },
                                 },
                                 new REimage
                                 {
-                                    propsLayoutElement = () => new REbase.LayoutElementSetter
+                                    propsLayoutElement = () => new REimage.LayoutElementSetter
                                     {
                                         preferredHeight = 50,
                                     },
@@ -157,6 +159,108 @@ public class eexp_VerticalDiv : MonoBehaviour
                                 new REimage
                                 {
 
+                                },
+                            },
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.A03BadWayRenderNoLayoutElements:
+                #region TestCase.A03BadWayRenderNoLayoutElements
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REverticalLayout
+                        {
+                            childs = () => new REbase[]
+                            {
+                                new REimage
+                                {
+                                    propsLayoutElement = () => new REimage.LayoutElementSetter
+                                    {
+                                        preferredHeight = 25,
+                                    },
+                                },
+                                // This element wont de created and a error message will be displayed
+                                new REhorizontalLayout
+                                {
+                                    
+                                },
+                                new REbox
+                                {
+                                    propsLayoutElement = () => new REbox.LayoutElementSetter
+                                    {
+                                        preferredHeight = 50,
+                                    },
+                                },
+                                new REimage
+                                {
+                                    propsLayoutElement = () => new REimage.LayoutElementSetter
+                                    {
+                                        preferredHeight = 50,
+                                    },
+                                },
+                            },
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.A04RightWayToRenderNoLayoutElements:
+                #region TestCase.A04RightWayToRenderNoLayoutElements
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REverticalLayout
+                        {
+                            childs = () => new REbase[]
+                            {
+                                new REimage
+                                {
+                                    propsLayoutElement = () => new REimage.LayoutElementSetter
+                                    {
+                                        preferredHeight = 25,
+                                    },
+                                },
+                                // Create inside a box
+                                new REbox
+                                {
+                                    propsLayoutElement = () => new REbox.LayoutElementSetter
+                                    {
+                                        preferredHeight = 50,
+                                    },
+                                    childs = () => new REbase[]
+                                    {
+                                        new REhorizontalLayout
+                                        {
+
+                                        },
+                                    },
+                                },
+                                new REbox
+                                {
+                                    propsLayoutElement = () => new REbox.LayoutElementSetter
+                                    {
+                                        preferredHeight = 50,
+                                    },
+                                },
+                                new REimage
+                                {
+                                    propsLayoutElement = () => new REimage.LayoutElementSetter
+                                    {
+                                        preferredHeight = 50,
+                                    },
                                 },
                             },
                         },

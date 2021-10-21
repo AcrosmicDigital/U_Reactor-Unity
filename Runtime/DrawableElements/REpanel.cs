@@ -10,11 +10,13 @@ namespace U.Reactor
 {
     public class REpanel : RErenderer
     {
-        protected override Type elementType => this.GetType();
+        public override Type elementType => this.GetType();
         protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
         protected override Func<GameObjectBSetter> PropsGameObject => propsGameObject;
         protected override Func<ReactorIdBSetter> PropsReactorId => propsReactorId;
         protected override Func<CanvasRendererBSetter> PropsCanvasRenderer => propsCanvasRenderer;
+        protected override Func<LayoutElementBSetter> PropsLayoutElement => null;
+        public override bool isLayoutElement => false;
 
 
         #region Components

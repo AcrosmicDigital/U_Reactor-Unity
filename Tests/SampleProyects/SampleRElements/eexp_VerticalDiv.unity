@@ -2326,7 +2326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755902c8ea65ca948b17a1c24f2c2486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testCase: 2
+  testCase: 4
   destroyOnStart: 1
   toDestroy:
   - {fileID: 892717322}

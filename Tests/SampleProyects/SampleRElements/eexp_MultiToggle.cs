@@ -145,7 +145,7 @@ public class eexp_MultiToggle : MonoBehaviour
                             },
                             childs = () => new REbase[]
                             {
-                                new REverticalDiv
+                                new REverticalLayout
                                 {
                                     childs = () => new REbase[]
                                     {

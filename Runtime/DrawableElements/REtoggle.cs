@@ -10,10 +10,12 @@ namespace U.Reactor
 {
     public class REtoggle : REbase
     {
-        protected override Type elementType => this.GetType();
+        public override Type elementType => this.GetType();
         protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
         protected override Func<GameObjectBSetter> PropsGameObject => propsGameObject;
         protected override Func<ReactorIdBSetter> PropsReactorId => propsReactorId;
+        protected override Func<LayoutElementBSetter> PropsLayoutElement => propsLayoutElement;
+        public override bool isLayoutElement => true;
 
 
         #region Components
@@ -43,6 +45,8 @@ namespace U.Reactor
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
         public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
         public Func<ReactorIdSetter> propsReactorId = () => new ReactorIdSetter();
+        // Layout element
+        public Func<LayoutElementSetter> propsLayoutElement;
 
         public Func<ToggleSetter> propsToggle = () => new ToggleSetter();
         public Func<BackImageSetter> propsBackImage = () => new BackImageSetter();
@@ -205,6 +209,11 @@ namespace U.Reactor
 
 
         #region Subsetters
+
+        public class LayoutElementSetter : LayoutElementBSetter
+        {
+
+        }
 
         public class MultiToggleMemberSetter : MultiToggleMemberBSetter
         {

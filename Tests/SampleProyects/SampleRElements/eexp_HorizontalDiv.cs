@@ -44,7 +44,7 @@ public class eexp_HorizontalDiv : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REhorizontalDiv
+                        new REhorizontalLayout
                         {
                         },
                     }
@@ -61,7 +61,7 @@ public class eexp_HorizontalDiv : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REhorizontalDiv
+                        new REhorizontalLayout
                         {
                             childs = () => new REbase[]
                             {

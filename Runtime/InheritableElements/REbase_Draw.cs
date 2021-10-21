@@ -12,10 +12,12 @@ namespace U.Reactor
     // Add URelementId, RectTransform
     public abstract partial class REbase
     {
-        protected abstract Type elementType { get; }  // The type of the element, each element must everride
+        public abstract Type elementType { get; }  // The type of the element, each element must everride
         protected abstract Func<RectTransformBSetter> PropsRectTransform { get; }
         protected abstract Func<GameObjectBSetter> PropsGameObject { get; }
         protected abstract Func<ReactorIdBSetter> PropsReactorId { get; }
+        protected abstract Func<LayoutElementBSetter> PropsLayoutElement { get; }
+        public abstract bool isLayoutElement { get; }
 
 
 
@@ -42,8 +44,6 @@ namespace U.Reactor
 
         #region Setters
 
-        // Only if is not null will be used, null by default
-        public Func<LayoutElementSetter> propsLayoutElement;
 
         #endregion Setters
 
@@ -68,7 +68,8 @@ namespace U.Reactor
             this.parentSelector = parentSelector;
             this.selector = AddSelector();
             selector.SetParent(parentSelector);
-            selector.layoutElementSetter = propsLayoutElement;
+            selector.layoutElementSetter = PropsLayoutElement;
+            selector.isLayoutElement = isLayoutElement;
             AddHooks();
 
             // Create childs
@@ -83,8 +84,10 @@ namespace U.Reactor
             {
                 foreach (var child in newChilds)
                 {
-                    if (child == null)
-                        continue;
+                    if (child == null) continue;
+
+                    // Only if create child condition is true
+                    if (!CrateChildCondition(child)) continue;
                     
                     if(virtualChildContainer != null)
                         childsList.Add(child.Create(virtualChildContainer, selector));
@@ -208,6 +211,8 @@ namespace U.Reactor
 
         protected abstract void AddHooks();
 
+        protected virtual bool CrateChildCondition(REbase child) => true;
+
         protected virtual void AfterCreateChild(REbaseSelector child) { }
 
         protected virtual void AfterCreateComponent() { }
@@ -247,15 +252,6 @@ namespace U.Reactor
                 selector.Destroy();
 
         }
-
-        #region Subsetters
-
-        public class LayoutElementSetter : LayoutElementBSetter
-        {
-
-        }
-
-        #endregion
 
     }
 
