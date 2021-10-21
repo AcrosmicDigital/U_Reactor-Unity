@@ -10,7 +10,9 @@ namespace U.Reactor
 {
     public class CanvasScalerBSetter
     {
-
+        // Listeners
+        // ...
+        // Properties
         public virtual CanvasScaler.ScaleMode uiScaleMode { get; set; } = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         public virtual Vector3 referenceResolution { get; set; } = new Vector3(1920, 1080);
         public virtual CanvasScaler.ScreenMatchMode screenMatchMode { get; set; } = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;

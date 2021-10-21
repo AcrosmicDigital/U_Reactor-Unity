@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace U.Reactor
 {
     public class ScrollRectBSetter
     {
+        // Listeners
+        public virtual UnityAction<Vector2, REbaseSelector> OnValueChangedListener { get; set; } = (v, s) => { };
+        // Properties
         public virtual bool horizontal { get; set; } = true;
         public virtual bool vertical { get; set; } = true;
         public virtual ScrollRect.MovementType movementType { get; set; } = ScrollRect.MovementType.Elastic;
@@ -35,7 +39,7 @@ namespace U.Reactor
             c.horizontalScrollbarSpacing = horizontalScrollbarSpacing;
             c.verticalScrollbarVisibility = verticalScrollbarVisibility;
             c.verticalScrollbarSpacing = verticalScrollbarSpacing;
-
+            
             return c;
         }
 
@@ -43,6 +47,23 @@ namespace U.Reactor
         public ScrollRect Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<ScrollRect>());
+        }
+
+        public void SetListeners(ScrollRect c, REbaseSelector selector)
+        {
+            c.onValueChanged.AddListener((v) =>
+            {
+                try
+                {
+                    OnValueChangedListener?.Invoke(v, selector);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("Error Executing OnValueChangedListener: " + e);
+                }
+            });
+
+
         }
     }
 }

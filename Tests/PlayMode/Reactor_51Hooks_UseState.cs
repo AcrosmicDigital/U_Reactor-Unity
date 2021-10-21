@@ -223,50 +223,50 @@ public class Reactor_51Hooks_UseState
 
         // Hide the element
         routerProve.Hide();
-        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").rootCanvasSelector.canvas.enabled);
 
         // Change the states
         wordState.SetState("NewWord");
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "NewWord");
-        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").rootCanvasSelector.canvas.enabled);
         wordState.SetState("OtherWord");
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "OtherWord");
-        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").rootCanvasSelector.canvas.enabled);
         wordState.PrevState();
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "NewWord");
-        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").rootCanvasSelector.canvas.enabled);
         wordState.SetState("OtherWord");
         wordState.SetState("Word");
         wordState.SetState("LastWord");
         wordState.SetState("FinalWord");
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "FinalWord");
-        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").rootCanvasSelector.canvas.enabled);
         wordState.PrevState(1);
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "LastWord");
-        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").rootCanvasSelector.canvas.enabled);
         wordState.PrevState(2);
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "OtherWord");
-        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").rootCanvasSelector.canvas.enabled);
         wordState.PrevState(10);
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "Hola a todos !!");
-        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").rootCanvasSelector.canvas.enabled);
         wordState.PrevState();
         Debug.Log("Check");
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "Hola a todos !!");
-        Assert.IsFalse(REbase.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveText").rootCanvasSelector.canvas.enabled);
         Debug.Log("Check");
 
         // Enable and check
         routerProve.Show();
         Assert.IsTrue(REtext.FindOne("#ProveText").textCmp.text == "Hola a todos !!");
-        Assert.IsTrue(REbase.FindOne("#ProveText").root.canvas.enabled);
+        Assert.IsTrue(REbase.FindOne("#ProveText").rootCanvasSelector.canvas.enabled);
         Debug.Log("Check");
 
 
@@ -414,23 +414,23 @@ public class Reactor_51Hooks_UseState
 
         // Hide the element
         routerProve.Hide();
-        Assert.IsFalse(REbase.FindOne("#ProveCanvas").root.canvas.enabled);
+        Assert.IsFalse(REbase.FindOne("#ProveCanvas").rootCanvasSelector.canvas.enabled);
 
         // Change the states
         alphaState.SetState(.33f);
         Assert.IsTrue(REcanvas.FindOne("#ProveCanvas").canvasGroup.alpha == .33f);
-        Assert.IsFalse(REcanvas.FindOne("#ProveCanvas").root.canvas.enabled);
+        Assert.IsFalse(REcanvas.FindOne("#ProveCanvas").rootCanvasSelector.canvas.enabled);
         alphaState.SetState(.66f);
         Assert.IsTrue(REcanvas.FindOne("#ProveCanvas").canvasGroup.alpha == .66f);
-        Assert.IsFalse(REcanvas.FindOne("#ProveCanvas").root.canvas.enabled);
+        Assert.IsFalse(REcanvas.FindOne("#ProveCanvas").rootCanvasSelector.canvas.enabled);
         alphaState.PrevState();
         Assert.IsTrue(REcanvas.FindOne("#ProveCanvas").canvasGroup.alpha == .33f);
-        Assert.IsFalse(REcanvas.FindOne("#ProveCanvas").root.canvas.enabled);
+        Assert.IsFalse(REcanvas.FindOne("#ProveCanvas").rootCanvasSelector.canvas.enabled);
 
         // Enable and check
         routerProve.Show();
         Assert.IsTrue(REcanvas.FindOne("#ProveCanvas").canvasGroup.alpha == .33f);
-        Assert.IsTrue(REcanvas.FindOne("#ProveCanvas").root.canvas.enabled);
+        Assert.IsTrue(REcanvas.FindOne("#ProveCanvas").rootCanvasSelector.canvas.enabled);
 
 
         yield return new WaitForSecondsRealtime(2);

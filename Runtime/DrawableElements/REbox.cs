@@ -76,12 +76,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector()
-        {
-            var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp);
-
-            return sel;
-        }
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp);
 
         #endregion Drawers
 

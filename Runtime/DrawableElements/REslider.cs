@@ -89,7 +89,7 @@ namespace U.Reactor
                 sizeDelta = Vector2.zero,
                 offsetMin = Vector2.zero,
                 offsetMax = Vector2.zero,
-            }.SetByAnchors(backgroundGO);
+            }.SetOrSearchByAnchors(backgroundGO);
 
             new RectTransformBSetter()
             {
@@ -98,14 +98,14 @@ namespace U.Reactor
                 sizeDelta = Vector2.zero,
                 offsetMin = new Vector2(15, 0f),
                 offsetMax = new Vector2(-30F, 0F),
-            }.SetByAnchors(fillAreaGO);
+            }.SetOrSearchByAnchors(fillAreaGO);
 
             new RectTransformBSetter()
             {
                 sizeDelta = Vector2.zero,
                 offsetMin = new Vector2(-14, 0f),
                 offsetMax = new Vector2(14F, 0F),
-            }.SetByAnchors(fillGO);
+            }.SetOrSearchByAnchors(fillGO);
 
             new RectTransformBSetter()
             {
@@ -114,14 +114,14 @@ namespace U.Reactor
                 sizeDelta = Vector2.zero,
                 offsetMin = new Vector2(14, 0f),
                 offsetMax = new Vector2(-14F, 0F),
-            }.SetByAnchors(handleAreaGO);
+            }.SetOrSearchByAnchors(handleAreaGO);
 
             new RectTransformBSetter()
             {
                 sizeDelta = Vector2.zero,
                 offsetMin = new Vector2(-14, 0f),
                 offsetMax = new Vector2(17F, 0F),
-            }.SetByAnchors(handleGO);
+            }.SetOrSearchByAnchors(handleGO);
 
             sliderCmp.fillRect = fillGO.GetComponent<RectTransform>();
             sliderCmp.targetGraphic = handleImageCmp;
@@ -144,12 +144,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector()
-        {
-            var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp, handleImageCmp);
-
-            return sel;
-        }
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp, handleImageCmp);
 
         #endregion Drawers
 

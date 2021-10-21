@@ -108,12 +108,7 @@ namespace U.Reactor
 
         }
 
-        protected override REbaseSelector AddSelector()
-        {
-            var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp);
-
-            return sel;
-        }
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp);
 
 
         protected override void AddHooks()

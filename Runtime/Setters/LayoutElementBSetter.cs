@@ -10,13 +10,16 @@ namespace U.Reactor
 {
     public class LayoutElementBSetter
     {
+        // Listeners
+        // ...
+        // Properties
         public virtual bool ignoreLayout { get; set; } = false;
-        public virtual float minWidth { get; set; } = 0;
-        public virtual float minHeight { get; set; } = 0;
-        public virtual float preferredWidth { get; set; } = 0;
-        public virtual float preferredHeight { get; set; } = 0;
-        public virtual float flexibleWidth { get; set; } = 1;
-        public virtual float flexibleHeight { get; set; } = 1;
+        public virtual float minWidth { get; set; } = -1;
+        public virtual float minHeight { get; set; } = -1;
+        public virtual float preferredWidth { get; set; } = -1;
+        public virtual float preferredHeight { get; set; } = -1;
+        public virtual float flexibleWidth { get; set; } = -1;
+        public virtual float flexibleHeight { get; set; } = -1;
         public virtual int layoutPriority { get; set; } = 1;
 
         public LayoutElement Set(LayoutElement c)

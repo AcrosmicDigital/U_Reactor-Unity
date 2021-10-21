@@ -185,7 +185,7 @@ public class Reactor_3NestedCanvasAndObjects
         Assert.IsTrue(textSelector.gameObject == null);
         Assert.IsTrue(textSelector.parent == null);
         Assert.IsTrue(textSelector.childs == null);
-        Assert.IsTrue(textSelector.brothers == null);
+        Assert.IsTrue(textSelector.brothersSelector == null);
         Assert.IsTrue(textSelector.canvasRenderer == null);
         Assert.Throws<NullReferenceException>(() => Debug.Log("V: " + textSelector.rectTransform.rect));
 
@@ -242,10 +242,10 @@ public class Reactor_3NestedCanvasAndObjects
         Assert.IsTrue(textSelector.rectTransform.root.gameObject.name == "AnyObject");
 
         // But the selector root must be the canvas, but the canvas parent must be the canvas too
-        Assert.IsTrue(textSelector.root.gameObject.name == "Canvas-Unamed");
+        Assert.IsTrue(textSelector.rootCanvasSelector.gameObject.name == "Canvas-Unamed");
         Assert.IsTrue(textSelector.parent.gameObject.name == "Canvas-Unamed");
         Assert.IsTrue(textSelector.parent.parent == null);
-        var canvasSelector = (REcanvas.Selector)textSelector.root;
+        var canvasSelector = (REcanvas.Selector)textSelector.rootCanvasSelector;
 
 
         // If component is redrawed in null
@@ -257,10 +257,10 @@ public class Reactor_3NestedCanvasAndObjects
         Assert.IsTrue(textSelector.rectTransform.root.gameObject.name == "Canvas-Unamed");
 
         // And the selector root must be the canvas too
-        Assert.IsTrue(textSelector.root.gameObject.name == "Canvas-Unamed");
+        Assert.IsTrue(textSelector.rootCanvasSelector.gameObject.name == "Canvas-Unamed");
         Assert.IsTrue(textSelector.parent.gameObject.name == "Canvas-Unamed");
         Assert.IsTrue(textSelector.parent.parent == null);
-        canvasSelector = (REcanvas.Selector)textSelector.root;
+        canvasSelector = (REcanvas.Selector)textSelector.rootCanvasSelector;
 
         reactorComponent.Erase();
     }
@@ -325,12 +325,12 @@ public class Reactor_3NestedCanvasAndObjects
 
         // But the selector root must be the canvas, but the canvas parent must be the canvas too
         Debug.Log("Check root");
-        Assert.IsTrue(textSelector.root.gameObject.name == "RootCanvas");
-        Assert.IsTrue(textSelector.root.root.gameObject.name == "RootCanvas");
-        Assert.IsTrue(textSelector.root.root.root.gameObject.name == "RootCanvas");
+        Assert.IsTrue(textSelector.rootCanvasSelector.gameObject.name == "RootCanvas");
+        Assert.IsTrue(textSelector.rootCanvasSelector.rootCanvasSelector.gameObject.name == "RootCanvas");
+        Assert.IsTrue(textSelector.rootCanvasSelector.rootCanvasSelector.rootCanvasSelector.gameObject.name == "RootCanvas");
         Assert.IsTrue(textSelector.parent.gameObject.name == "Canvas-Unamed");
         Assert.IsTrue(textSelector.parent.parent.parent == null);
-        var canvasSelector = (REcanvas.Selector)textSelector.root;
+        var canvasSelector = (REcanvas.Selector)textSelector.rootCanvasSelector;
 
 
         // If component is redrawed in null
@@ -345,10 +345,10 @@ public class Reactor_3NestedCanvasAndObjects
         Assert.IsTrue(textSelector.rectTransform.root.gameObject.name == "RootCanvas");
         Debug.Log("Checking root");
         // And the selector root must be the canvas too
-        Assert.IsTrue(textSelector.root.gameObject.name == "RootCanvas"); 
+        Assert.IsTrue(textSelector.rootCanvasSelector.gameObject.name == "RootCanvas"); 
         Assert.IsTrue(textSelector.parent.gameObject.name == "Canvas-Unamed"); 
         Assert.IsTrue(textSelector.parent.parent.parent == null); 
-        canvasSelector = (REcanvas.Selector)textSelector.root; 
+        canvasSelector = (REcanvas.Selector)textSelector.rootCanvasSelector; 
 
         reactorComponent.Erase();
     }
@@ -419,12 +419,12 @@ public class Reactor_3NestedCanvasAndObjects
 
         // But the selector parentcanvas must be the first canvas
         Debug.Log("Check parentCanvas");
-        Assert.IsTrue(textSelector.parentCanvas.gameObject.name == "Canvas-Unamed");
-        Assert.IsTrue(textSelector.parentCanvas.parentCanvas.gameObject.name == "RootCanvas");
-        Assert.IsTrue(textSelector.parentCanvas.parentCanvas.parentCanvas.gameObject.name == "RootCanvas");
-        var canvasSelector = (REcanvas.Selector)textSelector.parentCanvas;
-        canvasSelector = (REcanvas.Selector)textSelector.parentCanvas.parentCanvas;
-        canvasSelector = (REcanvas.Selector)textSelector.parentCanvas.parentCanvas.parentCanvas;
+        Assert.IsTrue(textSelector.parentCanvasSelector.gameObject.name == "Canvas-Unamed");
+        Assert.IsTrue(textSelector.parentCanvasSelector.parentCanvasSelector.gameObject.name == "RootCanvas");
+        Assert.IsTrue(textSelector.parentCanvasSelector.parentCanvasSelector.parentCanvasSelector.gameObject.name == "RootCanvas");
+        var canvasSelector = (REcanvas.Selector)textSelector.parentCanvasSelector;
+        canvasSelector = (REcanvas.Selector)textSelector.parentCanvasSelector.parentCanvasSelector;
+        canvasSelector = (REcanvas.Selector)textSelector.parentCanvasSelector.parentCanvasSelector.parentCanvasSelector;
 
 
         // If component is redrawed in null
@@ -434,12 +434,12 @@ public class Reactor_3NestedCanvasAndObjects
 
         // But the selector parentcanvas must be the first canvas
         Debug.Log("Check parentCanvas");
-        Assert.IsTrue(textSelector.parentCanvas.gameObject.name == "Canvas-Unamed");
-        Assert.IsTrue(textSelector.parentCanvas.parentCanvas.gameObject.name == "RootCanvas");
-        Assert.IsTrue(textSelector.parentCanvas.parentCanvas.parentCanvas.gameObject.name == "RootCanvas");
-        canvasSelector = (REcanvas.Selector)textSelector.parentCanvas;
-        canvasSelector = (REcanvas.Selector)textSelector.parentCanvas.parentCanvas;
-        canvasSelector = (REcanvas.Selector)textSelector.parentCanvas.parentCanvas.parentCanvas;
+        Assert.IsTrue(textSelector.parentCanvasSelector.gameObject.name == "Canvas-Unamed");
+        Assert.IsTrue(textSelector.parentCanvasSelector.parentCanvasSelector.gameObject.name == "RootCanvas");
+        Assert.IsTrue(textSelector.parentCanvasSelector.parentCanvasSelector.parentCanvasSelector.gameObject.name == "RootCanvas");
+        canvasSelector = (REcanvas.Selector)textSelector.parentCanvasSelector;
+        canvasSelector = (REcanvas.Selector)textSelector.parentCanvasSelector.parentCanvasSelector;
+        canvasSelector = (REcanvas.Selector)textSelector.parentCanvasSelector.parentCanvasSelector.parentCanvasSelector;
 
         reactorComponent.Erase();
     }

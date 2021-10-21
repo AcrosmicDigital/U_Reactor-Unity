@@ -20,41 +20,98 @@ namespace U.Reactor
         public abstract bool isLayoutElement { get; }
 
 
-
-
-        #region <Components>
+        #region Components
 
         protected RectTransform rectTransformCmp;
-        protected ReactorId reactorIdCmp; // Id to find the element
+        protected ReactorId reactorIdCmp;
 
-        #endregion </Components>
+        #endregion Components
 
 
-        #region <Properties>
+        #region Setters
+
+        public Func<IEnumerable<REbase>> childs = () => new REbase[0];
+
+        #endregion
+
+
+        #region Properties
 
         protected GameObject virtualChildContainer { get; set; }  // If childs mustbe created in a subobject set this value
         protected GameObject gameObject { get; private set; }
         protected GameObject parent { get; private set; } // The parent GameObject
         protected List<REbase> childsList = new List<REbase>();
         protected bool isDisabled = false;
-        public Func<IEnumerable<REbase>> childs = () => new REbase[0];
-
-        #endregion </Properties>
-
-
-        #region Setters
-
-
-        #endregion Setters
-
-
-        #region <Hooks>
-
         internal REbaseSelector selector;
         protected REbaseSelector parentSelector;
+
+        #endregion Properties
+
+
+        #region Hooks
+
         public IuseState[] useState;
 
-        #endregion </Hooks>
+        #endregion Hooks
+
+
+        #region Drawers
+
+        /// <summary>
+        /// Create a new gameobject with all properties and comonents, and destroy the old one
+        /// </summary>
+        /// <param name="parent">Parent gameobject</param>
+        protected virtual void CreateRoot(GameObject parent)
+        {
+
+            // Check if the gameObject exist and delete it to draw again, but save childNumber
+            var siblingIndex = -1;
+            if (gameObject != null)
+            {
+                isDisabled = !gameObject.activeSelf;
+                if (gameObject.transform.parent != null)
+                    siblingIndex = gameObject.transform.GetSiblingIndex();
+                UnityEngine.Object.DestroyImmediate(gameObject);
+            }
+
+            // Crate the gameObject
+            if (gameObject == null)
+                gameObject = new GameObject();
+
+            // Create ainstance of gameObject properties
+            var propsGo = PropsGameObject();
+
+            // Set the name
+            gameObject.name = propsGo.name;
+
+            // Set the parent if exist
+            this.parent = parent;
+            if (parent != null)
+                gameObject.transform.SetParent(parent.transform);
+
+            // Set the childNumber if necesary
+            if (siblingIndex >= 0)
+            {
+                try
+                {
+                    gameObject.transform.SetSiblingIndex(siblingIndex);
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+            // Set the layer
+            gameObject.layer = propsGo.layer;
+
+            // Set the tag
+            if (!String.IsNullOrEmpty(propsGo.tag) && !String.IsNullOrWhiteSpace(propsGo.tag))
+                gameObject.tag = propsGo.tag;
+
+            // Add rectTransform and components
+            rectTransformCmp = PropsRectTransform().SetOrSearchByWidthAndHeight(gameObject);
+            reactorIdCmp = PropsReactorId().Set(elementType, gameObject);
+        }
 
 
         // Create all the component , call other functions in order
@@ -155,55 +212,12 @@ namespace U.Reactor
         }
 
         // Function to subscribe to useState event
-        void OnUseStateChange(object sender, EventArgs e)
+        private void OnUseStateChange(object sender, EventArgs e)
         {
             Create(parent, parentSelector);
         }
 
-
-        protected virtual void CreateRoot(GameObject parent)
-        {
-
-            // Check if the gameObject exist and delete it to draw again, but save childNumber
-            var siblingIndex = -1;
-            if (gameObject != null)
-            {
-                isDisabled = !gameObject.activeSelf;
-                if (gameObject.transform.parent != null)
-                    siblingIndex = gameObject.transform.GetSiblingIndex();
-                UnityEngine.Object.DestroyImmediate(gameObject);
-            }
-
-            // Crate the gameObject
-            if (gameObject == null)
-                gameObject = new GameObject();
-
-            // Create ainstance of gameObject properties
-            var propsGo = PropsGameObject();
-
-            // Set the name
-            gameObject.name = propsGo.name;
-
-            // Set the parent if exist
-            this.parent = parent;
-            if (parent != null)
-                gameObject.transform.SetParent(parent.transform);
-
-            // Set the childNumber if necesary
-            if (siblingIndex >= 0)
-                gameObject.transform.SetSiblingIndex(siblingIndex);
-
-            // Set the layer
-            gameObject.layer = propsGo.layer;
-
-            // Set the tag
-            if (!String.IsNullOrEmpty(propsGo.tag) && !String.IsNullOrWhiteSpace(propsGo.tag))
-                gameObject.tag = propsGo.tag;
-
-            // Add rectTransform
-            rectTransformCmp = PropsRectTransform().Set(gameObject);
-            reactorIdCmp = PropsReactorId().Set(elementType, gameObject);
-        }
+        
 
         protected abstract void AddComponents();
 
@@ -234,6 +248,7 @@ namespace U.Reactor
                 }
             }
 
+            // Destroy each child
             if (childsList != null)
             {
                 foreach (var child in childsList)
@@ -245,6 +260,7 @@ namespace U.Reactor
                 }
             }
             
+            // Destroy all the components and selectors
             if(reactorIdCmp != null)
                 UnityEngine.Object.DestroyImmediate(reactorIdCmp);
 
@@ -252,6 +268,9 @@ namespace U.Reactor
                 selector.Destroy();
 
         }
+
+        #endregion Drawers
+
 
     }
 

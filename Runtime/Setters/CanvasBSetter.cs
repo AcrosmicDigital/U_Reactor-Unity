@@ -10,6 +10,9 @@ namespace U.Reactor
 {
     public class CanvasBSetter
     {
+        // Listeners
+        // ...
+        // Properties
         public virtual bool enabled { get; set; } = true;
         public virtual RenderMode renderMode { get; set; } = RenderMode.ScreenSpaceOverlay;
         public virtual bool pixelPerfect { get; set; } = false;

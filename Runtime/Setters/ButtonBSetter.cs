@@ -11,19 +11,28 @@ namespace U.Reactor
 {
     public class ButtonBSetter
     {
-        internal REbutton.Selector selector;
-        public virtual UnityAction<REbutton.Selector> OnClickListener { get; set; } = (s) => { };
+        // Listeners
+        public virtual UnityAction<REbaseSelector> OnClickListener { get; set; } = (s) => { };
+        // Properties
         public virtual bool interactable { get; set; } = true;
         public virtual Selectable.Transition transition { get; set; } = Selectable.Transition.ColorTint;
-        //public Navigation navigation = ;
 
-        public Button Set(Button c, REbutton.Selector selector)
+        public Button Set(Button c)
         {
-            this.selector = selector;
             c.interactable = interactable;
             c.transition = transition;
-            //c.navigation = navigation;
-            c.onClick.AddListener(() => 
+            
+            return c;
+        }
+
+        public Button Set(GameObject gameObject)
+        {
+            return Set(gameObject.AddComponent<Button>());
+        }
+
+        public void SetListeners(Button c, REbaseSelector selector)
+        {
+            c.onClick.AddListener(() =>
             {
                 try
                 {
@@ -35,13 +44,9 @@ namespace U.Reactor
                 }
             });
 
-            return c;
+            
         }
 
-        public Button Set(GameObject gameObject, REbutton.Selector selector)
-        {
-            return Set(gameObject.AddComponent<Button>(), selector);
-        }
 
     }
 

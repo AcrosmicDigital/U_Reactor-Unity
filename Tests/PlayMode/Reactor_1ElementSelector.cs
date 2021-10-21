@@ -114,16 +114,16 @@ public class Reactor_1ElementSelector
                                                 Assert.IsTrue(s.parent.parent.gameObject.name == "CanvasMain");
 
                                                 // PanelMain1-PanelChild2-Text
-                                                Debug.Log("PanelMain1-PanelChild2-Text: " + s.brothers[1].childs[0].gameObject.name);
-                                                Assert.IsTrue(s.brothers[1].childs[0].gameObject.name == "PanelMain1-PanelChild2-Text");
+                                                Debug.Log("PanelMain1-PanelChild2-Text: " + s.brothersSelector[1].childs[0].gameObject.name);
+                                                Assert.IsTrue(s.brothersSelector[1].childs[0].gameObject.name == "PanelMain1-PanelChild2-Text");
 
                                                 // PanelMain4
-                                                Debug.Log("PanelMain4: " + s.parent.brothers[3].gameObject.name);
-                                                Assert.IsTrue(s.parent.brothers[3].gameObject.name == "PanelMain4");
+                                                Debug.Log("PanelMain4: " + s.parent.brothersSelector[3].gameObject.name);
+                                                Assert.IsTrue(s.parent.brothersSelector[3].gameObject.name == "PanelMain4");
 
                                                 // PanelMain2-PanelChild4-Image
-                                                Debug.Log("PanelMain2-PanelChild4-Image: " + s.parent.brothers[3].gameObject.name);
-                                                Assert.IsTrue(s.parent.brothers[1].childs[3].childs[1].gameObject.name == "PanelMain2-PanelChild4-Image");
+                                                Debug.Log("PanelMain2-PanelChild4-Image: " + s.parent.brothersSelector[3].gameObject.name);
+                                                Assert.IsTrue(s.parent.brothersSelector[1].childs[3].childs[1].gameObject.name == "PanelMain2-PanelChild4-Image");
 
 
                                                 // Null reference
@@ -133,10 +133,10 @@ public class Reactor_1ElementSelector
                                                 Assert.Throws<IndexOutOfRangeException>(() => Debug.Log(s.childs[10]));
 
                                                 // Inexistent reference
-                                                Assert.Throws<IndexOutOfRangeException>(() => Debug.Log(s.brothers[10]));
+                                                Assert.Throws<IndexOutOfRangeException>(() => Debug.Log(s.brothersSelector[10]));
 
                                                 // No childs
-                                                Assert.IsTrue(s.brothers[2].childs.Length == 0);
+                                                Assert.IsTrue(s.brothersSelector[2].childs.Length == 0);
 
                                             },
                                         }

@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace U.Reactor
 {
     public class ScrollbarBSetter
     {
+        // Listeners
+        public virtual UnityAction<float, REbaseSelector> OnValueChangedListener { get; set; } = (v, s) => { };
+        // Properties
         public virtual bool interactable { get; set; } = true;
         public virtual Selectable.Transition transition { get; set; } = Selectable.Transition.ColorTint;
         public virtual Navigation navigation { get; set; } = new Navigation 
@@ -40,5 +44,24 @@ namespace U.Reactor
         {
             return Set(gameObject.AddComponent<Scrollbar>());
         }
+
+
+        public void SetListeners(Scrollbar c, REbaseSelector selector)
+        {
+            c.onValueChanged.AddListener((v) =>
+            {
+                try
+                {
+                    OnValueChangedListener?.Invoke(v, selector);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("Error Executing OnValueChangedListener: " + e);
+                }
+            });
+
+
+        }
+
     }
 }

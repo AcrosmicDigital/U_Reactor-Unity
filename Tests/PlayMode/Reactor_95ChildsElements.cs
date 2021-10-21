@@ -82,7 +82,7 @@ public class Reactor_95ChildsElements
         routerProve.Draw();
 
         Debug.Log("Brothers");
-        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothers.Length == 5);
+        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothersSelector.Length == 5);
 
         Debug.Log("Childs");
         foreach (var word in words)
@@ -144,7 +144,7 @@ public class Reactor_95ChildsElements
 
         // First check
         Debug.Log("Brothers");
-        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothers.Length == 5);
+        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothersSelector.Length == 5);
 
         Debug.Log("Childs");
         foreach (var word in words)
@@ -162,7 +162,7 @@ public class Reactor_95ChildsElements
 
         // Second check must not change
         Debug.Log("Brothers");
-        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothers.Length == 5);
+        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothersSelector.Length == 5);
 
         Debug.Log("Childs");
         foreach (var word in words)
@@ -182,8 +182,8 @@ public class Reactor_95ChildsElements
         Debug.Log("Drawing again");
         routerProve.Draw();
         // Check
-        Debug.Log("Brothers: " + REtext.FindOne("#" + words[0] + "Num").brothers.Length);
-        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothers.Length == 7);
+        Debug.Log("Brothers: " + REtext.FindOne("#" + words[0] + "Num").brothersSelector.Length);
+        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothersSelector.Length == 7);
 
         Debug.Log("Childs");
         foreach (var word in words)
@@ -208,7 +208,7 @@ public class Reactor_95ChildsElements
 
         // Check
         Debug.Log("Brothers");
-        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothers.Length == 5);
+        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothersSelector.Length == 5);
 
         Debug.Log("Childs");
         foreach (var word in words)
@@ -287,7 +287,7 @@ public class Reactor_95ChildsElements
 
         // First check
         Debug.Log("Brothers");
-        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothers.Length == 5);
+        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothersSelector.Length == 5);
 
         foreach (var word in words)
         {
@@ -309,8 +309,8 @@ public class Reactor_95ChildsElements
         };
 
         // Second check and componenr must not change
-        Debug.Log("Brothers: " + REtext.FindOne("#" + wordsOld[0] + "Num").brothers.Length);
-        Assert.IsTrue(REtext.FindOne("#" + wordsOld[0] + "Num").brothers.Length == 5);
+        Debug.Log("Brothers: " + REtext.FindOne("#" + wordsOld[0] + "Num").brothersSelector.Length);
+        Assert.IsTrue(REtext.FindOne("#" + wordsOld[0] + "Num").brothersSelector.Length == 5);
 
         foreach (var word in wordsOld)
         {
@@ -331,7 +331,7 @@ public class Reactor_95ChildsElements
         // Check
         Debug.Log("Brothers: " + REtext.FindOne("#" + words[0] + "Num")); 
         Debug.Log("Drawing again");
-        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothers.Length == 4);
+        Assert.IsTrue(REtext.FindOne("#" + words[0] + "Num").brothersSelector.Length == 4);
 
         Debug.Log("Childs");
         foreach (var word in words)
@@ -437,7 +437,7 @@ public class Reactor_95ChildsElements
         Debug.Log("Drawing");
         routerProve.Draw();
 
-        Assert.IsTrue(REbase.FindOne("#" + levels[0].number + "").brothers.Length == 4);
+        Assert.IsTrue(REbase.FindOne("#" + levels[0].number + "").brothersSelector.Length == 4);
 
         Debug.Log("Childs");
         foreach (var level in levels)

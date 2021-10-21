@@ -4,7 +4,9 @@ namespace U.Reactor
 {
     public class CanvasGroupBSetter
     {
-
+        // Listeners
+        // ...
+        // Properties
         public virtual float alpha { get; set; } = 1;
         public virtual bool interactable { get; set; } = true;
         public virtual bool blocksRaycasts { get; set; } = true;

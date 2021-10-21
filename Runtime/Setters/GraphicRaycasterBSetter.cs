@@ -10,6 +10,9 @@ namespace U.Reactor
 {
     public class GraphicRaycasterBSetter
     {
+        // Listeners
+        // ...
+        // Properties
         public virtual bool ignoreReversedGraphics { get; set; } = true;
         public virtual GraphicRaycaster.BlockingObjects blockingObjects { get; set; } = GraphicRaycaster.BlockingObjects.None;
         public virtual LayerMask blockingMask { get; set; } = ~0;

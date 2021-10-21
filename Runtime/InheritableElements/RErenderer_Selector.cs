@@ -10,7 +10,7 @@ namespace U.Reactor
     public abstract class RErendererSelector : REbaseSelector
     {
 
-        public CanvasRenderer canvasRenderer { get; private set; }
+        public CanvasRenderer canvasRenderer { get; private set; }  // By constructor new RErendererSelector(xxx)
 
         internal RErendererSelector(GameObject gameObject, ReactorId pieceId, RectTransform rectTransform, CanvasRenderer canvasRenderer) : base(gameObject, pieceId, rectTransform)
         {

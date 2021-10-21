@@ -95,7 +95,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 
@@ -109,7 +109,7 @@ public class Reactor_91FindCases
         Assert.IsTrue(textSelector.gameObject == null);
         Assert.IsTrue(textSelector.parent == null);
         Assert.IsTrue(textSelector.childs == null);
-        Assert.IsTrue(textSelector.brothers == null);
+        Assert.IsTrue(textSelector.brothersSelector == null);
         Assert.IsTrue(textSelector.canvasRenderer == null);
         Assert.Throws<NullReferenceException>(() => Debug.Log("V: " + textSelector.rectTransform.rect));
 
@@ -176,7 +176,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 
@@ -190,7 +190,7 @@ public class Reactor_91FindCases
         Assert.IsTrue(textSelector.gameObject == null);
         Assert.IsTrue(textSelector.parent == null);
         Assert.IsTrue(textSelector.childs == null);
-        Assert.IsTrue(textSelector.brothers == null);
+        Assert.IsTrue(textSelector.brothersSelector == null);
         Assert.IsTrue(textSelector.canvasRenderer == null);
         Assert.Throws<NullReferenceException>(() => Debug.Log("V: " + textSelector.rectTransform.rect));
 
@@ -205,7 +205,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 
@@ -269,7 +269,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 
@@ -284,7 +284,7 @@ public class Reactor_91FindCases
         Assert.IsTrue(textSelector.gameObject == null);
         Assert.IsTrue(textSelector.parent == null);
         Assert.IsTrue(textSelector.childs == null);
-        Assert.IsTrue(textSelector.brothers == null);
+        Assert.IsTrue(textSelector.brothersSelector == null);
         Assert.IsTrue(textSelector.canvasRenderer == null);
         Assert.Throws<NullReferenceException>(() => Debug.Log("V: " + textSelector.rectTransform.rect));
 
@@ -299,7 +299,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "New text");
 
@@ -367,7 +367,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 
@@ -387,7 +387,7 @@ public class Reactor_91FindCases
         Debug.Log("Changing and drawing again");
         Assert.IsTrue(textSelector.childs == null);
         Debug.Log("Changing and drawing again");
-        Assert.IsTrue(textSelector.brothers == null);
+        Assert.IsTrue(textSelector.brothersSelector == null);
         Debug.Log("Changing and drawing again");
         Assert.IsTrue(textSelector.canvasRenderer == null);
         Debug.Log("Changing and drawing again");
@@ -403,7 +403,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "New text");
 
@@ -465,14 +465,14 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 
         // Hide/Disable the component
         Debug.Log("Hiding");
         reactorComponent.Hide();
-        Assert.IsFalse(((REcanvas.Selector)textSelector.root).canvas.enabled);
+        Assert.IsFalse(((REcanvas.Selector)textSelector.rootCanvasSelector).canvas.enabled);
 
         // Check that the selector references are not null
         Assert.IsFalse(textSelector.isDisposed);
@@ -480,14 +480,14 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 
         // Show/Enable the component
         Debug.Log("Showing");
         reactorComponent.Show();
-        Assert.IsTrue(((REcanvas.Selector)textSelector.root).canvas.enabled);
+        Assert.IsTrue(((REcanvas.Selector)textSelector.rootCanvasSelector).canvas.enabled);
 
         // Check that the selector references are now null
         Assert.IsFalse(textSelector.isDisposed);
@@ -495,7 +495,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 
@@ -559,7 +559,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 
@@ -568,7 +568,7 @@ public class Reactor_91FindCases
         reactorComponent.Disable();
         Assert.IsTrue(textSelector.gameObject.activeSelf);
         Assert.IsFalse(textSelector.gameObject.activeInHierarchy);
-        Assert.IsFalse(textSelector.root.gameObject.activeSelf);
+        Assert.IsFalse(textSelector.rootCanvasSelector.gameObject.activeSelf);
 
         // Check that the selector references are not null
         Assert.IsFalse(textSelector.isDisposed); 
@@ -576,7 +576,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 
@@ -585,7 +585,7 @@ public class Reactor_91FindCases
         reactorComponent.Enable();
         Assert.IsTrue(textSelector.gameObject.activeSelf);
         Assert.IsTrue(textSelector.gameObject.activeInHierarchy);
-        Assert.IsTrue(textSelector.root.gameObject.activeSelf);
+        Assert.IsTrue(textSelector.rootCanvasSelector.gameObject.activeSelf);
 
         // Check that the selector references are now null
         Assert.IsFalse(textSelector.isDisposed);
@@ -593,7 +593,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 
@@ -659,7 +659,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 
@@ -668,7 +668,7 @@ public class Reactor_91FindCases
         go.SetActive(false);
         Assert.IsTrue(textSelector.gameObject.activeSelf);
         Assert.IsFalse(textSelector.gameObject.activeInHierarchy);
-        Assert.IsTrue(textSelector.root.gameObject.activeSelf);
+        Assert.IsTrue(textSelector.rootCanvasSelector.gameObject.activeSelf);
 
         // Check that the selector references are not null
         Assert.IsFalse(textSelector.isDisposed);
@@ -676,7 +676,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 
@@ -685,7 +685,7 @@ public class Reactor_91FindCases
         go.SetActive(true);
         Assert.IsTrue(textSelector.gameObject.activeSelf);
         Assert.IsTrue(textSelector.gameObject.activeInHierarchy);
-        Assert.IsTrue(textSelector.root.gameObject.activeSelf);
+        Assert.IsTrue(textSelector.rootCanvasSelector.gameObject.activeSelf);
 
         // Check that the selector references are now null
         Assert.IsFalse(textSelector.isDisposed);
@@ -693,7 +693,7 @@ public class Reactor_91FindCases
         Assert.IsFalse(textSelector.gameObject == null);
         Assert.IsFalse(textSelector.parent == null);
         Assert.IsFalse(textSelector.childs == null);
-        Assert.IsFalse(textSelector.brothers == null);
+        Assert.IsFalse(textSelector.brothersSelector == null);
         Assert.IsFalse(textSelector.canvasRenderer == null);
         Assert.IsTrue(textSelector.textCmp.text == "Hello world");
 

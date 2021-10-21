@@ -70,10 +70,7 @@ namespace U.Reactor
 
         }
 
-        protected override REbaseSelector AddSelector()
-        {
-            return new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, rawImageCmp);
-        }
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, rawImageCmp);
 
         protected override void AddHooks()
         {

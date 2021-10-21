@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -72,7 +73,8 @@ namespace U.Reactor
             var textGO = InstanciateUIObject("Text", gameObject);
 
             imageCmp = propsImage().Set(gameObject);
-            buttonCmp = gameObject.AddComponent<Button>(); // Add here, becouse need the selector and is not set yet
+            //buttonCmp = gameObject.AddComponent<Button>(); // Add here, becouse need the selector and is not set yet
+            buttonCmp = propsButton().Set(gameObject);
             textCmp = propsText().Set(textGO);
 
             // Text rectT
@@ -87,14 +89,12 @@ namespace U.Reactor
 
         }
 
-        protected override REbaseSelector AddSelector()
+        protected override void AfterCreateComponent()
         {
-            var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, buttonCmp, imageCmp);
-
-            propsButton().Set(buttonCmp, sel);
-
-            return sel;
+            propsButton().SetListeners(buttonCmp, selector);
         }
+
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, buttonCmp, imageCmp);
 
         protected override void AddHooks()
         {

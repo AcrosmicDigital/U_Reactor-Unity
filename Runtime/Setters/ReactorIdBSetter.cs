@@ -9,7 +9,9 @@ namespace U.Reactor
 {
     public class ReactorIdBSetter
     {
-
+        // Listeners
+        // ...
+        // Properties
         public virtual string id { get; set; } = "";
         public virtual string[] className { get; set; } = new string[0];
 

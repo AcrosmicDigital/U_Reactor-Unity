@@ -394,7 +394,7 @@ public class Reactor_40Router
         routerProve.Route("Home");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 0); // Dont exist, because is not predrawed and are not routed yet
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 0); // Dont exist, because is not predrawed and are not routed yet
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
@@ -406,9 +406,9 @@ public class Reactor_40Router
         routerProve.Route("Menu");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Only is one in scene
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 0); // Dont exist, because is not predrawed and are not routed yet
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
 
@@ -418,11 +418,11 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
 
         // Return to Menu
@@ -431,11 +431,11 @@ public class Reactor_40Router
         routerProve.Return();
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
 
         // Go to Settings
@@ -444,11 +444,11 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
 
         // Return to Home
@@ -457,11 +457,11 @@ public class Reactor_40Router
         routerProve.Return(2);
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
 
         // Return more, but first is Home
@@ -470,11 +470,11 @@ public class Reactor_40Router
         routerProve.Return(10);
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
 
 
@@ -484,13 +484,13 @@ public class Reactor_40Router
         routerProve.Route("Unexistent");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         
         // Go to Settings
         yield return new WaitForSecondsRealtime(.5f);
@@ -498,13 +498,13 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is disabled
 
         // Return to unexistent Route
         yield return new WaitForSecondsRealtime(.5f);
@@ -512,13 +512,13 @@ public class Reactor_40Router
         routerProve.Return();
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is disabled
 
 
 
@@ -565,7 +565,7 @@ public class Reactor_40Router
         routerProve.Route("Home");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 0); // Dont exist, because is not predrawed and are not routed yet
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 0); // Dont exist, because is not predrawed and are not routed yet
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
@@ -577,9 +577,9 @@ public class Reactor_40Router
         routerProve.Route("Menu");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Only is one in scene
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 0); // Dont exist, because is not predrawed and are not routed yet
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
 
@@ -589,11 +589,11 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
 
         // Return to Menu
@@ -602,11 +602,11 @@ public class Reactor_40Router
         routerProve.Return();
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
 
         // Go to Settings
@@ -615,11 +615,11 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
 
         // Return to Home
@@ -628,11 +628,11 @@ public class Reactor_40Router
         routerProve.Return(2);
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
 
         // Return more, but first is Home
@@ -641,11 +641,11 @@ public class Reactor_40Router
         routerProve.Return(10);
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 0); // Dont exist, because is not predrawed and are not routed yet
 
         // Go to unexistent Route
@@ -654,13 +654,13 @@ public class Reactor_40Router
         routerProve.Route("Unexistent");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
 
 
         // Go to Settings
@@ -669,13 +669,13 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
 
         // Return to unexistent Route
         yield return new WaitForSecondsRealtime(.5f);
@@ -683,13 +683,13 @@ public class Reactor_40Router
         routerProve.Route("Unexistent");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
 
 
 
@@ -735,13 +735,13 @@ public class Reactor_40Router
         routerProve.PreDraw();
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
         // Go to Home
         yield return new WaitForSecondsRealtime(.5f);
@@ -749,13 +749,13 @@ public class Reactor_40Router
         routerProve.Route("Home");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
         // Go to Menu
         yield return new WaitForSecondsRealtime(.5f);
@@ -763,13 +763,13 @@ public class Reactor_40Router
         routerProve.Route("Menu");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
         // Go to Settings
         yield return new WaitForSecondsRealtime(.5f);
@@ -777,13 +777,13 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
         // Return to Menu
         yield return new WaitForSecondsRealtime(.5f);
@@ -791,13 +791,13 @@ public class Reactor_40Router
         routerProve.Return();
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
         // Go to Settings
         yield return new WaitForSecondsRealtime(.5f);
@@ -805,13 +805,13 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
         // Return to Home
         yield return new WaitForSecondsRealtime(.5f);
@@ -819,13 +819,13 @@ public class Reactor_40Router
         routerProve.Return(2);
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
         // Return more, but first is Home
         yield return new WaitForSecondsRealtime(.5f);
@@ -833,13 +833,13 @@ public class Reactor_40Router
         routerProve.Return(10);
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
 
 
@@ -885,13 +885,13 @@ public class Reactor_40Router
         routerProve.PreDraw();
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
 
         // Go to Home
@@ -900,13 +900,13 @@ public class Reactor_40Router
         routerProve.Route("Home");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
 
         // Go to Menu
@@ -915,13 +915,13 @@ public class Reactor_40Router
         routerProve.Route("Menu");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
 
         // Go to Settings
@@ -930,13 +930,13 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
         // Return to Menu
         yield return new WaitForSecondsRealtime(.5f);
@@ -944,13 +944,13 @@ public class Reactor_40Router
         routerProve.Return();
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
         // Go to Settings
         yield return new WaitForSecondsRealtime(.5f);
@@ -958,13 +958,13 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
         // Return to Home
         yield return new WaitForSecondsRealtime(.5f);
@@ -972,13 +972,13 @@ public class Reactor_40Router
         routerProve.Return(2);
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
         // Return more, but first is Home
         yield return new WaitForSecondsRealtime(.5f);
@@ -986,13 +986,13 @@ public class Reactor_40Router
         routerProve.Return(10);
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
 
 
@@ -1038,13 +1038,13 @@ public class Reactor_40Router
         routerProve.PreDraw();
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
         // Go to Home
         yield return new WaitForSecondsRealtime(.5f);
@@ -1052,13 +1052,13 @@ public class Reactor_40Router
         routerProve.Route("Home");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
 
         routerProve.PreDraw();
@@ -1071,13 +1071,13 @@ public class Reactor_40Router
         routerProve.Route("Menu");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
 
 
@@ -1090,13 +1090,13 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
         // Return to Menu
         yield return new WaitForSecondsRealtime(.5f);
@@ -1104,13 +1104,13 @@ public class Reactor_40Router
         routerProve.Return();
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
 
         routerProve.PreDraw();
@@ -1122,13 +1122,13 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
         // Return to Home
         yield return new WaitForSecondsRealtime(.5f);
@@ -1136,13 +1136,13 @@ public class Reactor_40Router
         routerProve.Return(2);
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
 
         routerProve.PreDraw();
@@ -1154,13 +1154,13 @@ public class Reactor_40Router
         routerProve.Return(10);
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).canvas.enabled); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).canvas.enabled); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).canvas.enabled); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).canvas.enabled); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).canvas.enabled); // The canvas is enabled
 
 
 
@@ -1206,13 +1206,13 @@ public class Reactor_40Router
         routerProve.PreDraw();
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
 
         // Go to Home
@@ -1221,13 +1221,13 @@ public class Reactor_40Router
         routerProve.Route("Home");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
 
         routerProve.PreDraw();
@@ -1239,13 +1239,13 @@ public class Reactor_40Router
         routerProve.Route("Menu");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1);
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
 
         routerProve.PreDraw();
@@ -1257,13 +1257,13 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
         // Return to Menu
         yield return new WaitForSecondsRealtime(.5f);
@@ -1271,13 +1271,13 @@ public class Reactor_40Router
         routerProve.Return();
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
 
         routerProve.PreDraw();
@@ -1289,13 +1289,13 @@ public class Reactor_40Router
         routerProve.Route("Settings");
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
         // Return to Home
         yield return new WaitForSecondsRealtime(.5f);
@@ -1303,13 +1303,13 @@ public class Reactor_40Router
         routerProve.Return(2);
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
 
         routerProve.PreDraw();
@@ -1321,13 +1321,13 @@ public class Reactor_40Router
         routerProve.Return(10);
         yield return new WaitForSecondsRealtime(.1f); // Need  to wait a bit, because canvas is enabled at next frame, no immediatly
         Assert.IsTrue(REcanvas.Find("#Home").Length == 1); // Still existing, but disabled
-        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsTrue(((REcanvas.Selector)REbase.FindOne("#Home").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Menu").Length == 1); // Still existing, but disabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Menu").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Settings").Length == 1); // The canvas is enabled
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").root).gameObject.activeSelf); // The canvas is disabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Settings").rootCanvasSelector).gameObject.activeSelf); // The canvas is disabled
         Assert.IsTrue(REcanvas.Find("#Default").Length == 1); // Dont exist, because is not predrawed and are not routed yet
-        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").root).gameObject.activeSelf); // The canvas is enabled
+        Assert.IsFalse(((REcanvas.Selector)REbase.FindOne("#Default").rootCanvasSelector).gameObject.activeSelf); // The canvas is enabled
 
 
         routerProve.PreDraw();

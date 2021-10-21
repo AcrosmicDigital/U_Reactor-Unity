@@ -9,7 +9,9 @@ namespace U.Reactor
 {
     public class CanvasRendererBSetter
     {
-
+        // Listeners
+        // ...
+        // Properties
         public virtual bool cullTransparentMesh { get; set; } = true;
 
         public CanvasRenderer Set(CanvasRenderer c)

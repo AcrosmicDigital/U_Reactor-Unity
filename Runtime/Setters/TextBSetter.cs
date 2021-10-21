@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace U.Reactor
 {
     public class TextBSetter
     {
+        // Listeners
+        public virtual UnityAction<bool, REbaseSelector> OnCullStateChangedListener { get; set; } = (b, s) => { };
+        // Properties
         public virtual string text { get; set; } = "Text";
         public virtual Font font { get; set; } = Resources.GetBuiltinResource<Font>("Arial.ttf");
         public virtual FontStyle fontStyle { get; set; } = FontStyle.Normal;
@@ -46,13 +50,30 @@ namespace U.Reactor
             c.raycastTarget = raycastTarget;
             c.raycastPadding = raycastPadding;
             c.maskable = maskable;
-
+            
             return c;
         }
 
         public Text Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<Text>());
+        }
+
+        public void SetListeners(Text c, REbaseSelector selector)
+        {
+            c.onCullStateChanged.AddListener((b) =>
+            {
+                try
+                {
+                    OnCullStateChangedListener?.Invoke(b, selector);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("Error Executing OnCullStateChangedListener: " + e);
+                }
+            });
+
+
         }
 
     }

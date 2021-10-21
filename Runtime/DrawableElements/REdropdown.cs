@@ -279,13 +279,8 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector()
-        {
-            var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, dropdownCmp, dropdownImageCmp, labelTextCmp, arrowImageCmp, templateImageCmp,
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, dropdownCmp, dropdownImageCmp, labelTextCmp, arrowImageCmp, templateImageCmp,
                 scrollRectCmp, viewportImageCmp, maskCmp, toggleCmp, itemBackImageCmp, itemCheckImageCmp, itemLabelTextCmp, scrollbarImageCmp, scrollbarCmp, scrollbarHandleImageCmp);
-
-            return sel;
-        }
 
         #endregion Drawers
 

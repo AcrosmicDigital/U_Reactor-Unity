@@ -10,6 +10,9 @@ namespace U.Reactor
 {
     public class HorizontalLayoutGroupBSetter
     {
+        // Listeners
+        // ...
+        // Properties
         public virtual RectOffset padding { get; set; } = new RectOffset(0, 0, 0, 0);
         public virtual float spacing { get; set; } = 0;
         public virtual TextAnchor childAlignment { get; set; } = TextAnchor.UpperLeft;

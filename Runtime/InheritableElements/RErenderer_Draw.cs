@@ -9,15 +9,17 @@ namespace U.Reactor
 {
     public abstract class RErenderer : REbase
     {
-
         protected abstract Func<CanvasRendererBSetter> PropsCanvasRenderer { get; }
 
-        #region <Components>
+
+        #region Components
 
         protected CanvasRenderer canvasRendererCmp;
 
-        #endregion </Components>
+        #endregion Components
 
+
+        #region Drawers
 
         protected override void CreateRoot(GameObject parent)
         {
@@ -26,6 +28,9 @@ namespace U.Reactor
             canvasRendererCmp = PropsCanvasRenderer().Set(gameObject);
 
         }
+
+        #endregion Drawers
+
 
     }
 

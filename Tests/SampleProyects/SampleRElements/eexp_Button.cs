@@ -11,6 +11,7 @@ public class eexp_Button : MonoBehaviour
     public enum TestCase
     {
         A00Basic,
+        A01WithAction,
 
     }
 
@@ -45,6 +46,31 @@ public class eexp_Button : MonoBehaviour
                     {
                         new REbutton
                         {
+
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.A01WithAction:
+                #region TestCase.A01WithAction
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REbutton
+                        {
+                            propsButton = () => new REbutton.ButtonSetter
+                            {
+                                OnClickListener = (s) => 
+                                {
+                                    Debug.Log("Pressed: " + s.gameObject.name);
+                                }
+                            },
                         },
                     }
 

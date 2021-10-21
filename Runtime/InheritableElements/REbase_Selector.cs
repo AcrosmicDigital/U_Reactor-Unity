@@ -9,18 +9,21 @@ namespace U.Reactor
 {
     public abstract class REbaseSelector
     {
-        // Track whether Dispose has been called.
-        internal Func<LayoutElementBSetter> layoutElementSetter { get; set; }
-        internal bool isLayoutElement { get; set; } = false;
-        public bool isDisposed { get; private set; } = false;
-        public ReactorId elementId { get; private set; }
-        public RectTransform rectTransform { get; private set; }
+        internal Func<LayoutElementBSetter> layoutElementSetter { get; set; } // // Inline selector.layoutElementSetter = xxx
+        internal bool isLayoutElement { get; set; } = false; // Inline selector.isLayoutElement = xxx
+        public bool isDisposed { get; private set; } = false; // Interal
 
-        public GameObject gameObject { get; private set; }
+        public ReactorId elementId { get; private set; } // By constructor new Selector(xxx)
+        public RectTransform rectTransform { get; private set; } // By constructor new Selector(xxx)
+        public GameObject gameObject { get; private set; } // By constructor new Selector(xxx)
+        public REbaseSelector parent { get; private set; } // By Func selector.SetParent()
+        public REbaseSelector[] childs { get; private set; } // By Func selector.SetChilds()
 
-        // Get the root
-        public REcanvas.Selector root
-        { get 
+
+        // Get the root canvas
+        public REcanvas.Selector rootCanvasSelector
+        { 
+            get 
             {
                 REbaseSelector root = this;
                 int i = 0;
@@ -38,13 +41,11 @@ namespace U.Reactor
                 {
                     return null;
                 }
-
-                
             } 
         }
 
         // Get the first parent canvas
-        public REcanvas.Selector parentCanvas
+        public REcanvas.Selector parentCanvasSelector
         {
             get
             {
@@ -80,9 +81,8 @@ namespace U.Reactor
             }
         }
 
-        public REbaseSelector parent { get; private set; }
-        public REbaseSelector[] childs { get; private set; }
-        public  REbaseSelector[] brothers { get
+        
+        public  REbaseSelector[] brothersSelector { get
             {
                 if (parent == null)
                     return null;
@@ -108,19 +108,12 @@ namespace U.Reactor
         {
             this.childs = childs.Select(c => c.selector).ToArray();
         }
-        internal void SetChilds(List<REbaseSelector> childs)
-        {
-            this.childs = childs.ToArray();
-        }
-        internal void SetChilds(REbaseSelector[] childs)
-        {
-            this.childs = childs;
-        }
 
 
         internal virtual void Destroy()
         {
             isDisposed = true;
+            layoutElementSetter = null;
             elementId = null;
             rectTransform = null;
             gameObject = null;

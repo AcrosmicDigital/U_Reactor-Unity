@@ -11,6 +11,9 @@ namespace U.Reactor
 {
     public class MultiToggleMemberBSetter
     {
+        // Listeners
+        // ...
+        // Properties
         public virtual string toggleName { get; set; } = "Toggle";
         public virtual int toggleNumber { get; set; } = 0;
         public virtual float toggleValue { get; set; } = 0f;

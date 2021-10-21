@@ -808,7 +808,7 @@ public class Reactor_52Hooks_UseEffect
 
         // Hide the element
         routerProve.Hide();
-        Assert.IsFalse(((REcanvas.Selector)REbase.Find("#ProveText")[0].root).canvas.enabled);
+        Assert.IsFalse(((REcanvas.Selector)REbase.Find("#ProveText")[0].rootCanvasSelector).canvas.enabled);
 
         // Second check and hook must be runner 2
         yield return new WaitForSecondsRealtime(1f);
@@ -819,7 +819,7 @@ public class Reactor_52Hooks_UseEffect
 
         // Enable and check
         routerProve.Show();
-        Assert.IsTrue(((REcanvas.Selector)REbase.Find("#ProveText")[0].root).canvas.enabled);
+        Assert.IsTrue(((REcanvas.Selector)REbase.Find("#ProveText")[0].rootCanvasSelector).canvas.enabled);
 
         // Thirh check and hook must be runner 3
         yield return new WaitForSecondsRealtime(1f);

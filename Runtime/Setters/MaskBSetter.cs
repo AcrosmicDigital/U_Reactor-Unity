@@ -10,6 +10,9 @@ namespace U.Reactor
 {
     public class MaskBSetter
     {
+        // Listeners
+        // ...
+        // Properties
         public virtual bool  showMaskGraphic { get; set; } = true;
 
         public Mask Set(Mask c)

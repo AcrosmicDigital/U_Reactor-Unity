@@ -104,7 +104,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(80, 80f),
                 anchorMin = new Vector2(0f, 1f),
                 anchorMax = new Vector2(0f, 1f),
-            }.SetBySizeDelta(backgroundGO);
+            }.SetOrSearchBySizeDelta(backgroundGO);
 
             new RectTransformBSetter()
             {
@@ -113,7 +113,7 @@ namespace U.Reactor
                 sizeDelta = new Vector2(80, 80f),
                 //anchorMin = new Vector2(0f, 1f),
                 //anchorMax = new Vector2(0f, 1f),
-            }.SetBySizeDelta(checkmarkGO);
+            }.SetOrSearchBySizeDelta(checkmarkGO);
 
             new RectTransformBSetter()
             {
@@ -121,7 +121,7 @@ namespace U.Reactor
                 anchorMax = new Vector2(1f, 1f),
                 offsetMin = new Vector2(90f, 10f),
                 offsetMax = new Vector2(0f, -10f),
-            }.SetByAnchors(labelGO);
+            }.SetOrSearchByAnchors(labelGO);
 
 
         }
@@ -141,12 +141,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector()
-        {
-            var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, toggleCmp, backImageCmp, checkImageCmp, textCmp, multiToggleMemberCmp);
-
-            return sel;
-        }
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, toggleCmp, backImageCmp, checkImageCmp, textCmp, multiToggleMemberCmp);
 
         #endregion Drawers
 

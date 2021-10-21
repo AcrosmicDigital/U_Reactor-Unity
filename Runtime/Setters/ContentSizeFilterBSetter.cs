@@ -10,6 +10,9 @@ namespace U.Reactor
 {
     public class ContentSizeFilterBSetter
     {
+        // Listeners
+        // ...
+        // Properties
         public virtual ContentSizeFitter.FitMode horizontalFit { get; set; } = ContentSizeFitter.FitMode.Unconstrained;
         public virtual ContentSizeFitter.FitMode verticalFit { get; set; } = ContentSizeFitter.FitMode.Unconstrained;
 

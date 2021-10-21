@@ -10,6 +10,9 @@ namespace U.Reactor
 {
     public class RectMask2DBSetter
     {
+        // Listeners
+        // ...
+        // Properties
         public virtual Vector2Int softness { get; set; } = Vector2Int.zero;
         public virtual Vector4 padding { get; set; } = Vector4.zero;
 
