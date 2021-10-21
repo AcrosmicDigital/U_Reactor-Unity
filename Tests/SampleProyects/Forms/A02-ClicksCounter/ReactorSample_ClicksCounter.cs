@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using U.Reactor;
 using UnityEngine;
 
-public class ReactorRenderer : MonoBehaviour
+public class ReactorSample_ClicksCounter : MonoBehaviour
 {
 
     private REcanvas reactorList1;
