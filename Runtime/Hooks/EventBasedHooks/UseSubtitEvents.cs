@@ -10,7 +10,7 @@ namespace U.Reactor
         ISubmitHandler
 
         where TUseSubtitEvents : UseSubtitEvents<TSelector, TUseSubtitEvents>
-        where TSelector : ElementSelector
+        where TSelector : REbaseSelector
 
     {
 

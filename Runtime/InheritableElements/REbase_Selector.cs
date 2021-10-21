@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace U.Reactor
 {
-    public abstract class ElementSelector
+    public abstract class REbaseSelector
     {
         // Track whether Dispose has been called.
         internal Func<LayoutElementBSetter> layoutElementSetter { get; set; }
@@ -21,7 +21,7 @@ namespace U.Reactor
         public REcanvas.Selector root
         { get 
             {
-                ElementSelector root = this;
+                REbaseSelector root = this;
                 int i = 0;
                 while(root.parent != null && i < 200)
                 {
@@ -59,7 +59,7 @@ namespace U.Reactor
                     }
                 }
 
-                ElementSelector parentCanvas = parent;
+                REbaseSelector parentCanvas = parent;
 
                 int i = 0;
                 while (parentCanvas.parent != null && parentCanvas.gameObject.GetComponent<Canvas>() == null && i < 200)
@@ -79,9 +79,9 @@ namespace U.Reactor
             }
         }
 
-        public ElementSelector parent { get; private set; }
-        public ElementSelector[] childs { get; private set; }
-        public  ElementSelector[] brothers { get
+        public REbaseSelector parent { get; private set; }
+        public REbaseSelector[] childs { get; private set; }
+        public  REbaseSelector[] brothers { get
             {
                 if (parent == null)
                     return null;
@@ -90,7 +90,7 @@ namespace U.Reactor
             }
         } 
 
-        internal ElementSelector(GameObject gameObject, ReactorId pieceId, RectTransform rectTransform)
+        internal REbaseSelector(GameObject gameObject, ReactorId pieceId, RectTransform rectTransform)
         {
             this.gameObject = gameObject;
             this.elementId = pieceId;
@@ -98,7 +98,7 @@ namespace U.Reactor
         }
 
 
-        internal void SetParent(ElementSelector parent)
+        internal void SetParent(REbaseSelector parent)
         {
             this.parent = parent;
         }
@@ -107,11 +107,11 @@ namespace U.Reactor
         {
             this.childs = childs.Select(c => c.selector).ToArray();
         }
-        internal void SetChilds(List<ElementSelector> childs)
+        internal void SetChilds(List<REbaseSelector> childs)
         {
             this.childs = childs.ToArray();
         }
-        internal void SetChilds(ElementSelector[] childs)
+        internal void SetChilds(REbaseSelector[] childs)
         {
             this.childs = childs;
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.U.Reactor.Runtime.InheritableElements
 {
-    class DivElementSelector
+    class RElayoutBase
     {
     }
 }

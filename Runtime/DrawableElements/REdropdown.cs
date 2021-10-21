@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REdropdown : REchild
+    public class REdropdown : RErenderer
     {
         protected override Type elementType => this.GetType();
         protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
@@ -275,7 +275,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override ElementSelector AddSelector()
+        protected override REbaseSelector AddSelector()
         {
             var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, dropdownCmp, dropdownImageCmp, labelTextCmp, arrowImageCmp, templateImageCmp,
                 scrollRectCmp, viewportImageCmp, maskCmp, toggleCmp, itemBackImageCmp, itemCheckImageCmp, itemLabelTextCmp, scrollbarImageCmp, scrollbarCmp, scrollbarHandleImageCmp);
@@ -289,7 +289,7 @@ namespace U.Reactor
         #region Subclasses
 
 
-        public class Selector : ChildElementSelector
+        public class Selector : RErendererSelector
         {
 
             protected Dropdown dropdown { get; private set; }

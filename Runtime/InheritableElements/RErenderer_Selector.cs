@@ -7,12 +7,12 @@ using UnityEngine;
 
 namespace U.Reactor
 {
-    public abstract class ChildElementSelector : ElementSelector
+    public abstract class RErendererSelector : REbaseSelector
     {
 
         public CanvasRenderer canvasRenderer { get; private set; }
 
-        internal ChildElementSelector(GameObject gameObject, ReactorId pieceId, RectTransform rectTransform, CanvasRenderer canvasRenderer) : base(gameObject, pieceId, rectTransform)
+        internal RErendererSelector(GameObject gameObject, ReactorId pieceId, RectTransform rectTransform, CanvasRenderer canvasRenderer) : base(gameObject, pieceId, rectTransform)
         {
             this.canvasRenderer = canvasRenderer;
         }

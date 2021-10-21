@@ -9,7 +9,7 @@ namespace U.Reactor
         public Type elementType { get; private set; }
         public string id { get; private set; } = "";
         public string[] className { get; private set; } = new string[0];
-        public ElementSelector selector { get; private set; } = null;
+        public REbaseSelector selector { get; private set; } = null;
 
 
         internal ReactorId Set(Type elementType, string id, string[] className)
@@ -22,7 +22,7 @@ namespace U.Reactor
             return this;
         }
 
-        internal void Set(ElementSelector selector)
+        internal void Set(REbaseSelector selector)
         {
             this.selector = selector;
         }

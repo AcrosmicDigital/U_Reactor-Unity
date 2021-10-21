@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
 
-namespace U.Reactor
+namespace Assets.U.Reactor.Runtime.InheritableElements
 {
-    public abstract class ReactorDivElement
+    class RElayoutRendererSelector
     {
     }
 }

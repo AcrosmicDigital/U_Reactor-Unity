@@ -50,15 +50,15 @@ namespace U.Reactor
 
         #region <Hooks>
 
-        internal ElementSelector selector;
-        protected ElementSelector parentSelector;
+        internal REbaseSelector selector;
+        protected REbaseSelector parentSelector;
         public IuseState[] useState;
 
         #endregion </Hooks>
 
 
         // Create all the component , call other functions in order
-        protected REbase Create(GameObject parent, ElementSelector parentSelector)
+        protected REbase Create(GameObject parent, REbaseSelector parentSelector)
         {
             
             // Functions to create parts of the component
@@ -204,11 +204,11 @@ namespace U.Reactor
 
         protected abstract void AddComponents();
 
-        protected abstract ElementSelector AddSelector();
+        protected abstract REbaseSelector AddSelector();
 
         protected abstract void AddHooks();
 
-        protected virtual void AfterCreateChild(ElementSelector child) { }
+        protected virtual void AfterCreateChild(REbaseSelector child) { }
 
         protected virtual void AfterCreateComponent() { }
 

@@ -13,7 +13,7 @@ namespace U.Reactor
         IDropHandler
 
         where TUseDragEvents : UseDrag<TSelector, TUseDragEvents>
-        where TSelector : ElementSelector
+        where TSelector : REbaseSelector
 
     {
 

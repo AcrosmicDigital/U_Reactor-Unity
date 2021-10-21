@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace U.Reactor
 {
-    public abstract class REchild : REbase
+    public abstract class RErenderer : REbase
     {
 
         protected abstract Func<CanvasRendererBSetter> PropsCanvasRenderer { get; }

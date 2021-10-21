@@ -9,7 +9,7 @@ namespace U.Reactor
         IScrollHandler
 
         where TUseScrollEvents : UseScroll<TSelector, TUseScrollEvents>
-        where TSelector : ElementSelector
+        where TSelector : REbaseSelector
 
     {
         

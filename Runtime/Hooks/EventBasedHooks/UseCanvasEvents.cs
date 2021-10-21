@@ -6,7 +6,7 @@ namespace U.Reactor
     public abstract class UseCanvasEvents<TSelector, TUseCanvasEvents> : MonoBehaviour
 
         where TUseCanvasEvents : UseCanvasEvents<TSelector, TUseCanvasEvents>
-        where TSelector : ElementSelector
+        where TSelector : REbaseSelector
 
     {
 

@@ -6,7 +6,7 @@ namespace U.Reactor
     public abstract class UseApplicationEvents<TSelector, TUseApplicationEvents> : MonoBehaviour
 
         where TUseApplicationEvents : UseApplicationEvents<TSelector, TUseApplicationEvents>
-        where TSelector : ElementSelector
+        where TSelector : REbaseSelector
 
     {
 

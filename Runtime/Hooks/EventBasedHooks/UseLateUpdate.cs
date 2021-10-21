@@ -6,7 +6,7 @@ namespace U.Reactor
     public abstract class UseLateUpdate<TSelector, TUseObjectEvents> : MonoBehaviour
 
         where TUseObjectEvents : UseLateUpdate<TSelector, TUseObjectEvents>
-        where TSelector : ElementSelector
+        where TSelector : REbaseSelector
 
     {
 

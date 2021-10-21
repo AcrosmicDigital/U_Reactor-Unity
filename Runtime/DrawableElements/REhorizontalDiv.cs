@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REhorizontalDiv : REchild
+    public class REhorizontalDiv : RErenderer
     {
         protected override Type elementType => this.GetType();
         protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
@@ -168,7 +168,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override ElementSelector AddSelector()
+        protected override REbaseSelector AddSelector()
         {
             var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, backImageCmp, scrollRectCmp, rectMask2Cmp, horizontalLayoutCmp, contentSizeCmp,
                 vScrollbarImageCmp, vScrollbarCmp, vScrollbarHandleImageCmp, hScrollbarImageCmp, hScrollbarCmp, hScrollbarHandleImageCmp);
@@ -180,7 +180,7 @@ namespace U.Reactor
 
         #region Subclasses
 
-        public class Selector : ChildElementSelector
+        public class Selector : RErendererSelector
         {
 
             public Image backImage { get; private set; }

@@ -74,7 +74,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override ElementSelector AddSelector()
+        protected override REbaseSelector AddSelector()
         {
             var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, multiToggleCmp);
 
@@ -87,7 +87,7 @@ namespace U.Reactor
 
             // Search al toggles in childs
             SearchToggles(selector);
-            void SearchToggles(ElementSelector selector)
+            void SearchToggles(REbaseSelector selector)
             {
                 //Debug.Log("Childs: " + selector.childs.Length);
                 for (int i = 0; i < selector.childs.Length; i++)
@@ -116,7 +116,7 @@ namespace U.Reactor
 
         #region Subclasses
 
-        public class Selector : ElementSelector
+        public class Selector : REbaseSelector
         {
 
             public MultiToggle multiToggle { get; private set; }

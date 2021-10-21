@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REverticalDiv : REchild
+    public class REverticalDiv : RErenderer
     {
         protected override Type elementType => this.GetType();
         protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
@@ -167,7 +167,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override ElementSelector AddSelector()
+        protected override REbaseSelector AddSelector()
         {
             var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, backImageCmp, scrollRectCmp, rectMask2Cmp, verticalLayoutCmp, contentSizeCmp,
                 vScrollbarImageCmp, vScrollbarCmp, vScrollbarHandleImageCmp, hScrollbarImageCmp, hScrollbarCmp, hScrollbarHandleImageCmp);
@@ -175,7 +175,7 @@ namespace U.Reactor
             return sel;
         }
 
-        protected override void AfterCreateChild(ElementSelector child)
+        protected override void AfterCreateChild(REbaseSelector child)
         {
             // Call function to add layout
             // Debug.Log("Creating vlayout child");
@@ -189,7 +189,7 @@ namespace U.Reactor
 
         #region Subclasses
 
-        public class Selector : ChildElementSelector
+        public class Selector : RErendererSelector
         {
 
             public Image backImage { get; private set; }

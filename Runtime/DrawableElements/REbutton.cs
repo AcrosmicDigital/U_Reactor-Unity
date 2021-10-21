@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REbutton : REchild
+    public class REbutton : RErenderer
     {
         protected override Type elementType => this.GetType();
         protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
@@ -83,7 +83,7 @@ namespace U.Reactor
 
         }
 
-        protected override ElementSelector AddSelector()
+        protected override REbaseSelector AddSelector()
         {
             var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, buttonCmp, imageCmp);
 
@@ -113,7 +113,7 @@ namespace U.Reactor
         #region Subclasses
 
 
-        public class Selector : ChildElementSelector
+        public class Selector : RErendererSelector
         {
 
             public Button button { get; private set; }

@@ -104,7 +104,7 @@ namespace U.Reactor
 
         }
 
-        protected override ElementSelector AddSelector()
+        protected override REbaseSelector AddSelector()
         {
             var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp);
 
@@ -132,7 +132,7 @@ namespace U.Reactor
 
         #region Subclasses
 
-        public class Selector : ElementSelector
+        public class Selector : REbaseSelector
         {
 
             public Slider slider { get; private set; }

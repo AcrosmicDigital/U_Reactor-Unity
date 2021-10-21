@@ -10,7 +10,7 @@ namespace U.Reactor
     public class UseEffect<TSelector, TUseEffect> : MonoBehaviour
 
         where TUseEffect : UseEffect<TSelector, TUseEffect>
-        where TSelector : ElementSelector
+        where TSelector : REbaseSelector
 
     {
 

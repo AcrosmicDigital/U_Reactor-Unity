@@ -84,7 +84,7 @@ namespace U.Reactor
 
         }
 
-        protected override ElementSelector AddSelector()
+        protected override REbaseSelector AddSelector()
         {
             return new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasCmp, canvasScalerCmp, graphicRaycasterCmp, canvasGroupCmp);
         }
@@ -173,7 +173,7 @@ namespace U.Reactor
         #region Subclasses
 
 
-        public class Selector : ElementSelector
+        public class Selector : REbaseSelector
         {
 
             public Canvas canvas { get; private set; }

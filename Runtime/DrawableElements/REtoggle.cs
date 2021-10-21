@@ -137,7 +137,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override ElementSelector AddSelector()
+        protected override REbaseSelector AddSelector()
         {
             var sel = new Selector(gameObject, reactorIdCmp, rectTransformCmp, toggleCmp, backImageCmp, checkImageCmp, textCmp, multiToggleMemberCmp);
 
@@ -149,7 +149,7 @@ namespace U.Reactor
 
         #region Subclasses
 
-        public class Selector : ElementSelector
+        public class Selector : REbaseSelector
         {
 
             public Toggle toggle { get; private set; }

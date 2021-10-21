@@ -13,7 +13,7 @@ namespace U.Reactor
         IPointerClickHandler
 
         where TUsePointerEvents : UsePointer<TSelector, TUsePointerEvents>
-        where TSelector : ElementSelector
+        where TSelector : REbaseSelector
 
     {
 

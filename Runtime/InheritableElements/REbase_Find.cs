@@ -18,7 +18,7 @@ namespace U.Reactor
         // #id
         // .className|className|.className
         // .className&.className&className
-        public static ElementSelector[] Find(string pattern)
+        public static REbaseSelector[] Find(string pattern)
         {
             // All
             if (String.IsNullOrEmpty(pattern))
@@ -137,23 +137,23 @@ namespace U.Reactor
             // Return empty array
             else
             {
-                return new ElementSelector[0];
+                return new REbaseSelector[0];
             }
 
         }
 
-        public static ElementSelector[] Find()
+        public static REbaseSelector[] Find()
         {
             return Find(null);
         }
 
-        public static ElementSelector FindOne(string pattern)
+        public static REbaseSelector FindOne(string pattern)
         {
             return Find(pattern).FirstOrDefault();
         }
 
 
-        protected static TSelector[] Find<TSelector>(string pattern) where TSelector : ElementSelector
+        protected static TSelector[] Find<TSelector>(string pattern) where TSelector : REbaseSelector
         {
             return Find(pattern).Select(e =>
             {
@@ -169,12 +169,12 @@ namespace U.Reactor
             }).Where(e => e != null).ToArray();
         }
 
-        protected static TSelector[] Find<TSelector>() where TSelector : ElementSelector
+        protected static TSelector[] Find<TSelector>() where TSelector : REbaseSelector
         {
             return Find<TSelector>(null);
         }
 
-        protected static TSelector FindOne<TSelector>(string pattern) where TSelector : ElementSelector
+        protected static TSelector FindOne<TSelector>(string pattern) where TSelector : REbaseSelector
         {
             return Find<TSelector>(pattern).FirstOrDefault();
         }

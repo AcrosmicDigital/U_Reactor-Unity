@@ -12,7 +12,7 @@ namespace U.Reactor
         IUpdateSelectedHandler
 
         where TUseSelectEvents : UseSelectEvents<TSelector, TUseSelectEvents>
-        where TSelector : ElementSelector
+        where TSelector : REbaseSelector
 
     {
 
