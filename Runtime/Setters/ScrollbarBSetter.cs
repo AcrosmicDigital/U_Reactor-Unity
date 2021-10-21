@@ -9,10 +9,10 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class ScrollbarBSetter
+    public class ScrollbarBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<float, REbaseSelector> OnValueChangedListener { get; set; } = (v, s) => { };
+        public virtual UnityAction<float, TSelector> OnValueChangedListener { get; set; } = (v, s) => { };
         // Properties
         public virtual bool interactable { get; set; } = true;
         public virtual Selectable.Transition transition { get; set; } = Selectable.Transition.ColorTint;
@@ -46,7 +46,7 @@ namespace U.Reactor
         }
 
 
-        public void SetListeners(Scrollbar c, REbaseSelector selector)
+        public void SetListeners(Scrollbar c, TSelector selector)
         {
             c.onValueChanged.AddListener((v) =>
             {

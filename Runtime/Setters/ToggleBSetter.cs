@@ -9,10 +9,10 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class ToggleBSetter
+    public class ToggleBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<float, REbaseSelector> OnValueChangedListener { get; set; } = (v, s) => { };
+        public virtual UnityAction<bool, TSelector> OnValueChangedListener { get; set; } = (v, s) => { };
         // Properties
         // ...
 
@@ -30,7 +30,7 @@ namespace U.Reactor
         }
 
 
-        public void SetListeners(Scrollbar c, REbaseSelector selector)
+        public void SetListeners(Toggle c, TSelector selector)
         {
             c.onValueChanged.AddListener((v) =>
             {

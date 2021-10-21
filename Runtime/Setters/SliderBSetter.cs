@@ -9,10 +9,10 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class SliderBSetter
+    public class SliderBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<float, REbaseSelector> OnValueChangedListener { get; set; } = (f, s) => { };
+        public virtual UnityAction<float, TSelector> OnValueChangedListener { get; set; } = (f, s) => { };
         // Properties
         // ...
 
@@ -30,7 +30,7 @@ namespace U.Reactor
         }
 
 
-        public void SetListeners(Slider c, REbaseSelector selector)
+        public void SetListeners(Slider c, TSelector selector)
         {
             c.onValueChanged.AddListener((f) =>
             {

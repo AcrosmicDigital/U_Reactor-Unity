@@ -9,10 +9,10 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class DropdownBSetter
+    public class DropdownBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<int, REbaseSelector> OnValueChangedListener { get; set; } = (v, s) => { };
+        public virtual UnityAction<int, TSelector> OnValueChangedListener { get; set; } = (v, s) => { };
         // Properties
         // ...
 
@@ -29,7 +29,7 @@ namespace U.Reactor
             return Set(gameObject.AddComponent<Dropdown>());
         }
 
-        public void SetListeners(Dropdown c, REbaseSelector selector)
+        public void SetListeners(Dropdown c, TSelector selector)
         {
             c.onValueChanged.AddListener((v) =>
             {

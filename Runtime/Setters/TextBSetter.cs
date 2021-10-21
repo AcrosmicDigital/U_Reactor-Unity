@@ -9,10 +9,10 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class TextBSetter
+    public class TextBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<bool, REbaseSelector> OnCullStateChangedListener { get; set; } = (b, s) => { };
+        public virtual UnityAction<bool, TSelector> OnCullStateChangedListener { get; set; } = (b, s) => { };
         // Properties
         public virtual string text { get; set; } = "Text";
         public virtual Font font { get; set; } = Resources.GetBuiltinResource<Font>("Arial.ttf");
@@ -59,7 +59,7 @@ namespace U.Reactor
             return Set(gameObject.AddComponent<Text>());
         }
 
-        public void SetListeners(Text c, REbaseSelector selector)
+        public void SetListeners(Text c, TSelector selector)
         {
             c.onCullStateChanged.AddListener((b) =>
             {

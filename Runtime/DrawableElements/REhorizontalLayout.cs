@@ -173,6 +173,17 @@ namespace U.Reactor
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, backImageCmp, scrollRectCmp, rectMask2Cmp, horizontalLayoutCmp, contentSizeCmp,
                 vScrollbarImageCmp, vScrollbarCmp, vScrollbarHandleImageCmp, hScrollbarImageCmp, hScrollbarCmp, hScrollbarHandleImageCmp);
 
+        protected override void AfterCreateComponent()
+        {
+            propsBackImage().SetListeners(backImageCmp, (Selector)selector);
+            propsScrollRect().SetListeners(scrollRectCmp, (Selector)selector);
+            propsVScrollbarImage().SetListeners(vScrollbarImageCmp, (Selector)selector);
+            propsVScrollbar().SetListeners(vScrollbarCmp, (Selector)selector);
+            propsVScrollbarHandleImageCmp().SetListeners(vScrollbarHandleImageCmp, (Selector)selector);
+            propsHScrollbarImage().SetListeners(hScrollbarImageCmp, (Selector)selector);
+            propsHScrollbar().SetListeners(hScrollbarCmp, (Selector)selector);
+            propsHScrollbarHandleImageCmp().SetListeners(hScrollbarHandleImageCmp, (Selector)selector);
+        }
 
         protected override void AfterCreateChild(REbaseSelector child)
         {
@@ -315,12 +326,12 @@ namespace U.Reactor
             public override Vector2 anchorMax { get; set; } = Vector2.one;
         }
 
-        public class BackImageSetter : ImageBSetter
+        public class BackImageSetter : ImageBSetter<Selector>
         {
             public override Color color { get; set; } = new Color(255, 255, 255, .4f);
         }
 
-        public class ScrollRectSetter : ScrollRectBSetter
+        public class ScrollRectSetter : ScrollRectBSetter<Selector>
         {
             public override bool vertical { get; set; } = false;
             public override ScrollRect.ScrollbarVisibility verticalScrollbarVisibility { get; set; } = ScrollRect.ScrollbarVisibility.AutoHideAndExpandViewport;
@@ -344,32 +355,32 @@ namespace U.Reactor
             public override ContentSizeFitter.FitMode verticalFit { get; set; } = ContentSizeFitter.FitMode.Unconstrained;
         }
 
-        public class VScrollbarSetter : ScrollbarBSetter
+        public class VScrollbarSetter : ScrollbarBSetter<Selector>
         {
             public override Scrollbar.Direction direction { get; set; } = Scrollbar.Direction.BottomToTop;
         }
 
-        public class VScrollbarBackImageSetter : ImageBSetter
+        public class VScrollbarBackImageSetter : ImageBSetter<Selector>
         {
             public override Color color { get; set; } = Color.gray;
         }
 
-        public class VScrollbarHandleImageSetter : ImageBSetter
+        public class VScrollbarHandleImageSetter : ImageBSetter<Selector>
         {
             public override Color color { get; set; } = new Color(0.3f, 0.3f, 0.3f, 1f);
         }
 
-        public class HScrollbarSetter : ScrollbarBSetter
+        public class HScrollbarSetter : ScrollbarBSetter<Selector>
         {
 
         }
 
-        public class HScrollbarBackImageSetter : ImageBSetter
+        public class HScrollbarBackImageSetter : ImageBSetter<Selector>
         {
             public override Color color { get; set; } = Color.gray;
         }
 
-        public class HScrollbarHandleImageSetter : ImageBSetter
+        public class HScrollbarHandleImageSetter : ImageBSetter<Selector>
         {
             public override Color color { get; set; } = new Color(0.3f, 0.3f, 0.3f, 1f);
         }

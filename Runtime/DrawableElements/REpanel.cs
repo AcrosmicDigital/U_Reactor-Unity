@@ -68,6 +68,11 @@ namespace U.Reactor
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, imageCmp);
 
+        protected override void AfterCreateComponent()
+        {
+            propsImage().SetListeners(imageCmp, (Selector)selector);
+        }
+
         protected override void AddHooks()
         {
             UseEffect.AddHook(gameObject, (Selector)selector, useEffect);
@@ -157,7 +162,7 @@ namespace U.Reactor
             public override Vector2 anchorMax { get; set; } = Vector2.one;
         }
 
-        public class ImageSetter : ImageBSetter
+        public class ImageSetter : ImageBSetter<Selector>
         {
             public override Color color { get; set; } = new Color(255, 255, 255, .4f);
         }

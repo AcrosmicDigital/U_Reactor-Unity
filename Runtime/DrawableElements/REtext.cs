@@ -71,6 +71,11 @@ namespace U.Reactor
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp);
 
+        protected override void AfterCreateComponent()
+        {
+            propsText().SetListeners(textCmp, (Selector)selector);
+        }
+
         protected override void AddHooks()
         {
             UseEffect.AddHook(gameObject, (Selector)selector, useEffect);
@@ -163,7 +168,7 @@ namespace U.Reactor
             public override float height { get; set; } = 140;
         }
 
-        public class TextSetter : TextBSetter
+        public class TextSetter : TextBSetter<Selector>
         {
 
         }

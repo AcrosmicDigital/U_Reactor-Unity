@@ -282,6 +282,24 @@ namespace U.Reactor
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, dropdownCmp, dropdownImageCmp, labelTextCmp, arrowImageCmp, templateImageCmp,
                 scrollRectCmp, viewportImageCmp, maskCmp, toggleCmp, itemBackImageCmp, itemCheckImageCmp, itemLabelTextCmp, scrollbarImageCmp, scrollbarCmp, scrollbarHandleImageCmp);
 
+        protected override void AfterCreateComponent()
+        {
+            propsDropdown().SetListeners(dropdownCmp, (Selector)selector);
+            propsDropdownImage().SetListeners(dropdownImageCmp, (Selector)selector);
+            propsLabelText().SetListeners(labelTextCmp, (Selector)selector);
+            propsArrowImage().SetListeners(arrowImageCmp, (Selector)selector);
+            propsTemplateImage().SetListeners(templateImageCmp, (Selector)selector);
+            propsScrollRect().SetListeners(scrollRectCmp, (Selector)selector);
+            propsViewportImage().SetListeners(viewportImageCmp, (Selector)selector);
+            propsToggle().SetListeners(toggleCmp, (Selector)selector);
+            propsItemBackImage().SetListeners(itemBackImageCmp, (Selector)selector);
+            propsItemCheckImage().SetListeners(itemCheckImageCmp, (Selector)selector);
+            propsItemLabelText().SetListeners(itemLabelTextCmp, (Selector)selector);
+            propsScrollbarImage().SetListeners(scrollbarImageCmp, (Selector)selector);
+            propsScrollbar().SetListeners(scrollbarCmp, (Selector)selector);
+            propsScrollbarHandleImageCmp().SetListeners(scrollbarHandleImageCmp, (Selector)selector);
+        }
+
         #endregion Drawers
 
 
@@ -412,17 +430,17 @@ namespace U.Reactor
             public override float height { get; set; } = 70;
         }
 
-        public class DropdownSetter : DropdownBSetter
+        public class DropdownSetter : DropdownBSetter<Selector>
         {
 
         }
 
-        public class BackImageSetter : ImageBSetter
+        public class BackImageSetter : ImageBSetter<Selector>
         {
 
         }
 
-        public class LabelTextSetter : TextBSetter
+        public class LabelTextSetter : TextBSetter<Selector>
         {
             public override string text { get; set; } = "Option A";
             public override int fontSize { get; set; } = 35;
@@ -431,17 +449,17 @@ namespace U.Reactor
             public override Color fontColor { get; set; } = new Color(.2f, .2f, .2f, 1f);
         }
 
-        public class ArrowImageSetter : ImageBSetter
+        public class ArrowImageSetter : ImageBSetter<Selector>
         {
             public override Color color { get; set; } = Color.gray;
         }
 
-        public class DownBackImageSetter : ImageBSetter
+        public class DownBackImageSetter : ImageBSetter<Selector>
         {
 
         }
 
-        public class ScrollRectSetter : ScrollRectBSetter
+        public class ScrollRectSetter : ScrollRectBSetter<Selector>
         {
             public override bool horizontal { get; set; } = false;
             public override ScrollRect.MovementType movementType { get; set; } = ScrollRect.MovementType.Clamped;
@@ -449,7 +467,7 @@ namespace U.Reactor
             public override float verticalScrollbarSpacing { get; set; } = -3;
         }
 
-        public class ViewportImageSetter : ImageBSetter
+        public class ViewportImageSetter : ImageBSetter<Selector>
         {
 
         }
@@ -459,22 +477,22 @@ namespace U.Reactor
             public override bool showMaskGraphic { get; set; } = false;
         }
 
-        public class ToggleSetter : ToggleBSetter
+        public class ToggleSetter : ToggleBSetter<Selector>
         {
 
         }
 
-        public class ItemBackImageSetter : ImageBSetter
+        public class ItemBackImageSetter : ImageBSetter<Selector>
         {
 
         }
 
-        public class ItemCheckImageSetter : ImageBSetter
+        public class ItemCheckImageSetter : ImageBSetter<Selector>
         {
             public override Color color { get; set; } = Color.gray;
         }
 
-        public class ItemTextSetter : TextBSetter
+        public class ItemTextSetter : TextBSetter<Selector>
         {
             public override string text { get; set; } = "Option A";
             public override int fontSize { get; set; } = 35;
@@ -483,17 +501,17 @@ namespace U.Reactor
             public override Color fontColor { get; set; } = new Color(.2f, .2f, .2f, 1f);
         }
 
-        public class ScrollbarBackImageSetter : ImageBSetter
+        public class ScrollbarBackImageSetter : ImageBSetter<Selector>
         {
             public override Color color { get; set; } = Color.gray;
         }
 
-        public class ScrollbarSetter : ScrollbarBSetter
+        public class ScrollbarSetter : ScrollbarBSetter<Selector>
         {
             public override Scrollbar.Direction direction { get; set; } = Scrollbar.Direction.BottomToTop;
         }
 
-        public class ScrollbarHandleImageSetter : ImageBSetter
+        public class ScrollbarHandleImageSetter : ImageBSetter<Selector>
         {
             public override Color color { get; set; } = new Color(0.3f, 0.3f, 0.3f, 1f);
         }

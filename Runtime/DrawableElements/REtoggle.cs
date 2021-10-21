@@ -143,6 +143,14 @@ namespace U.Reactor
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, toggleCmp, backImageCmp, checkImageCmp, textCmp, multiToggleMemberCmp);
 
+        protected override void AfterCreateComponent()
+        {
+            propsToggle().SetListeners(toggleCmp, (Selector)selector);
+            propsBackImage().SetListeners(backImageCmp, (Selector)selector);
+            propsCheckImage().SetListeners(checkImageCmp, (Selector)selector);
+            propsText().SetListeners(textCmp, (Selector)selector);
+        }
+
         #endregion Drawers
 
 
@@ -231,22 +239,22 @@ namespace U.Reactor
             public override float height { get; set; } = 80;
         }
 
-        public class ToggleSetter : ToggleBSetter
+        public class ToggleSetter : ToggleBSetter<Selector>
         {
 
         }
 
-        public class BackImageSetter: ImageBSetter
+        public class BackImageSetter: ImageBSetter<Selector>
         {
 
         }
 
-        public class CheckImageSetter : ImageBSetter
+        public class CheckImageSetter : ImageBSetter<Selector>
         {
             public override Color color { get; set; } = Color.gray;
         }
 
-        public class TextSeter : TextBSetter
+        public class TextSeter : TextBSetter<Selector>
         {
 
         }

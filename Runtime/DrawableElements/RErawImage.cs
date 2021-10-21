@@ -72,6 +72,11 @@ namespace U.Reactor
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, rawImageCmp);
 
+        protected override void AfterCreateComponent()
+        {
+            propsRawImage().SetListeners(rawImageCmp, (Selector)selector);
+        }
+
         protected override void AddHooks()
         {
             UseEffect.AddHook(gameObject, (Selector)selector, useEffect);
@@ -164,7 +169,7 @@ namespace U.Reactor
             public override float height { get; set; } = 300;
         }
 
-        public class RawImageSetter : RawImageBSetter
+        public class RawImageSetter : RawImageBSetter<Selector>
         {
 
         }

@@ -91,7 +91,9 @@ namespace U.Reactor
 
         protected override void AfterCreateComponent()
         {
-            propsButton().SetListeners(buttonCmp, selector);
+            propsButton().SetListeners(buttonCmp, (Selector)selector);
+            propsImage().SetListeners(imageCmp, (Selector)selector);
+            propsText().SetListeners(textCmp, (Selector)selector);
         }
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, buttonCmp, imageCmp);
@@ -191,17 +193,17 @@ namespace U.Reactor
             public override float height { get; set; } = 120;
         }
 
-        public class ButtonSetter : ButtonBSetter
+        public class ButtonSetter : ButtonBSetter<Selector>
         {
 
         }
 
-        public class ImageSetter : ImageBSetter
+        public class ImageSetter : ImageBSetter<Selector>
         {
 
         }
 
-        public class TextSetter : TextBSetter
+        public class TextSetter : TextBSetter<Selector>
         {
             public override int fontSize { get; set; } = 60;
             public override TextAnchor alignment { get; set; } = TextAnchor.MiddleCenter;

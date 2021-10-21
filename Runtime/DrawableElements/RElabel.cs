@@ -101,6 +101,12 @@ namespace U.Reactor
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, imageCmp);
 
+        protected override void AfterCreateComponent()
+        {
+            propsImage().SetListeners(imageCmp, (Selector)selector);
+            propsText().SetListeners(textCmp, (Selector)selector);
+        }
+
         #endregion Drawers
 
 
@@ -179,12 +185,12 @@ namespace U.Reactor
             public override float height { get; set; } = 120;
         }
 
-        public class BackImageSetter : ImageBSetter
+        public class BackImageSetter : ImageBSetter<Selector>
         {
 
         }
 
-        public class TextSetter : TextBSetter
+        public class TextSetter : TextBSetter<Selector>
         {
 
         }

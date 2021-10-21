@@ -110,6 +110,12 @@ namespace U.Reactor
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp);
 
+        protected override void AfterCreateComponent()
+        {
+            propsSlider().SetListeners(sliderCmp, (Selector)selector);
+            propsBackImage().SetListeners(backImageCmp, (Selector)selector);
+            propsFillImage().SetListeners(fillImageCmp, (Selector)selector);
+        }
 
         protected override void AddHooks()
         {
@@ -203,17 +209,17 @@ namespace U.Reactor
             public override float height { get; set; } = 40;
         }
 
-        public class SliderSetter : SliderBSetter
+        public class SliderSetter : SliderBSetter<Selector>
         {
 
         }
 
-        public class BackImageSetter : ImageBSetter
+        public class BackImageSetter : ImageBSetter<Selector>
         {
             public override Color color { get; set; } = Color.gray;
         }
 
-        public class FillImageSetter : ImageBSetter
+        public class FillImageSetter : ImageBSetter<Selector>
         {
 
         }

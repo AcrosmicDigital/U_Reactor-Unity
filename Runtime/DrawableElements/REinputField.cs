@@ -121,6 +121,14 @@ namespace U.Reactor
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, inputFieldCmp, backImageCmp, placeholderTextCmp, textCmp);
 
+        protected override void AfterCreateComponent()
+        {
+            propsInputField().SetListeners(inputFieldCmp, (Selector)selector);
+            propsBackImage().SetListeners(backImageCmp, (Selector)selector);
+            propsPlaceholderText().SetListeners(placeholderTextCmp, (Selector)selector);
+            propsText().SetListeners(textCmp, (Selector)selector);
+        }
+
         #endregion Drawers
 
 
@@ -209,17 +217,17 @@ namespace U.Reactor
             public override float height { get; set; } = 70;
         }
 
-        public class InputFieldSetter : InputFieldBSetter
+        public class InputFieldSetter : InputFieldBSetter<Selector>
         {
 
         }
 
-        public class BackImageSetter : ImageBSetter
+        public class BackImageSetter : ImageBSetter<Selector>
         {
 
         }
 
-        public class PlaceholderTextSetter : TextBSetter
+        public class PlaceholderTextSetter : TextBSetter<Selector>
         {
             public override string text { get; set; } = "Enter text...";
             public override FontStyle fontStyle { get; set; } = FontStyle.Italic;
@@ -229,7 +237,7 @@ namespace U.Reactor
             public override Color fontColor { get; set; } = new Color(0, 0, 0, .5f);
         }
 
-        public class TextSetter : TextBSetter
+        public class TextSetter : TextBSetter<Selector>
         {
             public override string text { get; set; } = "";
             public override int fontSize { get; set; } = 40;

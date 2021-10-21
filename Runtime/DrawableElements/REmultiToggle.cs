@@ -108,6 +108,9 @@ namespace U.Reactor
             var toggleDefs = toggleList.Select(t => new MultiToggle.ToggleDef { toggle = t.toggle, label = t.text, name = t.multiToggleMember.toggleName, number = t.multiToggleMember.toggleNumber, value = t.multiToggleMember.toggleValue, }).ToArray();
 
             multiToggleCmp.toggleDefs = toggleDefs;
+
+            // Subscrbie events
+            propsMultiToggle().SetListeners(multiToggleCmp, (Selector)selector);
         }
 
         #endregion Drawers
@@ -178,7 +181,7 @@ namespace U.Reactor
             public override float height { get; set; } = 120;
         }
 
-        public class MultiToggleSetter : MultiToggleBSetter
+        public class MultiToggleSetter : MultiToggleBSetter<Selector>
         {
 
         }

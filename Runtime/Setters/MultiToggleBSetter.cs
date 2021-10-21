@@ -9,10 +9,10 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class MultiToggleBSetter
+    public class MultiToggleBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<MultiToggle.ToggleSet[], REbaseSelector> OnValueChangedListener { get; set; } = (l, s) => { };
+        public virtual UnityAction<MultiToggle.ToggleSet[], TSelector> OnValueChangedListener { get; set; } = (l, s) => { };
         // Properties
         public virtual int maxEnabled { get; set; } = 0;
 
@@ -29,7 +29,7 @@ namespace U.Reactor
             return Set(gameObject.AddComponent<MultiToggle>());
         }
 
-        public void SetListeners(MultiToggle c, REbaseSelector selector)
+        public void SetListeners(MultiToggle c, TSelector selector)
         {
             c.OnValueChanged.AddListener((l) =>
             {

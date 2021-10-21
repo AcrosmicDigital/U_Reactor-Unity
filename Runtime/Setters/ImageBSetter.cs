@@ -9,10 +9,10 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class ImageBSetter
+    public class ImageBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<bool, REbaseSelector> OnCullStateChangedListener { get; set; } = (b, s) => { };
+        public virtual UnityAction<bool, TSelector> OnCullStateChangedListener { get; set; } = (b, s) => { };
         // Properties
         public virtual Sprite sprite { get; set; } = null;
         public virtual Color color { get; set; } = Color.white;
@@ -59,7 +59,7 @@ namespace U.Reactor
             return Set(gameObject.AddComponent<Image>());
         }
 
-        public void SetListeners(Image c, REbaseSelector selector)
+        public void SetListeners(Image c, TSelector selector)
         {
             c.onCullStateChanged.AddListener((b) =>
             {

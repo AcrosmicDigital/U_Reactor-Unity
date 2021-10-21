@@ -9,10 +9,10 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class ButtonBSetter
+    public class ButtonBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<REbaseSelector> OnClickListener { get; set; } = (s) => { };
+        public virtual UnityAction<TSelector> OnClickListener { get; set; } = (s) => { };
         // Properties
         public virtual bool interactable { get; set; } = true;
         public virtual Selectable.Transition transition { get; set; } = Selectable.Transition.ColorTint;
@@ -30,7 +30,7 @@ namespace U.Reactor
             return Set(gameObject.AddComponent<Button>());
         }
 
-        public void SetListeners(Button c, REbaseSelector selector)
+        public void SetListeners(Button c, TSelector selector)
         {
             c.onClick.AddListener(() =>
             {

@@ -9,10 +9,10 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class ScrollRectBSetter
+    public class ScrollRectBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<Vector2, REbaseSelector> OnValueChangedListener { get; set; } = (v, s) => { };
+        public virtual UnityAction<Vector2, TSelector> OnValueChangedListener { get; set; } = (v, s) => { };
         // Properties
         public virtual bool horizontal { get; set; } = true;
         public virtual bool vertical { get; set; } = true;
@@ -49,7 +49,7 @@ namespace U.Reactor
             return Set(gameObject.AddComponent<ScrollRect>());
         }
 
-        public void SetListeners(ScrollRect c, REbaseSelector selector)
+        public void SetListeners(ScrollRect c, TSelector selector)
         {
             c.onValueChanged.AddListener((v) =>
             {

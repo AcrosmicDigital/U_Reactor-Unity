@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e6b676ab04da6439eb1adada53851f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testCase: 0
+  testCase: 1
   destroyOnStart: 0
   toDestroy:
   - {fileID: 892717322}

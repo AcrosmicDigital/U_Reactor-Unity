@@ -11,7 +11,7 @@ public class eexp_Slider : MonoBehaviour
     public enum TestCase
     {
         A00Basic,
-
+        A00WithEvent,
     }
 
     // Destroy some elements OnStart
@@ -45,6 +45,30 @@ public class eexp_Slider : MonoBehaviour
                     {
                         new REslider
                         {
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.A00WithEvent:
+                #region TestCase.A00WithEvent
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REslider
+                        {
+                            propsSlider = () => new REslider.SliderSetter
+                            {
+                                OnValueChangedListener = (v, s) => 
+                                {
+                                    Debug.Log("Slider: " + s.gameObject.name + " Value: " + v);
+                                }
+                            }
                         },
                     }
 

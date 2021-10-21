@@ -9,11 +9,11 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class InputFieldBSetter
+    public class InputFieldBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<string, REbaseSelector> OnValueChangedListener { get; set; } = (t, s) => { };
-        public virtual UnityAction<string, REbaseSelector> OnEndEditListener { get; set; } = (t, s) => { };
+        public virtual UnityAction<string, TSelector> OnValueChangedListener { get; set; } = (t, s) => { };
+        public virtual UnityAction<string, TSelector> OnEndEditListener { get; set; } = (t, s) => { };
         // Properties
         // ...
 
@@ -30,7 +30,7 @@ namespace U.Reactor
             return Set(gameObject.AddComponent<InputField>());
         }
 
-        public void SetListeners(InputField c, REbaseSelector selector)
+        public void SetListeners(InputField c, TSelector selector)
         {
             c.onValueChanged.AddListener((t) =>
             {
