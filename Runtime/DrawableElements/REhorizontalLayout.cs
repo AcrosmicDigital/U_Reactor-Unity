@@ -316,7 +316,7 @@ namespace U.Reactor
 
         public class GameObjectSetter : GameObjectBSetter
         {
-            public override string name { get; set; } = "Horizontal Div";
+            public override string name { get; set; } = "Horizontal Layout";
         }
         public class RectTransformSetter : RectTransformBSetter
         {
