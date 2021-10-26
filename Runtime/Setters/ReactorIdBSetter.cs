@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace U.Reactor
 {
+    /// <summary>
+    /// Create a HC.ReactorId in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
     public class ReactorIdBSetter
     {
         // Listeners
@@ -16,14 +19,17 @@ namespace U.Reactor
         public virtual string[] className { get; set; } = new string[0];
 
 
-        internal HC.ReactorId Set(Type elementType, HC.ReactorId c)
+        internal HC.ReactorId Set(HC.ReactorId c)
         {
-            return c.Set(elementType, id, className);
+            c.id = id;
+            c.className = className;
+
+            return c;
         }
 
-        internal HC.ReactorId Set(Type elementType, GameObject gameObject)
+        internal HC.ReactorId Set(GameObject gameObject)
         {
-            return Set(elementType, gameObject.AddComponent<HC.ReactorId>());
+            return Set(gameObject.AddComponent<HC.ReactorId>());
         }
 
     }

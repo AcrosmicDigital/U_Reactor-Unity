@@ -24,7 +24,7 @@ namespace U.Reactor
         public virtual bool preserveAspect { get; set; } = false;
 
 
-        public RawImage Set(RawImage c)
+        internal RawImage Set(RawImage c)
         {
             c.color = color;
             c.material = material;
@@ -35,12 +35,12 @@ namespace U.Reactor
             return c;
         }
 
-        public RawImage Set(GameObject gameObject)
+        internal RawImage Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<RawImage>());
         }
 
-        public void SetListeners(RawImage c, TSelector selector)
+        internal void SetListeners(RawImage c, TSelector selector)
         {
             c.onCullStateChanged.AddListener((b) =>
             {

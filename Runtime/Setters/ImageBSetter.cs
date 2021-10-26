@@ -26,7 +26,7 @@ namespace U.Reactor
         public virtual Image.Type type { get; set; } = Image.Type.Simple;
 
 
-        public Image Set(Image c)
+        internal Image Set(Image c)
         {
             SetAllExceptType(c);
 
@@ -35,7 +35,7 @@ namespace U.Reactor
             return c;
         }
 
-        public Image SetAllExceptType(Image c)
+        internal Image SetAllExceptType(Image c)
         {
             c.sprite = sprite;
             c.color = color;
@@ -54,12 +54,12 @@ namespace U.Reactor
         }
 
 
-        public Image Set(GameObject gameObject)
+        internal Image Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<Image>());
         }
 
-        public void SetListeners(Image c, TSelector selector)
+        internal void SetListeners(Image c, TSelector selector)
         {
             c.onCullStateChanged.AddListener((b) =>
             {

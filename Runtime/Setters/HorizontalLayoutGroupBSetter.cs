@@ -24,7 +24,7 @@ namespace U.Reactor
         public virtual bool childForceExpandHeight { get; set; } = true;
         public virtual bool childForceExpandWidth { get; set; } = true;
 
-        public HorizontalLayoutGroup Set(HorizontalLayoutGroup c)
+        internal HorizontalLayoutGroup Set(HorizontalLayoutGroup c)
         {
             c.padding = padding;
             c.spacing = spacing;
@@ -41,7 +41,7 @@ namespace U.Reactor
         }
 
 
-        public HorizontalLayoutGroup Set(GameObject gameObject)
+        internal HorizontalLayoutGroup Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<HorizontalLayoutGroup>());
         }

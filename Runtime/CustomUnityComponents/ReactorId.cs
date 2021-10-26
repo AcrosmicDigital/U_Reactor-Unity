@@ -7,23 +7,23 @@ namespace U.Reactor
     {
         public class ReactorId : MonoBehaviour
         {
+            
+            // To show in inspector
+            public string id = "";
+            public string[] className = new string[0];
+
             public Type elementType { get; private set; }
-            public string id { get; private set; } = "";
-            public string[] className { get; private set; } = new string[0];
-            public REbaseSelector selector { get; private set; } = null;
+            internal REbaseSelector selector { get; private set; }
 
 
-            internal ReactorId Set(Type elementType, string id, string[] className)
+            internal ReactorId SetElementType(Type elementType)
             {
                 this.elementType = elementType;
-                this.id = id;
-                this.className = className;
-                this.selector = selector;
 
                 return this;
             }
 
-            internal void Set(REbaseSelector selector)
+            internal void SetSelector(REbaseSelector selector)
             {
                 this.selector = selector;
             }

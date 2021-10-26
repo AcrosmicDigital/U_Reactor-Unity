@@ -16,21 +16,24 @@ namespace U.Reactor
         // Properties
         public virtual bool interactable { get; set; } = true;
         public virtual Selectable.Transition transition { get; set; } = Selectable.Transition.ColorTint;
+        public virtual NavigationSetter navigation { get; set; } = new NavigationSetter();
 
-        public Button Set(Button c)
+
+        internal Button Set(Button c)
         {
             c.interactable = interactable;
             c.transition = transition;
-            
+            c.navigation = navigation.Set();
+
             return c;
         }
 
-        public Button Set(GameObject gameObject)
+        internal Button Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<Button>());
         }
 
-        public void SetListeners(Button c, TSelector selector)
+        internal void SetListeners(Button c, TSelector selector)
         {
             c.onClick.AddListener(() =>
             {

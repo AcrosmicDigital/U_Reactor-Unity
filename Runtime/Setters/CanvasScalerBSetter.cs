@@ -8,51 +8,45 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
+    /// <summary>
+    /// Create a CanvasScaler in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
     public class CanvasScalerBSetter
     {
         // Listeners
         // ...
         // Properties
-        public virtual CanvasScaler.ScaleMode uiScaleMode { get; set; } = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        public virtual Vector3 referenceResolution { get; set; } = new Vector3(1920, 1080);
-        public virtual CanvasScaler.ScreenMatchMode screenMatchMode { get; set; } = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-        public virtual float matchWidthOrHeight { get; set; } = .5f;
+        public virtual float dynamicPixelsPerUnit { get; set; } = 1;
         public virtual float referencePixelsPerUnit { get; set; } = 100;
+        public virtual CanvasScaler.ScaleMode uiScaleMode { get; set; } = CanvasScaler.ScaleMode.ConstantPixelSize;
         public virtual float scaleFactor { get; set; } = 1;
         public virtual CanvasScaler.Unit physicalUnit { get; set; } = CanvasScaler.Unit.Points;
         public virtual float fallbackScreenDPI { get; set; } = 96;
         public virtual float defaultSpriteDPI { get; set; } = 96;
+        public virtual Vector3 referenceResolution { get; set; } = new Vector3(800, 600);
+        public virtual CanvasScaler.ScreenMatchMode screenMatchMode { get; set; } = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+        public virtual float matchWidthOrHeight { get; set; } = 0f;
 
 
-        public CanvasScaler Set(CanvasScaler c)
+
+        internal CanvasScaler Set(CanvasScaler c)
         {
-            c.uiScaleMode = uiScaleMode;
 
-            if (uiScaleMode == CanvasScaler.ScaleMode.ConstantPixelSize)
-            {
-                c.scaleFactor = scaleFactor;
-            }
-
-            if (uiScaleMode == CanvasScaler.ScaleMode.ScaleWithScreenSize)
-            {
-                c.referenceResolution = referenceResolution;
-                c.screenMatchMode = screenMatchMode;
-                c.matchWidthOrHeight = matchWidthOrHeight;
-            }
-
-            if (uiScaleMode == CanvasScaler.ScaleMode.ConstantPhysicalSize)
-            {
-                c.physicalUnit = physicalUnit;
-                c.fallbackScreenDPI = fallbackScreenDPI;
-                c.defaultSpriteDPI = defaultSpriteDPI;
-            }
-
+            c.dynamicPixelsPerUnit = dynamicPixelsPerUnit;
             c.referencePixelsPerUnit = referencePixelsPerUnit;
+            c.uiScaleMode = uiScaleMode;
+            c.scaleFactor = scaleFactor;
+            c.physicalUnit = physicalUnit;
+            c.fallbackScreenDPI = fallbackScreenDPI;
+            c.defaultSpriteDPI = defaultSpriteDPI;
+            c.referenceResolution = referenceResolution;
+            c.screenMatchMode = screenMatchMode;
+            c.matchWidthOrHeight = matchWidthOrHeight;
 
             return c;
         }
 
-        public CanvasScaler Set(GameObject gameObject)
+        internal CanvasScaler Set(GameObject gameObject)
         {
             return Set (gameObject.AddComponent<CanvasScaler>());
         }

@@ -23,7 +23,7 @@ namespace U.Reactor
         public virtual int constraintCount { get; set; } = 2;
 
 
-        public GridLayoutGroup Set(GridLayoutGroup c)
+        internal GridLayoutGroup Set(GridLayoutGroup c)
         {
             c.padding = padding;
             c.cellSize = cellSize;
@@ -39,7 +39,7 @@ namespace U.Reactor
         }
 
 
-        public GridLayoutGroup Set(GameObject gameObject)
+        internal GridLayoutGroup Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<GridLayoutGroup>());
         }

@@ -19,7 +19,7 @@ namespace U.Reactor
         public virtual float toggleValue { get; set; } = 0f;
 
 
-        public HC.MultiToggleMember Set(HC.MultiToggleMember c)
+        internal HC.MultiToggleMember Set(HC.MultiToggleMember c)
         {
             c.toggleName = toggleName;
             c.toggleNumber = toggleNumber;
@@ -29,7 +29,7 @@ namespace U.Reactor
         }
 
 
-        public HC.MultiToggleMember Set(GameObject gameObject)
+        internal HC.MultiToggleMember Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<HC.MultiToggleMember>());
         }

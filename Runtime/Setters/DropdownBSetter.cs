@@ -14,22 +14,30 @@ namespace U.Reactor
         // Listeners
         public virtual UnityAction<int, TSelector> OnValueChangedListener { get; set; } = (v, s) => { };
         // Properties
-        // ...
+        public virtual bool interactable { get; set; } = true;
+        public virtual Selectable.Transition transition { get; set; } = Selectable.Transition.ColorTint;
+        public virtual NavigationSetter navigation { get; set; } = new NavigationSetter();
+        public virtual int value { get; set; } = 0;
+        public virtual float alphaFadeSpeed { get; set; } = 0.15f;
 
-
-        public Dropdown Set(Dropdown c)
+        internal Dropdown Set(Dropdown c)
         {
-            
+            c.interactable = interactable;
+            c.transition = transition;
+            c.navigation = navigation.Set();
+            c.value = value;
+            c.alphaFadeSpeed = alphaFadeSpeed;
+
             return c;
         }
 
 
-        public Dropdown Set(GameObject gameObject)
+        internal Dropdown Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<Dropdown>());
         }
 
-        public void SetListeners(Dropdown c, TSelector selector)
+        internal void SetListeners(Dropdown c, TSelector selector)
         {
             c.onValueChanged.AddListener((v) =>
             {

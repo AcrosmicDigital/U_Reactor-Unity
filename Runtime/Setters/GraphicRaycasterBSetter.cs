@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
+    /// <summary>
+    /// Create a GraphicRaycaster in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
     public class GraphicRaycasterBSetter
     {
         // Listeners
@@ -15,9 +18,9 @@ namespace U.Reactor
         // Properties
         public virtual bool ignoreReversedGraphics { get; set; } = true;
         public virtual GraphicRaycaster.BlockingObjects blockingObjects { get; set; } = GraphicRaycaster.BlockingObjects.None;
-        public virtual LayerMask blockingMask { get; set; } = ~0;
+        public virtual LayerMask blockingMask { get; set; } = ~0;  // This meaning everything
 
-        public GraphicRaycaster Set(GraphicRaycaster c)
+        internal GraphicRaycaster Set(GraphicRaycaster c)
         {
             c.ignoreReversedGraphics = ignoreReversedGraphics;
             c.blockingObjects = blockingObjects;
@@ -27,7 +30,7 @@ namespace U.Reactor
             return c;
         }
 
-        public GraphicRaycaster Set(GameObject gameObject)
+        internal GraphicRaycaster Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<GraphicRaycaster>());
         }

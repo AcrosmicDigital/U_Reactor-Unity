@@ -26,7 +26,7 @@ namespace U.Reactor
         public virtual float size { get; set; } = .2f;
         public virtual int numberOfSteps { get; set; } = 0;
 
-        public Scrollbar Set(Scrollbar c)
+        internal Scrollbar Set(Scrollbar c)
         {
             c.interactable = interactable;
             c.transition = transition;
@@ -40,13 +40,13 @@ namespace U.Reactor
         }
 
 
-        public Scrollbar Set(GameObject gameObject)
+        internal Scrollbar Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<Scrollbar>());
         }
 
 
-        public void SetListeners(Scrollbar c, TSelector selector)
+        internal void SetListeners(Scrollbar c, TSelector selector)
         {
             c.onValueChanged.AddListener((v) =>
             {

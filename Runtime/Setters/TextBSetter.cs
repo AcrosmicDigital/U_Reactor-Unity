@@ -32,7 +32,7 @@ namespace U.Reactor
         public virtual bool maskable { get; set; } = true;
 
 
-        public Text Set(Text c)
+        internal Text Set(Text c)
         {
             c.font = font;
             c.text = text;
@@ -54,12 +54,12 @@ namespace U.Reactor
             return c;
         }
 
-        public Text Set(GameObject gameObject)
+        internal Text Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<Text>());
         }
 
-        public void SetListeners(Text c, TSelector selector)
+        internal void SetListeners(Text c, TSelector selector)
         {
             c.onCullStateChanged.AddListener((b) =>
             {

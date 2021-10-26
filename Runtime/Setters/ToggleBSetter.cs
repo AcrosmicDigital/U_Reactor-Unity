@@ -16,7 +16,7 @@ namespace U.Reactor
         // Properties
         // ...
 
-        public Toggle Set(Toggle c)
+        internal Toggle Set(Toggle c)
         {
 
 
@@ -24,13 +24,13 @@ namespace U.Reactor
         }
 
 
-        public Toggle Set(GameObject gameObject)
+        internal Toggle Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<Toggle>());
         }
 
 
-        public void SetListeners(Toggle c, TSelector selector)
+        internal void SetListeners(Toggle c, TSelector selector)
         {
             c.onValueChanged.AddListener((v) =>
             {

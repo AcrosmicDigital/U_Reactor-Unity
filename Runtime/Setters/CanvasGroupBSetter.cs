@@ -2,6 +2,9 @@
 
 namespace U.Reactor
 {
+    /// <summary>
+    /// Create a CanvasGroup in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
     public class CanvasGroupBSetter
     {
         // Listeners
@@ -12,7 +15,7 @@ namespace U.Reactor
         public virtual bool blocksRaycasts { get; set; } = true;
         public virtual bool ignoreParentGroups { get; set; } = false;
 
-        public CanvasGroup Set(CanvasGroup c)
+        internal CanvasGroup Set(CanvasGroup c)
         {
             c.alpha = alpha;
             c.interactable = interactable;
@@ -22,7 +25,7 @@ namespace U.Reactor
             return c;
         }
 
-        public CanvasGroup Set(GameObject gameObject)
+        internal CanvasGroup Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<CanvasGroup>());
         }

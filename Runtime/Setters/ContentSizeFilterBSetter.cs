@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
+    /// <summary>
+    /// Create a ContentSizeFitter in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
     public class ContentSizeFilterBSetter
     {
         // Listeners
@@ -16,7 +19,7 @@ namespace U.Reactor
         public virtual ContentSizeFitter.FitMode horizontalFit { get; set; } = ContentSizeFitter.FitMode.Unconstrained;
         public virtual ContentSizeFitter.FitMode verticalFit { get; set; } = ContentSizeFitter.FitMode.Unconstrained;
 
-        public ContentSizeFitter Set(ContentSizeFitter c)
+        internal ContentSizeFitter Set(ContentSizeFitter c)
         {
             c.horizontalFit = horizontalFit;
             c.verticalFit = verticalFit;
@@ -25,7 +28,7 @@ namespace U.Reactor
         }
 
 
-        public ContentSizeFitter Set(GameObject gameObject)
+        internal ContentSizeFitter Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<ContentSizeFitter>());
         }

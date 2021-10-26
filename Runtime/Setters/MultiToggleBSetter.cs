@@ -16,7 +16,7 @@ namespace U.Reactor
         // Properties
         public virtual int maxEnabled { get; set; } = 0;
 
-        public HC.MultiToggle Set(HC.MultiToggle c)
+        internal HC.MultiToggle Set(HC.MultiToggle c)
         {
             c.maxEnabled = maxEnabled;
             
@@ -24,12 +24,12 @@ namespace U.Reactor
         }
 
 
-        public HC.MultiToggle Set(GameObject gameObject)
+        internal HC.MultiToggle Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<HC.MultiToggle>());
         }
 
-        public void SetListeners(HC.MultiToggle c, TSelector selector)
+        internal void SetListeners(HC.MultiToggle c, TSelector selector)
         {
             c.OnValueChanged.AddListener((l) =>
             {

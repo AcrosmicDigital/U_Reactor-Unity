@@ -28,6 +28,7 @@ namespace U.Reactor
         #region Properties
 
         protected bool isHided = false;
+        public bool enabled { get; set; } = true;
 
         #endregion Properties
 
@@ -105,7 +106,7 @@ namespace U.Reactor
 
         protected override void AfterRenderComponent()
         {
-            bool shouldEnable = propsCanvas().enabled;
+            bool shouldEnable = enabled;
 
             if (isHided)
                 shouldEnable = false;

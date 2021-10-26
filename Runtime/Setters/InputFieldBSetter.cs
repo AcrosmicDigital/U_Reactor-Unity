@@ -17,7 +17,7 @@ namespace U.Reactor
         // Properties
         // ...
 
-        public InputField Set(InputField c)
+        internal InputField Set(InputField c)
         {
             
 
@@ -25,12 +25,12 @@ namespace U.Reactor
         }
 
 
-        public InputField Set(GameObject gameObject)
+        internal InputField Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<InputField>());
         }
 
-        public void SetListeners(InputField c, TSelector selector)
+        internal void SetListeners(InputField c, TSelector selector)
         {
             c.onValueChanged.AddListener((t) =>
             {

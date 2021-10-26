@@ -27,7 +27,7 @@ namespace U.Reactor
         public virtual int flexibleHeight { get; set; } = 1;
 
 
-        public RectTransform SetByWidthAndHeight(RectTransform c)
+        internal RectTransform SetByWidthAndHeight(RectTransform c)
         {
             c.pivot = pivot;
             c.localPosition = localPosition;
@@ -41,7 +41,7 @@ namespace U.Reactor
             return c;
         }
 
-        public RectTransform SetByAnchors(RectTransform c)
+        internal RectTransform SetByAnchors(RectTransform c)
         {
             c.anchorMin = anchorMin;
             c.anchorMax = anchorMax;
@@ -54,7 +54,7 @@ namespace U.Reactor
             return c;
         }
 
-        public RectTransform SetBySizeDelta(RectTransform c)
+        internal RectTransform SetBySizeDelta(RectTransform c)
         {
             c.pivot = pivot;
             c.localPosition = localPosition;
@@ -71,7 +71,7 @@ namespace U.Reactor
 
         // Try to get the component or add it 
 
-        public RectTransform SetOrSearchByWidthAndHeight(GameObject gameObject)
+        internal RectTransform SetOrSearchByWidthAndHeight(GameObject gameObject)
         {
             var rectT = gameObject.GetComponent<RectTransform>();
 
@@ -81,7 +81,7 @@ namespace U.Reactor
             return SetByWidthAndHeight(rectT);
         }
 
-        public RectTransform SetOrSearchByAnchors(GameObject gameObject)
+        internal RectTransform SetOrSearchByAnchors(GameObject gameObject)
         {
             var rectT = gameObject.GetComponent<RectTransform>();
 
@@ -91,7 +91,7 @@ namespace U.Reactor
             return SetByAnchors(rectT);
         }
 
-        public RectTransform SetOrSearchBySizeDelta(GameObject gameObject)
+        internal RectTransform SetOrSearchBySizeDelta(GameObject gameObject)
         {
             var rectT = gameObject.GetComponent<RectTransform>();
 
@@ -104,17 +104,17 @@ namespace U.Reactor
 
         // Add a new component allways
 
-        public RectTransform SetByWidthAndHeight(GameObject gameObject)
+        internal RectTransform SetByWidthAndHeight(GameObject gameObject)
         {
             return SetByWidthAndHeight(gameObject.AddComponent<RectTransform>());
         }
 
-        public RectTransform SetByAnchors(GameObject gameObject)
+        internal RectTransform SetByAnchors(GameObject gameObject)
         {
             return SetByAnchors(gameObject.AddComponent<RectTransform>());
         }
 
-        public RectTransform SetBySizeDelta(GameObject gameObject)
+        internal RectTransform SetBySizeDelta(GameObject gameObject)
         {
             return SetBySizeDelta(gameObject.AddComponent<RectTransform>());
         }

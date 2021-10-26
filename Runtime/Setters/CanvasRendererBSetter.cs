@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace U.Reactor
 {
+    /// <summary>
+    /// Create a CanvasRenderer in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
     public class CanvasRendererBSetter
     {
         // Listeners
@@ -14,14 +17,14 @@ namespace U.Reactor
         // Properties
         public virtual bool cullTransparentMesh { get; set; } = true;
 
-        public CanvasRenderer Set(CanvasRenderer c)
+        internal CanvasRenderer Set(CanvasRenderer c)
         {
             c.cullTransparentMesh = cullTransparentMesh;
 
             return c;
         }
 
-        public CanvasRenderer Set(GameObject gameObject)
+        internal CanvasRenderer Set(GameObject gameObject)
         {
             return Set (gameObject.AddComponent<CanvasRenderer>());
         }

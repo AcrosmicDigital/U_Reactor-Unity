@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
+    /// <summary>
+    /// Create a Mask in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
     public class MaskBSetter
     {
         // Listeners
@@ -15,7 +18,7 @@ namespace U.Reactor
         // Properties
         public virtual bool  showMaskGraphic { get; set; } = true;
 
-        public Mask Set(Mask c)
+        internal Mask Set(Mask c)
         {
             c.showMaskGraphic = showMaskGraphic;
 
@@ -23,7 +26,7 @@ namespace U.Reactor
         }
 
 
-        public Mask Set(GameObject gameObject)
+        internal Mask Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<Mask>());
         }

@@ -110,7 +110,8 @@ namespace U.Reactor
 
             // Add rectTransform and components
             rectTransformCmp = PropsRectTransform().SetOrSearchByWidthAndHeight(gameObject);
-            reactorIdCmp = PropsReactorId().Set(elementType, gameObject);
+            reactorIdCmp = PropsReactorId().Set(gameObject);
+            reactorIdCmp.SetElementType(elementType);
         }
 
 
@@ -206,7 +207,7 @@ namespace U.Reactor
             }
 
             // Add Id
-            reactorIdCmp.Set(selector);
+            reactorIdCmp.SetSelector(selector);
 
             return this;
         }

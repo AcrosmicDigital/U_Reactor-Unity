@@ -26,7 +26,7 @@ namespace U.Reactor
         public virtual ScrollRect.ScrollbarVisibility verticalScrollbarVisibility { get; set; } = ScrollRect.ScrollbarVisibility.Permanent;
         public virtual float verticalScrollbarSpacing { get; set; } = 0;
 
-        public ScrollRect Set(ScrollRect c)
+        internal ScrollRect Set(ScrollRect c)
         {
             c.horizontal = horizontal;
             c.vertical = vertical;
@@ -44,12 +44,12 @@ namespace U.Reactor
         }
 
 
-        public ScrollRect Set(GameObject gameObject)
+        internal ScrollRect Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<ScrollRect>());
         }
 
-        public void SetListeners(ScrollRect c, TSelector selector)
+        internal void SetListeners(ScrollRect c, TSelector selector)
         {
             c.onValueChanged.AddListener((v) =>
             {

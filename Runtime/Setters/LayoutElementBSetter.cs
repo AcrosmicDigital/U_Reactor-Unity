@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
+    /// <summary>
+    /// Create a LayoutElement in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
     public class LayoutElementBSetter
     {
         // Listeners
@@ -22,7 +25,7 @@ namespace U.Reactor
         public virtual float flexibleHeight { get; set; } = -1;
         public virtual int layoutPriority { get; set; } = 1;
 
-        public LayoutElement Set(LayoutElement c)
+        internal LayoutElement Set(LayoutElement c)
         {
             c.ignoreLayout = ignoreLayout;
             c.minWidth = minWidth;
@@ -37,7 +40,7 @@ namespace U.Reactor
         }
 
 
-        public LayoutElement Set(GameObject gameObject)
+        internal LayoutElement Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<LayoutElement>());
         }

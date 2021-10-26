@@ -16,7 +16,7 @@ namespace U.Reactor
         // Properties
         // ...
 
-        public Slider Set(Slider c)
+        internal Slider Set(Slider c)
         {
 
 
@@ -24,13 +24,13 @@ namespace U.Reactor
         }
 
 
-        public Slider Set(GameObject gameObject)
+        internal Slider Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<Slider>());
         }
 
 
-        public void SetListeners(Slider c, TSelector selector)
+        internal void SetListeners(Slider c, TSelector selector)
         {
             c.onValueChanged.AddListener((f) =>
             {
