@@ -146,9 +146,6 @@ namespace U.Reactor
         protected override void AfterCreateComponent()
         {
             propsToggle().SetListeners(toggleCmp, (Selector)selector);
-            propsBackImage().SetListeners(backImageCmp, (Selector)selector);
-            propsCheckImage().SetListeners(checkImageCmp, (Selector)selector);
-            propsText().SetListeners(textCmp, (Selector)selector);
         }
 
         #endregion Drawers
@@ -254,7 +251,7 @@ namespace U.Reactor
             public override Color color { get; set; } = Color.gray;
         }
 
-        public class TextSeter : TextBSetter<Selector>
+        public class TextSeter : TextBSetter
         {
 
         }

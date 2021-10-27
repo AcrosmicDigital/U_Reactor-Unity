@@ -24,7 +24,7 @@ namespace U.Reactor
         public virtual AdditionalCanvasShaderChannels additionalShaderChannels { get; set; } = AdditionalCanvasShaderChannels.None;
         public virtual RenderMode renderMode { get; set; } = RenderMode.WorldSpace;
         public virtual int targetDisplay { get; set; } = 0;
-
+        public virtual Camera worldCamera { get; set; } = null;
 
         internal Canvas Set(Canvas c)
         {
@@ -32,6 +32,7 @@ namespace U.Reactor
             c.pixelPerfect = pixelPerfect;
             c.overrideSorting = overrideSorting;
             c.sortingOrder = sortingOrder;
+            c.worldCamera = worldCamera;
             c.additionalShaderChannels = additionalShaderChannels;
             c.renderMode = renderMode;
             c.targetDisplay = targetDisplay;

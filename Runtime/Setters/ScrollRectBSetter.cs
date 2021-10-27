@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
+    /// <summary>
+    /// Create a ScrollRect in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
     public class ScrollRectBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
@@ -25,6 +28,7 @@ namespace U.Reactor
         public virtual float horizontalScrollbarSpacing { get; set; } = 0;
         public virtual ScrollRect.ScrollbarVisibility verticalScrollbarVisibility { get; set; } = ScrollRect.ScrollbarVisibility.Permanent;
         public virtual float verticalScrollbarSpacing { get; set; } = 0;
+
 
         internal ScrollRect Set(ScrollRect c)
         {

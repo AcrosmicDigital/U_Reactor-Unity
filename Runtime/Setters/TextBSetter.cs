@@ -9,23 +9,26 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class TextBSetter<TSelector> where TSelector : REbaseSelector
+    /// <summary>
+    /// Create a Text in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
+    public class TextBSetter
     {
         // Listeners
-        public virtual UnityAction<bool, TSelector> OnCullStateChangedListener { get; set; } = (b, s) => { };
+        // ...
         // Properties
-        public virtual string text { get; set; } = "Text";
+        public virtual string text { get; set; } = "New Text";
         public virtual Font font { get; set; } = Resources.GetBuiltinResource<Font>("Arial.ttf");
         public virtual FontStyle fontStyle { get; set; } = FontStyle.Normal;
-        public virtual int fontSize { get; set; } = 70;
+        public virtual int fontSize { get; set; } = 14;
         public virtual float lineSpacing { get; set; } = 1;
         public virtual bool richText { get; set; } = true;
         public virtual TextAnchor alignment { get; set; } = TextAnchor.UpperLeft;
         public virtual bool alignByGeometry { get; set; } = false;
-        public virtual HorizontalWrapMode horizontalOverflow { get; set; } = HorizontalWrapMode.Overflow;
-        public virtual VerticalWrapMode verticalOverflow { get; set; } = VerticalWrapMode.Overflow;
+        public virtual HorizontalWrapMode horizontalOverflow { get; set; } = HorizontalWrapMode.Wrap;
+        public virtual VerticalWrapMode verticalOverflow { get; set; } = VerticalWrapMode.Truncate;
         public virtual bool bestFit { get; set; } = false;
-        public virtual Color fontColor { get; set; } = Color.black;
+        public virtual Color fontColor { get; set; } = Color.white;
         public virtual Material material { get; set; } = null;
         public virtual bool raycastTarget { get; set; } = true;
         public virtual Vector4 raycastPadding { get; set; } = Vector4.zero;
@@ -57,23 +60,6 @@ namespace U.Reactor
         internal Text Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<Text>());
-        }
-
-        internal void SetListeners(Text c, TSelector selector)
-        {
-            c.onCullStateChanged.AddListener((b) =>
-            {
-                try
-                {
-                    OnCullStateChangedListener?.Invoke(b, selector);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError("Error Executing OnCullStateChangedListener: " + e);
-                }
-            });
-
-
         }
 
     }

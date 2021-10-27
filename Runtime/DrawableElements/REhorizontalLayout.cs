@@ -175,14 +175,9 @@ namespace U.Reactor
 
         protected override void AfterCreateComponent()
         {
-            propsBackImage().SetListeners(backImageCmp, (Selector)selector);
             propsScrollRect().SetListeners(scrollRectCmp, (Selector)selector);
-            propsVScrollbarImage().SetListeners(vScrollbarImageCmp, (Selector)selector);
             propsVScrollbar().SetListeners(vScrollbarCmp, (Selector)selector);
-            propsVScrollbarHandleImageCmp().SetListeners(vScrollbarHandleImageCmp, (Selector)selector);
-            propsHScrollbarImage().SetListeners(hScrollbarImageCmp, (Selector)selector);
             propsHScrollbar().SetListeners(hScrollbarCmp, (Selector)selector);
-            propsHScrollbarHandleImageCmp().SetListeners(hScrollbarHandleImageCmp, (Selector)selector);
         }
 
         protected override void AfterCreateChild(REbaseSelector child)

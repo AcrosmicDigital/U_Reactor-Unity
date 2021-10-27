@@ -216,6 +216,7 @@ namespace U.Reactor
 
 
 
+            dropdownCmp.targetGraphic = dropdownImageCmp;
             dropdownCmp.template = templateGO.GetComponent<RectTransform>();
             dropdownCmp.captionText = labelTextCmp;
             dropdownCmp.itemText = itemLabelTextCmp;
@@ -226,42 +227,6 @@ namespace U.Reactor
             scrollRectCmp.verticalScrollbar = scrollbarCmp;
 
 
-
-            dropdownCmp.options = new List<Dropdown.OptionData> 
-            {
-                new Dropdown.OptionData
-                {
-                    text = "Item1",
-                },
-                new Dropdown.OptionData
-                {
-                    text = "Item2",
-                },
-                new Dropdown.OptionData
-                {
-                    text = "Item3",
-                },
-                new Dropdown.OptionData
-                {
-                    text = "Item4",
-                },
-                new Dropdown.OptionData
-                {
-                    text = "Item5",
-                },
-                new Dropdown.OptionData
-                {
-                    text = "Item6",
-                },
-                new Dropdown.OptionData
-                {
-                    text = "Item7",
-                },
-                new Dropdown.OptionData
-                {
-                    text = "Item8",
-                },
-            };
         }
 
         protected override void AddHooks()
@@ -285,19 +250,9 @@ namespace U.Reactor
         protected override void AfterCreateComponent()
         {
             propsDropdown().SetListeners(dropdownCmp, (Selector)selector);
-            propsDropdownImage().SetListeners(dropdownImageCmp, (Selector)selector);
-            propsLabelText().SetListeners(labelTextCmp, (Selector)selector);
-            propsArrowImage().SetListeners(arrowImageCmp, (Selector)selector);
-            propsTemplateImage().SetListeners(templateImageCmp, (Selector)selector);
             propsScrollRect().SetListeners(scrollRectCmp, (Selector)selector);
-            propsViewportImage().SetListeners(viewportImageCmp, (Selector)selector);
             propsToggle().SetListeners(toggleCmp, (Selector)selector);
-            propsItemBackImage().SetListeners(itemBackImageCmp, (Selector)selector);
-            propsItemCheckImage().SetListeners(itemCheckImageCmp, (Selector)selector);
-            propsItemLabelText().SetListeners(itemLabelTextCmp, (Selector)selector);
-            propsScrollbarImage().SetListeners(scrollbarImageCmp, (Selector)selector);
             propsScrollbar().SetListeners(scrollbarCmp, (Selector)selector);
-            propsScrollbarHandleImageCmp().SetListeners(scrollbarHandleImageCmp, (Selector)selector);
         }
 
         #endregion Drawers
@@ -426,8 +381,8 @@ namespace U.Reactor
         }
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 400;
-            public override float height { get; set; } = 70;
+            public override float width { get; set; } = 370;
+            public override float height { get; set; } = 60;
         }
 
         public class DropdownSetter : DropdownBSetter<Selector>
@@ -440,7 +395,7 @@ namespace U.Reactor
 
         }
 
-        public class LabelTextSetter : TextBSetter<Selector>
+        public class LabelTextSetter : TextBSetter
         {
             public override string text { get; set; } = "Option A";
             public override int fontSize { get; set; } = 35;
@@ -492,7 +447,7 @@ namespace U.Reactor
             public override Color color { get; set; } = Color.gray;
         }
 
-        public class ItemTextSetter : TextBSetter<Selector>
+        public class ItemTextSetter : TextBSetter
         {
             public override string text { get; set; } = "Option A";
             public override int fontSize { get; set; } = 35;

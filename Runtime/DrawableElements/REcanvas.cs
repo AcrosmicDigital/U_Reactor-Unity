@@ -72,9 +72,7 @@ namespace U.Reactor
         protected override void AddComponents()
         {
 
-            if (rectTransformCmp.parent == null)
-                if (PropsGameObject().dontDestroyOnLoad)
-                    UnityEngine.Object.DontDestroyOnLoad(gameObject);
+            propsGameObject().SetDontDestroyOnLoad(gameObject);
 
             // Set the props
             canvasCmp = propsCanvas().Set(gameObject);
@@ -106,6 +104,17 @@ namespace U.Reactor
 
         protected override void AfterRenderComponent()
         {
+
+            //new RectTransformBSetter
+            //{
+            //    anchorMin = Vector2.zero,
+            //    anchorMax = Vector2.one,
+            //    offsetMin = Vector2.zero,
+            //    offsetMax = Vector2.zero,
+            //}.SetByAnchors(gameObject.GetComponent<RectTransform>());
+            // Set again values of the canvas recttransform
+            propsRectTransform().SetOrSearchByAnchors(gameObject);
+
             bool shouldEnable = enabled;
 
             if (isHided)
@@ -113,6 +122,7 @@ namespace U.Reactor
 
             if (canvasCmp != null)
                 canvasCmp.enabled = shouldEnable;
+
         }
 
         #endregion Drawers
@@ -240,18 +250,22 @@ namespace U.Reactor
         }
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 300;
-            public override float height { get; set; } = 120;
+            public override float width { get; set; } = 0;
+            public override float height { get; set; } = 0;
+            public override Vector2 anchorMin { get; set; } = Vector2.zero;
+            public override Vector2 anchorMax { get; set; } = Vector2.one;
         }
 
         public class CanvasSetter : CanvasBSetter
         {
-
+            public override RenderMode renderMode { get; set; } = RenderMode.ScreenSpaceOverlay;
         }
 
         public class CanvasScalerSetter : CanvasScalerBSetter
         {
-
+            public override CanvasScaler.ScaleMode uiScaleMode { get; set; } = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            public override Vector3 referenceResolution { get; set; } = new Vector3(1920, 1080);
+            public override float matchWidthOrHeight { get; set; } = 0.5f;
         }
 
         public class GraphicRaycasterSetter : GraphicRaycasterBSetter

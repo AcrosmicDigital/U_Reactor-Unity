@@ -78,11 +78,8 @@ namespace U.Reactor
             if (gameObject == null)
                 gameObject = new GameObject();
 
-            // Create ainstance of gameObject properties
-            var propsGo = PropsGameObject();
-
-            // Set the name
-            gameObject.name = propsGo.name;
+            // Set the name, layer and tag
+            PropsGameObject().SetNameLayerAndTag(gameObject);
 
             // Set the parent if exist
             this.parent = parent;
@@ -100,13 +97,6 @@ namespace U.Reactor
                 {
                 }
             }
-
-            // Set the layer
-            gameObject.layer = propsGo.layer;
-
-            // Set the tag
-            if (!String.IsNullOrEmpty(propsGo.tag) && !String.IsNullOrWhiteSpace(propsGo.tag))
-                gameObject.tag = propsGo.tag;
 
             // Add rectTransform and components
             rectTransformCmp = PropsRectTransform().SetOrSearchByWidthAndHeight(gameObject);

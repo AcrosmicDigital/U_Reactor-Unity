@@ -9,10 +9,13 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
+    /// <summary>
+    /// Create a Image in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
     public class ImageBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<bool, TSelector> OnCullStateChangedListener { get; set; } = (b, s) => { };
+        // ...
         // Properties
         public virtual Sprite sprite { get; set; } = null;
         public virtual Color color { get; set; } = Color.white;
@@ -20,10 +23,16 @@ namespace U.Reactor
         public virtual bool raycastTarget { get; set; } = true;
         public virtual Vector4 raycastPadding { get; set; } = Vector4.zero;
         public virtual bool maskable { get; set; } = true;
+        public virtual Image.Type type { get; set; } = Image.Type.Simple;
         public virtual bool useSpriteMesh { get; set; } = false;
         public virtual bool preserveAspect { get; set; } = false;
+        public virtual float pixelsPerUnitMultiplier { get; set; } = 1;
+        public virtual Image.FillMethod fillMethod { get; set; } = Image.FillMethod.Radial360;
+        public virtual int fillOrigin { get; set; } = 0;
+        public virtual float fillAmount { get; set; } = 1;
+        public virtual bool fillClockwise { get; set; } = true;
 
-        public virtual Image.Type type { get; set; } = Image.Type.Simple;
+
 
 
         internal Image Set(Image c)
@@ -43,12 +52,13 @@ namespace U.Reactor
             c.raycastTarget = raycastTarget;
             c.raycastPadding = raycastPadding;
             c.maskable = maskable;
-            
-            if (sprite != null)
-            {
-                c.useSpriteMesh = useSpriteMesh;
-                c.preserveAspect = preserveAspect;
-            }
+            c.useSpriteMesh = useSpriteMesh;
+            c.preserveAspect = preserveAspect;
+            c.pixelsPerUnitMultiplier = pixelsPerUnitMultiplier;
+            c.fillMethod = fillMethod;
+            c.fillOrigin = fillOrigin;
+            c.fillAmount = fillAmount;
+            c.fillClockwise = fillClockwise;
 
             return c;
         }
@@ -59,22 +69,6 @@ namespace U.Reactor
             return Set(gameObject.AddComponent<Image>());
         }
 
-        internal void SetListeners(Image c, TSelector selector)
-        {
-            c.onCullStateChanged.AddListener((b) =>
-            {
-                try
-                {
-                    OnCullStateChangedListener?.Invoke(b, selector);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError("Error Executing OnCullStateChangedListener: " + e);
-                }
-            });
-
-
-        }
 
     }
 

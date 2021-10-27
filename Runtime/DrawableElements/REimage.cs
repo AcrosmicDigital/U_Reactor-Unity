@@ -71,11 +71,6 @@ namespace U.Reactor
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, imageCmp);
 
-        protected override void AfterCreateComponent()
-        {
-            propsImage().SetListeners(imageCmp, (Selector)selector);
-        }
-
         protected override void AddHooks()
         {
             UseEffect.AddHook(gameObject, (Selector)selector, useEffect);

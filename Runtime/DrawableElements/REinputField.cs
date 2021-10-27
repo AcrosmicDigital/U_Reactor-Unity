@@ -80,6 +80,7 @@ namespace U.Reactor
             textCmp = propsText().Set(textGO);
 
 
+            inputFieldCmp.targetGraphic = backImageCmp;
             inputFieldCmp.textComponent = textCmp;
             inputFieldCmp.placeholder = placeholderTextCmp;
 
@@ -124,9 +125,6 @@ namespace U.Reactor
         protected override void AfterCreateComponent()
         {
             propsInputField().SetListeners(inputFieldCmp, (Selector)selector);
-            propsBackImage().SetListeners(backImageCmp, (Selector)selector);
-            propsPlaceholderText().SetListeners(placeholderTextCmp, (Selector)selector);
-            propsText().SetListeners(textCmp, (Selector)selector);
         }
 
         #endregion Drawers
@@ -213,13 +211,13 @@ namespace U.Reactor
 
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 400;
+            public override float width { get; set; } = 370;
             public override float height { get; set; } = 70;
         }
 
         public class InputFieldSetter : InputFieldBSetter<Selector>
         {
-
+            public override int caretWidth { get; set; } = 3;
         }
 
         public class BackImageSetter : ImageBSetter<Selector>
@@ -227,22 +225,25 @@ namespace U.Reactor
 
         }
 
-        public class PlaceholderTextSetter : TextBSetter<Selector>
+        public class PlaceholderTextSetter : TextBSetter
         {
             public override string text { get; set; } = "Enter text...";
             public override FontStyle fontStyle { get; set; } = FontStyle.Italic;
-            public override int fontSize { get; set; } = 40;
+            public override int fontSize { get; set; } = 34;
             public override HorizontalWrapMode horizontalOverflow { get; set; } = HorizontalWrapMode.Wrap;
             public override VerticalWrapMode verticalOverflow { get; set; } = VerticalWrapMode.Truncate;
             public override Color fontColor { get; set; } = new Color(0, 0, 0, .5f);
+            public override TextAnchor alignment { get; set; } = TextAnchor.MiddleLeft;
         }
 
-        public class TextSetter : TextBSetter<Selector>
+        public class TextSetter : TextBSetter
         {
             public override string text { get; set; } = "";
-            public override int fontSize { get; set; } = 40;
+            public override int fontSize { get; set; } = 34;
             public override bool richText { get; set; } = false;
             public override VerticalWrapMode verticalOverflow { get; set; } = VerticalWrapMode.Truncate;
+            public override TextAnchor alignment { get; set; } = TextAnchor.MiddleLeft;
+            public override Color fontColor { get; set; } = new Color(0.1960f, 0.1960f, 0.1960f, 1);
         }
 
         #endregion

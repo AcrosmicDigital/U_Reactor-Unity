@@ -101,11 +101,6 @@ namespace U.Reactor
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, imageCmp);
 
-        protected override void AfterCreateComponent()
-        {
-            propsImage().SetListeners(imageCmp, (Selector)selector);
-            propsText().SetListeners(textCmp, (Selector)selector);
-        }
 
         #endregion Drawers
 
@@ -181,8 +176,8 @@ namespace U.Reactor
 
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 300;
-            public override float height { get; set; } = 120;
+            public override float width { get; set; } = 360;
+            public override float height { get; set; } = 70;
         }
 
         public class BackImageSetter : ImageBSetter<Selector>
@@ -190,9 +185,12 @@ namespace U.Reactor
 
         }
 
-        public class TextSetter : TextBSetter<Selector>
+        public class TextSetter : TextBSetter
         {
-
+            public override Color fontColor { get; set; } = new Color(0.1960f, 0.1960f, 0.1960f, 1);
+            public override int fontSize { get; set; } = 34;
+            public override TextAnchor alignment { get; set; } = TextAnchor.MiddleCenter;
+            public override string text { get; set; } = "New Label";
         }
 
         #endregion

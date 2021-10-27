@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
+    /// <summary>
+    /// Create a GridLayoutGroup in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
     public class GridLayoutGroupBSetter
     {
         // Listeners

@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
+    /// <summary>
+    /// Create a HC.MultiToggle in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
     public class MultiToggleBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
@@ -19,6 +22,7 @@ namespace U.Reactor
         internal HC.MultiToggle Set(HC.MultiToggle c)
         {
             c.maxEnabled = maxEnabled;
+            // c.toggleDefs set in REMultiToogle
             
             return c;
         }

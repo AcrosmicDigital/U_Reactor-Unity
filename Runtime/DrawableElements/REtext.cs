@@ -71,10 +71,6 @@ namespace U.Reactor
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp);
 
-        protected override void AfterCreateComponent()
-        {
-            propsText().SetListeners(textCmp, (Selector)selector);
-        }
 
         protected override void AddHooks()
         {
@@ -164,13 +160,14 @@ namespace U.Reactor
 
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 350;
-            public override float height { get; set; } = 140;
+            public override float width { get; set; } = 360;
+            public override float height { get; set; } = 70;
         }
 
-        public class TextSetter : TextBSetter<Selector>
+        public class TextSetter : TextBSetter
         {
-
+            public override Color fontColor { get; set; } = new Color(0.1960f, 0.1960f, 0.1960f, 1);
+            public override int fontSize { get; set; } = 34;
         }
 
         #endregion

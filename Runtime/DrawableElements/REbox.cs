@@ -135,8 +135,8 @@ namespace U.Reactor
 
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 300;
-            public override float height { get; set; } = 300;
+            public override float width { get; set; } = 235;
+            public override float height { get; set; } = 235;
         }
 
         #endregion

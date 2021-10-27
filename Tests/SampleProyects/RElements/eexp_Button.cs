@@ -13,6 +13,8 @@ public class eexp_Button : MonoBehaviour
         A00Basic,
         A01WithAction,
 
+        S00ChangeSize,
+
     }
 
     // Destroy some elements OnStart
@@ -74,6 +76,28 @@ public class eexp_Button : MonoBehaviour
                         },
                     }
 
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.S00ChangeSize:
+                #region TestCase.S00ChangeSize
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REbutton
+                        {
+                            propsRectTransform = () => new REbutton.RectTransformSetter
+                            {
+                                width = 300,
+                                height = 300,
+                            }
+                        },
+                    }
+                    
                 }.Draw();
 
                 #endregion

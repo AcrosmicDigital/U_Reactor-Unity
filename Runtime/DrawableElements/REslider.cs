@@ -80,7 +80,6 @@ namespace U.Reactor
             fillImageCmp = propsFillImage().Set(fillGO);
             handleImageCmp = propsHandleImage().Set(handleGO);
 
-
             // backgroundGO rect
             new RectTransformBSetter()
             {
@@ -149,9 +148,6 @@ namespace U.Reactor
         protected override void AfterCreateComponent()
         {
             propsSlider().SetListeners(sliderCmp, (Selector)selector);
-            propsBackImage().SetListeners(backImageCmp, (Selector)selector);
-            propsFillImage().SetListeners(fillImageCmp, (Selector)selector);
-            propsHandleImage().SetListeners(handleImageCmp, (Selector)selector);
         }
 
         #endregion Drawers

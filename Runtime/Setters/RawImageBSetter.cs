@@ -9,52 +9,42 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
+    /// <summary>
+    /// Create a RawImage in a gameobject with default values in Unity v2020.3.1f1
+    /// </summary>
     public class RawImageBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<bool, TSelector> OnCullStateChangedListener { get; set; } = (b, s) => { };
+        // ...
         // Properties
-        public virtual Sprite sprite { get; set; } = null;
+        public virtual Texture texture { get; set; } = null;
         public virtual Color color { get; set; } = Color.white;
         public virtual Material material { get; set; } = null;
         public virtual bool raycastTarget { get; set; } = true;
         public virtual Vector4 raycastPadding { get; set; } = Vector4.zero;
         public virtual bool maskable { get; set; } = true;
-        public virtual bool useSpriteMesh { get; set; } = false;
-        public virtual bool preserveAspect { get; set; } = false;
+        public virtual Rect uvRect { get; set; } = new Rect(0,0,1,1);
+
+
 
 
         internal RawImage Set(RawImage c)
         {
+            c.texture = texture;
             c.color = color;
             c.material = material;
             c.raycastTarget = raycastTarget;
             c.raycastPadding = raycastPadding;
             c.maskable = maskable;
-            
+            c.uvRect = uvRect;
+
+
             return c;
         }
 
         internal RawImage Set(GameObject gameObject)
         {
             return Set(gameObject.AddComponent<RawImage>());
-        }
-
-        internal void SetListeners(RawImage c, TSelector selector)
-        {
-            c.onCullStateChanged.AddListener((b) =>
-            {
-                try
-                {
-                    OnCullStateChangedListener?.Invoke(b, selector);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError("Error Executing OnCullStateChangedListener: " + e);
-                }
-            });
-
-            
         }
 
     }

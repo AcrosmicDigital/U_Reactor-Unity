@@ -77,6 +77,9 @@ namespace U.Reactor
             buttonCmp = propsButton().Set(gameObject);
             textCmp = propsText().Set(textGO);
 
+
+            buttonCmp.targetGraphic = imageCmp;
+
             // Text rectT
             new RectTransformBSetter()
             {
@@ -92,8 +95,6 @@ namespace U.Reactor
         protected override void AfterCreateComponent()
         {
             propsButton().SetListeners(buttonCmp, (Selector)selector);
-            propsImage().SetListeners(imageCmp, (Selector)selector);
-            propsText().SetListeners(textCmp, (Selector)selector);
         }
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, buttonCmp, imageCmp);
@@ -189,8 +190,8 @@ namespace U.Reactor
         }
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 300;
-            public override float height { get; set; } = 120;
+            public override float width { get; set; } = 370;
+            public override float height { get; set; } = 60;
         }
 
         public class ButtonSetter : ButtonBSetter<Selector>
@@ -203,10 +204,13 @@ namespace U.Reactor
 
         }
 
-        public class TextSetter : TextBSetter<Selector>
+        public class TextSetter : TextBSetter
         {
-            public override int fontSize { get; set; } = 60;
+            public override int fontSize { get; set; } = 36;
             public override TextAnchor alignment { get; set; } = TextAnchor.MiddleCenter;
+            public override Color fontColor { get; set; } = new Color(0.1960f, 0.1960f, 0.1960f, 1);
+            public override string text { get; set; } = "Button";
+
         }
 
         #endregion

@@ -11,7 +11,7 @@ public class eexp_Canvas : MonoBehaviour
     public enum TestCase
     {
         A00Basic,
-
+        A01NestedCanvas,
     }
 
     // Destroy some elements OnStart
@@ -41,6 +41,35 @@ public class eexp_Canvas : MonoBehaviour
 
                 new REcanvas
                 {
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.A01NestedCanvas:
+                #region TestCase.A01NestedCanvas
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REcanvas
+                        {
+                            childs = () => new REbase[]
+                            {
+                                new REcanvas
+                                {
+                                    childs = () => new REbase[]
+                                    {
+                                        new REcanvas
+                                        {
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }.Draw();
 
                 #endregion

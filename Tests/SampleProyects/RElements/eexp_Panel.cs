@@ -11,7 +11,7 @@ public class eexp_Panel : MonoBehaviour
     public enum TestCase
     {
         A00Basic,
-
+        A01NestedPanels,
     }
 
     // Destroy some elements OnStart
@@ -53,6 +53,34 @@ public class eexp_Panel : MonoBehaviour
                 #endregion
                 break;
 
+            case TestCase.A01NestedPanels:
+                #region TestCase.A01NestedPanels
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REpanel
+                        {
+                            childs = () => new REbase[]
+                            {
+                                new REpanel
+                                {
+                                    childs = () => new REbase[]
+                                    {
+                                        new REpanel
+                                        {
+                                        },
+                                    }
+                                },
+                            }
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
         }
     }
 }
