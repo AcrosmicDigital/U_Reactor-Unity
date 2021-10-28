@@ -11,13 +11,14 @@ namespace U.Reactor
     {
         internal Func<LayoutElementBSetter> layoutElementSetter { get; set; } // // Inline selector.layoutElementSetter = xxx
         internal bool isLayoutElement { get; set; } = false; // Inline selector.isLayoutElement = xxx
-        public bool isDisposed { get; private set; } = false; // Interal
+        private List<REbaseSelector> childsList { get; set; } // By Func selector.SetChilds()
 
+        public bool isDisposed { get; private set; } = false; // Interal
         public HC.ReactorId elementId { get; private set; } // By constructor new Selector(xxx)
         public RectTransform rectTransform { get; private set; } // By constructor new Selector(xxx)
         public GameObject gameObject { get; private set; } // By constructor new Selector(xxx)
         public REbaseSelector parent { get; private set; } // By Func selector.SetParent()
-        public REbaseSelector[] childs { get; private set; } // By Func selector.SetChilds()
+        public REbaseSelector[] childs => childsList.ToArray();  // By Func selector.SetChilds()
 
 
         // Get the root canvas
@@ -106,7 +107,18 @@ namespace U.Reactor
 
         internal void SetChilds(List<REbase> childs)
         {
-            this.childs = childs.Select(c => c.selector).ToArray();
+            this.childsList = childs.Select(c => c.selector).ToList();
+        }
+
+        internal void RemoveChild(REbase child)
+        {
+            try
+            {
+                childsList.Remove(child.selector);
+            }
+            catch (Exception)
+            {
+            }
         }
 
 
@@ -118,7 +130,7 @@ namespace U.Reactor
             rectTransform = null;
             gameObject = null;
             parent = null;
-            childs = null;
+            childsList = null;
         }
 
     }

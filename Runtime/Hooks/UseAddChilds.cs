@@ -8,7 +8,7 @@ namespace U.Reactor
     {
         public event EventHandler<OnChildAddedEventArgs> OnChildAdded;
 
-        public void AddChild(Func<REbase> child)
+        public void AddChild(REbase child)
         {
             OnChildAdded?.Invoke(this, new OnChildAddedEventArgs(child));
         }
@@ -17,12 +17,12 @@ namespace U.Reactor
 
     public class OnChildAddedEventArgs : EventArgs
     {
-        public OnChildAddedEventArgs(Func<REbase> child)
+        public OnChildAddedEventArgs(REbase child)
         {
             this.child = child;
         }
 
-        public Func<REbase> child { get; private set; }
+        public REbase child { get; private set; }
     }
 
 

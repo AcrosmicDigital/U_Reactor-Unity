@@ -51,6 +51,7 @@ namespace U.Reactor
         #region Hooks
 
         public IuseState[] useState;
+        public IuseAddChilds[] useAddChilds;
 
         #endregion Hooks
 
@@ -200,10 +201,36 @@ namespace U.Reactor
                 }
             }
 
+            // Subscribe to useAddChilds events
+            if (useAddChilds != null)
+            {
+                foreach (var h in useAddChilds)
+                {
+                    if (h == null)
+                        continue;
+
+                    h.OnChildAdded -= OnUseChildAdded;
+                    h.OnChildAdded += OnUseChildAdded;
+
+                }
+            }
+
             // Add Id
             reactorIdCmp.SetSelector(selector);
 
             return this;
+        }
+
+        private void OnUseChildAdded(object sender, OnChildAddedEventArgs e)
+        {
+            try
+            {
+                CreateChild(e.child);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("UReactor.REbase.OnUseChildAdded(): Error while adding child, " + ex);
+            }
         }
 
         // Function to subscribe to useState event
@@ -212,7 +239,7 @@ namespace U.Reactor
             Create(parent, parentSelector);
         }
 
-
+        // Function to subscribe to useAddChilds event
         private void CreateChild(REbase child)
         {
             if (child == null) return;
@@ -259,6 +286,19 @@ namespace U.Reactor
                 }
             }
 
+            // Unsubscribe to useAddChilds events
+            if (useAddChilds != null)
+            {
+                foreach (var h in useAddChilds)
+                {
+                    if (h == null)
+                        continue;
+
+                    h.OnChildAdded -= OnUseChildAdded;
+
+                }
+            }
+
             // Destroy each child
             if (childsList != null)
             {
@@ -275,8 +315,17 @@ namespace U.Reactor
             if(reactorIdCmp != null)
                 UnityEngine.Object.DestroyImmediate(reactorIdCmp);
 
+            // Destroy the selector
             if (selector != null)
                 selector.Destroy();
+
+            // Remove this from parent child list
+            if (parentSelector != null) if(!parentSelector.isDisposed) parentSelector.RemoveChild(this);
+
+            // Destroy gameobject
+            if (gameObject != null)
+                UnityEngine.Object.Destroy(gameObject); // Esta la puse en vez de la de abajo comentada, para evaluar posibles errores
+                                                        //UnityEngine.Object.DestroyImmediate(gameObject);
 
         }
 

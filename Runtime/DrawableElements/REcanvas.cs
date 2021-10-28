@@ -133,17 +133,18 @@ namespace U.Reactor
         public REcanvas Draw(GameObject parent = null)
         {
             Create(parent, parentSelector);
+
             ReactorCmd.AddToReactorCmd(this);
+
             return this;
         }
 
         public void Erase()
         {
+
             ReactorCmd.RemoveFromReactorCmd(this);
 
-            if (gameObject != null)
-                UnityEngine.Object.Destroy(gameObject); // Esta la puse en vez de la de abajo comentada, para evaluar posibles errores
-                                                        //UnityEngine.Object.DestroyImmediate(gameObject);
+            Destroy();
 
         }
 
