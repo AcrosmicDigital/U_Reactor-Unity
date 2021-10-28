@@ -134,18 +134,20 @@ namespace U.Reactor
             {
                 foreach (var child in newChilds)
                 {
-                    if (child == null) continue;
+                    CreateChild(child);
 
-                    // Only if create child condition is true
-                    if (!CrateChildCondition(child)) continue;
-                    
-                    if(virtualChildContainer != null)
-                        childsList.Add(child.Create(virtualChildContainer, selector));
-                    else
-                        childsList.Add(child.Create(gameObject, selector));
+                    //if (child == null) continue;
 
-                    AfterCreateChild(child.selector);
-                    
+                    //// Only if create child condition is true
+                    //if (!CrateChildCondition(child)) continue;
+
+                    //if(virtualChildContainer != null)
+                    //    childsList.Add(child.Create(virtualChildContainer, selector));
+                    //else
+                    //    childsList.Add(child.Create(gameObject, selector));
+
+                    //AfterCreateChild(child.selector);
+
                 }
             }
             selector.SetChilds(childsList);
@@ -208,6 +210,22 @@ namespace U.Reactor
         private void OnUseStateChange(object sender, EventArgs e)
         {
             Create(parent, parentSelector);
+        }
+
+
+        private void CreateChild(REbase child)
+        {
+            if (child == null) return;
+
+            // Only if create child condition is true
+            if (!CrateChildCondition(child)) return;
+
+            if (virtualChildContainer != null)
+                childsList.Add(child.Create(virtualChildContainer, selector));
+            else
+                childsList.Add(child.Create(gameObject, selector));
+
+            AfterCreateChild(child.selector);
         }
 
         

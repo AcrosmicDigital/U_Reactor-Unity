@@ -39,6 +39,7 @@ public class RendererC02 : MonoBehaviour
                                         text = "Add",
                                     }
                                 },
+
                                 new REbutton{
                                     propsText = () => new REbutton.TextSetter
                                     {
