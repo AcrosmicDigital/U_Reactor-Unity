@@ -15,7 +15,7 @@ namespace U.Reactor
         protected override Func<GameObjectBSetter> PropsGameObject => propsGameObject;
         protected override Func<ReactorIdBSetter> PropsReactorId => propsReactorId;
         protected override Func<LayoutElementBSetter> PropsLayoutElement => propsLayoutElement;
-        public override bool isLayoutElement => true;
+        public override bool isLayoutElement => false;
 
 
         #region Components
@@ -78,7 +78,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, multiToggleCmp);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, multiToggleCmp, this);
 
         protected override void AfterCreateComponent()
         {
@@ -122,16 +122,19 @@ namespace U.Reactor
         {
 
             public HC.MultiToggle multiToggle { get; private set; }
+            public REmultiToggle constructor { get; private set; }
 
 
             internal Selector(
                 GameObject gameObject,
                 HC.ReactorId pieceId,
                 RectTransform rectTransform,
-                HC.MultiToggle multiToggle
+                HC.MultiToggle multiToggle,
+                REmultiToggle constructor
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.multiToggle = multiToggle;
+                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -139,6 +142,7 @@ namespace U.Reactor
                 base.Destroy();
 
                 multiToggle = null;
+                constructor = null;
             }
         }
 
@@ -177,8 +181,10 @@ namespace U.Reactor
 
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 300;
-            public override float height { get; set; } = 120;
+            public override float width { get; set; } = 0;
+            public override float height { get; set; } = 0;
+            public override Vector2 anchorMin { get; set; } = Vector2.zero;
+            public override Vector2 anchorMax { get; set; } = Vector2.one;
         }
 
         public class MultiToggleSetter : MultiToggleBSetter<Selector>
@@ -190,6 +196,25 @@ namespace U.Reactor
 
 
         #region Static Funcs
+
+
+        public static RectTransformSetter TableRectTransform(int xPad, int xCell, int yPad, int yCell)
+        {
+            // Validate values
+            if ((xCell < 1) && (xCell > 100)) throw new FormatException("REpanel.TableRectTransform(): xCell(" + xCell + ") must be between 0 and 100");
+            if ((yCell < 1) && (yCell > 100)) throw new FormatException("REpanel.TableRectTransform(): yCell(" + yCell + ") must be between 0 and 100");
+            if ((xPad < 0) && (xPad > 99)) throw new FormatException("REpanel.TableRectTransform(): xPad(" + xPad + ") must be between 0 and 99");
+            if ((yPad < 0) && (xPad > 99)) throw new FormatException("REpanel.TableRectTransform(): yPad(" + yPad + ") must be between 0 and 99");
+            if (xCell < xPad) throw new FormatException("REpanel.TableRectTransform(): xCell(" + xCell + ") must be greater than xPad(" + xPad + ")");
+            if (yCell < yPad) throw new FormatException("REpanel.TableRectTransform(): yCell(" + yCell + ") must be greater than yPad(" + yPad + ")");
+
+            return new RectTransformSetter
+            {
+                anchorMin = new Vector2(xPad / 100f, yPad / 100f),
+                anchorMax = new Vector2(xCell / 100f, yCell / 100f),
+            };
+        }
+
 
 
         public new static Selector[] Find(string pattern) => Find<Selector>(pattern);

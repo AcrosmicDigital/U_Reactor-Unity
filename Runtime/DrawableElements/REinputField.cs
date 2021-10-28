@@ -85,13 +85,16 @@ namespace U.Reactor
             inputFieldCmp.placeholder = placeholderTextCmp;
 
 
+            // Obtain percentage size
+            SetReferenceSize(new RectTransformSetter());
+
             new RectTransformBSetter()
             {
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
                 sizeDelta = Vector2.zero,
-                offsetMin = new Vector2(15, 10f),
-                offsetMax = new Vector2(-15F, -10F),
+                offsetMin = GetPercentageSize(15, 10),  // 15,10
+                offsetMax = GetPercentageSize(-15, -10)  // -15,-10
             }.SetByAnchors(placeholderGO.GetComponent<RectTransform>());
 
             new RectTransformBSetter()
@@ -99,8 +102,8 @@ namespace U.Reactor
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
                 sizeDelta = Vector2.zero,
-                offsetMin = new Vector2(15, 10f),
-                offsetMax = new Vector2(-15F, -10F),
+                offsetMin = GetPercentageSize(15, 10),  // 15,10
+                offsetMax = GetPercentageSize(-15, -10),  //-15,-10
             }.SetByAnchors(textGO.GetComponent<RectTransform>());
 
         }
@@ -120,7 +123,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, inputFieldCmp, backImageCmp, placeholderTextCmp, textCmp);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, inputFieldCmp, backImageCmp, placeholderTextCmp, textCmp, this);
 
         protected override void AfterCreateComponent()
         {
@@ -140,6 +143,7 @@ namespace U.Reactor
             public Image backImage { get; private set; }
             public Text placeholderText { get; private set; }
             public Text text { get; private set; }
+            public REinputField constructor { get; private set; }
 
 
             internal Selector(
@@ -151,13 +155,15 @@ namespace U.Reactor
                 InputField inputField,
                 Image backImage,
                 Text placeholderText,
-                Text text
+                Text text,
+                REinputField constructor
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
                 this.inputField = inputField;
                 this.backImage = backImage;
                 this.placeholderText = placeholderText;
                 this.text = text;
+                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -168,6 +174,7 @@ namespace U.Reactor
                 backImage = null;
                 placeholderText = null;
                 text = null;
+                constructor = null;
             }
         }
 

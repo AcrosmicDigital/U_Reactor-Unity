@@ -13,6 +13,7 @@ public class eexp_MultiToggle : MonoBehaviour
         A00Basic,
         A01WithChilds,
         A02WithChildsInDiv,
+
     }
 
     // Destroy some elements OnStart
@@ -20,6 +21,18 @@ public class eexp_MultiToggle : MonoBehaviour
     public bool destroyOnStart = false;
     public GameObject[] toDestroy;
 
+    private TestCase lastTestCase;
+
+
+    private void Update()
+    {
+        if (lastTestCase != testCase)
+        {
+            ReactorCmd.EraseAll();
+            Start();
+        }
+
+    }
 
     private void Start()
     {
@@ -211,6 +224,9 @@ public class eexp_MultiToggle : MonoBehaviour
 
                 #endregion
                 break;
+
         }
+
+        lastTestCase = testCase;
     }
 }

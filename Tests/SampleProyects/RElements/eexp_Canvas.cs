@@ -12,6 +12,7 @@ public class eexp_Canvas : MonoBehaviour
     {
         A00Basic,
         A01NestedCanvas,
+
     }
 
     // Destroy some elements OnStart
@@ -19,6 +20,18 @@ public class eexp_Canvas : MonoBehaviour
     public bool destroyOnStart = false;
     public GameObject[] toDestroy;
 
+    private TestCase lastTestCase;
+
+
+    private void Update()
+    {
+        if (lastTestCase != testCase)
+        {
+            ReactorCmd.EraseAll();
+            Start();
+        }
+
+    }
 
     private void Start()
     {
@@ -76,5 +89,7 @@ public class eexp_Canvas : MonoBehaviour
                 break;
 
         }
+
+        lastTestCase = testCase;
     }
 }

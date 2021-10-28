@@ -1644,7 +1644,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2055348465}
-  - component: {fileID: 2055348466}
   m_Layer: 5
   m_Name: MultiToogle
   m_TagString: Untagged
@@ -1675,43 +1674,6 @@ RectTransform:
   m_AnchoredPosition: {x: -190, y: 154}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2055348466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055348464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3618cf0e49dbdf49b5f24d6c2f4da32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxEnabled: 1
-  toggleDefs:
-  - toggle: {fileID: 1465785732}
-    label: {fileID: 805411607}
-    name: 
-    number: 0
-    value: 0
-  - toggle: {fileID: 345622360}
-    label: {fileID: 703615834}
-    name: 
-    number: 0
-    value: 0
-  - toggle: {fileID: 2110536772}
-    label: {fileID: 46539555}
-    name: 
-    number: 0
-    value: 0
-  - toggle: {fileID: 436551105}
-    label: {fileID: 733691527}
-    name: 
-    number: 0
-    value: 0
-  OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2110536770
 GameObject:
   m_ObjectHideFlags: 0

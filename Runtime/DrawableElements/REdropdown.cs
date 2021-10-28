@@ -126,68 +126,70 @@ namespace U.Reactor
             propsScrollbar().Set(scrollbarCmp);
             propsScrollbarHandleImageCmp().SetAllExceptType(scrollbarHandleImageCmp);
 
+            // Obtain percentage size
+            SetReferenceSize(new RectTransformSetter());
 
             new RectTransformBSetter()
             {
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
                 sizeDelta = Vector2.zero,
-                offsetMin = new Vector2(15, 15f),
-                offsetMax = new Vector2(-70f, -15F),
+                offsetMin = GetPercentageSize(15,8),   // 15,8
+                offsetMax = GetPercentageSize(-70, -8),  // -70, -8
             }.SetByAnchors(labelGO.GetComponent<RectTransform>());
 
             new RectTransformBSetter()
             {
                 // pivot = new Vector2(0.5f, 1),
-                localPosition = new Vector2(-40f, 0),
+                localPosition = GetPercentageSize(-30, 0),  //-30, 0
                 anchorMin = new Vector2(1, 0.5f),
                 anchorMax = new Vector2(1, 0.5f),
-                sizeDelta = new Vector2(60, 60f),
+                sizeDelta = GetPercentageSize(44, 44),  // 44,44
             }.SetBySizeDelta(arrowGO.GetComponent<RectTransform>());
 
             new RectTransformBSetter()
             {
                 pivot = new Vector2(0.5f, 1),
-                localPosition = new Vector2(0f, -10f),
+                localPosition = new Vector2(0, -10f),  // 0,-10
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 0f),
-                sizeDelta = new Vector2(0, 300f),
+                sizeDelta = new Vector2(0, 300f)  // 0,300
             }.SetBySizeDelta(templateGO.GetComponent<RectTransform>());
 
             new RectTransformBSetter()
             {
                 pivot = new Vector2(0f, 1),
-                localPosition = new Vector2(0f, -150f),
+                localPosition = new Vector2(0, -150f),  // 0,-150
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
-                sizeDelta = new Vector2(-20, 0),
+                sizeDelta = GetPercentageSize(-20, 0),  // -20,0
             }.SetBySizeDelta(viewportGO.GetComponent<RectTransform>());
 
             new RectTransformBSetter()
             {
                 pivot = new Vector2(1f, 1f),
-                localPosition = new Vector2(0f, -150f),
+                localPosition = new Vector2(0, -150f),  // 0,-150
                 anchorMin = new Vector2(1, 0f),
                 anchorMax = new Vector2(1, 1f),
-                sizeDelta = new Vector2(20, 0),
+                sizeDelta = GetPercentageSize(20, 0),  // 20,0
             }.SetBySizeDelta(scrollbarGO.GetComponent<RectTransform>());
 
             new RectTransformBSetter()
             {
                 pivot = new Vector2(.5f, 1f),
-                localPosition = new Vector2(190f, -150f),
+                localPosition = new Vector2(GetPercentageSize(175, -150).x, -150f), //GetPercentageSize(175, -150),  // 175,-150
                 anchorMin = new Vector2(0, 1f),
                 anchorMax = new Vector2(1, 1f),
-                sizeDelta = new Vector2(0f, 80f),
+                sizeDelta = GetPercentageSize(0, 60)  // 0,60
             }.SetBySizeDelta(contentGO.GetComponent<RectTransform>());
 
             new RectTransformBSetter()
             {
                 pivot = new Vector2(.5f, .5f),
-                localPosition = new Vector2(0f, -40f),
+                localPosition = GetPercentageSize(0, -30),  // 0,-30
                 anchorMin = new Vector2(0, .5f),
                 anchorMax = new Vector2(1, .5f),
-                sizeDelta = new Vector2(0f, 50f),
+                sizeDelta = GetPercentageSize(0, 44),  // 0,44
             }.SetBySizeDelta(itemGO.GetComponent<RectTransform>());
 
             new RectTransformBSetter()
@@ -200,18 +202,18 @@ namespace U.Reactor
 
             new RectTransformBSetter()
             {
-                localPosition = new Vector2(25f, 0f),
+                localPosition = GetPercentageSize(25, 0),  // 25,0
                 anchorMin = new Vector2(0, .5f),
                 anchorMax = new Vector2(0, .5f),
-                sizeDelta = new Vector2(50f, 50f),
+                sizeDelta = GetPercentageSize(35, 35),  // 35,35
             }.SetBySizeDelta(itemCheckmarkGO.GetComponent<RectTransform>());
 
             new RectTransformBSetter()
             {
-                localPosition = new Vector2(25f, 0f),
+                localPosition = GetPercentageSize(25, 0),  // 25,0
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
-                sizeDelta = new Vector2(-50f, 0f),
+                sizeDelta = GetPercentageSize(-50, 0),  // -50,0
             }.SetBySizeDelta(itemLabelGO.GetComponent<RectTransform>());
 
 
@@ -245,7 +247,7 @@ namespace U.Reactor
         }
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, dropdownCmp, dropdownImageCmp, labelTextCmp, arrowImageCmp, templateImageCmp,
-                scrollRectCmp, viewportImageCmp, maskCmp, toggleCmp, itemBackImageCmp, itemCheckImageCmp, itemLabelTextCmp, scrollbarImageCmp, scrollbarCmp, scrollbarHandleImageCmp);
+                scrollRectCmp, viewportImageCmp, maskCmp, toggleCmp, itemBackImageCmp, itemCheckImageCmp, itemLabelTextCmp, scrollbarImageCmp, scrollbarCmp, scrollbarHandleImageCmp, this);
 
         protected override void AfterCreateComponent()
         {
@@ -279,6 +281,7 @@ namespace U.Reactor
             protected Image scrollbarImage { get; private set; }
             protected Scrollbar scrollbar { get; private set; }
             protected Image scrollbarHandleImage { get; private set; }
+            public REdropdown constructor { get; private set; }
 
 
             internal Selector(
@@ -301,7 +304,8 @@ namespace U.Reactor
                 Text itemLabelText,
                 Image scrollbarImage,
                 Scrollbar scrollbar,
-                Image scrollbarHandleImage
+                Image scrollbarHandleImage,
+                REdropdown constructor
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
                 this.dropdown = dropdown;
@@ -319,6 +323,7 @@ namespace U.Reactor
                 this.scrollbarImage = scrollbarImage;
                 this.scrollbar = scrollbar;
                 this.scrollbarHandleImage = scrollbarHandleImage;
+                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -340,6 +345,7 @@ namespace U.Reactor
                 scrollbarImage = null;
                 scrollbar = null;
                 scrollbarHandleImage = null;
+                constructor = null;
             }
         }
 
@@ -398,10 +404,11 @@ namespace U.Reactor
         public class LabelTextSetter : TextBSetter
         {
             public override string text { get; set; } = "Option A";
-            public override int fontSize { get; set; } = 35;
+            public override int fontSize { get; set; } = 34;
             public override HorizontalWrapMode horizontalOverflow { get; set; } = HorizontalWrapMode.Wrap;
             public override VerticalWrapMode verticalOverflow { get; set; } = VerticalWrapMode.Truncate;
             public override Color fontColor { get; set; } = new Color(.2f, .2f, .2f, 1f);
+            public override TextAnchor alignment { get; set; } = TextAnchor.MiddleLeft;
         }
 
         public class ArrowImageSetter : ImageBSetter<Selector>
@@ -450,10 +457,11 @@ namespace U.Reactor
         public class ItemTextSetter : TextBSetter
         {
             public override string text { get; set; } = "Option A";
-            public override int fontSize { get; set; } = 35;
+            public override int fontSize { get; set; } = 34;
             public override HorizontalWrapMode horizontalOverflow { get; set; } = HorizontalWrapMode.Wrap;
             public override VerticalWrapMode verticalOverflow { get; set; } = VerticalWrapMode.Truncate;
             public override Color fontColor { get; set; } = new Color(.2f, .2f, .2f, 1f);
+            public override TextAnchor alignment { get; set; } = TextAnchor.MiddleLeft;
         }
 
         public class ScrollbarBackImageSetter : ImageBSetter<Selector>

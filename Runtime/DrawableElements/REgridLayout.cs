@@ -115,6 +115,8 @@ namespace U.Reactor
             scrollRectCmp.horizontalScrollbar = hScrollbarCmp;
             scrollRectCmp.verticalScrollbar = vScrollbarCmp;
 
+            // Obtain percentage size
+            SetReferenceSize(new RectTransformSetter());
 
             new RectTransformBSetter()
             {
@@ -140,7 +142,7 @@ namespace U.Reactor
                 localPosition = new Vector2(0f, 0),
                 anchorMin = new Vector2(1, 0f),
                 anchorMax = new Vector2(1, 1f),
-                sizeDelta = new Vector2(20, 0),
+                sizeDelta = GetPercentageSize(20, 0),  // 20,0
             }.SetOrSearchBySizeDelta(vScrollbarGO);
 
             new RectTransformBSetter()
@@ -149,7 +151,7 @@ namespace U.Reactor
                 localPosition = new Vector2(0f, 0),
                 anchorMin = new Vector2(0f, 0f),
                 anchorMax = new Vector2(1f, 0f),
-                sizeDelta = new Vector2(-20, 20),
+                sizeDelta = GetPercentageSize(-20, 20),  // -20,20
             }.SetOrSearchBySizeDelta(hScrollbarGO);
 
         }
@@ -170,7 +172,7 @@ namespace U.Reactor
         }
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, backImageCmp, scrollRectCmp, rectMask2Cmp, gridLayoutGroupCmp, contentSizeCmp,
-                vScrollbarImageCmp, vScrollbarCmp, vScrollbarHandleImageCmp, hScrollbarImageCmp, hScrollbarCmp, hScrollbarHandleImageCmp);
+                vScrollbarImageCmp, vScrollbarCmp, vScrollbarHandleImageCmp, hScrollbarImageCmp, hScrollbarCmp, hScrollbarHandleImageCmp, this);
 
         protected override void AfterCreateComponent()
         {
@@ -221,6 +223,8 @@ namespace U.Reactor
             public Scrollbar hScrollbar { get; private set; }
             public Image hScrollbarHandleImage { get; private set; }
 
+            public REgridLayout constructor { get; private set; }
+
 
             internal Selector(
                 GameObject gameObject,
@@ -240,7 +244,9 @@ namespace U.Reactor
 
                 Image hScrollbarImage,
                 Scrollbar hScrollbar,
-                Image hScrollbarHandleImage
+                Image hScrollbarHandleImage,
+
+                REgridLayout constructor
 
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
@@ -257,6 +263,8 @@ namespace U.Reactor
                 this.hScrollbarImage = hScrollbarImage;
                 this.hScrollbar = hScrollbar;
                 this.hScrollbarHandleImage = hScrollbarHandleImage;
+
+                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -276,6 +284,8 @@ namespace U.Reactor
                 this.hScrollbarImage = null;
                 this.hScrollbar = null;
                 this.hScrollbarHandleImage = null;
+
+                constructor = null;
 
             }
         }
@@ -384,6 +394,25 @@ namespace U.Reactor
 
 
         #region Static Funcs
+
+
+        public static RectTransformSetter TableRectTransform(int xPad, int xCell, int yPad, int yCell)
+        {
+            // Validate values
+            if ((xCell < 1) && (xCell > 100)) throw new FormatException("REpanel.TableRectTransform(): xCell(" + xCell + ") must be between 0 and 100");
+            if ((yCell < 1) && (yCell > 100)) throw new FormatException("REpanel.TableRectTransform(): yCell(" + yCell + ") must be between 0 and 100");
+            if ((xPad < 0) && (xPad > 99)) throw new FormatException("REpanel.TableRectTransform(): xPad(" + xPad + ") must be between 0 and 99");
+            if ((yPad < 0) && (xPad > 99)) throw new FormatException("REpanel.TableRectTransform(): yPad(" + yPad + ") must be between 0 and 99");
+            if (xCell < xPad) throw new FormatException("REpanel.TableRectTransform(): xCell(" + xCell + ") must be greater than xPad(" + xPad + ")");
+            if (yCell < yPad) throw new FormatException("REpanel.TableRectTransform(): yCell(" + yCell + ") must be greater than yPad(" + yPad + ")");
+
+            return new RectTransformSetter
+            {
+                anchorMin = new Vector2(xPad / 100f, yPad / 100f),
+                anchorMax = new Vector2(xCell / 100f, yCell / 100f),
+            };
+        }
+
 
 
         public new static Selector[] Find(string pattern) => Find<Selector>(pattern);

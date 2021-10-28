@@ -78,12 +78,15 @@ namespace U.Reactor
             backImageCmp = propsBackImage().Set(backgroundGO);
             fillImageCmp = propsFillImage().Set(fillGO);
 
+            // Obtain percentage size
+            SetReferenceSize(new RectTransformSetter());
+
 
             // backgroundGO rect
             new RectTransformBSetter()
             {
-                anchorMin = new Vector2(0, 0.25f),
-                anchorMax = new Vector2(1, 0.75f),
+                anchorMin = new Vector2(0, 0f),
+                anchorMax = new Vector2(1, 1f),
                 sizeDelta = Vector2.zero,
                 offsetMin = Vector2.zero,
                 offsetMax = Vector2.zero,
@@ -91,25 +94,25 @@ namespace U.Reactor
 
             new RectTransformBSetter()
             {
-                anchorMin = new Vector2(0, 0.25f),
-                anchorMax = new Vector2(1, 0.75f),
+                anchorMin = new Vector2(0, 0f),
+                anchorMax = new Vector2(1, 1f),
                 sizeDelta = Vector2.zero,
-                offsetMin = new Vector2(15, 0f),
-                offsetMax = new Vector2(-15F, 0F),
+                offsetMin = GetPercentageSize(15, 0),  // 15,0
+                offsetMax = GetPercentageSize(-15, 0),  // -15,0
             }.SetByAnchors(fillAreaGO.GetComponent<RectTransform>());
 
             new RectTransformBSetter()
             {
                 sizeDelta = Vector2.zero,
-                offsetMin = new Vector2(-14, 0f),
-                offsetMax = new Vector2(14F, 0F),
+                offsetMin = GetPercentageSize(-14, 0),  // -14,0
+                offsetMax = GetPercentageSize(14, 0),  //14,0
             }.SetByAnchors(fillGOrectT);
 
             sliderCmp.fillRect = fillGOrectT;
 
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp, this);
 
         protected override void AfterCreateComponent()
         {
@@ -142,6 +145,7 @@ namespace U.Reactor
             public Slider slider { get; private set; }
             public Image backImage { get; private set; }
             public Image fillImage { get; private set; }
+            public REprogressBar constructor { get; private set; }
 
 
             internal Selector(
@@ -150,12 +154,14 @@ namespace U.Reactor
                 RectTransform rectTransform,
                 Slider slider,
                 Image backImage,
-                Image fillImage
+                Image fillImage,
+                REprogressBar constructor
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.slider = slider;
                 this.backImage = backImage;
                 this.fillImage = fillImage;
+                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -165,6 +171,7 @@ namespace U.Reactor
                 slider = null;
                 backImage = null;
                 fillImage = null;
+                constructor = null;
             }
         }
 
@@ -204,8 +211,8 @@ namespace U.Reactor
 
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 500;
-            public override float height { get; set; } = 40;
+            public override float width { get; set; } = 370;
+            public override float height { get; set; } = 13;
         }
 
         public class SliderSetter : SliderBSetter<Selector>

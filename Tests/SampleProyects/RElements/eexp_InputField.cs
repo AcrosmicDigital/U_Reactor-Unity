@@ -12,6 +12,12 @@ public class eexp_InputField : MonoBehaviour
     {
         A00Basic,
 
+
+        S00ChangeWidth,
+        S01ChangeHeigh,
+        S02DoubleSize,
+        S03HalfSize,
+
     }
 
     // Destroy some elements OnStart
@@ -19,6 +25,18 @@ public class eexp_InputField : MonoBehaviour
     public bool destroyOnStart = false;
     public GameObject[] toDestroy;
 
+    private TestCase lastTestCase;
+
+
+    private void Update()
+    {
+        if (lastTestCase != testCase)
+        {
+            ReactorCmd.EraseAll();
+            Start();
+        }
+
+    }
 
     private void Start()
     {
@@ -53,6 +71,98 @@ public class eexp_InputField : MonoBehaviour
                 #endregion
                 break;
 
+
+            // SXX - reference 370,70
+
+            case TestCase.S00ChangeWidth:
+                #region TestCase.S00ChangeWidth
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REinputField
+                        {
+                            propsRectTransform = () => new REinputField.RectTransformSetter
+                            {
+                                width = 600,
+                                height = 200,
+                            }
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.S01ChangeHeigh:
+                #region TestCase.S01ChangeHeigh
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REinputField
+                        {
+                            propsRectTransform = () => new REinputField.RectTransformSetter
+                            {
+                                width = 200,
+                                height = 600,
+                            }
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.S02DoubleSize:
+                #region TestCase.S02DoubleSize
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REinputField
+                        {
+                            propsRectTransform = () => new REinputField.RectTransformSetter
+                            {
+                                width = 740,
+                                height = 140,
+                            }
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.S03HalfSize:
+                #region TestCase.S03HalfSize
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REinputField
+                        {
+                            propsRectTransform = () => new REinputField.RectTransformSetter
+                            {
+                                width = 185,
+                                height = 35,
+                            }
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
         }
+
+        lastTestCase = testCase;
     }
 }

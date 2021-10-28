@@ -85,7 +85,7 @@ namespace U.Reactor
 
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasCmp, canvasScalerCmp, graphicRaycasterCmp, canvasGroupCmp);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasCmp, canvasScalerCmp, graphicRaycasterCmp, canvasGroupCmp, this);
 
         protected override void AddHooks()
         {
@@ -133,14 +133,18 @@ namespace U.Reactor
         public REcanvas Draw(GameObject parent = null)
         {
             Create(parent, parentSelector);
+            ReactorCmd.AddToReactorCmd(this);
             return this;
         }
 
         public void Erase()
         {
+            ReactorCmd.RemoveFromReactorCmd(this);
+
             if (gameObject != null)
                 UnityEngine.Object.Destroy(gameObject); // Esta la puse en vez de la de abajo comentada, para evaluar posibles errores
-                //UnityEngine.Object.DestroyImmediate(gameObject);
+                                                        //UnityEngine.Object.DestroyImmediate(gameObject);
+
         }
 
         public void Hide()
@@ -190,6 +194,8 @@ namespace U.Reactor
             public CanvasScaler canvasScaler { get; private set; }
             public GraphicRaycaster graphicRaycaster { get; private set; }
             public CanvasGroup canvasGroup { get; private set; }
+            public REcanvas constructor { get; private set; }
+
 
             internal Selector(
                 GameObject gameObject,
@@ -198,13 +204,15 @@ namespace U.Reactor
                 Canvas canvas,
                 CanvasScaler canvasScaler,
                 GraphicRaycaster graphicRaycaster,
-                CanvasGroup canvasGroup
+                CanvasGroup canvasGroup,
+                REcanvas constructor
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.canvas = canvas;
                 this.canvasScaler = canvasScaler;
                 this.graphicRaycaster = graphicRaycaster;
                 this.canvasGroup = canvasGroup;
+                this.constructor = constructor;
             }
 
 
@@ -216,6 +224,7 @@ namespace U.Reactor
                 canvasScaler = null;
                 graphicRaycaster = null;
                 canvasGroup = null;
+                constructor = null;
             }
         }
 
@@ -282,6 +291,24 @@ namespace U.Reactor
 
 
         #region Static Funcs
+
+
+        public static RectTransformSetter TableRectTransform(int xPad, int xCell, int yPad, int yCell)
+        {
+            // Validate values
+            if ((xCell < 1) && (xCell > 100)) throw new FormatException("REpanel.TableRectTransform(): xCell(" + xCell + ") must be between 0 and 100");
+            if ((yCell < 1) && (yCell > 100)) throw new FormatException("REpanel.TableRectTransform(): yCell(" + yCell + ") must be between 0 and 100");
+            if ((xPad < 0) && (xPad > 99)) throw new FormatException("REpanel.TableRectTransform(): xPad(" + xPad + ") must be between 0 and 99");
+            if ((yPad < 0) && (xPad > 99)) throw new FormatException("REpanel.TableRectTransform(): yPad(" + yPad + ") must be between 0 and 99");
+            if (xCell < xPad) throw new FormatException("REpanel.TableRectTransform(): xCell(" + xCell + ") must be greater than xPad(" + xPad + ")");
+            if (yCell < yPad) throw new FormatException("REpanel.TableRectTransform(): yCell(" + yCell + ") must be greater than yPad(" + yPad + ")");
+
+            return new RectTransformSetter
+            {
+                anchorMin = new Vector2(xPad / 100f, yPad / 100f),
+                anchorMax = new Vector2(xCell / 100f, yCell / 100f),
+            };
+        }
 
 
 

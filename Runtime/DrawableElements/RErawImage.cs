@@ -70,7 +70,7 @@ namespace U.Reactor
 
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, rawImageCmp);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, rawImageCmp, this);
 
         protected override void AddHooks()
         {
@@ -97,16 +97,20 @@ namespace U.Reactor
         {
 
             public RawImage rawImage { get; private set; }
+            public RErawImage constructor { get; private set; }
+
 
             internal Selector(
                 GameObject gameObject,
                 HC.ReactorId pieceId,
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
-                RawImage rawImage
+                RawImage rawImage,
+                RErawImage constructor
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
                 this.rawImage = rawImage;
+                this.constructor = constructor;
             }
 
 
@@ -114,6 +118,7 @@ namespace U.Reactor
             {
                 base.Destroy();
                 rawImage = null;
+                constructor = null;
             }
         }
 
@@ -160,8 +165,8 @@ namespace U.Reactor
 
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 300;
-            public override float height { get; set; } = 300;
+            public override float width { get; set; } = 235;
+            public override float height { get; set; } = 235;
         }
 
         public class RawImageSetter : RawImageBSetter<Selector>

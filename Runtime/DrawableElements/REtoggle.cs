@@ -95,13 +95,17 @@ namespace U.Reactor
             toggleCmp.graphic = checkImageCmp;
 
 
+            // Obtain percentage size
+            SetReferenceSize(new RectTransformSetter());
+
+
 
             // backgroundGO rect
             new RectTransformBSetter()
             {
                 //pivot = new Vector2(0f, 1f),
-                localPosition = new Vector2(40, -40f),
-                sizeDelta = new Vector2(80, 80f),
+                localPosition = GetPercentageSize(34, -30),  // 34,-30
+                sizeDelta = GetPercentageSize(44, 44),  // 44,44
                 anchorMin = new Vector2(0f, 1f),
                 anchorMax = new Vector2(0f, 1f),
             }.SetOrSearchBySizeDelta(backgroundGO);
@@ -110,7 +114,7 @@ namespace U.Reactor
             {
                 //pivot = new Vector2(0f, 1f),
                 //localPosition = new Vector2(0, 0f),
-                sizeDelta = new Vector2(80, 80f),
+                sizeDelta = GetPercentageSize(34, 34),  // 34,34
                 //anchorMin = new Vector2(0f, 1f),
                 //anchorMax = new Vector2(0f, 1f),
             }.SetOrSearchBySizeDelta(checkmarkGO);
@@ -119,8 +123,8 @@ namespace U.Reactor
             {
                 anchorMin = new Vector2(0f, 0f),
                 anchorMax = new Vector2(1f, 1f),
-                offsetMin = new Vector2(90f, 10f),
-                offsetMax = new Vector2(0f, -10f),
+                offsetMin = GetPercentageSize(70, 8),  // 70,8
+                offsetMax = GetPercentageSize(-8, -8),  // -8,-8
             }.SetOrSearchByAnchors(labelGO);
 
 
@@ -141,7 +145,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, toggleCmp, backImageCmp, checkImageCmp, textCmp, multiToggleMemberCmp);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, toggleCmp, backImageCmp, checkImageCmp, textCmp, multiToggleMemberCmp, this);
 
         protected override void AfterCreateComponent()
         {
@@ -161,6 +165,7 @@ namespace U.Reactor
             public Image checkImage { get; private set; }
             public Text text { get; private set; }
             public HC.MultiToggleMember multiToggleMember { get; private set; }
+            public REtoggle constructor { get; private set; }
 
 
             internal Selector(
@@ -171,7 +176,8 @@ namespace U.Reactor
                 Image backImage,
                 Image checkImage,
                 Text text,
-                HC.MultiToggleMember multiToggleMember
+                HC.MultiToggleMember multiToggleMember,
+                REtoggle constructor
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.toggle = toggle;
@@ -179,6 +185,7 @@ namespace U.Reactor
                 this.checkImage = checkImage;
                 this.text = text;
                 this.multiToggleMember = multiToggleMember;
+                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -190,6 +197,7 @@ namespace U.Reactor
                 checkImage = null;
                 text = null;
                 multiToggleMember = null;
+                constructor = null;
             }
         }
 
@@ -232,8 +240,8 @@ namespace U.Reactor
 
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 600;
-            public override float height { get; set; } = 80;
+            public override float width { get; set; } = 380;
+            public override float height { get; set; } = 60;
         }
 
         public class ToggleSetter : ToggleBSetter<Selector>
@@ -253,7 +261,10 @@ namespace U.Reactor
 
         public class TextSeter : TextBSetter
         {
-
+            public override string text { get; set; } = "Toggle";
+            public override Color fontColor { get; set; } = new Color(0.1960f, 0.1960f, 0.1960f, 1);
+            public override int fontSize { get; set; } = 34;
+            public override TextAnchor alignment { get; set; } = TextAnchor.MiddleLeft;
         }
 
         #endregion

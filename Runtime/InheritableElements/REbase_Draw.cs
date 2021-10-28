@@ -99,7 +99,9 @@ namespace U.Reactor
             }
 
             // Add rectTransform and components
-            rectTransformCmp = PropsRectTransform().SetOrSearchByWidthAndHeight(gameObject);
+            var propsRectT = PropsRectTransform();
+            rectTransformCmp = propsRectT.SetOrSearchByWidthAndHeight(gameObject);
+            SetRealSize(propsRectT);
             reactorIdCmp = PropsReactorId().Set(gameObject);
             reactorIdCmp.SetElementType(elementType);
         }

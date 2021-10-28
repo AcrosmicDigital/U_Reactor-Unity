@@ -8,20 +8,18 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REtext : RErenderer
+    public class REdiv : REbase
     {
         public override Type elementType => this.GetType();
         protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
         protected override Func<GameObjectBSetter> PropsGameObject => propsGameObject;
         protected override Func<ReactorIdBSetter> PropsReactorId => propsReactorId;
-        protected override Func<CanvasRendererBSetter> PropsCanvasRenderer => propsCanvasRenderer;
-        protected override Func<LayoutElementBSetter> PropsLayoutElement => propsLayoutElement;
-        public override bool isLayoutElement => true;
+        protected override Func<LayoutElementBSetter> PropsLayoutElement => null;
+        public override bool isLayoutElement => false;
 
 
         #region Components
 
-        protected Text textCmp;
 
         #endregion Components
 
@@ -32,12 +30,6 @@ namespace U.Reactor
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
         public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
         public Func<ReactorIdSetter> propsReactorId = () => new ReactorIdSetter();
-        // Child
-        public Func<CanvasRendererSetter> propsCanvasRenderer = () => new CanvasRendererSetter();
-        // Layout element
-        public Func<LayoutElementSetter> propsLayoutElement;
-
-        public Func<TextSetter> propsText = () => new TextSetter();
 
         #endregion Setters
 
@@ -61,16 +53,12 @@ namespace U.Reactor
 
 
         #region Drawers
-
         protected override void AddComponents()
         {
 
-            textCmp = propsText().Set(gameObject);
-
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, this);
-
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, this);
 
         protected override void AddHooks()
         {
@@ -87,30 +75,26 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
+
         #endregion Drawers
 
 
         #region Subclasses
 
 
-
-        public class Selector : RErendererSelector
+        public class Selector : REbaseSelector
         {
 
-            public Text textCmp { get; private set; }
-            public REtext constructor { get; private set; }
+            public REdiv constructor { get; private set; }
 
 
-            public Selector(
+            internal Selector(
                 GameObject gameObject,
                 HC.ReactorId pieceId,
                 RectTransform rectTransform,
-                CanvasRenderer canvasRenderer,
-                Text textCmp,
-                REtext constructor
-                ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
+                REdiv constructor
+                ) : base(gameObject, pieceId, rectTransform)
             {
-                this.textCmp = textCmp;
                 this.constructor = constructor;
             }
 
@@ -119,7 +103,6 @@ namespace U.Reactor
             {
                 base.Destroy();
 
-                textCmp = null;
                 constructor = null;
             }
         }
@@ -143,11 +126,6 @@ namespace U.Reactor
 
         #region Subsetters
 
-        public class LayoutElementSetter : LayoutElementBSetter
-        {
-
-        }
-
         public class CanvasRendererSetter : CanvasRendererBSetter
         {
 
@@ -160,19 +138,15 @@ namespace U.Reactor
 
         public class GameObjectSetter : GameObjectBSetter
         {
-            public override string name { get; set; } = "Text";
+            public override string name { get; set; } = "Div";
         }
 
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 360;
-            public override float height { get; set; } = 70;
-        }
-
-        public class TextSetter : TextBSetter
-        {
-            public override Color fontColor { get; set; } = new Color(0.1960f, 0.1960f, 0.1960f, 1);
-            public override int fontSize { get; set; } = 34;
+            public override float width { get; set; } = 0;
+            public override float height { get; set; } = 0;
+            public override Vector2 anchorMin { get; set; } = Vector2.zero;
+            public override Vector2 anchorMax { get; set; } = Vector2.one;
         }
 
         #endregion
@@ -181,12 +155,31 @@ namespace U.Reactor
         #region Static Funcs
 
 
+        public static RectTransformSetter TableRectTransform(int xPad, int xCell, int yPad, int yCell)
+        {
+            // Validate values
+            if ((xCell < 1) && (xCell > 100)) throw new FormatException("REpanel.TableRectTransform(): xCell(" + xCell + ") must be between 0 and 100");
+            if ((yCell < 1) && (yCell > 100)) throw new FormatException("REpanel.TableRectTransform(): yCell(" + yCell + ") must be between 0 and 100");
+            if ((xPad < 0) && (xPad > 99)) throw new FormatException("REpanel.TableRectTransform(): xPad(" + xPad + ") must be between 0 and 99");
+            if ((yPad < 0) && (xPad > 99)) throw new FormatException("REpanel.TableRectTransform(): yPad(" + yPad + ") must be between 0 and 99");
+            if (xCell < xPad) throw new FormatException("REpanel.TableRectTransform(): xCell(" + xCell + ") must be greater than xPad(" + xPad + ")");
+            if (yCell < yPad) throw new FormatException("REpanel.TableRectTransform(): yCell(" + yCell + ") must be greater than yPad(" + yPad + ")");
+
+            return new RectTransformSetter
+            {
+                anchorMin = new Vector2(xPad / 100f, yPad / 100f),
+                anchorMax = new Vector2(xCell / 100f, yCell / 100f),
+            };
+        }
+
+
+
+
         public new static Selector[] Find(string pattern) => Find<Selector>(pattern);
 
         public new static Selector[] Find() => Find<Selector>();
 
         public new static Selector FindOne(string pattern) => FindOne<Selector>(pattern);
-
 
         #endregion Static Funcs
 

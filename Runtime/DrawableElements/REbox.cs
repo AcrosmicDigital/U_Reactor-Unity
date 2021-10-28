@@ -76,7 +76,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, this);
 
         #endregion Drawers
 
@@ -85,17 +85,24 @@ namespace U.Reactor
         public class Selector : REbaseSelector
         {
 
+            public REbox constructor { get; private set; }
+
+
             internal Selector(
                 GameObject gameObject,
                 HC.ReactorId pieceId,
-                RectTransform rectTransform
+                RectTransform rectTransform,
+                REbox constructor
                 ) : base(gameObject, pieceId, rectTransform)
             {
+                this.constructor = constructor;
             }
 
             internal override void Destroy()
             {
                 base.Destroy();
+
+                constructor = null;
             }
         }
 

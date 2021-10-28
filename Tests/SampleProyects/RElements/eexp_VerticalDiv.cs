@@ -23,6 +23,18 @@ public class eexp_VerticalDiv : MonoBehaviour
     public bool destroyOnStart = false;
     public GameObject[] toDestroy;
 
+    private TestCase lastTestCase;
+
+
+    private void Update()
+    {
+        if (lastTestCase != testCase)
+        {
+            ReactorCmd.EraseAll();
+            Start();
+        }
+
+    }
 
     private void Start()
     {
@@ -271,6 +283,9 @@ public class eexp_VerticalDiv : MonoBehaviour
                 #endregion
                 break;
 
+
         }
+
+        lastTestCase = testCase;
     }
 }

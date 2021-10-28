@@ -12,6 +12,7 @@ public class eexp_Panel : MonoBehaviour
     {
         A00Basic,
         A01NestedPanels,
+
     }
 
     // Destroy some elements OnStart
@@ -19,6 +20,18 @@ public class eexp_Panel : MonoBehaviour
     public bool destroyOnStart = false;
     public GameObject[] toDestroy;
 
+    private TestCase lastTestCase;
+
+
+    private void Update()
+    {
+        if (lastTestCase != testCase)
+        {
+            ReactorCmd.EraseAll();
+            Start();
+        }
+
+    }
 
     private void Start()
     {
@@ -81,6 +94,10 @@ public class eexp_Panel : MonoBehaviour
 
                 #endregion
                 break;
+
+
         }
+
+        lastTestCase = testCase;
     }
 }

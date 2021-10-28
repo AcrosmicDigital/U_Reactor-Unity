@@ -99,7 +99,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, imageCmp);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, imageCmp, this);
 
 
         #endregion Drawers
@@ -112,6 +112,7 @@ namespace U.Reactor
 
             public Image image { get; private set; }
             public Text textCmp { get; private set; }
+            public RElabel constructor { get; private set; }
 
 
             internal Selector(
@@ -120,11 +121,13 @@ namespace U.Reactor
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
                 Text textCmp,
-                Image image
+                Image image,
+                RElabel constructor
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
                 this.image = image;
                 this.textCmp = textCmp;
+                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -133,6 +136,7 @@ namespace U.Reactor
 
                 image = null;
                 textCmp = null;
+                constructor = null;
             }
         }
 

@@ -80,6 +80,10 @@ namespace U.Reactor
             fillImageCmp = propsFillImage().Set(fillGO);
             handleImageCmp = propsHandleImage().Set(handleGO);
 
+            // Obtain percentage size
+            SetReferenceSize(new RectTransformSetter());
+
+
             // backgroundGO rect
             new RectTransformBSetter()
             {
@@ -95,15 +99,15 @@ namespace U.Reactor
                 anchorMin = new Vector2(0, 0.25f),
                 anchorMax = new Vector2(1, 0.75f),
                 sizeDelta = Vector2.zero,
-                offsetMin = new Vector2(15, 0f),
-                offsetMax = new Vector2(-30F, 0F),
+                offsetMin = GetPercentageSize(15, 0),  // 15,0
+                offsetMax = GetPercentageSize(-30, 0),  // -30,0
             }.SetOrSearchByAnchors(fillAreaGO);
 
             new RectTransformBSetter()
             {
                 sizeDelta = Vector2.zero,
-                offsetMin = new Vector2(-14, 0f),
-                offsetMax = new Vector2(14F, 0F),
+                offsetMin = GetPercentageSize(-14, 0),  // -14,0
+                offsetMax = GetPercentageSize(14, 0),  // 14,0
             }.SetOrSearchByAnchors(fillGO);
 
             new RectTransformBSetter()
@@ -111,15 +115,15 @@ namespace U.Reactor
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
                 sizeDelta = Vector2.zero,
-                offsetMin = new Vector2(14, 0f),
-                offsetMax = new Vector2(-14F, 0F),
+                offsetMin = GetPercentageSize(14, 0),  // 14,0
+                offsetMax = GetPercentageSize(-14, 0),  //-14,0
             }.SetOrSearchByAnchors(handleAreaGO);
 
             new RectTransformBSetter()
             {
                 sizeDelta = Vector2.zero,
-                offsetMin = new Vector2(-14, 0f),
-                offsetMax = new Vector2(17F, 0F),
+                offsetMin = GetPercentageSize(-14, 0),  // -14,0
+                offsetMax = GetPercentageSize(17, 0),  // 17,0
             }.SetOrSearchByAnchors(handleGO);
 
             sliderCmp.fillRect = fillGO.GetComponent<RectTransform>();
@@ -143,7 +147,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp, handleImageCmp);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp, handleImageCmp, this);
 
         protected override void AfterCreateComponent()
         {
@@ -161,6 +165,7 @@ namespace U.Reactor
             public Image backImage { get; private set; }
             public Image fillImage { get; private set; }
             public Image handleImage { get; private set; }
+            public REslider constructor { get; private set; }
 
 
             internal Selector(
@@ -170,13 +175,15 @@ namespace U.Reactor
                 Slider slider,
                 Image backImage,
                 Image fillImage,
-                Image handleImage
+                Image handleImage,
+                REslider constructor
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.slider = slider;
                 this.backImage = backImage;
                 this.fillImage = fillImage;
                 this.handleImage = handleImage;
+                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -187,6 +194,7 @@ namespace U.Reactor
                 backImage = null;
                 fillImage = null;
                 handleImage = null;
+                constructor = null;
             }
         }
 
@@ -226,8 +234,8 @@ namespace U.Reactor
 
         public class RectTransformSetter : RectTransformBSetter
         {
-            public override float width { get; set; } = 500;
-            public override float height { get; set; } = 40;
+            public override float width { get; set; } = 370;
+            public override float height { get; set; } = 30;
         }
 
         public class SliderSetter : SliderBSetter<Selector>

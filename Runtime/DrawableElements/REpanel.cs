@@ -66,7 +66,7 @@ namespace U.Reactor
 
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, imageCmp);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, imageCmp, this);
 
         protected override void AddHooks()
         {
@@ -94,16 +94,20 @@ namespace U.Reactor
         {
 
             public Image image { get; private set; }
+            public REpanel constructor { get; private set; }
+
 
             internal Selector(
                 GameObject gameObject,
                 HC.ReactorId pieceId,
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
-                Image image
+                Image image,
+                REpanel constructor
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
                 this.image = image;
+                this.constructor = constructor;
             }
 
 
@@ -112,6 +116,7 @@ namespace U.Reactor
                 base.Destroy();
 
                 image = null;
+                constructor = null;
             }
         }
 
@@ -167,6 +172,23 @@ namespace U.Reactor
 
         #region Static Funcs
 
+
+        public static RectTransformSetter TableRectTransform(int xPad, int xCell, int yPad, int yCell)
+        {
+            // Validate values
+            if ((xCell < 1) && (xCell > 100)) throw new FormatException("REpanel.TableRectTransform(): xCell(" + xCell + ") must be between 0 and 100");
+            if ((yCell < 1) && (yCell > 100)) throw new FormatException("REpanel.TableRectTransform(): yCell(" + yCell + ") must be between 0 and 100");
+            if ((xPad < 0) && (xPad > 99)) throw new FormatException("REpanel.TableRectTransform(): xPad(" + xPad + ") must be between 0 and 99");
+            if ((yPad < 0) && (xPad > 99)) throw new FormatException("REpanel.TableRectTransform(): yPad(" + yPad + ") must be between 0 and 99");
+            if (xCell < xPad) throw new FormatException("REpanel.TableRectTransform(): xCell(" + xCell + ") must be greater than xPad(" + xPad + ")");
+            if (yCell < yPad) throw new FormatException("REpanel.TableRectTransform(): yCell(" + yCell + ") must be greater than yPad(" + yPad + ")");
+
+            return new RectTransformSetter
+            {
+                anchorMin = new Vector2(xPad / 100f, yPad / 100f),
+                anchorMax = new Vector2(xCell / 100f, yCell / 100f),
+            };
+        }
 
 
 
