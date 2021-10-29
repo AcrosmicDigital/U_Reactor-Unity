@@ -777,7 +777,7 @@ public class Reactor_51Hooks_UseState
 
 
         // But can be triggered manually
-        listState.SetState();
+        listState.Trigger();
         // Check, childs are 2, because the useState will not trigger if .SetState is not used
         Debug.Log("Childs: " + REbase.FindOne("#MainCanvas").childs.Length);
         Assert.IsTrue(REbase.FindOne("#MainCanvas").childs.Length == 2);

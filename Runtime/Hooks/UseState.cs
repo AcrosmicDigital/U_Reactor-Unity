@@ -31,7 +31,7 @@ namespace U.Reactor
             OnStateChange?.Invoke(this, new EventArgs());
         }
 
-        public void SetState()
+        public void Trigger()
         {
             OnStateChange?.Invoke(this, new EventArgs());
         }

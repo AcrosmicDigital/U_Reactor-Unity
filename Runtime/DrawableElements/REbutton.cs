@@ -218,7 +218,18 @@ namespace U.Reactor
 
         #region Static Funcs
 
-
+        public static Selector CastSelector(REbaseSelector selector)
+        {
+            try
+            {
+                return (Selector)selector;
+            }
+            catch (Exception)
+            {
+                Debug.Log("REbutton: Cant cast selector");
+                return null;
+            }
+        }
 
         public new static Selector[] Find(string pattern) => Find<Selector>(pattern);
 

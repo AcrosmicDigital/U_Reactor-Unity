@@ -38,6 +38,7 @@ namespace U.Reactor
 
         #region Hooks
 
+        public UseTrigger.Hook[] useRefresh;
         public UseEffect.Hook[] useEffect;
 
         public UseApplicationEvents.Hook useApplicationEvents;
@@ -145,6 +146,19 @@ namespace U.Reactor
 
 
         #region Static Funcs
+
+        public static Selector CastSelector(REbaseSelector selector)
+        {
+            try
+            {
+                return (Selector)selector;
+            }
+            catch (Exception)
+            {
+                Debug.Log("REbox: Cant cast selector");
+                return null;
+            }
+        }
 
         public new static Selector[] Find(string pattern) => Find<Selector>(pattern);
 

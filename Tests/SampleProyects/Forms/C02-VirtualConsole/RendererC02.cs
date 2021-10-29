@@ -17,7 +17,11 @@ public class RendererC02 : MonoBehaviour
     {
 
         var addChildToConsole = new UseAddChilds();
+        var textAddedTrigger = new UseTrigger();
+        var deleteAllTrigger = new UseTrigger();
+        var copyTextTrigger = new UseTrigger();
         string inputText = "";
+
 
         REbase TextChild(string text)
         {
@@ -113,6 +117,21 @@ public class RendererC02 : MonoBehaviour
                                 {
                                     propsText = () => new REbutton.TextSetter
                                     {
+                                        text = "Copy",
+                                    },
+                                    propsButton = () => new REbutton.ButtonSetter
+                                    {
+                                        OnClickListener = (s) =>
+                                        {
+                                            inputText = displayText;
+                                            copyTextTrigger.Trigger();
+                                        }
+                                    },
+                                },
+                                new REbutton
+                                {
+                                    propsText = () => new REbutton.TextSetter
+                                    {
                                         text = "Delete",
                                     },
                                     propsButton = () => new REbutton.ButtonSetter
@@ -143,6 +162,17 @@ public class RendererC02 : MonoBehaviour
                     {
                         addChildToConsole,
                     },
+                    useTrigger = new UseTrigger.Hook[]
+                    {
+                        new UseTrigger.Hook
+                        {
+                            hook = deleteAllTrigger,
+                            OnTrigger = (s) =>
+                            {
+                                s.EraseChilds();
+                            }
+                        }
+                    },
                 },
                 new REdiv
                 {
@@ -161,10 +191,11 @@ public class RendererC02 : MonoBehaviour
                                     },
                                     propsButton = () => new REbutton.ButtonSetter
                                     {
-                                        OnClickListener = (s) => 
+                                        OnClickListener = (s) =>
                                         {
                                             addChildToConsole.AddChild(TextChild(inputText));
                                             inputText = "";
+                                            textAddedTrigger.Trigger();
                                         },
                                     }
                                 },
@@ -178,7 +209,7 @@ public class RendererC02 : MonoBehaviour
                                     {
                                         OnClickListener = (s) =>
                                         {
-
+                                            deleteAllTrigger.Trigger();
                                         },
                                     }
                                 }
@@ -200,8 +231,26 @@ public class RendererC02 : MonoBehaviour
                                     {
                                         lineType = UnityEngine.UI.InputField.LineType.MultiLineNewline,
                                         OnValueChangedListener = (v,s) => {inputText = v; }
-                                    }
-                                    
+                                    },
+                                    useTrigger = new UseTrigger.Hook[]
+                                    {
+                                        new UseTrigger.Hook
+                                        {
+                                            hook = textAddedTrigger,
+                                            OnTrigger = (s) => 
+                                            {
+                                                REinputField.CastSelector(s).inputField.text = "";
+                                            },
+                                        },
+                                        new UseTrigger.Hook
+                                        {
+                                            hook = copyTextTrigger,
+                                            OnTrigger = (s) =>
+                                            {
+                                                REinputField.CastSelector(s).inputField.text = inputText;
+                                            }
+                                        },
+                                    },
                                 },
                             }
                         },

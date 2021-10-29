@@ -15,5 +15,19 @@ namespace U.Reactor
             else return num;
         }
 
+        internal static UInt32 NewIdShort()
+        {
+
+            byte[] buffer = Guid.NewGuid().ToByteArray();
+
+            UInt32 num = BitConverter.ToUInt32(buffer, 0);
+
+            if (num < 1000000000)
+                num += 1000000000;
+
+            return num;
+
+        }
+
     }
 }

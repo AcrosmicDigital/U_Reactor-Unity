@@ -51,6 +51,7 @@ namespace U.Reactor
         #region Hooks
 
         public IuseState[] useState;
+        public UseTrigger.Hook[] useTrigger;
         public IuseAddChilds[] useAddChilds;
 
         #endregion Hooks
@@ -202,12 +203,45 @@ namespace U.Reactor
                 }
             }
 
+            // Subscribe to useTrigger events
+            if (useTrigger != null)
+            {
+                foreach (var h in useTrigger.Select(p => p.hook))
+                {
+                    if (h == null)
+                        continue;
+
+                    h.OnTrigger -= OnTrigger;
+                    h.OnTrigger += OnTrigger;
+
+                }
+            }
+
             // Add Id
             selector.SetErase(Erase);
+            selector.SetEraseChilds(EraseChilds);
             reactorIdCmp.SetSelector(selector);
 
             return this;
         }
+
+        private void OnTrigger(object sender, OnTriggerEventArgs e)
+        {
+            // Search the action trigger
+            var action = useTrigger.Where(t => t.hook.id == e.id).Select(t => t.OnTrigger).FirstOrDefault();
+
+            // Invoke the action
+            try
+            {
+                action?.Invoke(selector);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("UReactor.REbase.OnTrigger(): Error while invoking action, " + ex);
+            }
+
+        }
+
 
         private void OnUseChildAdded(object sender, OnChildAddedEventArgs e)
         {
@@ -315,6 +349,14 @@ namespace U.Reactor
                 UnityEngine.Object.Destroy(gameObject); // Esta la puse en vez de la de abajo comentada, para evaluar posibles errores
                                                         //UnityEngine.Object.DestroyImmediate(gameObject);
 
+        }
+
+        public virtual void EraseChilds()
+        {
+            foreach (var child in childsList)
+            {
+                child.Erase();
+            }
         }
 
         #endregion Drawers

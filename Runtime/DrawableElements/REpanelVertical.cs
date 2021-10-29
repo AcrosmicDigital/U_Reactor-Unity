@@ -407,7 +407,18 @@ namespace U.Reactor
             };
         }
 
-
+        public static Selector CastSelector(REbaseSelector selector)
+        {
+            try
+            {
+                return (Selector)selector;
+            }
+            catch (Exception)
+            {
+                Debug.Log("REpanelVertical: Cant cast selector");
+                return null;
+            }
+        }
 
         public new static Selector[] Find(string pattern) => Find<Selector>(pattern);
 

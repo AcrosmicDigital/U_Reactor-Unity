@@ -22,12 +22,24 @@ namespace U.Reactor
 
 
         private Action erase { get; set; }
+        private Action eraseChilds { get; set; }
 
         public void Erase()
         {
             try
             {
                 erase.Invoke();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public void EraseChilds()
+        {
+            try
+            {
+                eraseChilds.Invoke();
             }
             catch (Exception)
             {
@@ -119,9 +131,13 @@ namespace U.Reactor
             this.parent = parent;
         }
 
-        internal void SetErase(Action Erase)
+        internal void SetErase(Action erase)
         {
             this.erase = Erase;
+        }
+        internal void SetEraseChilds(Action eraseChilds)
+        {
+            this.eraseChilds = eraseChilds;
         }
 
         internal void SetChilds(List<REbase> childs)
@@ -151,6 +167,9 @@ namespace U.Reactor
             parent = null;
             childsList = null;
         }
+
+
+
 
     }
 }
