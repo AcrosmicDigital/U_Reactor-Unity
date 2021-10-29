@@ -147,7 +147,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp, handleImageCmp, this);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp, handleImageCmp);
 
         protected override void AfterCreateComponent()
         {
@@ -165,7 +165,6 @@ namespace U.Reactor
             public Image backImage { get; private set; }
             public Image fillImage { get; private set; }
             public Image handleImage { get; private set; }
-            public REslider constructor { get; private set; }
 
 
             internal Selector(
@@ -175,15 +174,13 @@ namespace U.Reactor
                 Slider slider,
                 Image backImage,
                 Image fillImage,
-                Image handleImage,
-                REslider constructor
+                Image handleImage
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.slider = slider;
                 this.backImage = backImage;
                 this.fillImage = fillImage;
                 this.handleImage = handleImage;
-                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -194,7 +191,6 @@ namespace U.Reactor
                 backImage = null;
                 fillImage = null;
                 handleImage = null;
-                constructor = null;
             }
         }
 

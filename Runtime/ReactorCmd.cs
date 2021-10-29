@@ -6,15 +6,6 @@ namespace U.Reactor
 {
     public partial class ReactorCmd
     {
-        private static List<REcanvas> drawedCanvas = new List<REcanvas>();
-        internal static void AddToReactorCmd(REcanvas element)
-        {
-            drawedCanvas.Add(element);
-        }
-        internal static void RemoveFromReactorCmd(REcanvas element)
-        {
-            drawedCanvas.Remove(element);
-        }
 
 
         public static Sprite GetSprite(string path)
@@ -27,14 +18,7 @@ namespace U.Reactor
             return Resources.Load<Font>("Reactor/Sprites/" + path);
         }
 
-        public static void EraseAll()
-        {
-            for (int i = 0; i < drawedCanvas.Count; i++)
-            {
-                drawedCanvas[i].Erase();
-            }
 
-        }
 
     }
 }

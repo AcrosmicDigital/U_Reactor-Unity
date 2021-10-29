@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REhorizontalLayout : RErenderer
+    public class REdivHorizontal : RErenderer
     {
         public override Type elementType => this.GetType();
         protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
@@ -21,7 +21,6 @@ namespace U.Reactor
 
         #region Components
 
-        protected Image backImageCmp;
         protected ScrollRect scrollRectCmp;
         protected RectMask2D rectMask2Cmp;
         protected HorizontalLayoutGroup horizontalLayoutCmp;
@@ -47,7 +46,6 @@ namespace U.Reactor
         // Child
         public Func<CanvasRendererSetter> propsCanvasRenderer = () => new CanvasRendererSetter();
 
-        public Func<BackImageSetter> propsBackImage = () => new BackImageSetter();
         public Func<ScrollRectSetter> propsScrollRect = () => new ScrollRectSetter();
         public Func<RectMask2DSetter> propsRectMask2D = () => new RectMask2DSetter { };
         public Func<HorizontalLayoutGroupSetter> propsHorizontalLayoutGroup = () => new HorizontalLayoutGroupSetter();
@@ -96,7 +94,6 @@ namespace U.Reactor
             virtualChildContainer = containerGO;
 
             // Add Components
-            backImageCmp = propsBackImage().Set(gameObject);
             scrollRectCmp = propsScrollRect().Set(gameObject);
             rectMask2Cmp = propsRectMask2D().Set(viewportGO);
             horizontalLayoutCmp = propsHorizontalLayoutGroup().Set(containerGO);
@@ -133,10 +130,12 @@ namespace U.Reactor
             {
                 pivot = new Vector2(0f, 1f),
                 localPosition = new Vector2(0, 0f),
-                sizeDelta = new Vector2(0, 0f),
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
-            }.SetOrSearchBySizeDelta(containerGO);
+                offsetMin = new Vector2(0, 0f),
+                offsetMax = new Vector2(0, 0f),
+            }.SetOrSearchByAnchors(containerGO);
+
 
             new RectTransformBSetter()
             {
@@ -144,7 +143,7 @@ namespace U.Reactor
                 localPosition = new Vector2(0f, 0),
                 anchorMin = new Vector2(1, 0f),
                 anchorMax = new Vector2(1, 1f),
-                sizeDelta = GetPercentageSize(20, -20),  // 20,-20
+                sizeDelta = new Vector2(20, -20f),  // 20,-20
             }.SetOrSearchBySizeDelta(vScrollbarGO);
 
             new RectTransformBSetter()
@@ -153,7 +152,7 @@ namespace U.Reactor
                 localPosition = new Vector2(0f, 0),
                 anchorMin = new Vector2(0f, 0f),
                 anchorMax = new Vector2(1f, 0f),
-                sizeDelta = GetPercentageSize(0, 20),  // 0,20
+                sizeDelta = new Vector2(0, 20f),   // 0,20
             }.SetOrSearchBySizeDelta(hScrollbarGO);
 
         }
@@ -173,8 +172,8 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, backImageCmp, scrollRectCmp, rectMask2Cmp, horizontalLayoutCmp, contentSizeCmp,
-                vScrollbarImageCmp, vScrollbarCmp, vScrollbarHandleImageCmp, hScrollbarImageCmp, hScrollbarCmp, hScrollbarHandleImageCmp, this);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, scrollRectCmp, rectMask2Cmp, horizontalLayoutCmp, contentSizeCmp,
+                vScrollbarImageCmp, vScrollbarCmp, vScrollbarHandleImageCmp, hScrollbarImageCmp, hScrollbarCmp, hScrollbarHandleImageCmp);
 
         protected override void AfterCreateComponent()
         {
@@ -212,7 +211,6 @@ namespace U.Reactor
         public class Selector : RErendererSelector
         {
 
-            public Image backImage { get; private set; }
             public ScrollRect scrollRect { get; private set; }
             public RectMask2D rectMask2 { get; private set; }
             public HorizontalLayoutGroup horizontalLayout { get; private set; }
@@ -226,8 +224,6 @@ namespace U.Reactor
             public Scrollbar hScrollbar { get; private set; }
             public Image hScrollbarHandleImage { get; private set; }
 
-            public REhorizontalLayout constructor { get; private set; }
-
 
             internal Selector(
                 GameObject gameObject,
@@ -235,7 +231,6 @@ namespace U.Reactor
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
 
-                Image backImage,
                 ScrollRect scrollRect,
                 RectMask2D rectMask2,
                 HorizontalLayoutGroup horizontalLayout,
@@ -247,13 +242,10 @@ namespace U.Reactor
 
                 Image hScrollbarImage,
                 Scrollbar hScrollbar,
-                Image hScrollbarHandleImage,
-
-                REhorizontalLayout constructor
+                Image hScrollbarHandleImage
 
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
-                this.backImage = backImage;
                 this.scrollRect = scrollRect;
                 this.rectMask2 = rectMask2;
                 this.horizontalLayout = horizontalLayout;
@@ -266,15 +258,12 @@ namespace U.Reactor
                 this.hScrollbarImage = hScrollbarImage;
                 this.hScrollbar = hScrollbar;
                 this.hScrollbarHandleImage = hScrollbarHandleImage;
-
-                this.constructor = constructor;
             }
 
             internal override void Destroy()
             {
                 base.Destroy();
 
-                this.backImage = null;
                 this.scrollRect = null;
                 this.rectMask2 = null;
                 this.horizontalLayout = null;
@@ -287,8 +276,6 @@ namespace U.Reactor
                 this.hScrollbarImage = null;
                 this.hScrollbar = null;
                 this.hScrollbarHandleImage = null;
-
-                constructor = null;
 
             }
         }
@@ -322,7 +309,7 @@ namespace U.Reactor
 
         public class GameObjectSetter : GameObjectBSetter
         {
-            public override string name { get; set; } = "Horizontal Layout";
+            public override string name { get; set; } = "Div Horizontal";
         }
         public class RectTransformSetter : RectTransformBSetter
         {
@@ -330,11 +317,6 @@ namespace U.Reactor
             public override float height { get; set; } = 0;
             public override Vector2 anchorMin { get; set; } = Vector2.zero;
             public override Vector2 anchorMax { get; set; } = Vector2.one;
-        }
-
-        public class BackImageSetter : ImageBSetter<Selector>
-        {
-            public override Color color { get; set; } = new Color(255, 255, 255, .4f);
         }
 
         public class ScrollRectSetter : ScrollRectBSetter<Selector>
@@ -351,8 +333,8 @@ namespace U.Reactor
 
         public class HorizontalLayoutGroupSetter : HorizontalLayoutGroupBSetter
         {
-            public override float spacing { get; set; } = 10f;
-            public override RectOffset padding { get; set; } = new RectOffset(10, 10, 0, 0);
+            public override float spacing { get; set; } = 10;
+            public override RectOffset padding { get; set; } = new RectOffset(10, 10, 10, 10);
         }
 
         public class ContenSizeFilterSetter : ContentSizeFilterBSetter

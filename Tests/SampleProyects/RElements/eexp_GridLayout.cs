@@ -12,6 +12,7 @@ public class eexp_GridLayout : MonoBehaviour
     {
         A00Basic,
         A01WithChilds,
+        A10WithScrollbar,
         A02ControlChildsWidth,
         A03BadWayRenderNoLayoutElements,
         A04RightWayToRenderNoLayoutElements,
@@ -30,7 +31,7 @@ public class eexp_GridLayout : MonoBehaviour
     {
         if (lastTestCase != testCase)
         {
-            ReactorCmd.EraseAll();
+            REcanvas.EraseAll();
             Start();
         }
 
@@ -59,7 +60,7 @@ public class eexp_GridLayout : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REgridLayout
+                        new REpanelGrid
                         {
                         },
                     }
@@ -76,7 +77,7 @@ public class eexp_GridLayout : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REgridLayout
+                        new REpanelGrid
                         {
                             childs = () => new REbase[]
                             {
@@ -84,38 +85,39 @@ public class eexp_GridLayout : MonoBehaviour
                                 {
 
                                 },
-                                new REtext
-                                {
-
-                                },
                                 new REimage
                                 {
 
                                 },
-                                new REdropdown
-                                {
+                            },
+                        },
+                    }
 
-                                },
-                                new REimage
-                                {
+                }.Draw();
 
-                                },
-                                new REbutton
-                                {
+                #endregion
+                break;
 
-                                },
-                                new REcanvas
-                                {
+            case TestCase.A10WithScrollbar:
+                #region TestCase.A10WithScrollbar
 
-                                },
-                                new REhorizontalLayout
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REpanelGrid
+                        {
+                            childs = () =>
+                            {
+                                var ch = new REbase[15];
+                                for (int i = 0; i < ch.Length; i++)
                                 {
+                                    ch[i] = new REimage
+                                    {
 
-                                },
-                                new REpanel
-                                {
-
-                                },
+                                    };
+                                }
+                                return ch;
                             },
                         },
                     }
@@ -132,7 +134,7 @@ public class eexp_GridLayout : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REgridLayout
+                        new REpanelGrid
                         {
                             childs = () => new REbase[]
                             {
@@ -188,7 +190,7 @@ public class eexp_GridLayout : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REgridLayout
+                        new REpanelGrid
                         {
                             childs = () => new REbase[]
                             {
@@ -200,7 +202,7 @@ public class eexp_GridLayout : MonoBehaviour
                                     },
                                 },
                                 // This element wont de created and a error message will be displayed
-                                new REhorizontalLayout
+                                new REpanelHorizontal
                                 {
                                     
                                 },
@@ -234,7 +236,7 @@ public class eexp_GridLayout : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REgridLayout
+                        new REpanelGrid
                         {
                             childs = () => new REbase[]
                             {
@@ -254,7 +256,7 @@ public class eexp_GridLayout : MonoBehaviour
                                     },
                                     childs = () => new REbase[]
                                     {
-                                        new REhorizontalLayout
+                                        new REpanelHorizontal
                                         {
 
                                         },

@@ -17,9 +17,13 @@ public class RendererC02 : MonoBehaviour
     {
 
         var addChildToConsole = new UseAddChilds();
+        string inputText = "";
 
         REbase TextChild(string text)
         {
+            string displayText = text;
+            var editMode = new UseState<bool>(false);
+
             return new REbox
             {
                 propsRectTransform = () => new REbox.RectTransformSetter
@@ -29,24 +33,98 @@ public class RendererC02 : MonoBehaviour
                 },
                 childs = () => new REbase[]
                 {
-                    new REhorizontalLayout
+                    new REpanelHorizontal
                     {
-                        childs = () => new REbase[]
+                        childs = () =>
                         {
-                            new RElabel
+                            return new REbase[]
                             {
-                                propsText = () => new RElabel.TextSetter
+                                new REbox
                                 {
-                                    text = text,
-                                }
-                            },
-                            new REbutton
-                            {
-                                propsText = () => new REbutton.TextSetter
+                                    propsRectTransform = () => new REbox.RectTransformSetter
+                                    {
+                                        width = 400,
+                                        height = 200,
+                                    },
+                                    useState = new IuseState[]
+                                    {
+                                        editMode,
+                                    },
+                                    childs = () => 
+                                    {
+                                        if (editMode.value)
+                                        {
+                                            return new REbase[]
+                                            {
+                                                new REinputField
+                                                {
+                                                    propsInputField = () => new REinputField.InputFieldSetter
+                                                    {
+                                                        text = displayText,
+                                                        OnValueChangedListener = (v,s) => 
+                                                        {
+                                                            displayText = v;
+                                                        }
+                                                    },
+                                                },
+                                            };
+                                        }
+                                        else
+                                        {
+                                            return new REbase[]
+                                            {
+                                                new RElabel
+                                                {
+                                                    propsText = () => new RElabel.TextSetter
+                                                    {
+                                                        text = displayText,
+                                                    },
+                                                },
+                                            };
+                                        }
+                                    }
+                                },
+                                new REbutton
                                 {
-                                    text = "Delete",
-                                }
-                            },
+                                    propsText = () =>
+                                    {
+                                        if(editMode.value) return new REbutton.TextSetter
+                                        {
+                                            text = "Save"
+                                        };
+                                        else return new REbutton.TextSetter
+                                        {
+                                            text = "Edit"
+                                        };
+                                    },
+                                    propsButton = () => new REbutton.ButtonSetter
+                                    {
+                                        OnClickListener = (s) =>
+                                        {
+                                            editMode.SetState(!editMode.value);
+                                        }
+                                    },
+                                    useState = new IuseState[]
+                                    {
+                                        editMode,
+                                    },
+                                },
+                                new REbutton
+                                {
+                                    propsText = () => new REbutton.TextSetter
+                                    {
+                                        text = "Delete",
+                                    },
+                                    propsButton = () => new REbutton.ButtonSetter
+                                    {
+                                        OnClickListener = (s) =>
+                                        {
+                                            Debug.Log(s.parent.parent.elementId.elementType + " r " + s.parent.parent.parent.childs.Length);
+                                            s.parent.parent.Erase();
+                                        }
+                                    },
+                                },
+                            };
                         }
                     },
                 }
@@ -58,9 +136,9 @@ public class RendererC02 : MonoBehaviour
         {
             childs = () => new REbase[]
             {
-                new REverticalLayout
+                new REpanelVertical
                 {
-                    propsRectTransform = () => REverticalLayout.TableRectTransform(0,100,40,100),
+                    propsRectTransform = () => REpanelVertical.TableRectTransform(0,100,40,100),
                     useAddChilds = new IuseAddChilds[]
                     {
                         addChildToConsole,
@@ -71,9 +149,9 @@ public class RendererC02 : MonoBehaviour
                     propsRectTransform = () => REdiv.TableRectTransform(0,100,0,38),
                     childs = () => new REbase[]
                     {
-                        new REverticalLayout
+                        new REpanelVertical
                         {
-                            propsRectTransform = () => REverticalLayout.TableRectTransform(0,30,0,100),
+                            propsRectTransform = () => REpanelVertical.TableRectTransform(0,30,0,100),
                             childs = () => new REbase[]
                             {
                                 new REbutton{
@@ -83,14 +161,25 @@ public class RendererC02 : MonoBehaviour
                                     },
                                     propsButton = () => new REbutton.ButtonSetter
                                     {
-                                        OnClickListener = (s) => addChildToConsole.AddChild(TextChild("Lolloolll")),
+                                        OnClickListener = (s) => 
+                                        {
+                                            addChildToConsole.AddChild(TextChild(inputText));
+                                            inputText = "";
+                                        },
                                     }
                                 },
 
                                 new REbutton{
                                     propsText = () => new REbutton.TextSetter
                                     {
-                                        text = "Remove",
+                                        text = "Clear",
+                                    },
+                                    propsButton = () => new REbutton.ButtonSetter
+                                    {
+                                        OnClickListener = (s) =>
+                                        {
+
+                                        },
                                     }
                                 }
                             }
@@ -98,6 +187,23 @@ public class RendererC02 : MonoBehaviour
                         new REpanel
                         {
                             propsRectTransform = () => REpanel.TableRectTransform(33,100,0,100),
+                            childs = () => new REbase[]
+                            {
+                                new REinputField
+                                {
+                                    propsRectTransform = () => new REinputField.RectTransformSetter
+                                    {
+                                        width = 670,
+                                        height = 400,
+                                    },
+                                    propsInputField = () => new REinputField.InputFieldSetter
+                                    {
+                                        lineType = UnityEngine.UI.InputField.LineType.MultiLineNewline,
+                                        OnValueChangedListener = (v,s) => {inputText = v; }
+                                    }
+                                    
+                                },
+                            }
                         },
                     }
                 },

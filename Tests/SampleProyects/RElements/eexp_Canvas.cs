@@ -27,7 +27,7 @@ public class eexp_Canvas : MonoBehaviour
     {
         if (lastTestCase != testCase)
         {
-            ReactorCmd.EraseAll();
+            REcanvas.EraseAll();
             Start();
         }
 

@@ -32,7 +32,7 @@ public class eexp_Label : MonoBehaviour
     {
         if (lastTestCase != testCase)
         {
-            ReactorCmd.EraseAll();
+            REcanvas.EraseAll();
             Start();
         }
 

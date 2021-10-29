@@ -112,7 +112,7 @@ namespace U.Reactor
 
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp, this);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp);
 
         protected override void AfterCreateComponent()
         {
@@ -145,7 +145,6 @@ namespace U.Reactor
             public Slider slider { get; private set; }
             public Image backImage { get; private set; }
             public Image fillImage { get; private set; }
-            public REprogressBar constructor { get; private set; }
 
 
             internal Selector(
@@ -154,14 +153,12 @@ namespace U.Reactor
                 RectTransform rectTransform,
                 Slider slider,
                 Image backImage,
-                Image fillImage,
-                REprogressBar constructor
+                Image fillImage
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.slider = slider;
                 this.backImage = backImage;
                 this.fillImage = fillImage;
-                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -171,7 +168,6 @@ namespace U.Reactor
                 slider = null;
                 backImage = null;
                 fillImage = null;
-                constructor = null;
             }
         }
 

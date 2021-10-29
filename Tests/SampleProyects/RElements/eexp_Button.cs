@@ -32,7 +32,7 @@ public class eexp_Button : MonoBehaviour
     {
         if (lastTestCase != testCase)
         {
-            ReactorCmd.EraseAll();
+            REcanvas.EraseAll();
             Start();
         }
 

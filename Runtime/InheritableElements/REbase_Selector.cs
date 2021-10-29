@@ -21,6 +21,20 @@ namespace U.Reactor
         public REbaseSelector[] childs => childsList.ToArray();  // By Func selector.SetChilds()
 
 
+        private Action erase { get; set; }
+
+        public void Erase()
+        {
+            try
+            {
+                erase.Invoke();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+
         // Get the root canvas
         public REcanvas.Selector rootCanvasSelector
         { 
@@ -103,6 +117,11 @@ namespace U.Reactor
         internal void SetParent(REbaseSelector parent)
         {
             this.parent = parent;
+        }
+
+        internal void SetErase(Action Erase)
+        {
+            this.erase = Erase;
         }
 
         internal void SetChilds(List<REbase> childs)

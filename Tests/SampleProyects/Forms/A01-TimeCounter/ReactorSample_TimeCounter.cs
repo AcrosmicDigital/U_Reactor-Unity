@@ -36,9 +36,9 @@ public class ReactorSample_TimeCounter : MonoBehaviour
         {
             childs = () => new REbase[]
             {
-                new REverticalLayout
+                new REpanelVertical
                 {
-                    propsVerticalLayoutGroup = () => new REverticalLayout.VerticalLayoutGroupSetter
+                    propsVerticalLayoutGroup = () => new REpanelVertical.VerticalLayoutGroupSetter
                     {
                         childAlignment = TextAnchor.MiddleCenter,
                     },

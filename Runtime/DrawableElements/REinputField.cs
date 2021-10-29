@@ -123,7 +123,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, inputFieldCmp, backImageCmp, placeholderTextCmp, textCmp, this);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, inputFieldCmp, backImageCmp, placeholderTextCmp, textCmp);
 
         protected override void AfterCreateComponent()
         {
@@ -143,7 +143,6 @@ namespace U.Reactor
             public Image backImage { get; private set; }
             public Text placeholderText { get; private set; }
             public Text text { get; private set; }
-            public REinputField constructor { get; private set; }
 
 
             internal Selector(
@@ -155,15 +154,13 @@ namespace U.Reactor
                 InputField inputField,
                 Image backImage,
                 Text placeholderText,
-                Text text,
-                REinputField constructor
+                Text text
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
                 this.inputField = inputField;
                 this.backImage = backImage;
                 this.placeholderText = placeholderText;
                 this.text = text;
-                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -174,7 +171,6 @@ namespace U.Reactor
                 backImage = null;
                 placeholderText = null;
                 text = null;
-                constructor = null;
             }
         }
 

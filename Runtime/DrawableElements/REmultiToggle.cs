@@ -78,7 +78,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, multiToggleCmp, this);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, multiToggleCmp);
 
         protected override void AfterCreateComponent()
         {
@@ -122,19 +122,16 @@ namespace U.Reactor
         {
 
             public HC.MultiToggle multiToggle { get; private set; }
-            public REmultiToggle constructor { get; private set; }
 
 
             internal Selector(
                 GameObject gameObject,
                 HC.ReactorId pieceId,
                 RectTransform rectTransform,
-                HC.MultiToggle multiToggle,
-                REmultiToggle constructor
+                HC.MultiToggle multiToggle
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.multiToggle = multiToggle;
-                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -142,7 +139,6 @@ namespace U.Reactor
                 base.Destroy();
 
                 multiToggle = null;
-                constructor = null;
             }
         }
 

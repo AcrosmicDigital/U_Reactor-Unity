@@ -58,7 +58,7 @@ namespace U.Reactor
 
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, this);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp);
 
         protected override void AddHooks()
         {
@@ -85,25 +85,20 @@ namespace U.Reactor
         public class Selector : REbaseSelector
         {
 
-            public REdiv constructor { get; private set; }
-
 
             internal Selector(
                 GameObject gameObject,
                 HC.ReactorId pieceId,
-                RectTransform rectTransform,
-                REdiv constructor
+                RectTransform rectTransform
                 ) : base(gameObject, pieceId, rectTransform)
             {
-                this.constructor = constructor;
+
             }
 
 
             internal override void Destroy()
             {
                 base.Destroy();
-
-                constructor = null;
             }
         }
 

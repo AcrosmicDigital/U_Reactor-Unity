@@ -145,7 +145,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, toggleCmp, backImageCmp, checkImageCmp, textCmp, multiToggleMemberCmp, this);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, toggleCmp, backImageCmp, checkImageCmp, textCmp, multiToggleMemberCmp);
 
         protected override void AfterCreateComponent()
         {
@@ -165,7 +165,6 @@ namespace U.Reactor
             public Image checkImage { get; private set; }
             public Text text { get; private set; }
             public HC.MultiToggleMember multiToggleMember { get; private set; }
-            public REtoggle constructor { get; private set; }
 
 
             internal Selector(
@@ -176,8 +175,7 @@ namespace U.Reactor
                 Image backImage,
                 Image checkImage,
                 Text text,
-                HC.MultiToggleMember multiToggleMember,
-                REtoggle constructor
+                HC.MultiToggleMember multiToggleMember
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.toggle = toggle;
@@ -185,7 +183,6 @@ namespace U.Reactor
                 this.checkImage = checkImage;
                 this.text = text;
                 this.multiToggleMember = multiToggleMember;
-                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -197,7 +194,6 @@ namespace U.Reactor
                 checkImage = null;
                 text = null;
                 multiToggleMember = null;
-                constructor = null;
             }
         }
 

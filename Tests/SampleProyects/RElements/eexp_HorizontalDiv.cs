@@ -12,6 +12,10 @@ public class eexp_HorizontalDiv : MonoBehaviour
     {
         A00Basic,
         A01WithChilds,
+        A10WithScrollbar,
+        A02ControlChildsHeigh,
+        A03BadWayRenderNoLayoutElements,
+        A04RightWayToRenderNoLayoutElements,
 
     }
 
@@ -27,7 +31,7 @@ public class eexp_HorizontalDiv : MonoBehaviour
     {
         if (lastTestCase != testCase)
         {
-            ReactorCmd.EraseAll();
+            REcanvas.EraseAll();
             Start();
         }
 
@@ -56,7 +60,7 @@ public class eexp_HorizontalDiv : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REhorizontalLayout
+                        new REpanelHorizontal
                         {
                         },
                     }
@@ -73,7 +77,7 @@ public class eexp_HorizontalDiv : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REhorizontalLayout
+                        new REpanelHorizontal
                         {
                             childs = () => new REbase[]
                             {
@@ -81,22 +85,181 @@ public class eexp_HorizontalDiv : MonoBehaviour
                                 {
 
                                 },
-                                new REtext
-                                {
-
-                                },
                                 new REimage
                                 {
 
                                 },
-                                new REdropdown
-                                {
+                            },
+                        },
+                    }
 
-                                },
-                                new REimage
-                                {
+                }.Draw();
 
+                #endregion
+                break;
+
+            case TestCase.A10WithScrollbar:
+                #region TestCase.A10WithScrollbar
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REpanelHorizontal
+                        {
+                            childs = () =>
+                            {
+                                var ch = new REbase[15];
+                                for (int i = 0; i < ch.Length; i++)
+                                {
+                                    ch[i] = new REimage
+                                    {
+
+                                    };
                                 }
+                                return ch;
+                            },
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.A02ControlChildsHeigh:
+                #region TestCase.A02ControlChildsHeigh
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REpanelHorizontal
+                        {
+                            propsHorizontalLayoutGroup = () => new REpanelHorizontal.HorizontalLayoutGroupSetter
+                            {
+                                childControlHeight = true,
+                            },
+                            childs = () => new REbase[]
+                            {
+                                new REimage
+                                {
+                                },
+                                new REimage
+                                {
+                                },
+                                new REimage
+                                {
+                                },
+                                new REimage
+                                {
+                                },
+                                new REimage
+                                {
+                                },
+                            },
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+
+            case TestCase.A03BadWayRenderNoLayoutElements:
+                #region TestCase.A03BadWayRenderNoLayoutElements
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REpanelHorizontal
+                        {
+                            childs = () => new REbase[]
+                            {
+                                new REimage
+                                {
+                                    propsLayoutElement = () => new REimage.LayoutElementSetter
+                                    {
+                                        preferredHeight = 25,
+                                    },
+                                },
+                                // This element wont de created and a error message will be displayed
+                                new REpanelHorizontal
+                                {
+
+                                },
+                                new REbox
+                                {
+                                    propsLayoutElement = () => new REbox.LayoutElementSetter
+                                    {
+                                        preferredHeight = 50,
+                                    },
+                                },
+                                new REimage
+                                {
+                                    propsLayoutElement = () => new REimage.LayoutElementSetter
+                                    {
+                                        preferredHeight = 50,
+                                    },
+                                },
+                            },
+                        },
+                    }
+
+                }.Draw();
+
+                #endregion
+                break;
+
+            case TestCase.A04RightWayToRenderNoLayoutElements:
+                #region TestCase.A04RightWayToRenderNoLayoutElements
+
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REpanelHorizontal
+                        {
+                            childs = () => new REbase[]
+                            {
+                                new REimage
+                                {
+                                    propsLayoutElement = () => new REimage.LayoutElementSetter
+                                    {
+                                        preferredHeight = 25,
+                                    },
+                                },
+                                // Create inside a box
+                                new REbox
+                                {
+                                    propsLayoutElement = () => new REbox.LayoutElementSetter
+                                    {
+                                        preferredHeight = 50,
+                                    },
+                                    childs = () => new REbase[]
+                                    {
+                                        new REpanelHorizontal
+                                        {
+
+                                        },
+                                    },
+                                },
+                                new REbox
+                                {
+                                    propsLayoutElement = () => new REbox.LayoutElementSetter
+                                    {
+                                        preferredHeight = 50,
+                                    },
+                                },
+                                new REimage
+                                {
+                                    propsLayoutElement = () => new REimage.LayoutElementSetter
+                                    {
+                                        preferredHeight = 50,
+                                    },
+                                },
                             },
                         },
                     }

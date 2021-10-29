@@ -85,7 +85,7 @@ namespace U.Reactor
 
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasCmp, canvasScalerCmp, graphicRaycasterCmp, canvasGroupCmp, this);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasCmp, canvasScalerCmp, graphicRaycasterCmp, canvasGroupCmp);
 
         protected override void AddHooks()
         {
@@ -130,23 +130,18 @@ namespace U.Reactor
 
         #region Aditional Methods
 
-        public REcanvas Draw(GameObject parent = null)
+        public REcanvas Draw()
         {
-            Create(parent, parentSelector);
+            return Draw(null);
+        }
 
-            ReactorCmd.AddToReactorCmd(this);
+        public REcanvas Draw(GameObject parent)
+        {
+            Draw(parent, parentSelector);
 
             return this;
         }
 
-        public void Erase()
-        {
-
-            ReactorCmd.RemoveFromReactorCmd(this);
-
-            Destroy();
-
-        }
 
         public void Hide()
         {
@@ -163,7 +158,7 @@ namespace U.Reactor
             if (canvasCmp != null)
                 canvasCmp.enabled = true;
             else
-                Create(parent, parentSelector);
+                Draw(parent, parentSelector);
         }
 
         public void Disable()
@@ -179,7 +174,7 @@ namespace U.Reactor
             if (gameObject != null)
                 gameObject.SetActive(true);
             else
-                Create(parent, parentSelector);
+                Draw(parent, parentSelector);
         }
 
         #endregion Aditional Methods
@@ -195,7 +190,6 @@ namespace U.Reactor
             public CanvasScaler canvasScaler { get; private set; }
             public GraphicRaycaster graphicRaycaster { get; private set; }
             public CanvasGroup canvasGroup { get; private set; }
-            public REcanvas constructor { get; private set; }
 
 
             internal Selector(
@@ -205,15 +199,13 @@ namespace U.Reactor
                 Canvas canvas,
                 CanvasScaler canvasScaler,
                 GraphicRaycaster graphicRaycaster,
-                CanvasGroup canvasGroup,
-                REcanvas constructor
+                CanvasGroup canvasGroup
                 ) : base(gameObject, pieceId, rectTransform)
             {
                 this.canvas = canvas;
                 this.canvasScaler = canvasScaler;
                 this.graphicRaycaster = graphicRaycaster;
                 this.canvasGroup = canvasGroup;
-                this.constructor = constructor;
             }
 
 
@@ -225,7 +217,6 @@ namespace U.Reactor
                 canvasScaler = null;
                 graphicRaycaster = null;
                 canvasGroup = null;
-                constructor = null;
             }
         }
 
@@ -311,6 +302,26 @@ namespace U.Reactor
             };
         }
 
+
+        public static void EraseAll()
+        {
+            var allCanvas = REcanvas.Find();
+            for (int i = 0; i < allCanvas.Length; i++)
+            {
+                allCanvas[i]?.Erase();
+            }
+
+        }
+
+        public static void EraseByPattern(string pattern)
+        {
+            var allCanvas = REcanvas.Find(pattern);
+            for (int i = 0; i < allCanvas.Length; i++)
+            {
+                allCanvas[i]?.Erase();
+            }
+
+        }
 
 
         public new static Selector[] Find(string pattern) => Find<Selector>(pattern);

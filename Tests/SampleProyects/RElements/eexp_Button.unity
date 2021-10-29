@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testCase: 2
-  destroyOnStart: 0
+  destroyOnStart: 1
   toDestroy:
   - {fileID: 892717322}
 --- !u!4 &1811750221

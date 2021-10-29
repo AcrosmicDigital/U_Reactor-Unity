@@ -66,7 +66,7 @@ namespace U.Reactor
 
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, imageCmp, this);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, imageCmp);
 
         protected override void AddHooks()
         {
@@ -94,7 +94,6 @@ namespace U.Reactor
         {
 
             public Image image { get; private set; }
-            public REpanel constructor { get; private set; }
 
 
             internal Selector(
@@ -102,12 +101,10 @@ namespace U.Reactor
                 HC.ReactorId pieceId,
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
-                Image image,
-                REpanel constructor
+                Image image
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
                 this.image = image;
-                this.constructor = constructor;
             }
 
 
@@ -116,7 +113,6 @@ namespace U.Reactor
                 base.Destroy();
 
                 image = null;
-                constructor = null;
             }
         }
 

@@ -109,11 +109,11 @@ namespace U.Reactor
 
 
         // Create all the component , call other functions in order
-        protected REbase Create(GameObject parent, REbaseSelector parentSelector)
+        protected REbase Draw(GameObject parent, REbaseSelector parentSelector)
         {
             
             // Functions to create parts of the component
-            Destroy();
+            Erase();
             CreateRoot(parent);
             AddComponents();
             this.parentSelector = parentSelector;
@@ -136,19 +136,6 @@ namespace U.Reactor
                 foreach (var child in newChilds)
                 {
                     CreateChild(child);
-
-                    //if (child == null) continue;
-
-                    //// Only if create child condition is true
-                    //if (!CrateChildCondition(child)) continue;
-
-                    //if(virtualChildContainer != null)
-                    //    childsList.Add(child.Create(virtualChildContainer, selector));
-                    //else
-                    //    childsList.Add(child.Create(gameObject, selector));
-
-                    //AfterCreateChild(child.selector);
-
                 }
             }
             selector.SetChilds(childsList);
@@ -216,6 +203,7 @@ namespace U.Reactor
             }
 
             // Add Id
+            selector.SetErase(Erase);
             reactorIdCmp.SetSelector(selector);
 
             return this;
@@ -236,7 +224,7 @@ namespace U.Reactor
         // Function to subscribe to useState event
         private void OnUseStateChange(object sender, EventArgs e)
         {
-            Create(parent, parentSelector);
+            Draw(parent, parentSelector);
         }
 
         // Function to subscribe to useAddChilds event
@@ -248,9 +236,9 @@ namespace U.Reactor
             if (!CrateChildCondition(child)) return;
 
             if (virtualChildContainer != null)
-                childsList.Add(child.Create(virtualChildContainer, selector));
+                childsList.Add(child.Draw(virtualChildContainer, selector));
             else
-                childsList.Add(child.Create(gameObject, selector));
+                childsList.Add(child.Draw(gameObject, selector));
 
             AfterCreateChild(child.selector);
         }
@@ -271,7 +259,7 @@ namespace U.Reactor
 
         protected virtual void AfterRenderComponent() { }
 
-        protected void Destroy()
+        public virtual void Erase()
         {
             // Unsubscribe to useState events
             if (useState != null)
@@ -306,7 +294,7 @@ namespace U.Reactor
                 {
                     if (child != null)
                     {
-                        child.Destroy();
+                        child.Erase();
                     }
                 }
             }

@@ -12,6 +12,7 @@ public class eexp_VerticalDiv : MonoBehaviour
     {
         A00Basic,
         A01WithChilds,
+        A10WithScrollbar,
         A02ControlChildsWidth,
         A03BadWayRenderNoLayoutElements,
         A04RightWayToRenderNoLayoutElements,
@@ -30,7 +31,7 @@ public class eexp_VerticalDiv : MonoBehaviour
     {
         if (lastTestCase != testCase)
         {
-            ReactorCmd.EraseAll();
+            REcanvas.EraseAll();
             Start();
         }
 
@@ -59,7 +60,7 @@ public class eexp_VerticalDiv : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REverticalLayout
+                        new REpanelVertical
                         {
                         },
                     }
@@ -76,7 +77,7 @@ public class eexp_VerticalDiv : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REverticalLayout
+                        new REpanelVertical
                         {
                             childs = () => new REbase[]
                             {
@@ -84,38 +85,39 @@ public class eexp_VerticalDiv : MonoBehaviour
                                 {
 
                                 },
-                                new REtext
-                                {
-
-                                },
                                 new REimage
                                 {
 
                                 },
-                                new REdropdown
-                                {
+                            },
+                        },
+                    }
 
-                                },
-                                new REimage
-                                {
+                }.Draw();
 
-                                },
-                                new REbutton
-                                {
+                #endregion
+                break;
 
-                                },
-                                new REcanvas
-                                {
+            case TestCase.A10WithScrollbar:
+                #region TestCase.A10WithScrollbar
 
-                                },
-                                new REhorizontalLayout
+                new REcanvas
+                {
+                    childs = () => new REbase[]
+                    {
+                        new REpanelVertical
+                        {
+                            childs = () =>
+                            {
+                                var ch = new REbase[15];
+                                for (int i = 0; i < ch.Length; i++)
                                 {
+                                    ch[i] = new REimage
+                                    {
 
-                                },
-                                new REpanel
-                                {
-
-                                },
+                                    };
+			                    }
+                                return ch;
                             },
                         },
                     }
@@ -132,45 +134,28 @@ public class eexp_VerticalDiv : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REverticalLayout
+                        new REpanelVertical
                         {
+                            propsVerticalLayoutGroup = () => new REpanelVertical.VerticalLayoutGroupSetter
+                            {
+                                childControlWidth = true,
+                            },
                             childs = () => new REbase[]
                             {
                                 new REimage
                                 {
-                                    propsLayoutElement = () => new REimage.LayoutElementSetter
-                                    {
-                                        preferredHeight = 25,
-                                    },
                                 },
                                 new REimage
                                 {
-                                    propsLayoutElement = () => new REimage.LayoutElementSetter
-                                    {
-                                        preferredHeight = 50,
-                                    },
-                                },
-                                new REbox
-                                {
-                                    propsLayoutElement = () => new REbox.LayoutElementSetter
-                                    {
-                                        preferredHeight = 50,
-                                    },
                                 },
                                 new REimage
                                 {
-                                    propsLayoutElement = () => new REimage.LayoutElementSetter
-                                    {
-                                        preferredHeight = 50,
-                                    },
-                                },
-                                new REbox
-                                {
-
                                 },
                                 new REimage
                                 {
-
+                                },
+                                new REimage
+                                {
                                 },
                             },
                         },
@@ -188,7 +173,7 @@ public class eexp_VerticalDiv : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REverticalLayout
+                        new REpanelVertical
                         {
                             childs = () => new REbase[]
                             {
@@ -200,7 +185,7 @@ public class eexp_VerticalDiv : MonoBehaviour
                                     },
                                 },
                                 // This element wont de created and a error message will be displayed
-                                new REhorizontalLayout
+                                new REpanelHorizontal
                                 {
                                     
                                 },
@@ -234,7 +219,7 @@ public class eexp_VerticalDiv : MonoBehaviour
                 {
                     childs = () => new REbase[]
                     {
-                        new REverticalLayout
+                        new REpanelVertical
                         {
                             childs = () => new REbase[]
                             {
@@ -254,7 +239,7 @@ public class eexp_VerticalDiv : MonoBehaviour
                                     },
                                     childs = () => new REbase[]
                                     {
-                                        new REhorizontalLayout
+                                        new REpanelHorizontal
                                         {
 
                                         },

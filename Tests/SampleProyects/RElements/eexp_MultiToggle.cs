@@ -28,7 +28,7 @@ public class eexp_MultiToggle : MonoBehaviour
     {
         if (lastTestCase != testCase)
         {
-            ReactorCmd.EraseAll();
+            REcanvas.EraseAll();
             Start();
         }
 
@@ -158,7 +158,7 @@ public class eexp_MultiToggle : MonoBehaviour
                             },
                             childs = () => new REbase[]
                             {
-                                new REverticalLayout
+                                new REpanelVertical
                                 {
                                     childs = () => new REbase[]
                                     {

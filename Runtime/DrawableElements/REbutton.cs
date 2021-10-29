@@ -97,7 +97,7 @@ namespace U.Reactor
             propsButton().SetListeners(buttonCmp, (Selector)selector);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, buttonCmp, imageCmp, this);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, buttonCmp, imageCmp);
 
         protected override void AddHooks()
         {
@@ -126,7 +126,6 @@ namespace U.Reactor
             public Button button { get; private set; }
             public Image image { get; private set; }
             public Text textCmp { get; private set; }
-            public REbutton constructor { get; private set; }
 
 
             internal Selector(
@@ -135,14 +134,12 @@ namespace U.Reactor
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
                 Text textCmp, Button button,
-                Image image,
-                REbutton constructor
+                Image image
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
                 this.button = button;
                 this.image = image;
                 this.textCmp = textCmp;
-                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -152,7 +149,6 @@ namespace U.Reactor
                 button = null;
                 image = null;
                 textCmp = null;
-                constructor = null;
             }
         }
 

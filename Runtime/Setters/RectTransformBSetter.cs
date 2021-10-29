@@ -47,6 +47,7 @@ namespace U.Reactor
         internal RectTransform SetByAnchors(RectTransform c)
         {
             c.pivot = pivot;
+            c.localPosition = localPosition; // Quitarlo si no jala
             c.anchorMin = anchorMin;
             c.anchorMax = anchorMax;
             //c.sizeDelta = sizeDelta; // Quitar este y ver si no se rompe nada

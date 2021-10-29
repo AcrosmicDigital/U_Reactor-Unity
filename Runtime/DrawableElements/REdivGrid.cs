@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace U.Reactor
 {
-    public class REverticalLayout : RErenderer
+    public class REdivGrid : RErenderer
     {
         public override Type elementType => this.GetType();
         protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
@@ -21,10 +21,9 @@ namespace U.Reactor
 
         #region Components
 
-        protected Image backImageCmp;
         protected ScrollRect scrollRectCmp;
         protected RectMask2D rectMask2Cmp;
-        protected VerticalLayoutGroup verticalLayoutCmp;
+        protected GridLayoutGroup gridLayoutGroupCmp;
         protected ContentSizeFitter contentSizeCmp;
 
         protected Scrollbar vScrollbarCmp;
@@ -47,10 +46,9 @@ namespace U.Reactor
         // Child
         public Func<CanvasRendererSetter> propsCanvasRenderer = () => new CanvasRendererSetter();
 
-        public Func<BackImageSetter> propsBackImage = () => new BackImageSetter();
         public Func<ScrollRectSetter> propsScrollRect = () => new ScrollRectSetter();
         public Func<RectMask2DSetter> propsRectMask2D = () => new RectMask2DSetter { };
-        public Func<VerticalLayoutGroupSetter> propsVerticalLayoutGroup = () => new VerticalLayoutGroupSetter();
+        public Func<GridLayoutGroupSetter> propsGridLayoutGroup = () => new GridLayoutGroupSetter();
         public Func<ContenSizeFilterSetter> propsContentSizeFilter = () => new ContenSizeFilterSetter();
         public Func<VScrollbarBackImageSetter> propsVScrollbarImage = () => new VScrollbarBackImageSetter();
         public Func<VScrollbarSetter> propsVScrollbar = () => new VScrollbarSetter();
@@ -95,10 +93,9 @@ namespace U.Reactor
             virtualChildContainer = containerGO;
 
             // Add Components
-            backImageCmp = propsBackImage().Set(gameObject);
             scrollRectCmp = propsScrollRect().Set(gameObject);
             rectMask2Cmp = propsRectMask2D().Set(viewportGO);
-            verticalLayoutCmp = propsVerticalLayoutGroup().Set(containerGO);
+            gridLayoutGroupCmp = propsGridLayoutGroup().Set(containerGO);
             contentSizeCmp = propsContentSizeFilter().Set(containerGO);
 
             propsVScrollbarImage().SetAllExceptType(vScrollbarImageCmp);
@@ -118,7 +115,6 @@ namespace U.Reactor
             // Obtain percentage size
             SetReferenceSize(new RectTransformSetter());
 
-
             new RectTransformBSetter()
             {
                 pivot = new Vector2(0f, 1f),
@@ -132,10 +128,11 @@ namespace U.Reactor
             {
                 pivot = new Vector2(0f, 1f),
                 localPosition = new Vector2(0, 0f),
-                sizeDelta = new Vector2(0, 0f),
                 anchorMin = new Vector2(0, 0f),
                 anchorMax = new Vector2(1, 1f),
-            }.SetOrSearchBySizeDelta(containerGO);
+                offsetMin = new Vector2(0, 0f),
+                offsetMax = new Vector2(0, 0f),
+            }.SetOrSearchByAnchors(containerGO);
 
             new RectTransformBSetter()
             {
@@ -143,7 +140,7 @@ namespace U.Reactor
                 localPosition = new Vector2(0f, 0),
                 anchorMin = new Vector2(1, 0f),
                 anchorMax = new Vector2(1, 1f),
-                sizeDelta = GetPercentageSize(20, 0),  // 20,0
+                sizeDelta = new Vector2(20, 0f),   // 20,0
             }.SetOrSearchBySizeDelta(vScrollbarGO);
 
             new RectTransformBSetter()
@@ -152,7 +149,7 @@ namespace U.Reactor
                 localPosition = new Vector2(0f, 0),
                 anchorMin = new Vector2(0f, 0f),
                 anchorMax = new Vector2(1f, 0f),
-                sizeDelta = GetPercentageSize(-20, 20),  // -20,20
+                sizeDelta = new Vector2(-20, 20f),   // -20,20
             }.SetOrSearchBySizeDelta(hScrollbarGO);
 
         }
@@ -172,8 +169,8 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, backImageCmp, scrollRectCmp, rectMask2Cmp, verticalLayoutCmp, contentSizeCmp,
-                vScrollbarImageCmp, vScrollbarCmp, vScrollbarHandleImageCmp, hScrollbarImageCmp, hScrollbarCmp, hScrollbarHandleImageCmp, this);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, scrollRectCmp, rectMask2Cmp, gridLayoutGroupCmp, contentSizeCmp,
+                vScrollbarImageCmp, vScrollbarCmp, vScrollbarHandleImageCmp, hScrollbarImageCmp, hScrollbarCmp, hScrollbarHandleImageCmp);
 
         protected override void AfterCreateComponent()
         {
@@ -210,10 +207,9 @@ namespace U.Reactor
         public class Selector : RErendererSelector
         {
 
-            public Image backImage { get; private set; }
             public ScrollRect scrollRect { get; private set; }
             public RectMask2D rectMask2 { get; private set; }
-            public VerticalLayoutGroup verticalLayout { get; private set; }
+            public GridLayoutGroup gridLayout { get; private set; }
             public ContentSizeFitter contentSize { get; private set; }
 
             public Image vScrollbarImage { get; private set; }
@@ -224,8 +220,6 @@ namespace U.Reactor
             public Scrollbar hScrollbar { get; private set; }
             public Image hScrollbarHandleImage { get; private set; }
 
-            public REverticalLayout constructor { get; private set; }
-
 
             internal Selector(
                 GameObject gameObject,
@@ -233,10 +227,9 @@ namespace U.Reactor
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
 
-                Image backImage,
                 ScrollRect scrollRect,
                 RectMask2D rectMask2,
-                VerticalLayoutGroup verticalLayout,
+                GridLayoutGroup gridLayout,
                 ContentSizeFitter contentSize,
 
                 Image vScrollbarImage,
@@ -245,16 +238,13 @@ namespace U.Reactor
 
                 Image hScrollbarImage,
                 Scrollbar hScrollbar,
-                Image hScrollbarHandleImage,
-
-                REverticalLayout constructor
+                Image hScrollbarHandleImage
 
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
-                this.backImage = backImage;
                 this.scrollRect = scrollRect;
                 this.rectMask2 = rectMask2;
-                this.verticalLayout = verticalLayout;
+                this.gridLayout = gridLayout;
                 this.contentSize = contentSize;
 
                 this.vScrollbarImage = vScrollbarImage;
@@ -264,18 +254,15 @@ namespace U.Reactor
                 this.hScrollbarImage = hScrollbarImage;
                 this.hScrollbar = hScrollbar;
                 this.hScrollbarHandleImage = hScrollbarHandleImage;
-
-                this.constructor = constructor;
             }
 
             internal override void Destroy()
             {
                 base.Destroy();
 
-                this.backImage = null;
                 this.scrollRect = null;
                 this.rectMask2 = null;
-                this.verticalLayout = null;
+                this.gridLayout = null;
                 this.contentSize = null;
 
                 this.vScrollbarImage = null;
@@ -285,8 +272,6 @@ namespace U.Reactor
                 this.hScrollbarImage = null;
                 this.hScrollbar = null;
                 this.hScrollbarHandleImage = null;
-
-                constructor = null;
 
             }
         }
@@ -321,7 +306,7 @@ namespace U.Reactor
 
         public class GameObjectSetter : GameObjectBSetter
         {
-            public override string name { get; set; } = "Vertical Layout";
+            public override string name { get; set; } = "Div Grid";
         }
 
         public class RectTransformSetter : RectTransformBSetter
@@ -332,14 +317,8 @@ namespace U.Reactor
             public override Vector2 anchorMax { get; set; } = Vector2.one;
         }
 
-        public class BackImageSetter : ImageBSetter<Selector>
-        {
-            public override Color color { get; set; } = new Color(255, 255, 255, .4f);
-        }
-
         public class ScrollRectSetter : ScrollRectBSetter<Selector>
         {
-            public override bool horizontal { get; set; } = false;
             public override ScrollRect.ScrollbarVisibility verticalScrollbarVisibility { get; set; } = ScrollRect.ScrollbarVisibility.AutoHideAndExpandViewport;
             public override ScrollRect.ScrollbarVisibility horizontalScrollbarVisibility { get; set; } = ScrollRect.ScrollbarVisibility.AutoHideAndExpandViewport;
         }
@@ -349,15 +328,16 @@ namespace U.Reactor
 
         }
 
-        public class VerticalLayoutGroupSetter : VerticalLayoutGroupBSetter
+        public class GridLayoutGroupSetter : GridLayoutGroupBSetter
         {
-            public override float spacing { get; set; } = 10f;
-            public override RectOffset padding { get; set; } = new RectOffset(0, 0, 10, 10);
+            public override Vector2 spacing { get; set; } = new Vector2(10, 10);
+            public override RectOffset padding { get; set; } = new RectOffset(10, 10, 10, 10);
+            public override Vector2 cellSize { get; set; } = new Vector2(300, 300);
         }
 
         public class ContenSizeFilterSetter : ContentSizeFilterBSetter
         {
-            public override ContentSizeFitter.FitMode horizontalFit { get; set; } = ContentSizeFitter.FitMode.Unconstrained;
+            public override ContentSizeFitter.FitMode horizontalFit { get; set; } = ContentSizeFitter.FitMode.PreferredSize;
             public override ContentSizeFitter.FitMode verticalFit { get; set; } = ContentSizeFitter.FitMode.PreferredSize;
         }
 
@@ -428,4 +408,5 @@ namespace U.Reactor
 
     }
 }
+
 

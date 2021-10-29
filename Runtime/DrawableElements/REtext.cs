@@ -69,7 +69,7 @@ namespace U.Reactor
 
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp, this);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, textCmp);
 
 
         protected override void AddHooks()
@@ -98,7 +98,6 @@ namespace U.Reactor
         {
 
             public Text textCmp { get; private set; }
-            public REtext constructor { get; private set; }
 
 
             public Selector(
@@ -106,12 +105,10 @@ namespace U.Reactor
                 HC.ReactorId pieceId,
                 RectTransform rectTransform,
                 CanvasRenderer canvasRenderer,
-                Text textCmp,
-                REtext constructor
+                Text textCmp
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
                 this.textCmp = textCmp;
-                this.constructor = constructor;
             }
 
 
@@ -120,7 +117,6 @@ namespace U.Reactor
                 base.Destroy();
 
                 textCmp = null;
-                constructor = null;
             }
         }
 

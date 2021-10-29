@@ -247,7 +247,7 @@ namespace U.Reactor
         }
 
         protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, dropdownCmp, dropdownImageCmp, labelTextCmp, arrowImageCmp, templateImageCmp,
-                scrollRectCmp, viewportImageCmp, maskCmp, toggleCmp, itemBackImageCmp, itemCheckImageCmp, itemLabelTextCmp, scrollbarImageCmp, scrollbarCmp, scrollbarHandleImageCmp, this);
+                scrollRectCmp, viewportImageCmp, maskCmp, toggleCmp, itemBackImageCmp, itemCheckImageCmp, itemLabelTextCmp, scrollbarImageCmp, scrollbarCmp, scrollbarHandleImageCmp);
 
         protected override void AfterCreateComponent()
         {
@@ -281,7 +281,6 @@ namespace U.Reactor
             protected Image scrollbarImage { get; private set; }
             protected Scrollbar scrollbar { get; private set; }
             protected Image scrollbarHandleImage { get; private set; }
-            public REdropdown constructor { get; private set; }
 
 
             internal Selector(
@@ -304,8 +303,7 @@ namespace U.Reactor
                 Text itemLabelText,
                 Image scrollbarImage,
                 Scrollbar scrollbar,
-                Image scrollbarHandleImage,
-                REdropdown constructor
+                Image scrollbarHandleImage
                 ) : base(gameObject, pieceId, rectTransform, canvasRenderer)
             {
                 this.dropdown = dropdown;
@@ -323,7 +321,6 @@ namespace U.Reactor
                 this.scrollbarImage = scrollbarImage;
                 this.scrollbar = scrollbar;
                 this.scrollbarHandleImage = scrollbarHandleImage;
-                this.constructor = constructor;
             }
 
             internal override void Destroy()
@@ -345,7 +342,6 @@ namespace U.Reactor
                 scrollbarImage = null;
                 scrollbar = null;
                 scrollbarHandleImage = null;
-                constructor = null;
             }
         }
 
