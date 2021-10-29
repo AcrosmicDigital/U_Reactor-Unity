@@ -30,8 +30,9 @@ namespace U.Reactor
             {
                 erase.Invoke();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Debug.Log("Error erasing child, " + e);
             }
         }
 
@@ -41,8 +42,9 @@ namespace U.Reactor
             {
                 eraseChilds.Invoke();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Debug.Log("Error erasing all childs, " + e);
             }
         }
 
@@ -133,7 +135,7 @@ namespace U.Reactor
 
         internal void SetErase(Action erase)
         {
-            this.erase = Erase;
+            this.erase = erase;
         }
         internal void SetEraseChilds(Action eraseChilds)
         {

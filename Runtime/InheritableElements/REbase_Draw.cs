@@ -225,6 +225,7 @@ namespace U.Reactor
             return this;
         }
 
+        // Function to subscribe to useTrigger event
         private void OnTrigger(object sender, OnTriggerEventArgs e)
         {
             // Search the action trigger
@@ -242,7 +243,7 @@ namespace U.Reactor
 
         }
 
-
+        // Function to subscribe to useAddChilds event
         private void OnUseChildAdded(object sender, OnChildAddedEventArgs e)
         {
             try
@@ -261,7 +262,7 @@ namespace U.Reactor
             Draw(parent, parentSelector);
         }
 
-        // Function to subscribe to useAddChilds event
+        
         private void CreateChild(REbase child)
         {
             if (child == null) return;
@@ -317,6 +318,19 @@ namespace U.Reactor
                         continue;
 
                     h.OnChildAdded -= OnUseChildAdded;
+
+                }
+            }
+
+            // Unsubscribe to useTrigger events
+            if (useTrigger != null)
+            {
+                foreach (var h in useTrigger.Select(p => p.hook))
+                {
+                    if (h == null)
+                        continue;
+
+                    h.OnTrigger -= OnTrigger;
 
                 }
             }
