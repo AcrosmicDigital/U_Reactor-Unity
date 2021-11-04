@@ -34,7 +34,7 @@ public class ReactorSample_TimeCounter : MonoBehaviour
 
         return new REcanvas
         {
-            childs = () => new REbase[]
+            childs = () => new REbase[] 
             {
                 new REpanelVertical
                 {
@@ -44,12 +44,12 @@ public class ReactorSample_TimeCounter : MonoBehaviour
                     },
                     childs = () => new REbase[]
                     {
-                        new REbox{},
+                        new REbox { },
                         new REtext
                         {
                             propsRectTransform = () => new REtext.RectTransformSetter
                             {
-                               localPosition = new Vector3(0,200),
+                                localPosition = new Vector3(0, 200),
                             },
                             propsText = () => new REtext.TextSetter
                             {
@@ -78,7 +78,7 @@ public class ReactorSample_TimeCounter : MonoBehaviour
                         {
                             propsText = () =>
                             {
-                                if(isPaused)
+                                if (isPaused)
                                     return new REbutton.TextSetter
                                     {
                                         text = "Play",
@@ -89,13 +89,13 @@ public class ReactorSample_TimeCounter : MonoBehaviour
                                         text = "Pause",
                                     };
                             },
-                            propsButton = ()=> new REbutton.ButtonSetter
+                            propsButton = () => new REbutton.ButtonSetter
                             {
                                 OnClickListener = (s) =>
                                 {
                                     isPaused = !isPaused;
 
-                                    if(isPaused) s.textCmp.text = "Play";
+                                    if (isPaused) s.textCmp.text = "Play";
                                     else s.textCmp.text = "Pause";
                                 },
                             }
@@ -106,15 +106,15 @@ public class ReactorSample_TimeCounter : MonoBehaviour
                             {
                                 text = "Reset",
                             },
-                            propsButton = ()=> new REbutton.ButtonSetter
+                            propsButton = () => new REbutton.ButtonSetter
                             {
                                 OnClickListener = (s) =>
                                 {
                                     time = 0;
                                 },
                             }
-                        },
-                    },
+                        }
+                    }
                 },
             }
         };

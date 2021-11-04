@@ -51,7 +51,7 @@ namespace U.Reactor
         public Func<ToggleSetter> propsToggle = () => new ToggleSetter();
         public Func<BackImageSetter> propsBackImage = () => new BackImageSetter();
         public Func<CheckImageSetter> propsCheckImage = () => new CheckImageSetter();
-        public Func<TextSeter> propsText = () => new TextSeter();
+        public Func<TextSetter> propsText = () => new TextSetter();
         public Func<MultiToggleMemberSetter> propsMultiToggleMember = () => new MultiToggleMemberSetter();
 
         #endregion Setters
@@ -255,7 +255,7 @@ namespace U.Reactor
             public override Color color { get; set; } = Color.gray;
         }
 
-        public class TextSeter : TextBSetter
+        public class TextSetter : TextBSetter
         {
             public override string text { get; set; } = "Toggle";
             public override Color fontColor { get; set; } = new Color(0.1960f, 0.1960f, 0.1960f, 1);

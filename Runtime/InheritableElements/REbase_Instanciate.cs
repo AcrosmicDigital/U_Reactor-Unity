@@ -13,8 +13,6 @@ namespace U.Reactor
     public abstract partial class REbase
     {
 
-
-
         // Create a child GO with recttransform and canvas renderer
         protected static GameObject InstanciateUIObject(string name, GameObject parent)
         {

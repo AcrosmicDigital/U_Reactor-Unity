@@ -24,6 +24,7 @@ namespace U.Reactor
         private Action erase { get; set; }
         private Action eraseChilds { get; set; }
 
+
         public void Erase()
         {
             try
