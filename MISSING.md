@@ -6,3 +6,5 @@ get https://www.youtube.com/watch?v=NEYrSUM4Umw
 post https://www.youtube.com/watch?v=x9UEDRbLhJE
 
 - Hacer los borradores para hacer elrouter y los componentes y todo eso
+
+- Ver si se puede hacer una template que ya tenga todo el U framework instalado
