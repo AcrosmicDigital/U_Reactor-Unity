@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace U.Reactor
@@ -18,12 +16,12 @@ namespace U.Reactor
             Disable, // Disable unused views (Disable canvas Gameobject)
         }
 
-        
+
         public Dictionary<string, REcanvas> routes = new Dictionary<string, REcanvas>(); // List of routes 
         public string defaultRoute = "";  // The default route is empty by default
         public RouterMode routerMode = RouterMode.Erase;  // Is erase by default
 
-         
+
         private REcanvas defaultRouteCanvas = new REcanvas
         {
 
@@ -139,25 +137,34 @@ namespace U.Reactor
 
             // If other default view is set, that will be 
             if (!String.IsNullOrEmpty(defaultRoute))
-                if(routes.ContainsKey(defaultRoute))
+                if (routes.ContainsKey(defaultRoute))
                     canvas = routes[defaultRoute];
 
             // Is the route requested exist, that will be
-            if(statesQueue.Count() > 0)
+            var peek = "Default";
+            if (statesQueue.Count() > 0)
+            {
+                peek = statesQueue.Peek();
                 if (routes.ContainsKey(statesQueue.Peek()))
                     canvas = routes[statesQueue.Peek()];
+            }
 
-            // If view is null, just return
-            if (canvas == null)
-                return;
 
-            // Show enable or create the view
-            if (routerMode == RouterMode.Disable)
-                canvas.Enable();
-            else if (routerMode == RouterMode.Hide)
-                canvas.Show();
-            else
-                canvas.Draw();
+            try
+            {
+                // Show enable or create the view
+                if (routerMode == RouterMode.Disable)
+                    canvas.Enable();
+                else if (routerMode == RouterMode.Hide)
+                    canvas.Show();
+                else
+                    canvas.Draw();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("ReactorRouter: Error while rounting to :" + peek + " , " + e);
+            }
+
 
         }
 
