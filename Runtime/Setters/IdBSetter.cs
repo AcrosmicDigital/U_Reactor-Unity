@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace U.Reactor
 {
     /// <summary>
     /// Create a HC.ReactorId in a gameobject with default values in Unity v2020.3.1f1
     /// </summary>
-    public class ReactorIdBSetter
+    public class IdBSetter
     {
         // Listeners
         // ...

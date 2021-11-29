@@ -127,10 +127,10 @@ public class Reactor_40Router
         
         // Creating the router
         yield return new WaitForSecondsRealtime(1);
-        ReactorRouter RouterProveReactorComponent()
+        Router RouterProveReactorComponent()
         {
 
-            return new ReactorRouter
+            return new Router
             {
                 routes = new Dictionary<string, REcanvas>()
                     {
@@ -253,10 +253,10 @@ public class Reactor_40Router
 
         // Creating the router
         yield return new WaitForSecondsRealtime(1);
-        ReactorRouter RouterProveReactorComponent()
+        Router RouterProveReactorComponent()
         {
 
-            return new ReactorRouter
+            return new Router
             {
                 routes = new Dictionary<string, REcanvas>()
                     {
@@ -367,12 +367,12 @@ public class Reactor_40Router
 
         // Creating the router
         yield return new WaitForSecondsRealtime(1);
-        ReactorRouter RouterProveReactorComponent()
+        Router RouterProveReactorComponent()
         {
 
-            return new ReactorRouter
+            return new Router
             {
-                routerMode = ReactorRouter.RouterMode.Hide,
+                routerMode = Router.RouterMode.Hide,
                 routes = new Dictionary<string, REcanvas>()
                     {
                         {"Menu", Menu()},
@@ -538,12 +538,12 @@ public class Reactor_40Router
 
         // Creating the router
         yield return new WaitForSecondsRealtime(1);
-        ReactorRouter RouterProveReactorComponent()
+        Router RouterProveReactorComponent()
         {
 
-            return new ReactorRouter
+            return new Router
             {
-                routerMode = ReactorRouter.RouterMode.Disable,
+                routerMode = Router.RouterMode.Disable,
                 routes = new Dictionary<string, REcanvas>()
                     {
                         {"Menu", Menu()},
@@ -710,12 +710,12 @@ public class Reactor_40Router
 
         // Creating the router
         yield return new WaitForSecondsRealtime(1);
-        ReactorRouter RouterProveReactorComponent()
+        Router RouterProveReactorComponent()
         {
 
-            return new ReactorRouter
+            return new Router
             {
-                routerMode = ReactorRouter.RouterMode.Hide,
+                routerMode = Router.RouterMode.Hide,
                 routes = new Dictionary<string, REcanvas>()
                     {
                         {"Menu", Menu()},
@@ -860,12 +860,12 @@ public class Reactor_40Router
 
         // Creating the router
         yield return new WaitForSecondsRealtime(1);
-        ReactorRouter RouterProveReactorComponent()
+        Router RouterProveReactorComponent()
         {
 
-            return new ReactorRouter
+            return new Router
             {
-                routerMode = ReactorRouter.RouterMode.Disable,
+                routerMode = Router.RouterMode.Disable,
                 routes = new Dictionary<string, REcanvas>()
                     {
                         {"Menu", Menu()},
@@ -1012,12 +1012,12 @@ public class Reactor_40Router
 
         // Creating the router
         yield return new WaitForSecondsRealtime(1);
-        ReactorRouter RouterProveReactorComponent()
+        Router RouterProveReactorComponent()
         {
 
-            return new ReactorRouter
+            return new Router
             {
-                routerMode = ReactorRouter.RouterMode.Hide,
+                routerMode = Router.RouterMode.Hide,
                 routes = new Dictionary<string, REcanvas>()
                     {
                         {"Menu", Menu()},
@@ -1180,12 +1180,12 @@ public class Reactor_40Router
 
         // Creating the router
         yield return new WaitForSecondsRealtime(1);
-        ReactorRouter RouterProveReactorComponent()
+        Router RouterProveReactorComponent()
         {
 
-            return new ReactorRouter
+            return new Router
             {
-                routerMode = ReactorRouter.RouterMode.Disable,
+                routerMode = Router.RouterMode.Disable,
                 routes = new Dictionary<string, REcanvas>()
                     {
                         {"Menu", Menu()},
@@ -1352,10 +1352,10 @@ public class Reactor_40Router
 
         // Creating the router
         yield return new WaitForSecondsRealtime(1);
-        ReactorRouter RouterProveReactorComponent()
+        Router RouterProveReactorComponent()
         {
 
-            return new ReactorRouter
+            return new Router
             {
                 routes = new Dictionary<string, REcanvas>()
                     {
@@ -1527,10 +1527,10 @@ public class Reactor_40Router
 
         // Creating the router
         yield return new WaitForSecondsRealtime(1);
-        ReactorRouter RouterProveReactorComponent()
+        Router RouterProveReactorComponent()
         {
 
-            return new ReactorRouter
+            return new Router
             {
                 routes = new Dictionary<string, REcanvas>()
                     {
@@ -1690,10 +1690,10 @@ public class Reactor_40Router
 
         // Creating the router
         yield return new WaitForSecondsRealtime(1);
-        ReactorRouter RouterProveReactorComponent()
+        Router RouterProveReactorComponent()
         {
 
-            return new ReactorRouter
+            return new Router
             {
                 routes = new Dictionary<string, REcanvas>()
                     {

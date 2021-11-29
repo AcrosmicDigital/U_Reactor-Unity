@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace U.Reactor
@@ -15,7 +10,7 @@ namespace U.Reactor
     public class ToggleBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<bool, TSelector> OnValueChangedListener { get; set; } = (v, s) => { };
+        public virtual Action<bool, TSelector> OnValueChangedListener { get; set; } = (v, s) => { };
         // Properties
         public virtual bool interactable { get; set; } = true;
         public virtual Selectable.Transition transition { get; set; } = Selectable.Transition.ColorTint;

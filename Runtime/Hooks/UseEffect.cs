@@ -15,7 +15,7 @@ namespace U.Reactor
     {
 
         protected TSelector selector;
-        protected ReactorHooks.TimeMode timeMode; // Time between functions calls
+        protected HooksConfig.TimeMode timeMode; // Time between functions calls
         protected float duration; // Time between functions calls
         protected int iterationsCount; // If will be destroyed after first execution, 0 or less for loop
         protected Action<float, TSelector> deltaFunction;
@@ -67,7 +67,7 @@ namespace U.Reactor
                 }
             }
 
-            if( timeMode == ReactorHooks.TimeMode.DeltaTime)
+            if( timeMode == HooksConfig.TimeMode.DeltaTime)
                 time += Time.deltaTime;
             else
                 time += Time.unscaledDeltaTime;
@@ -84,7 +84,7 @@ namespace U.Reactor
         public class Hook
         {
             public float duration = 1f;
-            public ReactorHooks.TimeMode timeMode = ReactorHooks.TimeMode.DeltaUnscaledTime;
+            public HooksConfig.TimeMode timeMode = HooksConfig.TimeMode.DeltaUnscaledTime;
             public Action<float, TSelector> deltaFunction;
             public int iterationsCount = -1;
         }
@@ -111,7 +111,7 @@ namespace U.Reactor
 
     }
 
-    public partial class ReactorHooks
+    public class HooksConfig
     {
         public enum TimeMode
         {
@@ -119,6 +119,5 @@ namespace U.Reactor
             DeltaUnscaledTime,
         }
     }
-
 
 }

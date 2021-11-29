@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace U.Reactor
@@ -15,8 +10,8 @@ namespace U.Reactor
     public class InputFieldBSetter<TSelector> where TSelector : REbaseSelector
     {
         // Listeners
-        public virtual UnityAction<string, TSelector> OnValueChangedListener { get; set; } = (t, s) => { };
-        public virtual UnityAction<string, TSelector> OnEndEditListener { get; set; } = (t, s) => { };
+        public virtual Action<string, TSelector> OnValueChangedListener { get; set; } = (t, s) => { };
+        public virtual Action<string, TSelector> OnEndEditListener { get; set; } = (t, s) => { };
         // Properties
         public virtual bool interactable { get; set; } = true;
         public virtual Selectable.Transition transition { get; set; } = Selectable.Transition.ColorTint;

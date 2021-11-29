@@ -166,7 +166,7 @@ public class Reactor_52Hooks_UseEffect
                                 new REtext.UseEffect.Hook {
                                     
                                     // time mode is unscaled time by default
-                                    timeMode = ReactorHooks.TimeMode.DeltaTime,
+                                    timeMode = HooksConfig.TimeMode.DeltaTime,
 
                                     // Is executd each 1second per default affected by time
                                     deltaFunction = (d, s) => {
@@ -431,7 +431,7 @@ public class Reactor_52Hooks_UseEffect
                                 new REtext.UseEffect.Hook {
                                     
                                     // Is executd each 1second per default time speed affect it
-                                    timeMode = ReactorHooks.TimeMode.DeltaTime,
+                                    timeMode = HooksConfig.TimeMode.DeltaTime,
                                     deltaFunction = (d,s) => {
                                         otherCount++;
                                         s.textCmp.fontSize = otherCount;

@@ -15,7 +15,7 @@ namespace U.Reactor
         public abstract Type elementType { get; }  // The type of the element, each element must everride
         protected abstract Func<RectTransformBSetter> PropsRectTransform { get; }
         protected abstract Func<GameObjectBSetter> PropsGameObject { get; }
-        protected abstract Func<ReactorIdBSetter> PropsReactorId { get; }
+        protected abstract Func<IdBSetter> PropsReactorId { get; }
         protected abstract Func<LayoutElementBSetter> PropsLayoutElement { get; }
         public abstract bool isLayoutElement { get; }
 

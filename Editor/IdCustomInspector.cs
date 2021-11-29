@@ -7,7 +7,7 @@ namespace U.Reactor
 {
     [CustomEditor(typeof(HC.ReactorId))]
     [CanEditMultipleObjects()]
-    public class ReactorIdCustomInspector : Editor
+    internal class IdCustomInspector : Editor
     {
         public override void OnInspectorGUI()
         {

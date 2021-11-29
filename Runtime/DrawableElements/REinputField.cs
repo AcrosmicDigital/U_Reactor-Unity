@@ -13,7 +13,7 @@ namespace U.Reactor
         public override Type elementType => this.GetType();
         protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
         protected override Func<GameObjectBSetter> PropsGameObject => propsGameObject;
-        protected override Func<ReactorIdBSetter> PropsReactorId => propsReactorId;
+        protected override Func<IdBSetter> PropsReactorId => propsReactorId;
         protected override Func<CanvasRendererBSetter> PropsCanvasRenderer => propsCanvasRenderer;
         protected override Func<LayoutElementBSetter> PropsLayoutElement => propsLayoutElement;
         public override bool isLayoutElement => true;
@@ -202,7 +202,7 @@ namespace U.Reactor
 
         }
 
-        public class ReactorIdSetter : ReactorIdBSetter
+        public class ReactorIdSetter : IdBSetter
         {
 
         }

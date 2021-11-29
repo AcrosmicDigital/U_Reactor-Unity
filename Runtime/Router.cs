@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace U.Reactor
 {
-    public class ReactorRouter
+    public class Router
     {
 
         // What the router will do wuth unused views 
