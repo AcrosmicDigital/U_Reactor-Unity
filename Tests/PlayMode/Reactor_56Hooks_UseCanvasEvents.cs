@@ -62,7 +62,7 @@ public class Reactor_56Hooks_UseCanvasEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new REtext.ReactorIdSetter{
+                            propsId = () => new REtext.IdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new REtext.TextSetter {
@@ -120,7 +120,7 @@ public class Reactor_56Hooks_UseCanvasEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new REtext.ReactorIdSetter{
+                            propsId = () => new REtext.IdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new REtext.TextSetter {
@@ -190,7 +190,7 @@ public class Reactor_56Hooks_UseCanvasEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new REtext.ReactorIdSetter{
+                            propsId = () => new REtext.IdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new REtext.TextSetter {
@@ -262,7 +262,7 @@ public class Reactor_56Hooks_UseCanvasEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new REtext.ReactorIdSetter{
+                            propsId = () => new REtext.IdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new REtext.TextSetter {
@@ -330,7 +330,7 @@ public class Reactor_56Hooks_UseCanvasEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new REtext.ReactorIdSetter{
+                            propsId = () => new REtext.IdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new REtext.TextSetter {
@@ -397,7 +397,7 @@ public class Reactor_56Hooks_UseCanvasEvents
 
                 childs = () => new REbase[] {
                         new REtext {
-                            propsReactorId = () => new REtext.ReactorIdSetter{
+                            propsId = () => new REtext.IdSetter{
                                 id = "ProveText"
                             },
                             propsText = () => new REtext.TextSetter {

@@ -15,7 +15,7 @@ namespace U.Reactor
         public abstract Type elementType { get; }  // The type of the element, each element must everride
         protected abstract Func<RectTransformBSetter> PropsRectTransform { get; }
         protected abstract Func<GameObjectBSetter> PropsGameObject { get; }
-        protected abstract Func<IdBSetter> PropsReactorId { get; }
+        protected abstract Func<IdBSetter> PropsId { get; }
         protected abstract Func<LayoutElementBSetter> PropsLayoutElement { get; }
         public abstract bool isLayoutElement { get; }
 
@@ -23,7 +23,7 @@ namespace U.Reactor
         #region Components
 
         protected RectTransform rectTransformCmp;
-        protected HC.ReactorId reactorIdCmp;
+        protected HC.ReactorId idCmp;
 
         #endregion Components
 
@@ -104,8 +104,8 @@ namespace U.Reactor
             var propsRectT = PropsRectTransform();
             rectTransformCmp = propsRectT.SetOrSearchByWidthAndHeight(gameObject);
             SetRealSize(propsRectT);
-            reactorIdCmp = PropsReactorId().Set(gameObject);
-            reactorIdCmp.SetElementType(elementType);
+            idCmp = PropsId().Set(gameObject);
+            idCmp.SetElementType(elementType);
         }
 
 
@@ -220,7 +220,7 @@ namespace U.Reactor
             // Add Id
             selector.SetErase(Erase);
             selector.SetEraseChilds(EraseChilds);
-            reactorIdCmp.SetSelector(selector);
+            idCmp.SetSelector(selector);
 
             return this;
         }
@@ -348,8 +348,8 @@ namespace U.Reactor
             }
             
             // Destroy all the components and selectors
-            if(reactorIdCmp != null)
-                UnityEngine.Object.DestroyImmediate(reactorIdCmp);
+            if(idCmp != null)
+                UnityEngine.Object.DestroyImmediate(idCmp);
 
             // Destroy the selector
             if (selector != null)

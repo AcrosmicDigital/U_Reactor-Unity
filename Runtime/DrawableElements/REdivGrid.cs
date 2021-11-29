@@ -13,7 +13,7 @@ namespace U.Reactor
         public override Type elementType => this.GetType();
         protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
         protected override Func<GameObjectBSetter> PropsGameObject => propsGameObject;
-        protected override Func<IdBSetter> PropsReactorId => propsReactorId;
+        protected override Func<IdBSetter> PropsId => propsId;
         protected override Func<CanvasRendererBSetter> PropsCanvasRenderer => propsCanvasRenderer;
         protected override Func<LayoutElementBSetter> PropsLayoutElement => null;
         public override bool isLayoutElement => false;
@@ -42,7 +42,7 @@ namespace U.Reactor
         // Base
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
         public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
-        public Func<ReactorIdSetter> propsReactorId = () => new ReactorIdSetter();
+        public Func<IdSetter> propsId = () => new IdSetter();
         // Child
         public Func<CanvasRendererSetter> propsCanvasRenderer = () => new CanvasRendererSetter();
 
@@ -169,7 +169,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, canvasRendererCmp, scrollRectCmp, rectMask2Cmp, gridLayoutGroupCmp, contentSizeCmp,
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, idCmp, rectTransformCmp, canvasRendererCmp, scrollRectCmp, rectMask2Cmp, gridLayoutGroupCmp, contentSizeCmp,
                 vScrollbarImageCmp, vScrollbarCmp, vScrollbarHandleImageCmp, hScrollbarImageCmp, hScrollbarCmp, hScrollbarHandleImageCmp);
 
         protected override void AfterCreateComponent()
@@ -299,7 +299,7 @@ namespace U.Reactor
 
         }
 
-        public class ReactorIdSetter : IdBSetter
+        public class IdSetter : IdBSetter
         {
 
         }

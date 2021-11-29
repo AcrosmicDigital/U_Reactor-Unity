@@ -13,7 +13,7 @@ namespace U.Reactor
         public override Type elementType => this.GetType();
         protected override Func<RectTransformBSetter> PropsRectTransform => propsRectTransform;
         protected override Func<GameObjectBSetter> PropsGameObject => propsGameObject;
-        protected override Func<IdBSetter> PropsReactorId => propsReactorId;
+        protected override Func<IdBSetter> PropsId => propsId;
         protected override Func<LayoutElementBSetter> PropsLayoutElement => propsLayoutElement;
         public override bool isLayoutElement => true;
 
@@ -33,7 +33,7 @@ namespace U.Reactor
         // Base
         public Func<RectTransformSetter> propsRectTransform = () => new RectTransformSetter();
         public Func<GameObjectSetter> propsGameObject = () => new GameObjectSetter();
-        public Func<ReactorIdSetter> propsReactorId = () => new ReactorIdSetter();
+        public Func<IdSetter> propsId = () => new IdSetter();
         // Layout element
         public Func<LayoutElementSetter> propsLayoutElement;
 
@@ -147,7 +147,7 @@ namespace U.Reactor
             UseUpdate.AddHook(gameObject, (Selector)selector, useUpdate);
         }
 
-        protected override REbaseSelector AddSelector() => new Selector(gameObject, reactorIdCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp, handleImageCmp);
+        protected override REbaseSelector AddSelector() => new Selector(gameObject, idCmp, rectTransformCmp, sliderCmp, backImageCmp, fillImageCmp, handleImageCmp);
 
         protected override void AfterCreateComponent()
         {
@@ -218,7 +218,7 @@ namespace U.Reactor
 
         }
 
-        public class ReactorIdSetter : IdBSetter
+        public class IdSetter : IdBSetter
         {
 
         }

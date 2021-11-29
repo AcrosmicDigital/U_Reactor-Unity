@@ -33,7 +33,7 @@ public class ReactorSample_ClicksCounter : MonoBehaviour
             {
                 new REtext
                 {
-                    propsReactorId = () => new REtext.ReactorIdSetter
+                    propsId = () => new REtext.IdSetter
                     {
                         id = "Title-One",
                         className = new string[]
@@ -46,7 +46,7 @@ public class ReactorSample_ClicksCounter : MonoBehaviour
                 },
                 new REtext
                 {
-                    propsReactorId = () => new REtext.ReactorIdSetter
+                    propsId = () => new REtext.IdSetter
                     {
                         id = "Title-One",
                         className = new string[]

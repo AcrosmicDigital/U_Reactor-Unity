@@ -16,12 +16,12 @@ namespace U.Reactor
             Disable, // Disable unused views (Disable canvas Gameobject)
         }
 
-
+        
         public Dictionary<string, REcanvas> routes = new Dictionary<string, REcanvas>(); // List of routes 
         public string defaultRoute = "";  // The default route is empty by default
         public RouterMode routerMode = RouterMode.Erase;  // Is erase by default
 
-
+         
         private REcanvas defaultRouteCanvas = new REcanvas
         {
 
@@ -137,7 +137,7 @@ namespace U.Reactor
 
             // If other default view is set, that will be 
             if (!String.IsNullOrEmpty(defaultRoute))
-                if (routes.ContainsKey(defaultRoute))
+                if(routes.ContainsKey(defaultRoute))
                     canvas = routes[defaultRoute];
 
             // Is the route requested exist, that will be
@@ -148,8 +148,8 @@ namespace U.Reactor
                 if (routes.ContainsKey(statesQueue.Peek()))
                     canvas = routes[statesQueue.Peek()];
             }
-
-
+                
+            
             try
             {
                 // Show enable or create the view
@@ -164,7 +164,7 @@ namespace U.Reactor
             {
                 Debug.LogError("ReactorRouter: Error while rounting to :" + peek + " , " + e);
             }
-
+            
 
         }
 
