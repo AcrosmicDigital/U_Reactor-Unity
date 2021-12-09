@@ -349,7 +349,7 @@ namespace U.Reactor
             
             // Destroy all the components and selectors
             if(idCmp != null)
-                UnityEngine.Object.DestroyImmediate(idCmp);
+                UnityEngine.Object.Destroy(idCmp);
 
             // Destroy the selector
             if (selector != null)
