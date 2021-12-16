@@ -15,7 +15,6 @@ namespace U.Reactor
         public virtual int layer { get; set; } = 5; // In what layer the GameObject Should Be, default is 5 = UI layer
         public virtual bool active { get; set; } = true;  // If the GO will be enabled by default
         public virtual string tag { get; set; } = null;
-        public virtual bool dontDestroyOnLoad { get; set; } = false;
 
 
         internal GameObject SetNameLayerAndTag(GameObject c)
@@ -31,14 +30,6 @@ namespace U.Reactor
             return c;
         }
 
-        internal GameObject SetDontDestroyOnLoad(GameObject c)
-        {
-            if (dontDestroyOnLoad && c.transform.parent != null)
-                UnityEngine.Object.DontDestroyOnLoad(c);
-
-
-            return c;
-        }
     }
 
 }

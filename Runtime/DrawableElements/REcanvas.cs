@@ -72,8 +72,6 @@ namespace U.Reactor
         protected override void AddComponents()
         {
 
-            propsGameObject().SetDontDestroyOnLoad(gameObject);
-
             // Set the props
             canvasCmp = propsCanvas().Set(gameObject);
             canvasScalerCmp = propsCanvasScaler().Set(gameObject);
@@ -175,6 +173,18 @@ namespace U.Reactor
                 gameObject.SetActive(true);
             else
                 Draw(parent, parentSelector);
+        }
+
+        public void ToDontDestroyOnLoad()
+        {
+            try
+            {
+                UnityEngine.Object.DontDestroyOnLoad(gameObject);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("REcanvas: Canvas is not drawed, cant send to DontDestroyOnLoad, " + e);
+            }
         }
 
         #endregion Aditional Methods

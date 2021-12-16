@@ -20,6 +20,7 @@ namespace U.Reactor
         public Dictionary<string, REcanvas> routes = new Dictionary<string, REcanvas>(); // List of routes 
         public string defaultRoute = "";  // The default route is empty by default
         public RouterMode routerMode = RouterMode.Erase;  // Is erase by default
+        public bool inDontDestroyOnLoad = false;
 
          
         private REcanvas defaultRouteCanvas = new REcanvas
@@ -91,9 +92,6 @@ namespace U.Reactor
             if (statesQueue.Count() > 0)
                 return;
 
-            if (routerMode == RouterMode.Erase)
-                return;
-
             if (routes == null)
                 return;
 
@@ -103,13 +101,17 @@ namespace U.Reactor
                     continue;
 
                 urcanvas.Value.Draw();
+                if (inDontDestroyOnLoad) urcanvas.Value.ToDontDestroyOnLoad();
             }
             defaultRouteCanvas.Draw();
+            if (inDontDestroyOnLoad) defaultRouteCanvas.ToDontDestroyOnLoad();
 
             if (routerMode == RouterMode.Disable)
                 Disable();
-            if (routerMode == RouterMode.Hide)
+            else if (routerMode == RouterMode.Hide)
                 Hide();
+            else
+                Erase();
 
         }
 
@@ -159,6 +161,9 @@ namespace U.Reactor
                     canvas.Show();
                 else
                     canvas.Draw();
+
+                if (inDontDestroyOnLoad) canvas.ToDontDestroyOnLoad();
+
             }
             catch (Exception e)
             {
