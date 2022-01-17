@@ -128,9 +128,11 @@ namespace U.Reactor
             childsList.Clear();
 
             IEnumerable<REbase> newChilds = null;
-            try { newChilds = childs(); }
-            catch (ArgumentNullException) { newChilds = null; }
-            catch (NullReferenceException) { newChilds = null; }
+            if (childs != null)
+            {
+                try { newChilds = childs(); }
+                catch (Exception e) { Debug.LogError("UReactor: Error drawing childs of, " + gameObject.name + ", " + e); }
+            }
 
             if (newChilds != null)
             {
