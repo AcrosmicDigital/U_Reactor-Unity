@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace U.Reactor
+namespace U.Reactor.Editor
 {
     [CustomEditor(typeof(HC.ReactorId))]
     [CanEditMultipleObjects()]
-    internal class IdCustomInspector : Editor
+    internal class IdCustomInspector : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
@@ -36,8 +34,6 @@ namespace U.Reactor
                 }
                 EditorGUI.indentLevel--;
             }
-
-
 
         }
     }

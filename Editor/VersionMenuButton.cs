@@ -1,20 +1,17 @@
 using UnityEngine;
 using UnityEditor;
 
-
-#if UNITY_EDITOR
-
-internal class VersionMenuButton : EditorWindow
+namespace U.Reactor.Editor
 {
-
-    [MenuItem("U/Reactor/Version")]
-    public static void PrintVersion()
+    internal class VersionMenuButton : EditorWindow
     {
 
-        Debug.Log(" U Framework: Reactor v1.0.0 for Unity");
+        [MenuItem("Universal/Reactor/Version")]
+        public static void PrintVersion()
+        {
 
+            Debug.Log(" U Framework: Reactor v1.0.0 for Unity");
+
+        }
     }
 }
-
-
-#endif
