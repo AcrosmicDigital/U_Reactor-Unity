@@ -25,16 +25,29 @@ namespace U.Reactor
          
         private REcanvas defaultRouteCanvas = new REcanvas
         {
-
-            childs = () => new REbase[] {
-                    new REtext {
-                        propsText = () => new REtext.TextSetter {
-                            text = "Bad route",
+            propsCanvasScaler = () => new REcanvas.CanvasScalerSetter
+            {
+                matchWidthOrHeight = 1,
+            },
+            propsGameObject = () => new REcanvas.GameObjectSetter
+            {
+                name = "Route Not Found",
+            },
+            childs = () => new REbase[]
+            {
+                    new RElabel
+                    {
+                        propsText = () => new RElabel.TextSetter
+                        {
+                            text = "Route Not Found",
+                            fontColor = Color.white,
                         },
+                        propsImage = () => new RElabel.BackImageSetter
+                        {
+                            color = Color.red,
+                        }
                     },
-                },
-
-
+            }
         };  // A default canvas to show when no route is available
         private Stack<string> statesQueue = new Stack<string>(); // Stack of prev routes
 
