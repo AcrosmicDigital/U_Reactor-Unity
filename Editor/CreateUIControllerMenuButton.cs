@@ -6,7 +6,7 @@ namespace U.Reactor.Editor
     public class CreateGameControllerMenuButton : EditorWindow
     {
 
-        #region UIController File
+        #region File
         private static string FolderName => "/Scripts/Controllers/";
         private static string FileName => "UI.controller.cs";
         private readonly static string[] file =
@@ -36,7 +36,7 @@ namespace U.Reactor.Editor
             "    }",
             "}",
         };
-        #endregion UIController File
+        #endregion File
 
 
 

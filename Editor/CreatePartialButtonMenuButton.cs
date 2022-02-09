@@ -6,9 +6,10 @@ namespace U.Reactor.Editor
     public class CreatePartialButtonMenuButton : EditorWindow
     {
 
-        #region .button.partial File
+        #region File
         private static string DefaultFolderName => "/Scripts/Reactor/Partials/";
         private static string DefaultFileName => "New";
+        private static string CustomExtension => "button.partial";
         static string[] File(string fileName) => new string[]
         {
             "using UnityEngine;",
@@ -48,7 +49,7 @@ namespace U.Reactor.Editor
             "    }",
             "}",
         };
-        #endregion .button.partial File
+        #endregion File
 
 
 
@@ -60,7 +61,7 @@ namespace U.Reactor.Editor
         {
 
             // Create files
-            CreateFileWithSaveFilePanelAndCustomExtension(DefaultFolderName, DefaultFileName, File, FormatLog,"button.partial");
+            CreateFileWithSaveFilePanelAndCustomExtension(DefaultFolderName, DefaultFileName, File, FormatLog, CustomExtension);
 
             // Compile
             AssetDatabase.Refresh();

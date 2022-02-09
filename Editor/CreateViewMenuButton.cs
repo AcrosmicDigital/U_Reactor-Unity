@@ -6,7 +6,7 @@ namespace U.Reactor.Editor
     public class CreateViewMenuButton : EditorWindow
     {
 
-        #region .render and .scripts Files
+        #region File
         private static string DefaultFolderName => "/Scripts/Reactor/Views/";
         private static string DefaultFileName => "NewView";
         static string[] RenderFile(string fileName) => new string[]
@@ -71,6 +71,11 @@ namespace U.Reactor.Editor
             "    public partial class "+fileName+"",
             "    {",
             "",
+            "        // Load Resources",
+            "        //UIButtons spritesButtons = Resources.Load<UIButtons>("+quote+"Buttons"+quote+");",
+            "        //...",
+            "",
+            "",
             "        public void ButtonClickListener(REbutton.Selector s)",
             "        {",
             "            Debug.Log("+quote+"Clicked: "+quote+" + s.rootCanvasSelector.gameObject.name + "+quote+" Button"+quote+");",
@@ -80,7 +85,7 @@ namespace U.Reactor.Editor
             "    }",
             "}",
         };
-        #endregion .render and .scripts Files
+        #endregion File
 
 
 

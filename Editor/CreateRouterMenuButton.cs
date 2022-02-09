@@ -6,9 +6,10 @@ namespace U.Reactor.Editor
     public class CreateRouterMenuButton : EditorWindow
     {
 
-        #region .router File
+        #region File
         private static string DefaultFolderName => "/Scripts/Reactor/Routers/";
-        private static string DefaultFileName => "NewRouter";
+        private static string DefaultFileName => "New";
+        private static string CustomExtension => "router";
         static string[] File(string fileName) => new string[]
         {
             "using U.Reactor;",
@@ -40,7 +41,7 @@ namespace U.Reactor.Editor
             "",
             "}",
         };
-        #endregion .router File
+        #endregion File
 
 
 
@@ -52,7 +53,7 @@ namespace U.Reactor.Editor
         {
 
             // Create files
-            CreateFileWithSaveFilePanel(DefaultFolderName, DefaultFileName, File, FormatLog);
+            CreateFileWithSaveFilePanelAndCustomExtension(DefaultFolderName, DefaultFileName, File, FormatLog, CustomExtension);
 
             // Compile
             AssetDatabase.Refresh();
