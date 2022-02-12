@@ -15,7 +15,7 @@ namespace U.Reactor.Editor
             "using U.Reactor;",
             "using System.Collections.Generic;",
             "",
-            "public static partial class RRouting",
+            "public static partial class RRrouting",
             "{",
             "",
             "    public static readonly Router "+fileName+" = new Router",
