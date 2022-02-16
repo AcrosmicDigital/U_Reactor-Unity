@@ -7,7 +7,7 @@ namespace U.Reactor.Editor
     {
 
         #region File
-        private static string FolderName => "/Scripts/Controllers/";
+        private static string FolderName => "/Scripts/Control/";
         private static string FileName => "UI.controller.cs";
         private readonly static string[] file =
         {
