@@ -16,13 +16,13 @@ namespace U.Reactor
             Disable, // Disable unused views (Disable canvas Gameobject)
         }
 
-        
+
         public Dictionary<string, REcanvas> routes = new Dictionary<string, REcanvas>(); // List of routes 
         public string defaultRoute = "";  // The default route is empty by default
         public RouterMode routerMode = RouterMode.Erase;  // Is erase by default
         public bool inDontDestroyOnLoad = false;
 
-         
+
         private REcanvas defaultRouteCanvas = new REcanvas
         {
             propsCanvasScaler = () => new REcanvas.CanvasScalerSetter
@@ -98,9 +98,10 @@ namespace U.Reactor
         }
 
 
-        // Function to draw all the vies , only can be runed when no routes are set and only for hide and disable mode
+        // Function to draw all the views, but hidded
         public void PreDraw()
         {
+
             // Only can be called before any route
             if (statesQueue.Count() > 0)
                 return;
@@ -110,21 +111,24 @@ namespace U.Reactor
 
             foreach (var urcanvas in routes)
             {
+
                 if (urcanvas.Value == null)
                     continue;
 
                 urcanvas.Value.Draw();
                 if (inDontDestroyOnLoad) urcanvas.Value.ToDontDestroyOnLoad();
             }
+
             defaultRouteCanvas.Draw();
             if (inDontDestroyOnLoad) defaultRouteCanvas.ToDontDestroyOnLoad();
+            Hide();
 
-            if (routerMode == RouterMode.Disable)
-                Disable();
-            else if (routerMode == RouterMode.Hide)
-                Hide();
-            else
-                Erase();
+            //if (routerMode == RouterMode.Disable)
+            //    Disable();
+            //else if (routerMode == RouterMode.Hide)
+            //    Hide();
+            //else
+            //    Erase();
 
         }
 
@@ -152,7 +156,7 @@ namespace U.Reactor
 
             // If other default view is set, that will be 
             if (!String.IsNullOrEmpty(defaultRoute))
-                if(routes.ContainsKey(defaultRoute))
+                if (routes.ContainsKey(defaultRoute))
                     canvas = routes[defaultRoute];
 
             // Is the route requested exist, that will be
@@ -163,17 +167,14 @@ namespace U.Reactor
                 if (routes.ContainsKey(statesQueue.Peek()))
                     canvas = routes[statesQueue.Peek()];
             }
-                
-            
+
+
             try
             {
-                // Show enable or create the view
-                if (routerMode == RouterMode.Disable)
-                    canvas.Enable();
-                else if (routerMode == RouterMode.Hide)
-                    canvas.Show();
-                else
-                    canvas.Draw();
+                // Show the view if is hidded or disabled
+                canvas.Draw();
+                canvas.Enable();
+                canvas.Show();
 
                 if (inDontDestroyOnLoad) canvas.ToDontDestroyOnLoad();
 
@@ -182,7 +183,7 @@ namespace U.Reactor
             {
                 Debug.LogError("ReactorRouter: Error while rounting to :" + peek + " , " + e);
             }
-            
+
 
         }
 
