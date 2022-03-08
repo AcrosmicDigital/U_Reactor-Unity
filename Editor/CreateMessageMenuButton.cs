@@ -107,7 +107,7 @@ namespace U.Reactor.Editor
             "                    },",
             "                },",
             "            },",
-            "        }.Draw();",
+            "        }.Draw().ToDontDestroyOnLoad();",
             "    }",
             "",
             "}",
