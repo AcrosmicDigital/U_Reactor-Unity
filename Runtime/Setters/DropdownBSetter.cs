@@ -72,9 +72,9 @@ namespace U.Reactor
             c.animationTriggers = animationTriggers;
 
 
-            c.value = value;
             c.alphaFadeSpeed = alphaFadeSpeed;
             c.options = options;
+            c.value = value;
 
             return c;
         }

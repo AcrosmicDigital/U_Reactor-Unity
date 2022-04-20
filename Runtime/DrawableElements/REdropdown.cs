@@ -266,21 +266,21 @@ namespace U.Reactor
         public class Selector : RErendererSelector
         {
 
-            protected Dropdown dropdown { get; private set; }
-            protected Image dropdownImage { get; private set; }
-            protected Text labelText { get; private set; }
-            protected Image arrowImage { get; private set; }
-            protected Image templateImage { get; private set; }
-            protected ScrollRect scrollRect { get; private set; }
-            protected Image viewportImage { get; private set; }
-            protected Mask mask { get; private set; }
-            protected Toggle toggle { get; private set; }
-            protected Image itemBackImage { get; private set; }
-            protected Image itemCheckImage { get; private set; }
-            protected Text itemLabelText { get; private set; }
-            protected Image scrollbarImage { get; private set; }
-            protected Scrollbar scrollbar { get; private set; }
-            protected Image scrollbarHandleImage { get; private set; }
+            public Dropdown dropdown { get; private set; }
+            public Image dropdownImage { get; private set; }
+            public Text labelText { get; private set; }
+            public Image arrowImage { get; private set; }
+            public Image templateImage { get; private set; }
+            public ScrollRect scrollRect { get; private set; }
+            public Image viewportImage { get; private set; }
+            public Mask mask { get; private set; }
+            public Toggle toggle { get; private set; }
+            public Image itemBackImage { get; private set; }
+            public Image itemCheckImage { get; private set; }
+            public Text itemLabelText { get; private set; }
+            public Image scrollbarImage { get; private set; }
+            public Scrollbar scrollbar { get; private set; }
+            public Image scrollbarHandleImage { get; private set; }
 
 
             internal Selector(
