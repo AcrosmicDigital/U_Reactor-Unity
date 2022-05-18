@@ -123,7 +123,8 @@ namespace U.Reactor
             itemLabelTextCmp = propsItemLabelText().Set(itemLabelGO);
 
             propsScrollbarImage().SetAllExceptType(scrollbarImageCmp);
-            propsScrollbar().Set(scrollbarCmp);
+            var scrollbar = propsScrollbar();
+            scrollbar.Set(scrollbarCmp);
             propsScrollbarHandleImageCmp().SetAllExceptType(scrollbarHandleImageCmp);
 
             // Obtain percentage size
@@ -171,7 +172,7 @@ namespace U.Reactor
                 localPosition = new Vector2(0, -150f),  // 0,-150
                 anchorMin = new Vector2(1, 0f),
                 anchorMax = new Vector2(1, 1f),
-                sizeDelta = GetPercentageSize(20, 0),  // 20,0
+                sizeDelta = GetPercentageSize(scrollbar.height, 0),  // 20,0
             }.SetBySizeDelta(scrollbarGO.GetComponent<RectTransform>());
 
             new RectTransformBSetter()

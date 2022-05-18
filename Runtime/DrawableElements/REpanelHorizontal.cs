@@ -103,11 +103,13 @@ namespace U.Reactor
             contentSizeCmp = propsContentSizeFilter().Set(containerGO);
 
             propsVScrollbarImage().SetAllExceptType(vScrollbarImageCmp);
-            propsVScrollbar().Set(vScrollbarCmp);
+            var vScrollbar = propsVScrollbar();
+            vScrollbar.Set(vScrollbarCmp);
             propsVScrollbarHandleImageCmp().SetAllExceptType(vScrollbarHandleImageCmp);
 
             propsHScrollbarImage().SetAllExceptType(hScrollbarImageCmp);
-            propsHScrollbar().Set(hScrollbarCmp);
+            var hScrollbar = propsHScrollbar();
+            hScrollbar.Set(hScrollbarCmp);
             propsHScrollbarHandleImageCmp().SetAllExceptType(hScrollbarHandleImageCmp);
 
             // Relations
@@ -146,7 +148,7 @@ namespace U.Reactor
                 localPosition = new Vector2(0f, 0),
                 anchorMin = new Vector2(1, 0f),
                 anchorMax = new Vector2(1, 1f),
-                sizeDelta = new Vector2(20, -20f),  // 20,-20
+                sizeDelta = new Vector2(vScrollbar.height, -hScrollbar.height),  // 20,-20
             }.SetOrSearchBySizeDelta(vScrollbarGO);
 
             new RectTransformBSetter()
@@ -155,7 +157,7 @@ namespace U.Reactor
                 localPosition = new Vector2(0f, 0),
                 anchorMin = new Vector2(0f, 0f),
                 anchorMax = new Vector2(1f, 0f),
-                sizeDelta = new Vector2(0, 20f),   // 0,20
+                sizeDelta = new Vector2(0, hScrollbar.height),   // 0,20
             }.SetOrSearchBySizeDelta(hScrollbarGO);
 
         }

@@ -47,6 +47,7 @@ namespace U.Reactor
         public virtual float value { get; set; } = 0;
         public virtual float size { get; set; } = .2f;
         public virtual int numberOfSteps { get; set; } = 0;
+        public virtual float height { get; set; } = 20;
 
         internal Scrollbar Set(Scrollbar c)
         {
