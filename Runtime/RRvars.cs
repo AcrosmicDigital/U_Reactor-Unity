@@ -54,5 +54,30 @@ namespace U.Reactor
                 public static readonly Vector2 expand = new Vector2(1, 1);
             }
         }
+        
+        public static class Navigation
+        {
+            public static readonly UnityEngine.UI.Navigation none = new UnityEngine.UI.Navigation
+            {
+                mode = UnityEngine.UI.Navigation.Mode.None,
+            };
+            public static readonly UnityEngine.UI.Navigation automatic = new UnityEngine.UI.Navigation
+            {
+                mode = UnityEngine.UI.Navigation.Mode.Automatic,
+            };
+            public static readonly UnityEngine.UI.Navigation explicitt = new UnityEngine.UI.Navigation
+            {
+                mode = UnityEngine.UI.Navigation.Mode.Explicit,
+            };
+            public static readonly UnityEngine.UI.Navigation horizontal = new UnityEngine.UI.Navigation
+            {
+                mode = UnityEngine.UI.Navigation.Mode.Horizontal,
+            };
+            public static readonly UnityEngine.UI.Navigation vertical = new UnityEngine.UI.Navigation
+            {
+                mode = UnityEngine.UI.Navigation.Mode.Vertical,
+            };
+        }
+
     }
 }
